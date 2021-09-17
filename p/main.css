@@ -1,75 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Lato&family=Roboto+Condensed:wght@300&display=swap');
 
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
+    margin: 0;
+    border: 0;
 }
 
 body {
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
+    font-family: 'lato';
+    background-color: #333;
 }
 
 .container {
-    height: 200px;
-    width: 400px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.items {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.items::before {
-    content: "";
-    position: absolute;
-    top: 13px;
-    left: 0;
-    height: 5px;
+    height: 100%;
     width: 100%;
-    background-color: gray;
-}
-
-.line {
-    height: 5px;
-    width: 0%;
-    background-color: red;
-    position: absolute;
-    z-index: 1;
-    transition: .4s ease;
-}
-
-.num {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    z-index: 2;
     background-color: #fff;
-    border: solid grey;
-    transition: .4s ease;
 }
 
-.num.active {
-    border-color: red;
+.context {
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    padding: 100px 0;
 }
 
-.btn {
-    padding: 5px 10px;
-    font-size: 1.1rem;
-    margin: 20px 0 0;
-    background-color: red;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
+.img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-.btn:disabled {
-    background-color: rgb(207, 202, 202);
+.side-menu {
+    position: fixed;
 }
