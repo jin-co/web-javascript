@@ -11,10 +11,21 @@ body {
     background-color: #333;
 }
 
+main {
+    
+}
+
 .container {
     height: 100%;
     width: 100%;
     background-color: #fff;
+    transform-origin: top left;
+    transition: .4s ease;
+}
+
+.container.open {
+    transform: rotate(-25deg);
+    
 }
 
 .context {
@@ -31,6 +42,34 @@ body {
     object-position: center;
 }
 
-.side-menu {
+.circle, .side-menu {
     position: fixed;
+}
+
+.circle {
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.circle.open {
+    transform: rotate(-75deg);
+}
+
+.menu, .close {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+}
+
+.close {
+    transform: translate(-50px, -50px);
+    
+    transform-origin: top left;
+}
+
+.side-menu {
+    bottom: 10px;
 }
