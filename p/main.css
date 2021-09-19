@@ -28,7 +28,7 @@ main {
     
 }
 
-.context {
+.article {
     height: 100%;
     width: 70%;
     margin: 0 auto;
@@ -46,28 +46,35 @@ main {
     position: fixed;
 }
 
+.circle-container {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    z-index: 2;
+}
+
 .circle {
     height: 200px;
     width: 200px;
     background-color: aquamarine;
     border-radius: 50%;
-    z-index: 2;
+    transition: .4s ease;
 }
 
-.circle.open {
+.container.open .circle {
     transform: rotate(-75deg);
 }
 
 .menu, .close {
     position: absolute;
-    top: 70%;
-    left: 50%;
+    top: 65%;
+    left: 65%;
 }
 
 .close {
-    transform: translate(-50px, -50px);
-    
-    transform-origin: top left;
+    transform: translate(-90px, -7px) rotate(10deg);
 }
 
 .side-menu {
