@@ -21,6 +21,7 @@ body {
     line-height: 200px;
     border-radius: 10px;
     transform: translateX(-300%);
+    transition: .4s ease;
 }
 
 .content:nth-child(even) {
