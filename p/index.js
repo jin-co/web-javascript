@@ -1,19 +1,17 @@
-const count = document.querySelector('.count')
 const container = document.querySelector('.container')
+const contents = document.querySelectorAll('.content')
 
-let idx = 0
-
-window.addEventListener('load', () => {
-    let increment = setInterval(() => {
-        idx++
-
-        // bg opacity
-        count.textContent = idx + "%" 
-        count.style.opacity = `${1 - (idx / 100)}`
-        container.style.filter = `blur(${25 - (idx / 4)}px)`
-        if (idx >= 4000) {
-            clearInterval(increment)
-            idx = 0
+window.addEventListener('wheel', () => {
+    console.log(window.innerHeight)
+    contents.forEach(content => {
+        if (window.innerHeight -100 < content.getBoundingClientRect().top) {
+            content.classList.add('show')
+            console.log(content.getBoundingClientRect().top)
+            // const box = document.createElement('div')
+            // box.classList.add('content')
+            // container.appendChild(box)
+            console.log('h')
         }
-     }, 10);
+    });  
 })
+
