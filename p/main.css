@@ -74,4 +74,13 @@ body {
     background-color: transparent;
     font-size: 1.3rem;
     z-index: 3;
+    transition: .5s ease;
+}
+
+.right.active .btn-buy {
+    background-color: blue;    
+}
+
+.left.active .btn-buy {
+    background-color: red;    
 }
