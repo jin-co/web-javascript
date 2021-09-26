@@ -12,6 +12,8 @@ body {
     align-items: center;
     justify-content: center;
     background-color: cadetblue;
+    font-family: 'poppins', sans-serif;
+    color: #fff;
 }
 
 .container {
@@ -34,6 +36,7 @@ input {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #fff;
+    outline: none;
 }
 
 .btn {
