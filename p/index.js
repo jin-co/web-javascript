@@ -1,35 +1,44 @@
 const inputTexts = document.querySelectorAll('.input-text')
 const inputBoxes = document.querySelectorAll('.input-box')
 const container = document.querySelector('.container')
-const eachWords = document.querySelectorAll('.each-word')
+const eachWords1 = document.querySelectorAll('.each-word1')
+const eachWords2 = document.querySelectorAll('.each-word2')
+
+inputBoxes.forEach((box, idx) => {
+    box.addEventListener('focus', () => {
+        if (idx == 0) {
+            eachWords1.forEach((eachWord, idx) => {
+                setTimeout(() => {
+                    eachWord.style.transform = 'translateY(0)'
+                    eachWord.style.color = 'red'    
+                }, idx * 40);
+            });
+        }
+        if (idx == 1) {
+            eachWords2.forEach((eachWord, idx) => {
+                setTimeout(() => {
+                    eachWord.style.transform = 'translateY(0)'
+                    eachWord.style.color = 'red'    
+                }, idx * 40);
+            });
+        }
+    })
+});
 
 inputBoxes.forEach(box => {
-    box.addEventListener('click', () => {
-        eachWords.forEach((eachWord, idx) => {
+    box.addEventListener('focusout', () => {
+        eachWords1.forEach((eachWord, idx) => {
             setTimeout(() => {
-                eachWord.style.transform = 'translateY(0)'
-                eachWord.style.color = 'red'    
-            }, idx * 20);
+                eachWord.style.transform = 'translateY(100%)'
+                eachWord.style.color = '#fff'    
+            }, idx * 40);
         });
-
-        // let words = box.previousElementSibling.textContent.split('')
-        // console.log('words type: ', typeof(words))
-        // console.log('words array? ', words)
-        // words[0].style.transform = 'translateY(-20px)'
-        // words.forEach((word, idx) => {
-        //     console.log(word)
-        //     setTimeout(() => {
-        //         word.style.color = 'red'
-        //         word.style.transform = 'translateY(-10px)'
-        //     }, idx * 30);
-        // });
-        
-        // inputTexts.forEach(text => {
-        //     let words = text.textContent.split('')
-        //     words.forEach(word => {
-        //         console.log(word)
-        //     });
-        // });
+        eachWords2.forEach((eachWord, idx) => {
+            setTimeout(() => {
+                eachWord.style.transform = 'translateY(100%)'
+                eachWord.style.color = '#fff'    
+            }, idx * 40);
+        });
     })
 });
 
