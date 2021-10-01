@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-family: 'poppins', 'lato', sans-serif;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lavender;
+}
+
+.box {
+    height: 400px;
+    height: 350px;
+    background-color: rgb(39, 81, 95);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control {
+    position: relative;
+}
+
+.input-control input {
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    padding: 0 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size: 1.3rem;
+    transition: .4s ease;
+}
+
+.input-control input:focus {
+    outline: none;
+    border-color: lightblue;
+}
+
+.input-control label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+}
+
+.btn {
+    margin: 20px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+a:focus {
+    color: aliceblue !important;
+    font-size: 2rem;
+}
+
+
+
+
+
