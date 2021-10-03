@@ -49,9 +49,19 @@ body {
 
 .input-control label {
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     color: #fff;
+}
+
+.input-control label span {
+    display: inline-block;
+    transition: .3s cubic-bezier(.68, -.55, .265, 1.55);
+}
+
+.input-control input:focus + label span {
+    transform: translateY(-130%);
+    color: lightblue;
 }
 
 .btn {
