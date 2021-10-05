@@ -52,8 +52,8 @@ body {
     border-color: lawngreen;
 }
 
-.input-box .input:focus + label {
-    top: 0;
+.input-box .input:focus + label span {
+    transform: translateY(30%);
 }
 
 .input-box .label {
