@@ -33,13 +33,13 @@ body {
 .input-box {
     height: 70px;
     width: 100%;
-    margin: 20px 0;
     position: relative;
 }
 
 .input-box .input {
+    height: 30px;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 30px;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #fff;
@@ -52,15 +52,20 @@ body {
     border-color: lawngreen;
 }
 
-.input-box .input:focus + label span {
-    transform: translateY(30%);
-}
-
 .input-box .label {
     position: absolute;
     left: 0;
-    top: 25px;
-    transition: .4s ease;
+    top: 35px;
+    pointer-events: none;
+}
+
+.input-box label span {
+    display: inline-block;
+    transition: .3s cubic-bezier(.68, -.55, .265, 1.55);
+}
+
+.input-box .input:focus + label span {
+    transform: translateY(-130%);
 }
 
 .btn-input {
