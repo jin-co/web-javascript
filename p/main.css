@@ -25,14 +25,32 @@ body {
 }
 
 .item {
-    height: 100px;
+    min-height: 100px;
     width: 500px;
     position: relative;
     padding: 10px 30px;
+    transition: .4s, ease;
+    border-radius: 5px;
+}
+
+.item.show {
+    height: 120px;
+    background-color: #fff;
 }
 
 .question {
     width: 80%;
+    font-weight: bold;
+}
+
+.answer {
+    display: none;
+    transition: .4s ease;
+    margin-top: 25px;
+}
+
+.item.show .answer {
+    display: block;
 }
 
 .btn {
@@ -44,4 +62,26 @@ body {
     justify-content: center;
     position: absolute;
     right: 20px;
+}
+
+.item.show .btn {
+    background-color: rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+.item.show .btn .close {
+    display: block;
+}
+
+.item.show .btn .open {
+    display: none;
+}
+
+.open {
+    transition: .4s ease;
+}
+
+.close {
+    display: none;
+    transition: .4s ease;
 }
