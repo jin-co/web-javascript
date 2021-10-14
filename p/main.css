@@ -25,12 +25,41 @@ body {
 }
 
 .item {
-    min-height: 100px;
+    min-height: 80px;
     width: 500px;
     position: relative;
     padding: 10px 30px;
-    transition: .4s, ease;
     border-radius: 5px;
+    border: 1px solid #333;
+    margin: 10px 0 20px;
+    transition: .4s, ease;
+    overflow: hidden;
+}
+
+.item.show::before, .item.show::after {
+    display: block;
+}
+
+.item::before, .item::after {
+    content: "\f075";
+    font-family: 'Font Awesome 5 Free';
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 4rem;
+    color: aqua;
+    opacity: .3;
+    display: none;
+    transition: .4s ease;
+}
+
+.item::after {
+    top: -10px;
+    left: -10px;
+    transform: rotateY(180deg);
+    color: lawngreen;
 }
 
 .item.show {
@@ -45,8 +74,8 @@ body {
 
 .answer {
     display: none;
-    transition: .4s ease;
     margin-top: 25px;
+    transition: .4s ease;
 }
 
 .item.show .answer {
