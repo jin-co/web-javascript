@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Lato&family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', 'Lato';
+    background-color: aquamarine;
+}
+
+.box {
+    height: 250px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+
+}
+
+.text {
+    background-color: #efefef;
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.btn {
+    border: 1px solid orange;
+    border-radius: 15px;
+    background-color: azure;
+}
+
+.btn-box {
+    display: flex;
+    flex-wrap: wrap;
+}
