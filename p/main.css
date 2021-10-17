@@ -16,7 +16,6 @@ body {
 }
 
 .box {
-    height: 250px;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -28,6 +27,7 @@ body {
 }
 
 .text {
+    height: 150px;
     background-color: #efefef;
     padding: 5px 10px;
     margin: 10px 0;
@@ -37,6 +37,14 @@ body {
     border: 1px solid orange;
     border-radius: 15px;
     background-color: azure;
+    margin: 2px;
+    transition: .4s ease;
+}
+
+.btn.chosen {
+    background-color: blue;
+    color: #fff;
+    margin: 2px;
 }
 
 .btn-box {
