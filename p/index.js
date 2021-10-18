@@ -14,16 +14,12 @@ text.addEventListener('keydown', (e) => {
         isOn = true    
     }
     
-    console.log(e.target.value)
-
-    if (e.key != ',') {
-        word += e.target.value    
-        console.log(word)
-    }
+    word += e.target.value    
     
     console.log(word)
     if (e.key == ",") {
         addChoice(word)
+        console.log('comma')
     }
 
     if (e.key == "Enter") {
