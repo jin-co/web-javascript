@@ -1,10 +1,19 @@
 const text = document.querySelector('.text')
 const btnBox = document.querySelector('.btn-box')
+const btnsStart = document.querySelectorAll('.btn')
 
 let btns = []
+let isOn = false
+let word = ""
 
 text.addEventListener('keydown', (e) => {
-    let word = ""
+    if (!isOn) {
+        btnsStart.forEach(btn => {
+            btn.remove()
+        });
+        isOn = true    
+    }
+    
     console.log(e.target.value)
 
     if (e.key != ',') {
@@ -15,7 +24,6 @@ text.addEventListener('keydown', (e) => {
     console.log(word)
     if (e.key == ",") {
         addChoice(word)
-        e.target.value = ''
     }
 
     if (e.key == "Enter") {
@@ -33,13 +41,9 @@ function addChoice(word) {
 }
 
 function chooseOne() {
-    console.log(btns)
-    
-    
     setTimeout(() => {
         let num = Math.floor(Math.random() * btns.length)
         console.log(num)
         btns[num].className = 'btn chosen'    
     }, 3000);
-    
 }
