@@ -42,19 +42,29 @@ function addChoice(words) {
 }
 
 function chooseOne() {
-    // text.target.value = ''
+    const btnsEl = document.querySelectorAll('.btn')
+
+    // var effect
+    // effect = setInterval(() => {
+    //     num = Math.floor(Math.random() * btnsEl.length)
+    //     console.log(num)
+    //     btnsEl.forEach(btn => {
+    //         btn.classList.remove('chosen')
+    //     });
+    //     btnsEl[num].classList.add('chosen')
+    // }, 100);
+
+    var effect = setInterval(spin, 100)
+    function spin() {
+        num = Math.floor(Math.random() * btnsEl.length)
+        console.log(num)
+        btnsEl.forEach(btn => {
+            btn.classList.remove('chosen')
+        });
+        btnsEl[num].classList.add('chosen')
+    }
+    
     setTimeout(() => {
-        let num
-        const btnsEl = document.querySelectorAll('.btn')        
-        const effect = setInterval(() => {
-            num = Math.floor(Math.random() * btnsEl.length)
-            console.log(num)
-            btnsEl.forEach(btn => {
-                btn.classList.remove('chosen')
-            });
-            btnsEl[num].classList.add('chosen')
-        }, 100);
-        
-        btnsEl[num].className = 'btn chosen'    
+        clearInterval(effect)
     }, 3000);
 }
