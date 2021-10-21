@@ -11,13 +11,14 @@ let words = []
     
 // })
 
-// function resetGame() {
-//     btns = []
-//     isOn = false
-//     word = ''
-//     words = []
-//     btnBox.innerHTML = ''
-// }
+function resetGame() {
+    btns = []
+    isOn = false
+    word = ''
+    words = []
+    btnBox.innerHTML = ''
+    text.focus()
+}
 
 text.addEventListener('keydown', (e) => {
     if (!isOn) {
@@ -26,19 +27,13 @@ text.addEventListener('keydown', (e) => {
         });
         isOn = true    
     }
-    if (e.target.value !== '') {
-        word += e.target.value        
-    }
-    
-    
-    console.log(word)
-    if (e.key == ",") {
-        
-        
-    }
 
-    if (e.key == "Enter") {
-        words = word.split(',')
+    console.log(word)
+
+    addChoice(e.target.value)
+
+    if (e.key === "Enter") {
+        
         addChoice(words)
         console.log(words)
         chooseOne()
@@ -46,7 +41,8 @@ text.addEventListener('keydown', (e) => {
     }
 })
 
-function addChoice(words) {
+function addChoice(word) {
+    words = word.trim().split(',')
     words.forEach(word => {
         const choiceEl = document.createElement('button')
         choiceEl.className = 'btn'
