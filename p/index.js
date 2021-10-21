@@ -27,13 +27,20 @@ text.addEventListener('keydown', (e) => {
         });
         isOn = true    
     }
-
+    if (e.key !== ' ') {
+        word += e.target.value        
+    }
+    
     console.log(word)
+    console.log(e)
 
-    addChoice(e.target.value)
-
-    if (e.key === "Enter") {
+    if (e.key == ",") {
         
+        
+    }
+
+    if (e.key == "Enter") {
+        words = word.split(',').filter(w => w.trim() !== '')
         addChoice(words)
         console.log(words)
         chooseOne()
@@ -41,8 +48,7 @@ text.addEventListener('keydown', (e) => {
     }
 })
 
-function addChoice(word) {
-    words = word.trim().split(',')
+function addChoice(words) {
     words.forEach(word => {
         const choiceEl = document.createElement('button')
         choiceEl.className = 'btn'
