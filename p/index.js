@@ -27,22 +27,15 @@ text.addEventListener('keydown', (e) => {
         });
         isOn = true    
     }
-    if (e.key !== ' ') {
+    if (e.key !== ' ' && e.key !== ',') {
         word += e.target.value        
-    }
-    
-    console.log(word)
-    console.log(e)
-
-    if (e.key == ",") {
-        
-        
+        console.log(word)
+        console.log(e)
     }
 
     if (e.key == "Enter") {
-        words = word.split(',').filter(w => w.trim() !== '')
+        words = text.value.split(',').filter(w => w.trim() !== '')
         addChoice(words)
-        console.log(words)
         chooseOne()
         e.target.value = ''
     }
