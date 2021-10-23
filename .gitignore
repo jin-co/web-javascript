@@ -89,3 +89,7 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# NodeJS specific
+package-lock.json
+test/*.log
