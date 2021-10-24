@@ -11,7 +11,12 @@ function resetGame() {
     word = ''
     words = []
     btnBox.innerHTML = ''
+    moveCursor()
+}
+
+function moveCursor() {
     text.focus()
+    text.setSelectionRange(0,0)
 }
 
 text.addEventListener('click', () => {
@@ -24,10 +29,12 @@ text.addEventListener('keydown', (e) => {
         addChoice(words)
         chooseOne()
         e.target.value = ''
+        setTimeout(moveCursor, 100)
     }
 })
 
 function addChoice(words) {
+    btnBox.innerHTML = ''
     words.forEach(word => {
         const choiceEl = document.createElement('button')
         choiceEl.className = 'btn'
