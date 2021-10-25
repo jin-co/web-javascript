@@ -32,6 +32,12 @@ text.addEventListener('click', () => {
 })
 
 text.addEventListener('keydown', (e) => {
+    // const choiceEl = document.createElement('button')
+    // choiceEl.className = 'btn'
+    // choiceEl.textContent = word
+    // btns.push(choiceEl)
+    // btnBox.appendChild(choiceEl) 
+
     if (e.key == "Enter") {
         words = text.value.split(',').filter(w => w.trim() !== '')
         addChoice(words)
