@@ -1,6 +1,6 @@
 const text = document.querySelector('.text')
 const btnBox = document.querySelector('.btn-box')
-const btnsStart = document.querySelectorAll('.btn')
+// const btnsStart = document.querySelectorAll('.btn')
 
 let btns = []
 let word = ""
@@ -10,7 +10,15 @@ function resetGame() {
     btns = []
     word = ''
     words = []
-    btnBox.innerHTML = ''
+    const btnsEl = document.querySelectorAll('.btn')
+    btnsEl.forEach(btn => {
+        btn.style.opacity = '0'
+    });
+    console.log(btnsEl)
+    
+    setTimeout(() => {
+        btnBox.innerHTML = ''
+    }, 300)    
     moveCursor()
 }
 

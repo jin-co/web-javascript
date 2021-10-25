@@ -48,6 +48,7 @@ body {
 }
 
 .btn-box {
+    min-height: 50px;
     display: flex;
     flex-wrap: wrap;
 }
