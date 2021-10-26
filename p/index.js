@@ -7,6 +7,8 @@ let word = ""
 let words = []
 text.focus()
 
+flag = false
+
 function resetGame() {
     btns = []
     word = ''
@@ -32,15 +34,30 @@ text.addEventListener('click', () => {
     resetGame()
 })
 
-text.addEventListener('keydown', (e) => {        
-    if (e.key == "Enter") {
-        words = text.value.split(',').filter(w => w.trim() !== '')
-        addChoice(words)
-        chooseOne()
-        e.target.value = ''
-        setTimeout(moveCursor, 100)
+text.addEventListener('keydown', (e) => {  
+    if (!flag) {   
+        btnCreated = addBtn()
     }
+    if (e.key != 'Backspace') {
+        btnCreated.textContent = btnCreated.textContent.splice(-1)    
+    }
+    btnCreated.textContent += e.key
+    // if (e.key == "Enter") {
+    //     words = text.value.split(',').filter(w => w.trim() !== '')
+    //     addChoice(words)
+    //     chooseOne()
+    //     e.target.value = ''
+    //     setTimeout(moveCursor, 100)
+    // }
 })
+
+function addBtn() {    
+    const btn = document.createElement('button')
+    btn.className = 'btn'
+    btnBox.appendChild(btn)        
+    flag = true
+    return btn
+}
 
 function addChoice(words) {
     btnBox.innerHTML = ''
