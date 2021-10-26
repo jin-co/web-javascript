@@ -5,6 +5,7 @@ const btnBox = document.querySelector('.btn-box')
 let btns = []
 let word = ""
 let words = []
+text.focus()
 
 function resetGame() {
     btns = []
@@ -31,13 +32,7 @@ text.addEventListener('click', () => {
     resetGame()
 })
 
-text.addEventListener('keydown', (e) => {
-    // const choiceEl = document.createElement('button')
-    // choiceEl.className = 'btn'
-    // choiceEl.textContent = word
-    // btns.push(choiceEl)
-    // btnBox.appendChild(choiceEl) 
-
+text.addEventListener('keydown', (e) => {        
     if (e.key == "Enter") {
         words = text.value.split(',').filter(w => w.trim() !== '')
         addChoice(words)
