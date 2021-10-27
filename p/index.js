@@ -1,6 +1,5 @@
 const text = document.querySelector('.text')
 const btnBox = document.querySelector('.btn-box')
-// const btnsStart = document.querySelectorAll('.btn')
 
 let btns = []
 let word = ""
@@ -35,20 +34,13 @@ text.addEventListener('click', () => {
 })
 
 text.addEventListener('keydown', (e) => {  
-    if (!flag) {   
-        btnCreated = addBtn()
+    if (e.key == "Enter") {
+        words = text.value.split(',').filter(w => w.trim() !== '')
+        addChoice(words)
+        chooseOne()
+        e.target.value = ''
+        setTimeout(moveCursor, 100)
     }
-    if (e.key != 'Backspace') {
-        btnCreated.textContent = btnCreated.textContent.splice(-1)    
-    }
-    btnCreated.textContent += e.key
-    // if (e.key == "Enter") {
-    //     words = text.value.split(',').filter(w => w.trim() !== '')
-    //     addChoice(words)
-    //     chooseOne()
-    //     e.target.value = ''
-    //     setTimeout(moveCursor, 100)
-    // }
 })
 
 function addBtn() {    
