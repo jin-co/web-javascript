@@ -19,11 +19,16 @@ text.addEventListener('keydown', (e) => {
     if (e.key == ',') {
         flag = false
     }
+
     console.log(e.key)
+
+    if (e.key == 'Backspace') {
+        btnEl.textContent = btnEl.textContent.splice(-1)
+    }
+
     if (e.key != ',' && e.key != 'Backspace') {
         btnEl.textContent += e.key
     }
-    
 })
 
 
