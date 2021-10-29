@@ -28,24 +28,23 @@ text.addEventListener('keydown', (e) => {
         //test
         console.log(
             'btns: ', lastBtnEl, '\n',
-            'btns length: ', lastBtnEl.length, '\n'
-            )
-        
-        lastBtnEl.forEach(btnEl => {
-            console.log(btnEl.textContent)
-        });
+            'btns length: ', lastBtnEl.length, '\n',
+            'btns last: ', lastBtnEl[lastBtnEl.length - 1], '\n'
+            )        
         //test
-
-        // let words = btnEl.textContent.split('')
-        let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')
-        words.splice(-1, 1)
-        lastBtnEl.forEach(btnEl => {
-            if (bntEl.textContent == '') {
-                btnEl.remove()                
-            }
-        });
-        btnEl.textContent = words.join('')
         
+        if (lastBtnEl.length >= 0) {
+            let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
+            let aa = words.splice(-1, 1)
+            lastBtnEl.forEach(btnEl => {
+                if (btnEl.textContent == '') {
+                    btnEl.remove()                
+                }
+            });
+            lastBtnEl[lastBtnEl.length - 1].textContent = words.join('')
+        } else {
+            flag = false
+        }
     }
 
     if (e.key != ',' && e.key != 'Backspace') {
