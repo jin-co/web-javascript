@@ -33,7 +33,7 @@ text.addEventListener('keydown', (e) => {
             )        
         //test
         
-        if (lastBtnEl.length >= 0) {
+        if (lastBtnEl.length > 0) {
             let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
             let aa = words.splice(-1, 1)
             lastBtnEl.forEach(btnEl => {
