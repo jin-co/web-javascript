@@ -29,22 +29,31 @@ text.addEventListener('keydown', (e) => {
         console.log(
             'btns: ', lastBtnEl, '\n',
             'btns length: ', lastBtnEl.length, '\n',
-            'btns last: ', lastBtnEl[lastBtnEl.length - 1], '\n'
+            'btns last: ', lastBtnEl[lastBtnEl.length - 1], '\n',
+            'flag: ', flag
             )        
         //test
         
-        if (lastBtnEl.length > 0) {
-            let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
-            let aa = words.splice(-1, 1)
+        if (lastBtnEl.length == 0) {
             lastBtnEl.forEach(btnEl => {
                 if (btnEl.textContent == '') {
                     btnEl.remove()                
                 }
             });
-            lastBtnEl[lastBtnEl.length - 1].textContent = words.join('')
-        } else {
             flag = false
-        }
+        }        
+
+        if (lastBtnEl.length > 0) {
+            let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
+            let aa = words.splice(-1, 1)
+            // lastBtnEl.forEach(btnEl => {
+            //     if (btnEl.textContent == '') {
+            //         btnEl.remove()                
+            //     }
+            // });
+            lastBtnEl[lastBtnEl.length - 1].textContent = words.join('')
+            console.log('in: ', flag)
+        }        
     }
 
     if (e.key != ',' && e.key != 'Backspace') {
