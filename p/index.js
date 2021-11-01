@@ -34,14 +34,20 @@ text.addEventListener('keydown', (e) => {
             )        
         //test
         
-        if (lastBtnEl.length == 0) {
-            lastBtnEl.forEach(btnEl => {
-                if (btnEl.textContent == '') {
-                    btnEl.remove()                
-                }
-            });
-            flag = false
-        }        
+        // if (lastBtnEl.length == 0) {
+        //     lastBtnEl.forEach(btnEl => {
+        //         if (btnEl.textContent == '') {
+        //             btnEl.remove()                
+        //         }
+        //     });
+        //     console.log('fired foreach')
+        //     flag = false
+        // }  
+        if (lastBtnEl[lastBtnEl.length - 1].textContent.length <= 1) {
+            lastBtnEl[lastBtnEl.length - 1].remove()
+            flag = true
+            console.log('gogo')
+        }      
 
         if (lastBtnEl.length > 0) {
             let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
