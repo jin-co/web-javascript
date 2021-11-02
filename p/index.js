@@ -9,7 +9,8 @@ flag = false
 let btnEl = null
 
 text.addEventListener('keydown', (e) => {
-    if (!flag) {
+    const lastBtnEl = document.querySelectorAll('.btn')
+    if (!flag && e.key != 'Backspace') {
         btnEl = document.createElement('button')
         btnEl.className = 'btn'
         btnBox.appendChild(btnEl)
@@ -20,43 +21,15 @@ text.addEventListener('keydown', (e) => {
         flag = false
     }
 
-    console.log(e.key)
-
-    if (e.key == 'Backspace') {
-        const lastBtnEl = document.querySelectorAll('.btn')
-        
-        //test
-        console.log(
-            'btns: ', lastBtnEl, '\n',
-            'btns length: ', lastBtnEl.length, '\n',
-            'btns last: ', lastBtnEl[lastBtnEl.length - 1], '\n',
-            'flag: ', flag
-            )        
-        //test
-        
-        // if (lastBtnEl.length == 0) {
-        //     lastBtnEl.forEach(btnEl => {
-        //         if (btnEl.textContent == '') {
-        //             btnEl.remove()                
-        //         }
-        //     });
-        //     console.log('fired foreach')
-        //     flag = false
-        // }  
-        if (lastBtnEl[lastBtnEl.length - 1].textContent.length <= 1) {
+    if (e.key == 'Backspace') {                
+        if (lastBtnEl[lastBtnEl.length - 1].textContent.length <= 0) {
             lastBtnEl[lastBtnEl.length - 1].remove()
-            flag = true
-            console.log('gogo')
+            flag = false
         }      
 
         if (lastBtnEl.length > 0) {
             let words = lastBtnEl[lastBtnEl.length - 1].textContent.split('')        
             let aa = words.splice(-1, 1)
-            // lastBtnEl.forEach(btnEl => {
-            //     if (btnEl.textContent == '') {
-            //         btnEl.remove()                
-            //     }
-            // });
             lastBtnEl[lastBtnEl.length - 1].textContent = words.join('')
             console.log('in: ', flag)
         }        
