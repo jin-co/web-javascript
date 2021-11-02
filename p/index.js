@@ -10,13 +10,19 @@ let btnEl = null
 
 text.addEventListener('keydown', (e) => {
     const lastBtnEl = document.querySelectorAll('.btn')
+    
+    if (e.key == 'Enter') {
+        chooseOne(lastBtnEl)
+        return
+    }
+
     if (!flag && e.key != 'Backspace') {
         btnEl = document.createElement('button')
         btnEl.className = 'btn'
         btnBox.appendChild(btnEl)
         flag = true
     }    
-    
+
     if (e.key == ',') {
         flag = false
     }
@@ -37,7 +43,23 @@ text.addEventListener('keydown', (e) => {
 
     if (e.key != ',' && e.key != 'Backspace') {
         btnEl.textContent += e.key
-    }
+    }    
 })
+
+function chooseOne(lastBtnEl) {   
+    let random
+    const effect = setInterval(() => {
+        lastBtnEl.forEach(btn => {
+            btn.classList.remove('chosen')
+        });
+        random = Math.floor(Math.random() * lastBtnEl.length)
+        lastBtnEl[random].classList.add('chosen')
+    }, 100);
+    
+    setTimeout(() => {
+        lastBtnEl[random].classList.add('chosen')
+        clearInterval(effect)
+    }, 3000)        
+}
 
 
