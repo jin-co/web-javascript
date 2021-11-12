@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Lato&family=Muli&family=Press+Start+2P&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Press Start 2P', sans-serifs;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.btn-start {
+    font-size: 2rem;
+}
+
+.pages {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s cubic-bezier(0.35,0.16,0.68,1.57);
+}
+
+.page-one {
+    
+}
+
+/* second page */
+.page-two {
+    position: absolute;
+    transform: translate(100%, -100%);
+    background-color: aqua;
+}
+
+.page-two .img {
+    background-image: url('https://unsplash.com/photos/7Z03R1wOdmI');
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.page-two .container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.page-two .container .title {
+    
+}
+
+.page-two .container .players {
+    text-align: right;
+}
+
+.page-two .container .players input {
+    width: 80px;
+    padding: 0 10px;
+    text-align: right;
+}
+
+.page-two .container .players input:focus {
+    outline: none;
+}
+
+.page-two .container .row {
+    justify-content: center;
+    align-items: center;
+}
+
+.page-two .container .row .character-box {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
+.page-two .container .row .character-box .img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.page-two .container .row .character-box input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 0 5px;
+    font-family: 'Lato';
+}
+
+
+/* third page */
+.page-three {
+    position: absolute;
+    transform: translateX(100%);
+}
+
+
+
+
+
+
+
+
