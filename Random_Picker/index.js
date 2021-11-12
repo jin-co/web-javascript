@@ -7,12 +7,11 @@ const characterBoxContainer = document.querySelector('.character-box-container')
 let characters = []
 
 
-// page moving
+//* page moving
 nextBtns.forEach((next, index) => {
     next.addEventListener('click', () => {
         shuffleCard(index)
         console.log(index)
-        // next.style.transform = 'translate()'
     })
 });
 
@@ -30,20 +29,18 @@ goBackBtns.forEach((pre, index) => {
             console.log('below: ', idx)
             shuffleCard(3)    
         }
-        console.log(idx)
-        // next.style.transform = 'translate()'
     })
 });
+//* page moving
 
-// page moving
-
-// player choice
+//* player choice
 const POKEAPI = 'https://pokeapi.co/api/v2/pokemon/'
 
 async function fetchCharacter() {
-    const res = await fetch(POKEAPI + '1' + '/')
-    const data = await JSON.parse(res)
-    console.log(data)
+    const res = await fetch(POKEAPI + '1')    
+    const data = await res.json()
+    console.log(data.forms[0].url)
+    return data.forms[0].url
 }
 
 const playerCount = document.querySelector('.player-count')
@@ -52,7 +49,6 @@ playerCount.addEventListener('click', () => {
 })
 
 playerCount.addEventListener('keydown', (e) => {
-    fetchCharacter()
     if (e.key === 'Enter') {
         playerCount.readOnly = true
         let count = playerCount.value
@@ -60,16 +56,14 @@ playerCount.addEventListener('keydown', (e) => {
             const playerEl = document.createElement('div')
             playerEl.className = 'character-box'
             playerEl.innerHTML = `
-                <img class="img" src="https://unsplash.com/photos/fIq0tET6llw" alt="">
+                <img class="img" src="${fetchCharacter()}" alt="">
                 <input type="text">            
             `
             characterBoxContainer.appendChild(playerEl)
         }
     }
 })
-
-
-// player choice
+//* player choice
 
 // functions
 function shuffleCard(index) {
