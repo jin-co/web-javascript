@@ -11,7 +11,6 @@ let characters = []
 nextBtns.forEach((next, index) => {
     next.addEventListener('click', () => {
         shuffleCard(index)
-        console.log(index)
     })
 });
 
@@ -19,14 +18,11 @@ let idx = 0
 goBackBtns.forEach((pre, index) => {
     pre.addEventListener('click', () => {
         idx = index
-        console.log('b: ', idx)
         if (idx >= 0) {
             idx--
-            console.log(idx)
             shuffleCard(idx)
         } 
         if (idx < 0) {
-            console.log('below: ', idx)
             shuffleCard(3)    
         }
     })
@@ -37,10 +33,10 @@ goBackBtns.forEach((pre, index) => {
 const POKEAPI = 'https://pokeapi.co/api/v2/pokemon/'
 
 async function fetchCharacter() {
-    const res = await fetch(POKEAPI + '1')    
+    const res = await fetch(POKEAPI + '2')    
     const data = await res.json()
-    console.log(data.forms[0].url)
-    return data.forms[0].url
+    console.log(data.sprites.front_shiny)
+    return '"' + data.sprites.front_shiny + '"'
 }
 
 const playerCount = document.querySelector('.player-count')
@@ -49,6 +45,7 @@ playerCount.addEventListener('click', () => {
 })
 
 playerCount.addEventListener('keydown', (e) => {
+    fetchCharacter()
     if (e.key === 'Enter') {
         playerCount.readOnly = true
         let count = playerCount.value
@@ -56,7 +53,7 @@ playerCount.addEventListener('keydown', (e) => {
             const playerEl = document.createElement('div')
             playerEl.className = 'character-box'
             playerEl.innerHTML = `
-                <img class="img" src="${fetchCharacter()}" alt="">
+                <img class="img" src="${1}" alt="">
                 <input type="text">            
             `
             characterBoxContainer.appendChild(playerEl)
