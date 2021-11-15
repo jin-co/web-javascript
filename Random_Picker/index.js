@@ -30,13 +30,14 @@ goBackBtns.forEach((pre, index) => {
 //* page moving
 
 //* player choice
-const POKEAPI = 'https://pokeapi.co/api/v2/pokemon/'
+const POKEPICAPI = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png'
+const MAX_NUM = 150
 
 async function fetchCharacter() {
-    const res = await fetch(POKEAPI + '2')    
+    const res = await fetch(POKEPICAPI + '2')    
     const data = await res.json()
     console.log(data.sprites.front_shiny)
-    return '"' + data.sprites.front_shiny + '"'
+    return data.sprites.front_shiny
 }
 
 const playerCount = document.querySelector('.player-count')
@@ -45,7 +46,6 @@ playerCount.addEventListener('click', () => {
 })
 
 playerCount.addEventListener('keydown', (e) => {
-    fetchCharacter()
     if (e.key === 'Enter') {
         playerCount.readOnly = true
         let count = playerCount.value
@@ -53,13 +53,19 @@ playerCount.addEventListener('keydown', (e) => {
             const playerEl = document.createElement('div')
             playerEl.className = 'character-box'
             playerEl.innerHTML = `
-                <img class="img" src="${1}" alt="">
+                <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${getRandom(MAX_NUM)}.png" alt="">
                 <input type="text">            
             `
             characterBoxContainer.appendChild(playerEl)
         }
     }
 })
+
+function getRandom(max) {
+    let num = Math.floor((Math.random() * max) + 1)
+    console.log(num)
+    return num
+}
 //* player choice
 
 // functions
