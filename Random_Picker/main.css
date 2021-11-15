@@ -32,8 +32,11 @@ body {
 /* second page */
 .page-two {
     position: absolute;
+    padding: 15px;
     transform: translate(100%, -100%);
     background-color: aqua;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-two .img {
@@ -48,19 +51,20 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: scroll;
 }
 
-.page-two .container .title {
+.page-two .title {
     
 }
 
-.page-two .container .players {
-    text-align: right;
+.page-two .players {
+    margin-left: auto;
 }
 
-.page-two .container .players input {
-    width: 80px;
-    padding: 0 10px;
+.page-two .players input {
+    width: 110px;
+    padding: 0 15px;
     text-align: right;
 }
 

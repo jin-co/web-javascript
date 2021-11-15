@@ -49,11 +49,11 @@ playerCount.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         playerCount.readOnly = true
         let count = playerCount.value
-        for (let i = 0; i < count; i++) {
+        for (let i = 1; i <= MAX_NUM; i++) {
             const playerEl = document.createElement('div')
             playerEl.className = 'character-box'
             playerEl.innerHTML = `
-                <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${getRandom(MAX_NUM)}.png" alt="">
+                <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png" alt="">
                 <input type="text">            
             `
             characterBoxContainer.appendChild(playerEl)
