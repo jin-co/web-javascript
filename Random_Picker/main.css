@@ -50,12 +50,11 @@ body {
     height: 70vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
+    justify-content: space-between;    
 }
 
 .page-two .title {
-    
+    margin-bottom: 20px;
 }
 
 .page-two .players {
@@ -75,6 +74,8 @@ body {
 .page-two .container .row {
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+    margin: 20px 0;
 }
 
 .page-two .container .row .character-box {
@@ -82,13 +83,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5px;
+    margin: 5px;    
 }
 
 .page-two .container .row .character-box .img{
     height: 100px;
     width: 100px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .page-two .container .row .character-box input {

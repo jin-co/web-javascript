@@ -59,7 +59,19 @@ playerCount.addEventListener('keydown', (e) => {
             characterBoxContainer.appendChild(playerEl)
         }
     }
+
+    getImageEl()
 })
+
+function getImageEl() {
+    const imgs = document.querySelectorAll('.img')
+    imgs.forEach(img => {
+        img.addEventListener('click', () => {
+            console.log('hi')
+        })
+    });
+}
+
 
 function getRandom(max) {
     let num = Math.floor((Math.random() * max) + 1)
