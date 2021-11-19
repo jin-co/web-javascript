@@ -40,47 +40,59 @@ async function fetchCharacter() {
     return data.sprites.front_shiny
 }
 
+// loads characters
+window.addEventListener('load', () => {
+    for (let i = 1; i <= MAX_NUM; i++) {
+        const playerEl = document.createElement('div')
+        playerEl.className = 'character-box'
+        playerEl.innerHTML = `
+            <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png" alt="">
+        `
+        characterBoxContainer.appendChild(playerEl)
+    }
+    getImageEl()
+})
+
 const playerCount = document.querySelector('.player-count')
 playerCount.addEventListener('click', () => {
     playerCount.readOnly = false
 })
 
+//test
 playerCount.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-        playerCount.readOnly = true
-        let count = playerCount.value
-        for (let i = 1; i <= MAX_NUM; i++) {
-            const playerEl = document.createElement('div')
-            playerEl.className = 'character-box'
-            playerEl.innerHTML = `
-                <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png" alt="">
-                <input type="text">            
-            `
-            characterBoxContainer.appendChild(playerEl)
-        }
     }
-
-    getImageEl()
 })
 
+// adds selected player to an array for selection
+let playerChosen = []
 function getImageEl() {
     const imgs = document.querySelectorAll('.img')
     imgs.forEach(img => {
-        img.addEventListener('click', () => {
-            console.log('hi')
-        })
+        img.addEventListener('click', (e) => {
+            console.log(e)
+            playerChosen.push(e)
+        })  
     });
 }
+//* /player choice
 
+//* Selection
+const displayBox = document.querySelector('display-box')
 
+playerChosen.forEach(p => {
+    displayBox.appendChild(p)
+});
+
+//* /Selection
+
+// functions
 function getRandom(max) {
     let num = Math.floor((Math.random() * max) + 1)
     console.log(num)
     return num
 }
-//* player choice
 
-// functions
 function shuffleCard(index) {
     switch (index) {
         case 0:

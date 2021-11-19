@@ -106,7 +106,17 @@ body {
 .page-three {
     position: absolute;
     transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
 }
+
+.page-three .display-box {
+    width: 70vw;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+/* shared */
 
 
 
