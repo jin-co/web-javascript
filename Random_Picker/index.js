@@ -77,7 +77,7 @@ function getImageEl() {
 }
 //* /player choice
 
-//* Selection
+//* Selection 
 const displayBox = document.querySelector('display-box')
 
 playerChosen.forEach(p => {
