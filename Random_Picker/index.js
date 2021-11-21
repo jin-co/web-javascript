@@ -5,7 +5,7 @@ const characterBoxContainer = document.querySelector('.character-box-container')
 
 // for generated characters
 let characters = []
-
+let players = 0
 
 //* page moving
 nextBtns.forEach((next, index) => {
@@ -53,37 +53,29 @@ window.addEventListener('load', () => {
     getImageEl()
 })
 
-const playerCount = document.querySelector('.player-count')
-playerCount.addEventListener('click', () => {
-    playerCount.readOnly = false
-})
-
-//test
-playerCount.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-    }
-})
 
 // adds selected player to an array for selection
+const playerCount = document.querySelector('.player-count')
+
 let playerChosen = []
+const displayBox = document.querySelector('.display-box')
+
 function getImageEl() {
     const imgs = document.querySelectorAll('.img')
     imgs.forEach(img => {
         img.addEventListener('click', (e) => {
-            console.log(e)
-            playerChosen.push(e)
+            let copied = []
+            copied.push(e.target)
+            displayBox.appendChild(copied[0])
+            players++
+            console.log(players)
+            playerCount.textContent = players
         })  
     });
 }
 //* /player choice
 
 //* Selection 
-const displayBox = document.querySelector('display-box')
-
-playerChosen.forEach(p => {
-    displayBox.appendChild(p)
-});
-
 //* /Selection
 
 // functions
