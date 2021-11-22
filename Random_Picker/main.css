@@ -34,7 +34,6 @@ body {
     position: absolute;
     padding: 15px;
     transform: translate(100%, -100%);
-    background-color: aqua;
     display: flex;
     flex-direction: column;
 }
@@ -101,7 +100,6 @@ body {
     font-family: 'Lato';
 }
 
-
 /* third page */
 .page-three {
     position: absolute;
@@ -114,6 +112,33 @@ body {
     width: 70vw;
     height: 200px;
     margin-bottom: 20px;
+}
+
+
+/* effect */
+.img.pick {
+
+}
+
+.img::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    z-index: 2;
+}
+
+.character-box.chosen {
+    background-color: aliceblue;
+}
+
+.character-box::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: red;
 }
 
 /* shared */

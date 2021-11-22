@@ -64,9 +64,9 @@ function getImageEl() {
     const imgs = document.querySelectorAll('.img')
     imgs.forEach(img => {
         img.addEventListener('click', (e) => {
-            let copied = []
-            copied.push(e.target)
-            displayBox.appendChild(copied[0])
+            let copied = document.createElement('img')
+            copied = e.target.cloneNode()
+            displayBox.appendChild(copied)
             players++
             console.log(players)
             playerCount.textContent = players
