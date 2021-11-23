@@ -47,6 +47,7 @@ window.addEventListener('load', () => {
         playerEl.className = 'character-box'
         playerEl.innerHTML = `
             <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png" alt="">
+            <div class="back-effect"></div>
         `
         characterBoxContainer.appendChild(playerEl)
     }
