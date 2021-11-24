@@ -47,7 +47,7 @@ window.addEventListener('load', () => {
         playerEl.className = 'character-box'
         playerEl.innerHTML = `
             <img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png" alt="">
-            <div class="back-effect"></div>
+            <div class="circle"></div>
         `
         characterBoxContainer.appendChild(playerEl)
     }
@@ -65,6 +65,11 @@ function getImageEl() {
     const imgs = document.querySelectorAll('.img')
     imgs.forEach(img => {
         img.addEventListener('click', (e) => {
+            // capsule
+            console.log(e.target.parentNode)
+            e.target.parentNode.className = 'character-box pick'            
+
+            // copy
             let copied = document.createElement('img')
             copied = e.target.cloneNode()
             displayBox.appendChild(copied)
