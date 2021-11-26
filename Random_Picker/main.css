@@ -95,14 +95,6 @@ body {
     transition: .4s ease;
 }
 
-.page-two .container .row .character-box input {
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    padding: 0 5px;
-    font-family: 'Lato';
-}
-
 /* third page */
 .page-three {
     position: absolute;
@@ -117,11 +109,21 @@ body {
     margin-bottom: 20px;
 }
 
-
 /* effect */
 .character-box.pick .img {
     background: linear-gradient(0deg, rgba(255,255,255,1) 46%, rgba(0,0,0,1) 46%, rgba(0,0,0,1) 52%, rgba(255,0,0,1) 52%);
     border: 1px solid #000;
+    animation: shell 2s ease forwards;
+}
+
+@keyframes shell {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .circle {
@@ -148,6 +150,7 @@ body {
     border: 5px solid #000;
     opacity: 1;
     background-color: transparent;
+    animation: shell 2s ease forwards;
 }
 
 .character-box.pick .circle::before {
@@ -177,7 +180,6 @@ body {
     opacity: .8;
     z-index: inherit;
 }
-
 /* shared */
 
 
