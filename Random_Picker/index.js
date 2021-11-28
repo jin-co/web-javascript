@@ -70,11 +70,18 @@ function getImageEl() {
             e.target.parentNode.className = 'character-box pick'            
 
             // copy
-            let copied = document.createElement('img')
-            copied = e.target.cloneNode()
+            // let copied = document.createElement('img')
+            let copied = document.createElement('div')
+            copied = e.target.parentNode.cloneNode()
+            let picCopied = e.target.cloneNode()
+            copied.appendChild(picCopied)
+            let circleCopied = document.createElement('div') 
+            circleCopied.className = 'çircle'
+            copied.appendChild(circleCopied)
+
             displayBox.appendChild(copied)
             players++
-            console.log(players)
+            console.log(players, copied, circleCopied)
             playerCount.textContent = players
         })  
     });
