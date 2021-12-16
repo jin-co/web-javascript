@@ -9,7 +9,7 @@
 body {
     font-family: 'Press Start 2P', sans-serifs;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .btn-start {
@@ -77,7 +77,28 @@ body {
     margin: 20px 0;
 }
 
-.page-two .container .row .character-box {
+/* third page */
+.page-three {
+    position: relative;
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;    
+}
+
+.page-three .container {    
+    margin: 0 auto;
+    display: flex;
+}
+
+.page-three .display-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* styles for pockets */
+.container .row .character-box {
     width: 120px;
     display: flex;
     flex-direction: column;
@@ -87,7 +108,7 @@ body {
     transition: .4s ease;
 }
 
-.page-two .container .row .character-box .img{
+.character-box .img{
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -95,21 +116,7 @@ body {
     transition: .4s ease;
 }
 
-/* third page */
-.page-three {
-    position: absolute;
-    transform: translateX(100%);
-    display: flex;
-    flex-direction: column;
-}
-
-.page-three .display-box {
-    width: 70vw;
-    height: 200px;
-    margin-bottom: 20px;
-}
-
-/* effect */
+/* styles for pocket encapsulation */
 .character-box.pick .img {
     background: linear-gradient(0deg, rgba(255,255,255,1) 46%, rgba(0,0,0,1) 46%, rgba(0,0,0,1) 52%, rgba(255,0,0,1) 52%);
     border: 1px solid #000;
@@ -180,6 +187,14 @@ body {
     opacity: .8;
     z-index: inherit;
 }
+
+/* styles for pocket selection effect */
+.character-box.select .img {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 46%, rgba(0,0,0,1) 46%, rgba(0,0,0,1) 52%, rgba(0,255,0,1) 52%);
+}
+
+
+
 /* shared */
 
 
