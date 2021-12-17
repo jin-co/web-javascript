@@ -78,9 +78,13 @@ function getImageEl() {
             circleCopied.className = 'circle'
             copied.appendChild(circleCopied)
 
+            //test
+            playerChosen.push(copied)
+            //test
+            
             displayBox.appendChild(copied)
             players++
-            console.log(players, copied)
+            console.log(players, copied, '\narray ', playerChosen)
             playerCount.textContent = players
         })  
     });
@@ -91,13 +95,31 @@ function getImageEl() {
 const runBtn = document.querySelector('.run')
 
 runBtn.addEventListener('click', () => {
-    console.log('ht')
+    let random = 0
+    let effect = setInterval(() => {
+        playerChosen.forEach(pocket => {
+            pocket.classList.remove('select')
+        });
+        random = Math.floor(Math.random() * playerChosen.length)
+        playerChosen[random].classList.add('select')    
+        console.log(random, playerChosen.length, Math.floor(Math.random() * playerChosen.length))
+    }, 100); 
+    setTimeout(() => {               
+        clearInterval(effect)
+        playerChosen[random].classList.add('select')
+        openPocket(playerChosen[random])  
+    }, 3000)    
+    console.log(random)
 })
-
-
 //* /Selection
 
 // functions
+function openPocket(chosenPocket) {
+    setTimeout(() => {
+        chosenPocket.className = ''    
+    }, 1000);    
+}
+
 function getRandom(max) {
     let num = Math.floor((Math.random() * max) + 1)
     console.log(num)
