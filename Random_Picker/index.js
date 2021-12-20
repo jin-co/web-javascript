@@ -102,28 +102,23 @@ runBtn.addEventListener('click', () => {
         });
         random = Math.floor(Math.random() * playerChosen.length)
         playerChosen[random].classList.add('select')    
-        console.log(random, playerChosen.length, Math.floor(Math.random() * playerChosen.length))
     }, 100); 
     setTimeout(() => {               
         clearInterval(effect)
         playerChosen[random].classList.add('select')
         openPocket(playerChosen[random])  
     }, 3000)    
-    console.log(random)
 })
 //* /Selection
 
 // functions
+/// removes the pocket after it has been chosen
+const selectedPlayersBox = document.querySelector('.selected-players-box')
 function openPocket(chosenPocket) {
     setTimeout(() => {
         chosenPocket.className = ''    
+        selectedPlayersBox.appendChild(chosenPocket)
     }, 1000);    
-}
-
-function getRandom(max) {
-    let num = Math.floor((Math.random() * max) + 1)
-    console.log(num)
-    return num
 }
 
 function shuffleCard(index) {

@@ -91,7 +91,12 @@ body {
 }
 
 .page-three .display-box {
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.page-three .selected-players-box {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
