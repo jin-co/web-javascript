@@ -103,7 +103,7 @@ body {
 }
 
 /* styles for pockets */
-.container .row .character-box {
+.character-box {
     width: 120px;
     display: flex;
     flex-direction: column;

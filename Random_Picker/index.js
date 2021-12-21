@@ -77,10 +77,8 @@ function getImageEl() {
             let circleCopied = document.createElement('div') 
             circleCopied.className = 'circle'
             copied.appendChild(circleCopied)
-
-            //test
-            playerChosen.push(copied)
-            //test
+        
+            playerChosen.push(copied)            
             
             displayBox.appendChild(copied)
             players++
@@ -106,7 +104,7 @@ runBtn.addEventListener('click', () => {
     setTimeout(() => {               
         clearInterval(effect)
         playerChosen[random].classList.add('select')
-        openPocket(playerChosen[random])  
+        openPocket(playerChosen[random])         
     }, 3000)    
 })
 //* /Selection
@@ -114,11 +112,12 @@ runBtn.addEventListener('click', () => {
 // functions
 /// removes the pocket after it has been chosen
 const selectedPlayersBox = document.querySelector('.selected-players-box')
-function openPocket(chosenPocket) {
+function openPocket(chosenPocket) {    
     setTimeout(() => {
-        chosenPocket.className = ''    
+        chosenPocket.className = 'character-box'    
         selectedPlayersBox.appendChild(chosenPocket)
-    }, 1000);    
+    }, 1000);        
+    playerChosen.splice(playerChosen.indexOf(chosenPocket), 1)
 }
 
 function shuffleCard(index) {
