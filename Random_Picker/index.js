@@ -5,7 +5,6 @@ const characterBoxContainer = document.querySelector('.character-box-container')
 
 // for generated characters
 let characters = []
-let players = 0
 
 //* page moving
 nextBtns.forEach((next, index) => {
@@ -54,7 +53,6 @@ window.addEventListener('load', () => {
     getImageEl()
 })
 
-
 // adds selected player to an array for selection
 const playerCount = document.querySelector('.player-count')
 
@@ -81,9 +79,8 @@ function getImageEl() {
             playerChosen.push(copied)            
             
             displayBox.appendChild(copied)
-            players++
-            console.log(players, copied, '\narray ', playerChosen)
-            playerCount.textContent = players
+            console.log(copied, '\narray ', playerChosen)
+            playerCount.value = playerChosen.length
         })  
     });
 }
