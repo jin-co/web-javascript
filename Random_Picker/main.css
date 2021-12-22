@@ -9,7 +9,7 @@
 body {
     font-family: 'Press Start 2P', sans-serifs;
     height: 100vh;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .btn-start {
@@ -101,6 +101,9 @@ body {
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
+
+/* fourth page */
+
 
 /* styles for pockets */
 .character-box {

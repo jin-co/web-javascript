@@ -10,7 +10,7 @@ let players = 0
 //* page moving
 nextBtns.forEach((next, index) => {
     next.addEventListener('click', () => {
-        shuffleCard(index)
+        shufflePage(index)
     })
 });
 
@@ -20,10 +20,10 @@ goBackBtns.forEach((pre, index) => {
         idx = index
         if (idx >= 0) {
             idx--
-            shuffleCard(idx)
+            shufflePage(idx)
         } 
         if (idx < 0) {
-            shuffleCard(3)    
+            shufflePage(3)    
         }
     })
 });
@@ -120,7 +120,9 @@ function openPocket(chosenPocket) {
     playerChosen.splice(playerChosen.indexOf(chosenPocket), 1)
 }
 
-function shuffleCard(index) {
+function shufflePage(index) {
+    console.log(index)
+    console.log(pages)
     switch (index) {
         case 0:
             // two
@@ -141,7 +143,7 @@ function shuffleCard(index) {
             pages[0].style.transform = 'translate(100%, 0%)'
             pages[1].style.transform = 'translate(100%, 0%)'
             pages[2].style.transform = 'translate(0%, 0%)'
-            pages[3].style.transform = 'translate(0%, -100%)'
+            pages[3].style.transform = 'translate(0%, -200%)'
             break;
         case 3:
             // one
