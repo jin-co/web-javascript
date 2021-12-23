@@ -79,7 +79,7 @@ body {
 
 /* third page */
 .page-three {
-    position: relative;
+    position: absolute;
     transform: translateX(100%);
     display: flex;
     flex-direction: column;    
@@ -96,14 +96,24 @@ body {
     margin-bottom: 20px;
 }
 
-.page-three .selected-players-box {
+.selected-players-box {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
 /* fourth page */
+.page-four {
+    display: flex;
+    flex-direction: column;
+}
 
+.sum-up-box {    
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
 
 /* styles for pockets */
 .character-box {
@@ -204,7 +214,10 @@ body {
 
 
 /* shared */
-
+.btn {
+    width: 100px;    
+    margin: 2px;
+}
 
 
 

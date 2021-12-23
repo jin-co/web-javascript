@@ -88,6 +88,7 @@ function getImageEl() {
 
 //* Selection 
 const runBtn = document.querySelector('.run')
+const sumUpBox = document.querySelector('.sum-up-box')
 
 runBtn.addEventListener('click', () => {
     let random = 0
@@ -102,9 +103,16 @@ runBtn.addEventListener('click', () => {
         clearInterval(effect)
         playerChosen[random].classList.add('select')
         openPocket(playerChosen[random])         
-    }, 3000)    
+    }, 3000)        
 })
 //* /Selection
+
+//* Sum-up page
+
+
+
+
+//* /Sum-up page
 
 // functions
 /// removes the pocket after it has been chosen
@@ -113,7 +121,10 @@ function openPocket(chosenPocket) {
     setTimeout(() => {
         chosenPocket.className = 'character-box'    
         selectedPlayersBox.appendChild(chosenPocket)
-    }, 1000);        
+        let copied = chosenPocket.cloneNode()
+        copied.innerHTML = chosenPocket.innerHTML
+        sumUpBox.appendChild(copied) 
+    }, 1000);       
     playerChosen.splice(playerChosen.indexOf(chosenPocket), 1)
 }
 
@@ -140,7 +151,7 @@ function shufflePage(index) {
             pages[0].style.transform = 'translate(100%, 0%)'
             pages[1].style.transform = 'translate(100%, 0%)'
             pages[2].style.transform = 'translate(0%, 0%)'
-            pages[3].style.transform = 'translate(0%, -200%)'
+            pages[3].style.transform = 'translate(0%, -100%)'
             break;
         case 3:
             // one
