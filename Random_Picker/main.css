@@ -9,7 +9,7 @@
 body {
     font-family: 'Press Start 2P', sans-serifs;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .btn-start {
@@ -105,14 +105,16 @@ body {
 /* fourth page */
 .page-four {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
 }
 
 .sum-up-box {    
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin: 30px 0;
 }
 
 /* styles for pockets */

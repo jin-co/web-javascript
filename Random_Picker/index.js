@@ -3,9 +3,6 @@ const goBackBtns = document.querySelectorAll('.go-back')
 const pages = document.querySelectorAll('.pages')
 const characterBoxContainer = document.querySelector('.character-box-container')
 
-// for generated characters
-let characters = []
-
 //* page moving
 nextBtns.forEach((next, index) => {
     next.addEventListener('click', () => {
@@ -39,7 +36,7 @@ async function fetchCharacter() {
     return data.sprites.front_shiny
 }
 
-// loads characters
+// onload generates characters and appends them to the second page
 window.addEventListener('load', () => {
     for (let i = 1; i <= MAX_NUM; i++) {
         const playerEl = document.createElement('div')
@@ -108,13 +105,32 @@ runBtn.addEventListener('click', () => {
 //* /Selection
 
 //* Sum-up page
-
-
-
-
+const characterBoxes = document.querySelectorAll('.character-box')
+const startOver = document.querySelector('.start-over')
+startOver.addEventListener('click', () => {
+    resetGame()    
+})
 //* /Sum-up page
 
 // functions
+/// resets game
+function resetGame() {
+    playerChosen = []
+    displayBox.innerHTML = ''
+    selectedPlayersBox.innerHTML = ''
+    sumUpBox.innerHTML = ''
+    removePick()
+    console.log(characterBoxes)
+}
+
+/// removes pick class
+function removePick() {
+    characterBoxes.forEach(box => {
+        box.classList.remove('pick')
+    });
+}
+
+
 /// removes the pocket after it has been chosen
 const selectedPlayersBox = document.querySelector('.selected-players-box')
 function openPocket(chosenPocket) {    
