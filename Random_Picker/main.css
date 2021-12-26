@@ -9,7 +9,7 @@
 body {
     font-family: 'Press Start 2P', sans-serifs;
     height: 100vh;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .btn-start {
@@ -90,16 +90,18 @@ body {
     display: flex;
 }
 
-.page-three .display-box {
+.page-three .display-box {    
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
 .selected-players-box {
+    min-height: 100px; 
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
 }
 
 /* fourth page */
@@ -108,7 +110,7 @@ body {
     flex-direction: column;    
 }
 
-.sum-up-box {    
+.sum-up-box {       
     width: 100%;
     display: flex;
     justify-content: center;
@@ -126,6 +128,7 @@ body {
     margin: 5px;    
     position: relative;
     transition: .4s ease;
+    animation: shell 1s forwards; /*test*/
 }
 
 .character-box .img{
