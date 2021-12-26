@@ -37,6 +37,7 @@ async function fetchCharacter() {
 }
 
 // onload generates characters and appends them to the second page
+const characterBoxes = []
 window.addEventListener('load', () => {
     for (let i = 1; i <= MAX_NUM; i++) {
         const playerEl = document.createElement('div')
@@ -46,6 +47,7 @@ window.addEventListener('load', () => {
             <div class="circle"></div>
         `
         characterBoxContainer.appendChild(playerEl)
+        characterBoxes.push(playerEl)
     }
     getImageEl()
 })
@@ -105,7 +107,6 @@ runBtn.addEventListener('click', () => {
 //* /Selection
 
 //* Sum-up page
-const characterBoxes = document.querySelectorAll('.character-box')
 const startOver = document.querySelector('.start-over')
 startOver.addEventListener('click', () => {
     resetGame()    
@@ -119,8 +120,7 @@ function resetGame() {
     displayBox.innerHTML = ''
     selectedPlayersBox.innerHTML = ''
     sumUpBox.innerHTML = ''
-    removePick()
-    console.log(characterBoxes)
+    removePick()    
 }
 
 /// removes pick class
