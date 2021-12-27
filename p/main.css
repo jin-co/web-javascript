@@ -1,89 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+html {
+    background: #ecf0f1;
+  }
+  
+  body, h1, h2 {
+    font-family: Helvetica, Sans-serif; 
+    color: #2c3e50;
+    margin:0; 
+    padding:0; 
+    font-weight:300;
+  }
+  
+  h1 {
+    font-size: 80px;
+  }
+  
+  h2 {
+    font-size: 36px;
+    opacity: 0;
+    animation: appear 1s 3s forwards;
+  }
+  
+  .container{
+    margin:4em;
+    text-align: center;
+  }
+  
+  .loader {
+      height: 120px;
+      width: 120px;
+      margin: auto;
+      border: 16px solid #bdc3c7;
+      border-top-color: #1abc9c;
+      border-bottom-color: #3498db;
+      border-radius: 50%;
+      animation: spin 4s infinite;   
+      transition: .4s ease;   
+  }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+  }
+
+  @keyframes disappear {
+      100% {
+          opacity: 1;
+      }
+  }
+
+  @keyframes appear {
+    100% {
+        opacity: 1;
+    }
 }
-
-body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(0deg, rgba(50,166,218,1) 50%, rgba(213,232,231,1) 50%);
-}
-
-.nav {
-    height: 50px;
-    width: 50px;    
-    padding: 5px;
-    border-radius: 5px;    
-    position: relative;
-    box-shadow: 0px 0px 2px .2px #000;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    overflow: hidden;  
-    transition: .4s ease;  
-}
-
-.nav.show {
-    width: 250px;
-}
-
-.nav.show .text {
-    transform: translateX(0);
-}
-
-.text {
-    transform: translateX(100px);
-    transition: .4s ease;
-}
-
-.btn {
-    height: 25px;
-    width: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
-}
-
-.x {
-    height: 20px;
-    width: 1px;
-    background-color: rgba(50,166,218,1);
-    border-radius: 5px;   
-    transform: rotate(90deg);
-    
-}
-
-.nav.show .btn {    
-    position: inherit;
-    top: 13px;
-    left: 12px;
-}
-
-.nav.show .x {    
-    transform:rotate(45deg);
-    transform-origin: 50%;
-}
-
-.nav.show .x.left {
-    transform: rotate(-45deg);
-}
-
-/* .nav.show .x {
-    position: absolute;
-    right: 10px; 
-    transform: rotate(45deg);
-} */
-
-/* .nav.show .x.left {
-    transform: rotate(-45deg);
-} */

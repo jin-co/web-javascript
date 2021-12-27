@@ -1,7 +1,5 @@
-const btn = document.querySelector('.btn')
-const nav = document.querySelector('.nav')
+const loader = document.querySelector('.loader')
 
-
-btn.addEventListener('click', () => {
-    nav.classList.toggle('show')
-})
+setTimeout(() => {
+    loader.style.opacity = '0'
+}, 4000);
