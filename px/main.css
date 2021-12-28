@@ -34,6 +34,13 @@ body {
 
 .box .header {
   background-color: green;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box .header .right-nav {
+  display: flex;
+  justify-content: end;
 }
 
 .box .main {    
