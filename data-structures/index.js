@@ -1,7 +1,9 @@
-const btn = document.querySelector('.btn')
-const navBox = document.querySelector('.nav-box')
+function addUpTo(n) {
+    let total = 0;
+    for (var i = 1; i <= n; i++) {
+        total += i;
+    }
+    return total;
+}
 
-
-btn.addEventListener('click', () => {
-    navBox.classList.toggle('show')
-})
+console.log(addUpTo(6))
