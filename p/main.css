@@ -30,16 +30,44 @@ body {
 
 }
 
+.text-box {
+  display: flex;
+  gap: 5px;
+  animation: moveTBBack 3s ease forwards;
+}
+
+.nav-box.show .text-box {  
+  animation: moveTB 2s ease forwards;
+}
+
+@keyframes moveTB {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(200px);
+  }
+}
+
+@keyframes moveTBBack {
+  0% {
+    transform: translateX(200px);
+  }
+  
+  100% {
+    transform: translateX(0px);
+  }
+}
+
 .text {
   height: 25px;
   transition: .4s ease .1s;
-  animation: show 12s linear infinite;
-  transform-origin: left;
+  animation: show 2s linear forwards;
 }
 
 .nav-box.show .text {
-  animation: hide 12s linear infinite;
-  transform-origin: right;
+  animation: hide 2s linear forwards;
   
 }
 
@@ -55,7 +83,7 @@ body {
 
 @keyframes show {
   0% {
-    transform: rotateY(720deg);
+    transform: rotateY(-720deg);
   }
   
   100% {
@@ -73,7 +101,7 @@ body {
   width: 2px;
   position: absolute;
   top: 7%;
-  left: 45%;  
+  left: 20%;  
   background-color: #000;
   transform: rotate(45deg);
   transition: .4s linear;
