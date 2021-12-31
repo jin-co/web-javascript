@@ -11,8 +11,11 @@ function addUpTo(n) {
 }
 
 
-// // performance tester
+// performance tester
 // let t1 = performance.now(); // total time since opening the browser
 // console.log(addUpTo(6))
 // let t2 = performance.now();
 // console.log(`total time: ${(t2 - t1) / 1000}s`)
+
+
+
