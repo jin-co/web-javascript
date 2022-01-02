@@ -1,0 +1,14 @@
+.box {    
+    width: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img {
+    
+    object-fit: cover;
+    object-position: center;    
+}
