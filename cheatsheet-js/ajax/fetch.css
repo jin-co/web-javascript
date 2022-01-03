@@ -1,0 +1,22 @@
+.card {
+    width: 400px;
+    display: flex;
+    flex-direction: column;    
+}
+
+.card img {
+    height: 120px;
+    width: 120px;
+    margin: 0 10px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.text-box {
+    flex-grow: 1;
+}
+
+.content {
+    display: flex;    
+}

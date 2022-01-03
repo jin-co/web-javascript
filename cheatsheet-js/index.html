@@ -17,22 +17,47 @@
     <!-- custom style -->
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ajax/ajax.css">
+    <link rel="stylesheet" href="ajax/fetch.css">
     <script defer src="index.js"></script>
     <script defer src="ajax/ajax.js"></script>
     <script defer src="ajax/fetch.js"></script>
+    <script defer src="ajax/jqueryAjax.js"></script>
 </head>
 <body>
+    <!-- XHR -->
     <h3 class="xhr-eg"></h3>
     <section class="box">
-        <h1 class="phrase">Random Dog Picture</h1>
+        <h2 class="phrase">Random Dog Picture</h2>
         <img class="img" src="" alt="">
         <button class="btn get-dog">Get dog</button>
     </section>
 
     <section class="box">
-        <h1 class="phrase">Bitcoin Price</h1>
+        <h2 class="phrase">Bitcoin Price</h2>
         <p class="price"></p>
         <button class="btn get-price">Get price</button>
+    </section><!-- XHR -->
+
+    <section class="box">
+        <h2>Fetch</h2>
+        <p class="fetch-text"></p>
+        <button class="btn get-fetch">Get fetch</button>
+    </section>
+
+    <section class="box">
+        <h2>Random User Generator</h2>
+        <div class="card">
+            <div class="content">
+                <img class="user-image" src="" alt="">
+                <div class="text-box">
+                    <h3>name</h3>
+                    <small>sub</small>
+                    <p>email</p>
+                    <p>city</p>
+                </div>
+            </div>
+            <button class="btn get-user">Next</button>
+        </div>
     </section>
 </body>
 </html>
