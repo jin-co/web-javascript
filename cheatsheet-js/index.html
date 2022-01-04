@@ -14,6 +14,9 @@
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- custom style -->
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ajax/ajax.css">
@@ -22,6 +25,7 @@
     <script defer src="ajax/ajax.js"></script>
     <script defer src="ajax/fetch.js"></script>
     <script defer src="ajax/jqueryAjax.js"></script>
+    <script defer src="ajax/axios.js"></script>
 </head>
 <body>
     <!-- XHR -->
@@ -66,6 +70,18 @@
         <h2>Jquery</h2>
         <p class="jquery-ajax-text"></p>
         <button class="btn get-fetch">Get jquery ajax</button>
+    </section>
+
+    <section class="box">
+        <h2 class="phrase">Random Cat Picture</h2>
+        <img class="img-cat" src="" alt="">
+        <button class="btn get-cat">Get cat</button>
+    </section>
+
+    <!-- axios -->
+    <section class="box axios-box">
+        <h2>Axios</h2>
+        <button class="btn get-axios">Get axios</button>
     </section>
 </body>
 </html>

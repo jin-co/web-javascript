@@ -28,3 +28,31 @@ $('.get-fetch').on('click', () => {
         // if fails handle here
     })
 })
+
+// $.get('https://baconipsum.com/api/?type=meat-and-filler')
+// .done(function(data) {
+
+// })
+
+// $.post('https://baconipsum.com/api/?type=meat-and-filler')
+// .done(function(data) {
+    
+// })
+
+// $.getJSON('https://baconipsum.com/api/?type=meat-and-filler')
+// .done(function(data) {
+    
+// })
+
+const getCat = document.querySelector('.get-cat')
+getCat.addEventListener('click', () => {
+    $.ajax({
+        url: 'https://dog.ceo/api/breeds/image/random'
+    })
+    .done(function(data) {
+        $('.img-cat').attr('src', data.message)
+    })
+    .fail(() => {
+        console.log('error')
+    })
+})
