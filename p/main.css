@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+  --border-color: #144fc6;
+  --fill-color: #6ab3f8;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,23 +13,38 @@
 }
 
 body {
-  font-family: 'Poppins' ,sans-serif;
-  height: 100vh;  
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 120px;
-  background-color: blueviolet;
+  background-color: #3494e4;
   color: #fff;
 }
 
-.counter {
-  height: 150px;
+.big {
+  height: 200px !important;
+  width: 150px !important;
+}
+
+.cup {
+  height: 100px;
+  width: 50px;
+  border: 4px solid var(--border-color);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.num {
-  padding: 15px;
+.cups {
+  width: 250px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: .4s ease;
 }
 
-
+.cup.fill {
+  background-color: var(--fill-color);
+}

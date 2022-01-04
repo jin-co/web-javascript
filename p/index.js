@@ -1,15 +1,18 @@
-const nums = document.querySelectorAll('.num')
+const cups = document.querySelectorAll('.cup.small')
 
-const increment = setInterval(() => {
-    nums.forEach(num => {            
-        if(num.innerHTML < +num.getAttribute('data-target')) {
-            num.innerHTML = Math.floor(+num.innerHTML + (+num.getAttribute('data-target') / 20))
-            if (num.innerHTML > +num.getAttribute('data-target')) {
-                num.innerHTML = +num.getAttribute('data-target')
-            }
-        } else {
-            clearInterval(increment)            
+cups.forEach((cup, idx)=> {
+    cup.addEventListener('click', () => {
+        cup.classList.toggle('fill')
+        autoFill(idx)
+    })
+});
+
+function autoFill(selectedIndex) {
+    cups.forEach((cup, idx) => {
+        if (idx < selectedIndex) {
+            cup.classList.add('fill')
+        } else if (idx > selectedIndex) {
+            cup.classList.remove('fill')
         }
-    });    
-}, 20);
-
+    });
+}
