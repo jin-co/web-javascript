@@ -137,3 +137,112 @@ describe("Pending specs", function() {
     
     it("is a pending test if there is no callback function")
 })
+
+// spy(mocking) : fake object that takes the place of the real object
+// only exists in the "describe" or "it" block and removed after each expect
+
+function add(a, b, c) {
+    return a + b + c
+}
+// spyOn: used on existing functions
+describe('add', function() {
+    var addSpy, result
+    beforeEach(function() {
+        addSpy = spyOn(window, 'add')
+        result = addSpy()
+    })
+    it('is can have params tested', function() {
+        expect(addSpy).toHaveBeenCalled() //check if the function is called
+        expect(addSpy).toHaveBeenCalledWith(1, 2, 3) //testing parameters
+        expect(result).toEqual(6) //using dummy data speeds up the test
+        expect(addSpy.calls.count()).toBe(1) //check how many times a given function is called
+        expect(addSpy.calls.any()).toBe(true) //check if a given function is called
+    })
+})
+
+// clock: to test time dependent code
+describe('a simple setTimeout', function() {
+    var sample
+    beforeEach(function() {
+        sample = jasmine.createSpy('sample')
+        jasmine.clock().install()
+    })
+
+    afterEach(function() {
+        jasmine.clock().uninstall()
+    })
+
+    it('is only invoked after 1000 ms', function() {
+        setTimeout(function() {
+            sample()
+        }, 1000)
+        jasmine.clock().tick(999)
+        expect(sample).not.toHaveBeenCalled()
+        jasmine.clock().tick(1)
+        expect(sample).toHaveBeenCalled()
+    })
+})
+
+describe('a simple setInterval', function() {
+    var dummyFuntion
+    beforeEach(function() {
+        dummyFuntion = jasmine.createSpy('dummyFuntion')
+        jasmine.clock().install()
+    })
+
+    afterEach(function() {
+        jasmine.clock().uninstall()
+    })
+
+    it('checks to see the number of times the function is invoked', function() {
+        setTimeout(function() {
+            dummyFuntion()
+        }, 1000)
+        jasmine.clock().tick(999)
+        expect(dummyFuntion.calls.count()).toBe(0)
+        jasmine.clock().tick(1000)
+        expect(dummyFuntion.calls.count()).toBe(1)
+        jasmine.clock().tick(1)
+        expect(dummyFuntion.calls.count()).toBe(2)
+    })
+})
+
+// async test
+function getUserInfo(userName) {
+    return $.getJSON('https://api.github.com/users/' + userName)
+}
+
+/* 
+Jasmine will wait 5 seconds by default and you can modify the internal timer with jasmine.DEFAULT_TIMEOUT_INTERVAL
+*/
+describe('#hetUserInfo', function() {
+    it('returns the correct name for the user', function(done) {
+        getUserInfo('elie').then(function(data) {
+            expect(data.name).toBe('Elie Schoppik')
+            done()
+        })
+    })
+})
+
+/*
+TDD(Test Driven Development)
+-> write the test before writing the actual code
+how it works:
+test code -> fail -> write a code to pass the test -> refactor
+pros:
+- bug free
+- maintainable
+
+cons:
+- time consuming
+
+BDD(Behavior Driven Development)
+-> subset of TDD
+-> describes the behavior of the functionality: helpful when testing the design of the software
+
+Kinds of testing
+- unit
+- integration
+- acceptance
+- stress
+ */
