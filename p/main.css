@@ -23,6 +23,35 @@ body {
 .big {
   height: 200px !important;
   width: 150px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  
+}
+
+.remained, .percent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remained {
+  flex-grow: 1;  
+  
+}
+
+/* .remained-guage {
+  display: inline-block;
+  width: 100%;
+} */
+
+.percent {
+  width: 100%;
+  height: 0%;
+  flex-basis: 1;
+  background-color: var(--fill-color);
+  transition: .4s ease;
 }
 
 .cup {
