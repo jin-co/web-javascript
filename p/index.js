@@ -1,5 +1,8 @@
 const cups = document.querySelectorAll('.cup.small')
 const bigCup = document.querySelector('.cup.big .percent')
+const br = document.querySelector('br')
+const remainedGauge = document.querySelector('.remained-guage')
+
 const MAX_CUP = 8
 
 cups.forEach((cup, idx)=> {
@@ -25,4 +28,15 @@ function updateBigCup(idx) {
     let percent = ((idx + 1) / MAX_CUP) * 100
     bigCup.style.height = `${percent}%`
     bigCup.textContent = `${percent}%`
+    if (idx >= 6) {
+        br.classList.add('disappear')
+    } else {
+        br.classList.remove('disappear')        
+    }
+
+    if (idx >= 7) {
+        remainedGauge.style.display = 'none'
+    } else {
+        remainedGauge.style.display = 'initial'
+    }
 }

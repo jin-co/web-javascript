@@ -30,21 +30,24 @@ body {
   overflow: hidden;  
 }
 
+.remained {
+  flex-grow: 1;  
+}
+
 .remained, .percent {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.remained {
-  flex-grow: 1;  
-  
+.remained p {  
+  margin: 0;
+  word-wrap: break-word;      
 }
 
-/* .remained-guage {
-  display: inline-block;
-  width: 100%;
-} */
+.disappear {
+  display: none;
+}
 
 .percent {
   width: 100%;
