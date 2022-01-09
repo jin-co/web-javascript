@@ -9,7 +9,7 @@ cups.forEach((cup, idx)=> {
     cup.addEventListener('click', () => {
         cup.classList.toggle('fill')
         autoFill(idx)
-        updateBigCup(idx)
+        updateBigCup(cup, idx)
     })
 });
 
@@ -23,11 +23,17 @@ function autoFill(selectedIndex) {
     });
 }
 
-function updateBigCup(idx) {  
+function updateBigCup(cup, idx) {  
     console.log(idx)      
-    let percent = ((idx + 1) / MAX_CUP) * 100
-    bigCup.style.height = `${percent}%`
-    bigCup.textContent = `${percent}%`
+    if (cup.classList.contains('fill')) {
+        let percent = ((idx + 1) / MAX_CUP) * 100
+        bigCup.style.height = `${percent}%`
+        bigCup.textContent = `${percent}%`
+    } else {
+        bigCup.style.height = 0
+        bigCup.innerHTML = ''
+    }
+
     if (idx >= 6) {
         br.classList.add('disappear')
     } else {
