@@ -56,10 +56,11 @@ Examples:
 
 function hasNoDuplicates(arr){
     return arr.every((val, idx, arr) => {
-        return arr.includes(val, idx + 1)
+        // return arr.includes(val, idx + 1)
+        return arr.indexOf(val) === arr.lastIndexOf(val)
     })
 }
-console.log(hasNoDuplicates([1,2,3,1]))
+console.log('has no duplicate: ',hasNoDuplicates([1,2,3,1,4]))
 
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.
