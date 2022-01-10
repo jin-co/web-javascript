@@ -25,13 +25,15 @@ function autoFill(selectedIndex) {
 
 function updateBigCup(cup, idx) {  
     console.log(idx)      
+    let percent = ((idx + 1) / MAX_CUP) * 100
     if (cup.classList.contains('fill')) {
-        let percent = ((idx + 1) / MAX_CUP) * 100
+        percent = ((idx + 1) / MAX_CUP) * 100
         bigCup.style.height = `${percent}%`
         bigCup.textContent = `${percent}%`
     } else {
-        bigCup.style.height = 0
-        bigCup.innerHTML = ''
+        percent = ((idx) / MAX_CUP) * 100
+        bigCup.style.height = `${percent}%`
+        bigCup.textContent = idx === 0 ? '' : `${percent}%`
     }
 
     if (idx >= 6) {
@@ -40,9 +42,10 @@ function updateBigCup(cup, idx) {
         br.classList.remove('disappear')        
     }
 
-    if (idx >= 7) {
+    console.log('test idx: ', idx)
+    if (idx > 7) {
         remainedGauge.style.display = 'none'
     } else {
-        remainedGauge.style.display = 'initial'
+        cup.classList.contains('fill') ? remainedGauge.style.display = 'initial' : remainedGauge.style.display = 'none'
     }
 }
