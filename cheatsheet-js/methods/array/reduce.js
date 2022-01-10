@@ -98,6 +98,7 @@ Examples:
 function vowelCount(str){
     let vowels = 'iouae'
     return str.toLowerCase().split('').reduce(function(acc, next) {
+        // if (vowels.indexOf(next) !== -1)
         if (vowels.includes(next)) {
             if (next in acc) {
                 acc[next]++
@@ -125,14 +126,20 @@ Examples:
        ]
 */
 
+// function addKeyAndValue(arr, key, value){
+//     return arr.reduce(function(acc, next) {
+//         acc.push({
+//             [key]: value,
+//             name: next.name
+//         })
+//         return acc
+//     }, [])
+// }
 function addKeyAndValue(arr, key, value){
-    return arr.reduce(function(acc, next) {
-        acc.push({
-            [key]: value,
-            name: next.name
-        })
+    return arr.reduce(function(acc, next, idx) {
+        acc[idx][key] = value
         return acc
-    }, [])
+    }, arr)
 }
 console.log('reduce addKeyAndValue: ', addKeyAndValue(
     [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}],
@@ -163,5 +170,20 @@ Examples:
 */
 
 function partition(arr, callback){
-    
+    return arr.reduce((acc, next) => {
+        if (next % 2 === 0) acc[0].push(next)
+        else acc[1].push(next)
+        return acc
+    }, [[],[]])
 }
+// function partition(arr, callback){
+//     return arr.reduce((acc, next) => {
+//         if (callback) acc[0].push(next)
+//         else acc[1].push(next)
+//         return acc
+//     }, [[],[]])
+// }
+console.log('reduce partition: ', partition(
+    [1,2,3,4,5,6,7,8],
+
+))
