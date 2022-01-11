@@ -5,7 +5,6 @@
   --fill-color: #6ab3f8;
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +41,8 @@ body {
 
 .remained p {  
   margin: 0;
-  word-wrap: break-word;      
+  word-wrap: break-word;     
+  animation: show 1s linear; 
 }
 
 .disappear {
@@ -79,4 +79,14 @@ body {
 
 .cup.fill {
   background-color: var(--fill-color);
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

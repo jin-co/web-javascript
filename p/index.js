@@ -43,9 +43,9 @@ function updateBigCup(cup, idx) {
     }
 
     console.log('test idx: ', idx)
-    if (idx > 7) {
+    if (idx >= 7 && cups[idx].classList.contains('fill')) {
         remainedGauge.style.display = 'none'
     } else {
-        cup.classList.contains('fill') ? remainedGauge.style.display = 'initial' : remainedGauge.style.display = 'none'
+        remainedGauge.style.display = 'initial'
     }
 }
