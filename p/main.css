@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --border-color: #144fc6;
-  --fill-color: #6ab3f8;
+  --back-color: rgb(69, 69, 112);
+  --border-color: rgb(27, 27, 49);
 }
 
 * {
@@ -14,79 +14,64 @@
 body {
   display: flex;
   flex-direction: column;
+  background-color: var(--back-color);
+}
+
+header {
+  height: 80px;
+  display: flex;
   align-items: center;
-  background-color: #3494e4;
+  justify-content: end;
+}
+
+header .search {
+  border-radius: 20px;
+  margin-right: 10px;
+  padding: 5px 5px 5px 10px;  
+  border: solid 1px var(--border-color);
+  background-color: var(--back-color);
+}
+
+header .search::placeholder {
   color: #fff;
 }
 
-.big {
-  height: 200px !important;
-  width: 150px !important;
+header .search:focus {
+  outline: none;
+}
+
+main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;  
+  justify-content: start;
+  align-items: flex-start;  
 }
 
-.remained {
-  flex-grow: 1;  
+main .card {
+  height: 300px;
+  width: 200px;
+  margin: 10px;
+  position: relative;
 }
 
-.remained, .percent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.remained p {  
-  margin: 0;
-  word-wrap: break-word;     
-  animation: show 1s linear; 
-}
-
-.disappear {
-  display: none;
-}
-
-.percent {
+main .card .img {
+  height: 250px;
   width: 100%;
-  height: 0%;
-  flex-basis: 1;
-  background-color: var(--fill-color);
-  transition: .4s ease;
+  background-color: rebeccapurple;
 }
 
-.cup {
-  height: 100px;
-  width: 50px;
-  border: 4px solid var(--border-color);
-  border-radius: 0 0 10px 10px;
+main .card .content {  
+  flex-grow: 1;  
+  width: 100%;
+  background-color: green;
+  color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
-.cups {
-  width: 250px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  transition: .4s ease;
+main .card .detail {
+  position: absolute;
+  bottom: 0;
 }
 
-.cup.fill {
-  background-color: var(--fill-color);
-}
-
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
