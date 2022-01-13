@@ -71,7 +71,14 @@ main .card .content {
 }
 
 main .card .detail {
+  height: 0;
+  width: 100%;
   position: absolute;
   bottom: 0;
+  background-color: #fff;
+}
+
+main .card.show-detail .detail {
+  height: auto;
 }
 
