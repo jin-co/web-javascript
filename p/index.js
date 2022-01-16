@@ -4,7 +4,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=0fed9c20700500bedf3c21265dc090eb&query=';
 
 const cards = document.querySelectorAll('.card')
-
+callApi()
 async function callApi() {
     let res = await fetch(API_URL)
     let data = await res.json()
@@ -12,7 +12,18 @@ async function callApi() {
     console.log(data)
     console.log('logo: ', data.results[0].poster_path)
     console.log('img: ', IMG_PATH + data.results[0].poster_path)
-    return data
+    
+    let cardEl = document.createElement('div')
+    cardEl.className = 'card'
+    cardEl.innerHTML = `
+        <img class="img" src="${IMG_PATH + data.results[0].poster_path}" alt="">   
+        <div class="content">
+            <div class="title">${data.results[0].title}</div>
+            <div class="rating">${data.results[0].vote_average}</div>
+        </div>
+        <div class="detail">detail</div>
+    `
+    document.querySelector('main').appendChild(cardEl)
 }
 
 cards.forEach(card => {    
@@ -28,18 +39,3 @@ cards.forEach(card => {
         card.classList.remove('show-detail')
     })
 });
-createCards()
-async function createCards() {
-    let data = await callApi() //test
-    let cardEl = await document.createElement('div')
-    cardEl.className = 'card'
-    cardEl.innerHTML = `
-        <img class="img" src="${IMG_PATH + callAPI().results[0].poster_path}" alt="">   
-        <div class="content">
-            <div class="title">title</div>
-            <div class="rating">9</div>
-        </div>
-        <div class="detail">detail</div>
-    `
-    await document.querySelector('main').appendChild(cardEl)
-}
