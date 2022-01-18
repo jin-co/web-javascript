@@ -1,22 +1,13 @@
+/**
+ * passes prototype of one constructor to another
+ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Object.create -> for inheritance: it doesn't affect the original
+function Student(firstName, lastName) {
+  return personalbar.apply(this, arguments)
+}
+Student.prototype = Object.create(Person.prototype)
+Student.prototype.constructor = Student // resetting the constructor property
 
 
 
@@ -38,31 +29,34 @@
 // inherit 1 thing from another
 
 function Vehicle(make,model,year){
-    this.make = make;
-    this.model = model;
-    this.year = year;
-  }
-  
-  Vehicle.prototype.start = function(){
-    return "VROOM!"
-  }
-  
-  Vehicle.prototype.toString = function(){
-    return "The make, model, and year are " + this.make + " " + this.model  + " " + this.year;
-  }
-  
-  function Car(make,model,year){
-    Vehicle.apply(this, arguments)
-    this.numWheels = 4;
-  }
-  
-  Car.prototype = Object.create(Vehicle.prototype);
-  Car.prototype.constructor = Car;
-  
-  function Motorcycle(make,model,year){
-    Vehicle.apply(this, arguments)
-    this.numWheels = 2;
-  }
-  
-  Motorcycle.prototype = Object.create(Vehicle.prototype);
-  Motorcycle.prototype.constructor = Motorcycle;
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+Vehicle.prototype.start = function(){
+  return "VROOM!"
+}
+
+Vehicle.prototype.toString = () => {
+  return "The make, model, and year are " + this.make + " " + this.model  + " " + this.year;
+}
+
+var vehicle = new Vehicle("Tractor", "John Deere", 1999)
+console.log('inheritance toString: ', vehicle.toString())
+
+function Car(make,model,year){
+  Vehicle.apply(this, arguments)
+  this.numWheels = 4;
+}
+
+Car.prototype = Object.create(Vehicle.prototype);
+Car.prototype.constructor = Car;
+
+function Motorcycle(make,model,year){
+  Vehicle.apply(this, arguments)
+  this.numWheels = 2;
+}
+
+Motorcycle.prototype = Object.create(Vehicle.prototype);
+Motorcycle.prototype.constructor = Motorcycle;
