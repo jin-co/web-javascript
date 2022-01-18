@@ -66,4 +66,9 @@ async function callApi() {
     });
 }
 
+const search = document.querySelector('.search')
+let searchKeyword = ''
+search.addEventListener('input', (e) => {
+    console.log(e.target.value)
+})
 
