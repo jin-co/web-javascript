@@ -9,14 +9,12 @@ callApi()
 async function callApi() {
     let res = await fetch(API_URL)
     let data = await res.json()
-    console.log(res)
-    console.log(data)
-    console.log('logo: ', data.results[0].poster_path)
-    console.log('img: ', IMG_PATH + data.results[0].poster_path)        
+    console.log(data)    
 
     for (let i = 0; i < data.results.length; i++) {
         let cardEl = document.createElement('div')
         cardEl.className = 'card'
+        cardEl.setAttribute('data-title', `${data.results[i].title}`)
         cardEl.innerHTML = `
         <img class="img" src="${IMG_PATH + data.results[i].poster_path}" alt="">   
         <div class="content">
@@ -31,10 +29,7 @@ async function callApi() {
         cards.push(cardEl)
         document.querySelector('main').appendChild(cardEl)
             
-        }
-        data.results.forEach(result => {
-        
-    });
+    }
 
     // let cardEl = document.createElement('div')
     // cardEl.className = 'card'
@@ -52,15 +47,13 @@ async function callApi() {
     // cards.push(cardEl)
     // document.querySelector('main').appendChild(cardEl)
     cards.forEach(card => {    
-        card.addEventListener('mouseenter', () => {
-            console.log('h')
+        card.addEventListener('mouseenter', () => {        
             card.classList.add('show-detail')
         })
     });
     
     cards.forEach(card => {
-        card.addEventListener('mouseleave', () => {
-            console.log('h')
+        card.addEventListener('mouseleave', () => {        
             card.classList.remove('show-detail')
         })
     });
@@ -68,10 +61,18 @@ async function callApi() {
 
 const search = document.querySelector('.search')
 let searchKeyword = ''
-search.addEventListener('input', (e) => {
+search.addEventListener('keydown', (e) => {
     console.log(e.target.value)
+    console.log(e)
     searchKeyword += e.target.value
+    if (e.key == 'Enter') {
+        console.log('done')
+        sortMovies()
+    }
 })
 
-
-
+function sortMovies() {
+    console.log(cards)
+    console.log(cards[0].dataset.title)
+    
+}
