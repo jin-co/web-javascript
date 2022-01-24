@@ -64,15 +64,25 @@ let searchKeyword = ''
 search.addEventListener('keydown', (e) => {
     console.log(e.target.value)
     console.log(e)
-    searchKeyword += e.target.value
-    if (e.key == 'Enter') {
-        console.log('done')
-        sortMovies()
+    if (e.key != ' ' && e.key != 'Enter') {
+        searchKeyword += e.key
+        
     }
+    if (e.key == 'Enter') {
+        console.log('enter: ', searchKeyword)
+        sortMovies()
+        searchKeyword = ''
+        e.target.value = ''
+    }
+    console.log(searchKeyword)
 })
 
 function sortMovies() {
-    console.log(cards)
-    console.log(cards[0].dataset.title)
+    // cards.filter(function(val) {        
+    //     console.log('val: ', val, 'title: ', val.dataset.title.toLowerCase(), 'search word: ', searchKeyword, 'include?: ', val.dataset.title.toLowerCase().includes(searchKeyword))
+    //     return val.dataset.title.toLowerCase().includes('eter')
+    // })
+    // console.log(cards)
+    // console.log(cards[0].dataset.title)
     
 }
