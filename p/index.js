@@ -4,7 +4,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=0fed9c20700500bedf3c21265dc090eb&query=';
 
 // const cards = document.querySelectorAll('.card')
-const cards = []
+let cards = []
 callApi()
 async function callApi() {
     let res = await fetch(API_URL)
@@ -78,11 +78,17 @@ search.addEventListener('keydown', (e) => {
 })
 
 function sortMovies() {
-    // cards.filter(function(val) {        
-    //     console.log('val: ', val, 'title: ', val.dataset.title.toLowerCase(), 'search word: ', searchKeyword, 'include?: ', val.dataset.title.toLowerCase().includes(searchKeyword))
-    //     return val.dataset.title.toLowerCase().includes('eter')
-    // })
-    // console.log(cards)
-    // console.log(cards[0].dataset.title)
+    let cardsFiltered =
+    cards.filter(function(val) {        
+        console.log('val: ', val, 'title: ', val.dataset.title.toLowerCase(), 'search word: ', searchKeyword, 'include?: ', val.dataset.title.toLowerCase().includes(searchKeyword))
+        return val.dataset.title.toLowerCase().includes('eter')
+    })
+    console.log(cards)
+    console.log(cards[0].dataset.title)
+
+    cardsFiltered.forEach(card => {
+        document.querySelector('main').innerHTML = ''
+        document.querySelector('main').appendChild(card)
+    });
     
 }
