@@ -77,18 +77,18 @@ search.addEventListener('keydown', (e) => {
     console.log(searchKeyword)
 })
 
-function sortMovies() {
+function sortMovies() {    
+    document.querySelector('main').innerHTML = ''
     let cardsFiltered =
     cards.filter(function(val) {        
         console.log('val: ', val, 'title: ', val.dataset.title.toLowerCase(), 'search word: ', searchKeyword, 'include?: ', val.dataset.title.toLowerCase().includes(searchKeyword))
-        return val.dataset.title.toLowerCase().includes('eter')
+        return val.dataset.title.toLowerCase().includes(searchKeyword)
     })
-    console.log(cards)
-    console.log(cards[0].dataset.title)
+    console.log('filtered: ', cardsFiltered)
+    console.log('cards: ', cards)
+    
 
-    cardsFiltered.forEach(card => {
-        document.querySelector('main').innerHTML = ''
+    cardsFiltered.forEach(card => {        
         document.querySelector('main').appendChild(card)
     });
-    
 }
