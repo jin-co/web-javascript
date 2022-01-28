@@ -1,91 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --back-color: rgb(69, 69, 112);
-  --border-color: rgb(27, 27, 49);
+  --col-border: #cf901a;
 }
 
 * {
+  border: 0;
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--back-color);
-}
-
-header {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-header .search {
-  border-radius: 20px;
-  margin-right: 10px;
-  padding: 5px 5px 5px 10px;  
-  border: solid 1px var(--border-color);
-  background-color: var(--back-color);
-  color: #fff;
-}
-
-header .search::placeholder {
-  color: #fff;
-}
-
-header .search:focus {
-  outline: none;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;  
 }
 
 main {
-  display: flex;
-  justify-content: start;
-  align-items: flex-start;  
-  flex-wrap: wrap;
-}
-
-main .card {
-  height: 500px;
-  width: 300px;
-  margin: 10px;
-  position: relative;
-  transition: .4s ease;
-  overflow: hidden;
-  border: none;
-}
-
-main .card .img {
-  height: 450px;
-  width: 100%;
-  background-color: rebeccapurple;
-}
-
-main .card .content {  
-  flex-grow: 1;  
-  width: 100%;
-  background-color: green;
-  color: #fff;
+  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
+  justify-content: center;
 }
 
-main .card .detail {
-  width: 100%;
-  padding: 10px;
+.center {
+  height: 400px;
+  width: 400px;
+  background-color: rebeccapurple;
+  position: relative;
+}
+
+.left, .right {
+  height: 100px;
+  width: 100px;
   position: absolute;
-  bottom: 0;
-  background-color: #fff;
-  transform: translateY(100%);
-  transition: .4s ease;
+  top: 50%;  
+  border: 2px solid var(--col-border);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-main .card.show-detail .detail {
-  transform: translateY(0);
+.left {
+  left: -150px;
 }
 
+.right {
+  right: -250px;
+}
