@@ -84,5 +84,8 @@ body {
 }
 
 .second {
-
+  width: 2px;
+  height: 45px;
+  left: 15%;
+  background-color: #00f;
 }
