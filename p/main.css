@@ -78,14 +78,15 @@ body.dark .btn {
   height: 50px;  
   position: absolute;
   top: 50%;
-  left: 30%;  
-  transform-origin: top;
+  left: 50%;  
+  transform: translate(-50%, -100%);
+  transform-origin: top center;  
 }
 
 .hour {
   width: 5px;
   height: 40px;
-  left: 15%;
+  
   background-color: red;
 }
 
@@ -96,6 +97,6 @@ body.dark .btn {
 .second {
   width: 2px;
   height: 45px;
-  left: 15%;
+
   background-color: #00f;
 }
