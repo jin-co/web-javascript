@@ -1,6 +1,7 @@
 const hour = document.querySelector('.hour')
 const minute = document.querySelector('.minute')
 const second = document.querySelector('.second')
+const mode = document.querySelector('.mode')
 
 let secondNeedle = 0;
 let minuteNeedle = 0;
@@ -20,3 +21,7 @@ setInterval(() => {
     hour.style.transform = `rotate(${hourNeedle}deg)`
     hourNeedle++       
 }, 3600000)
+
+mode.addEventListener('click', () => {
+    document.querySelector('body').classList.toggle('dark')
+})

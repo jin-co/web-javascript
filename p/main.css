@@ -16,12 +16,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .4s ease;
+}
+
+body.dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-bg-light);
 }
 
 .btn {
   position: fixed;
   top: 100px;
   background-color: var(--color-bg-dark);
+  color: var(--color-bg-light);
+}
+
+body.dark .btn {
   color: var(--color-bg-light);
 }
 
