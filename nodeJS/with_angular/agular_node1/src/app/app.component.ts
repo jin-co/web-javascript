@@ -6,11 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  message!:string
-  entered!:string
-  title = 'agular_node1';
-
-  hi(input:string) {
-    this.message = input
+  storedPosts = []
+  onPostAdded(post:Event) {
+    console.log(post)
+    this.storedPosts.push(post)
   }
+
+  
 }
