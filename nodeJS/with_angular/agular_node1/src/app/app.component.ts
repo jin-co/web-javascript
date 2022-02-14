@@ -11,10 +11,9 @@ export class AppComponent {
 
 
 
-  onPostAdded(post:Event) {
-    console.log(post)
-    this.storedPosts.push() // error push(post)
-  }
-
-  
+  // // for event emitter
+  // onPostAdded(post:Event) {
+  //   console.log(post)
+  //   this.storedPosts.push() // error push(post)
+  // }
 }

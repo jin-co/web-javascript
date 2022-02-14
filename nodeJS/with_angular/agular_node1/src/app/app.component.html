@@ -1,2 +1,6 @@
-<app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
-<app-post-list [posts]="storedPosts"></app-post-list>
+<app-post-create></app-post-create>
+<app-post-list></app-post-list>
+
+<!-- with a service I don't need event emitter -->
+<!-- <app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+<app-post-list [posts]="storedPosts"></app-post-list> -->

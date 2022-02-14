@@ -13,12 +13,13 @@ export class PostCreateComponent implements OnInit {
   enteredContent = "";
 
   // output allows the event can be listened to on the parent
-  @Output() postCreated = new EventEmitter()
+  
+  // @Output() postCreated = new EventEmitter()
   // @Output() postCreated = new EventEmitter<Post>() // error
 
   // public postsService: PostsService
   constructor(public postsService:PostService) {}
-  
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -31,13 +32,15 @@ export class PostCreateComponent implements OnInit {
     form.resetForm();
 
     const post:Post = {
+      id: "",
       title: form.value.title,
       content: form.value.content
       // title: this.enteredTitle,
       // content: this.enteredContent
-    }
-
-    this.postCreated.emit(post)
+    }          
+    // this.postCreated.emit(post)
+    this.postsService.addPost(form.value.title,
+      form.value.content)
   }
 
 }
