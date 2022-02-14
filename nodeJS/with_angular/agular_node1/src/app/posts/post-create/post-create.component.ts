@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Post } from '../post.model';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -10,25 +12,29 @@ export class PostCreateComponent implements OnInit {
   enteredTitle = "";
   enteredContent = "";
 
-  @Output() postCreated = new EventEmitter()
   // output allows the event can be listened to on the parent
+  @Output() postCreated = new EventEmitter()
+  // @Output() postCreated = new EventEmitter<Post>() // error
 
   // public postsService: PostsService
-  constructor() {}
+  constructor(public postsService:PostService) {}
+  
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
   onAddPost(form: NgForm) {
-    // if (form.invalid) {
-    //   return;
-    // }
+    if (form.invalid) {
+      return;
+    }
     // this.postsService.addPost(form.value.title, form.value.content);
-    // form.resetForm();
+    form.resetForm();
 
-    const post = {
-      title: this.enteredTitle,
-      continue: this.enteredContent
+    const post:Post = {
+      title: form.value.title,
+      content: form.value.content
+      // title: this.enteredTitle,
+      // content: this.enteredContent
     }
 
     this.postCreated.emit(post)
