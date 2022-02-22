@@ -1,4 +1,4 @@
-@import url('https://fonts.google.apis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 * {
   margin: 0;
@@ -17,4 +17,13 @@ body {
   height: 50px;
   width: 120px;
   font-family: 'poppins';
+}
+
+.btn:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.btn:active {  
+  border: none;
 }
