@@ -3,14 +3,26 @@ const app = express();
 const morgan = require('morgan'); // middleware what logs http calls to the console
 const mongoose = require('mongoose');
 
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
 require('dotenv/config');
 const api = process.env.API_URL;
 
 // middleware -> making json(body)
 app.use(express.json())
 app.use(morgan('tiny'));
-const productRouter = require('./routers/products')
-app.use(`${api}products`, productRouter)
+const productsRouter = require('./routers/products')
+const categoriesRouter = require('./routers/categories')
+const ordersRouter = require('./routers/orders')
+const usersRouter = require('./routers/users')
+
+// routers (using separate folders)
+app.use(`${api}/products`, productsRouter)
+app.use(`${api}/categories`, categoriesRouter)
+app.use(`${api}/orders`, ordersRouter)
+app.use(`${api}/users`, usersRouter)
 
 // app.get(`/`, (req, res) => {
 //     product = {
@@ -29,7 +41,12 @@ app.use(`${api}products`, productRouter)
 //         required: true
 //     }
 // })
-const Product = require('./models/prodect')
+
+// model(using separate folders)
+const Product = require('./models/product')
+const Category = require('./models/category')
+const Order = require('./models/order')
+const User = require('./models/user')
 
 // model
 // const Product = mongoose.model('Product', productSchema);
