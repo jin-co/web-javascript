@@ -7,6 +7,7 @@ const cors = require('cors');
 app.use(cors());
 app.options('*', cors());
 
+// cors allows the back and front from different address to communicate
 require('dotenv/config');
 const api = process.env.API_URL;
 
