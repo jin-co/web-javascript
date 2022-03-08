@@ -1,5 +1,6 @@
 const btn = document.querySelector('.btn');
 
-btn.addEventListener('click', () => {
-    console.log('hlhe')
+btn.addEventListener('click', (e) => {
+    console.log(e.target)
+    console.log(btn.getBoundingClientRect())
 })

@@ -17,6 +17,21 @@ body {
   height: 50px;
   width: 120px;
   font-family: 'poppins';
+  position: relative;
+}
+
+.btn::before {
+  content: '';
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: brown;
+  opacity: .3;
+  top: 0;
+  left: 0;  
+  transform: translate(-50%, -50%) scale(0);
+  animation: 2s ripple;
 }
 
 .btn:focus {
@@ -25,5 +40,14 @@ body {
 }
 
 .btn:active {  
-  border: none;
+  border: none;  
+}
+
+@keyframes ripple {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
