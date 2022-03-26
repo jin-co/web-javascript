@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    min-height: 200px;
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #efefef;
+}
