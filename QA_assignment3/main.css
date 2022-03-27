@@ -1,131 +1,138 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
 * {
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
 body {
-    color: #222;
-    background: url('https://source.unsplash.com/WLUHO9A_xik/1600x900') center center/cover no-repeat;
-    font-family: 'Poppins';
+  color: #222;
+  background: url("https://source.unsplash.com/WLUHO9A_xik/1600x900") center
+    center/cover no-repeat;
+  font-family: "Poppins";
 }
 
 header {
-    margin-bottom: 100px;            
+  margin-bottom: 100px;
 }
 
 nav {
-    padding: 0 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;    
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.nav-menu {        
-    margin: 0;
-    padding: auto;
-    flex-basis: 1;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+.nav-menu {
+  margin: 0;
+  padding: auto;
+  flex-basis: 1;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .dummy {
-    width: 100px;
+  width: 100px;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 main {
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;    
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
 }
 
 .main-card {
-    background-color: lightblue;
-    height: 300px;
-    width: 300px;    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
-    cursor: pointer;
-    position: relative;
-    font-size: 2rem;
+  background-color: lightblue;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  font-size: 2rem;
 }
 
 .new:hover::before {
-    content: 'New';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .4);
-    color: #fff;    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  content: "New";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search:hover::before {
-    content: 'Search';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .4);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  content: "Search";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .new {
-    background: url('essets/images/1.jpg') center center/cover no-repeat;
+  background: url("essets/images/1.jpg") center center/cover no-repeat;
 }
 
 .search {
-    background: url('essets/images/car_header-bg.jpg') center center/cover no-repeat;
+  background: url("essets/images/car_header-bg.jpg") center center/cover
+    no-repeat;
 }
 
 footer {
-    min-height: 200px;
-    margin-top: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #dcdcdc;
+  min-height: 200px;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dcdcdc;
 }
 
 a {
-    text-decoration: none;
-    color: #222;
+  text-decoration: none;
+  color: #222;
 }
 
 .btn {
-    margin-top: 30px;
-    width: 100%;
+  margin-top: 30px;
+  width: 100%;
 }
 
 form {
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, .5);
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, .4);
-    background-color: rgba(255, 255, 255, .4);
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 label {
-    font-weight: bold;
+  font-weight: bold;
 }
