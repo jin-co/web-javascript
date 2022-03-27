@@ -13,17 +13,18 @@ body {
 }
 
 header {
-    margin-bottom: 100px;        
+    margin-bottom: 100px;            
 }
 
 nav {
+    padding: 0 20px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;    
 }
 
-.nav-menu {    
+.nav-menu {        
     margin: 0;
     padding: auto;
     flex-basis: 1;
@@ -59,8 +60,8 @@ main {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
     cursor: pointer;
     position: relative;
+    font-size: 2rem;
 }
-
 
 .new:hover::before {
     content: 'New';
@@ -70,12 +71,11 @@ main {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .4);
-    color: #fff;
+    color: #fff;    
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 
 .search:hover::before {
     content: 'Search';
@@ -111,4 +111,21 @@ footer {
 a {
     text-decoration: none;
     color: #222;
+}
+
+.btn {
+    margin-top: 30px;
+    width: 100%;
+}
+
+form {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, .5);
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, .4);
+    background-color: rgba(255, 255, 255, .4);
+}
+
+label {
+    font-weight: bold;
 }
