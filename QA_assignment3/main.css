@@ -156,3 +156,35 @@ label {
 input.showError {
     border: 1px solid #f00;
 }
+
+/* summary page */
+.table-box {
+    max-height: 500px;
+    padding: 30px;
+    background-color: rgba(102, 51, 153, .6);
+    overflow: auto;
+    border-radius: 15px;    
+}
+
+.table {    
+    width: 80%;
+    margin: auto;
+    border: 1px solid #222;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .8);    
+}
+
+th, td {
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, .5);
+    color: #dcdcdc;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.2);    
+    color: #dcdcdc;
+}
