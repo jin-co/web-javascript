@@ -47,8 +47,9 @@ Description: used car sale application -->
     </header>
 
     <main>
-      <div class="container">
+      <div class="container">        
         <form action="/scripts/list.js" method="post" class="form">
+          <small class="error-message" id="error">Wrong values please check again</small>
           <label for="first-name" class="form-label">Name</label>
           <div class="row mb-3">
             <div class="col">
@@ -151,6 +152,8 @@ Description: used car sale application -->
               name="year"
                 required
                 type="text"
+                minlength="4"
+                maxlength="4"
                 class="form-control"
                 id="year"
                 placeholder="Year"

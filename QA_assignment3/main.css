@@ -136,3 +136,23 @@ form {
 label {
   font-weight: bold;
 }
+
+.error-message {
+    color: #f00;
+    display: block;
+    width: 100%;
+    background-color: rgba(240, 240, 16, .6);
+    border-radius: 2px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: .4s ease;
+    transform: scale(0);    
+}
+
+.error-message.show {
+    transform: scale(1);
+}
+
+input.showError {
+    border: 1px solid #f00;
+}
