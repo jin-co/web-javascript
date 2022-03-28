@@ -37,7 +37,7 @@ function createList() {
             <small class="col">${list.postal}</small>
           </div>
           <div class="row mt-3">            
-            <a class="col" target="_blank" href="${carLink}${list.make}/${list.model}/${list.year}">${list.make} ${list.model} ${list.year}</a>       
+            <a class="col summary-link" target="_blank" href="${carLink}${list.make}/${list.model}/${list.year}">${list.make} ${list.model} ${list.year}</a>       
           </div>        
         `
         cardEl.style.backgroundColor = `${colors[colorIndex]}`

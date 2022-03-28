@@ -176,12 +176,12 @@ input.showError {
 }
 
 .table {    
-    width: 80%;
+    width: 90%;
     margin: auto;
     border: 1px solid #222;
     text-align: center;
-    border-radius: 10px;
-    background-color: rgba(219, 156, 74, 0.7);    
+    border-radius: 10px;    
+    background-color: rgba(255, 255, 255, .7);
 }
 
 th, td {
@@ -216,5 +216,10 @@ th, td {
   border: 1px solid #222;
   padding: 20px;
   border-radius: 10px;
+}
+
+.summary-link {
+  margin-top: 15px;
+  text-align: center;
 }
 

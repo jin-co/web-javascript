@@ -1,9 +1,12 @@
 const summaryName = document.querySelector;
 const summaries = document.querySelectorAll(".summary");
+const summaryLink = document.querySelector(".summary-link");
+
 const confirmBtn = document.querySelector(".btn-summary-confirm");
 
 let tempData = {};
 let dataList = [];
+let carLink = "http://www.jdpower.com/cars/";
 
 tempData = JSON.parse(localStorage.getItem("tempData"));
 
@@ -22,6 +25,9 @@ function createSummary() {
   summaries[7].innerHTML = tempData.make;
   summaries[8].innerHTML = tempData.model;
   summaries[9].innerHTML = tempData.year;
+
+  summaryLink.href = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`
+  summaryLink.innerHTML = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`  
 }
 
 confirmBtn.addEventListener("click", () => {
