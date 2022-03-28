@@ -1,10 +1,12 @@
 const container = document.querySelector('.container')
 let dataList = [];
+let carLink = 'http://www.jdpower.com/cars/'
+
 const colors = [
-    'rgba(182, 255, 206, .7)',
-    'rgba(143, 189, 211, .7)',
-    'rgba(253, 93, 93, .7)',
-    'rgba(132, 121, 225, .7)'    
+    'rgba(182, 255, 206, .5)',
+    'rgba(143, 189, 211, .5)',
+    'rgba(253, 93, 93, .5)',
+    'rgba(132, 121, 225, .5)'    
 ]
 let colorIndex = colors.length - 1 
 
@@ -29,15 +31,13 @@ function createList() {
             <p class="col">${list.phone}</p>
           </div>
           <div class="row">
-            <p class="col">${list.address}</p>
-            <p class="col">${list.city}</p>
-            <p class="col">${list.province}</p>
-            <p class="col">${list.postal}</p>
+            <small class="col-12">${list.address}</small>
+            <small class="col">${list.city}</small>
+            <small class="col">${list.province}</small>
+            <small class="col">${list.postal}</small>
           </div>
-          <div class="row">
-            <p class="col">${list.make}</p>
-            <p class="col">${list.model}</p>
-            <p class="col">${list.year}</p>            
+          <div class="row mt-3">            
+            <a class="col" target="_blank" href="${carLink}${list.make}/${list.model}/${list.year}">${list.make} ${list.model} ${list.year}</a>       
           </div>        
         `
         cardEl.style.backgroundColor = `${colors[colorIndex]}`
