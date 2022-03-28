@@ -159,11 +159,20 @@ input.showError {
 
 /* summary page */
 .table-box {
-    max-height: 500px;
+    max-height: 400px;
     padding: 30px;
-    background-color: rgba(102, 51, 153, .6);
+    background-color: rgba(102, 51, 153, .2);
     overflow: auto;
-    border-radius: 15px;    
+    border-radius: 15px;   
+    display: flex;  
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+}
+
+.summary-title {    
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .table {    
@@ -172,19 +181,24 @@ input.showError {
     border: 1px solid #222;
     text-align: center;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, .8);    
+    background-color: rgba(219, 156, 74, 0.7);    
 }
 
 th, td {
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.table tbody tr:nth-child(odd) {
-    background-color: rgba(255, 255, 255, .5);
-    color: #dcdcdc;
+.table tbody tr {
+    background-color: rgba(255, 255, 255, .3);
+    color: #333;
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.2);    
-    color: #dcdcdc;
+.btn-box {
+  gap: 20px;
+}
+
+/* list */
+.card {
+  height: 200px;
+  height: 200px;
 }
