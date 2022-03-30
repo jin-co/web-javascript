@@ -131,8 +131,8 @@ btn.addEventListener("click", (e) => {
     createData();
     localStorage.setItem("tempData", JSON.stringify(newData));
     console.log(JSON.parse(localStorage.getItem("tempData")));
-    // window.location.href = "/pages/summary.html";
-    window.location.href = "C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/summary.html";
+    window.location.href = "/pages/summary.html";
+    // window.location.href = "C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/summary.html";
   }
 });
 
