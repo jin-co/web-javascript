@@ -138,59 +138,61 @@ label {
 }
 
 .error-message {
-    color: #f00;
-    display: block;
-    width: 100%;
-    background-color: rgba(240, 240, 16, .6);
-    border-radius: 2px;
-    text-align: center;
-    margin-bottom: 15px;
-    transition: .4s ease;
-    transform: scale(0);    
+  color: #f00;
+  display: none;
+  width: 100%;
+  background-color: rgba(240, 240, 16, 0.6);
+  border-radius: 2px;
+  text-align: center;
+  margin-bottom: 15px;
+  transition: 0.4s ease;
+  transform: scale(0);
 }
 
 .error-message.show {
-    transform: scale(1);
+  display: block;
+  transform: scale(1);
 }
 
 input.showError {
-    border: 1px solid #f00;
+  border: 1px solid #f00;
 }
 
 /* summary page */
 .table-box {
-    max-height: 400px;
-    padding: 30px;
-    background-color: rgba(102, 51, 153, .2);
-    overflow: auto;
-    border-radius: 15px;   
-    display: flex;  
-    flex-direction: column;
-    align-items: center;   
-    justify-content: center;
+  max-height: 400px;
+  padding: 30px;
+  background-color: rgba(102, 51, 153, 0.2);
+  overflow: auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.summary-title {    
+.summary-title {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.table {    
-    width: 90%;
-    margin: auto;
-    border: 1px solid #222;
-    text-align: center;
-    border-radius: 10px;    
-    background-color: rgba(255, 255, 255, .7);
+.table {
+  width: 90%;
+  margin: auto;
+  border: 1px solid #222;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-th, td {
-    border: 1px solid rgba(255, 255, 255, 0.9);
+th,
+td {
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .table tbody tr {
-    background-color: rgba(255, 255, 255, .3);
-    color: #333;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #333;
 }
 
 .btn-box {
@@ -198,18 +200,18 @@ th, td {
 }
 
 /* list */
-.summary-container {  
+.summary-container {
   display: flex;
   flex-wrap: wrap;
-  max-height: 600px;  
+  max-height: 600px;
   padding: 30px 0;
   overflow: auto;
   border-radius: 5px;
-  background-color: rgba(34, 34, 34, .2);
-  gap: 10px;    
+  background-color: rgba(34, 34, 34, 0.2);
+  gap: 10px;
 }
 
-.summary-card {  
+.summary-card {
   height: 260px;
   width: 600px;
   margin: auto;
@@ -222,4 +224,3 @@ th, td {
   margin-top: 15px;
   text-align: center;
 }
-

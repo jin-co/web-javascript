@@ -26,8 +26,8 @@ function createSummary() {
   summaries[8].innerHTML = tempData.model;
   summaries[9].innerHTML = tempData.year;
 
-  summaryLink.href = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`
-  summaryLink.innerHTML = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`  
+  summaryLink.href = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`;
+  summaryLink.innerHTML = `${carLink}${tempData.make}/${tempData.model}/${tempData.year}`;
 }
 
 confirmBtn.addEventListener("click", () => {
