@@ -40,5 +40,6 @@ confirmBtn.addEventListener("click", () => {
 
   localStorage.setItem("dataList", JSON.stringify(dataList));
 
-  window.location.href = "/pages/list.html";
+  // window.location.href = "/pages/list.html";
+  window.location.href = "C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/list.html";
 });
