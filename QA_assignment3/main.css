@@ -158,6 +158,20 @@ input.showError {
   border: 1px solid #f00;
 }
 
+/* sale */
+/* .btn-box {
+  width: 50%;  
+}
+
+.btn-sale {
+  margin: auto;
+  height: 100px;
+  width: 200px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
 /* summary page */
 .table-box {
   max-height: 400px;

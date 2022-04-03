@@ -18,36 +18,36 @@
     <link rel="stylesheet" href="../main.css" />
 
     <!-- scripts -->
-    <script defer src="/scripts/sale.js"></script>
+    <script defer src="../scripts/sale.js"></script>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <h2 class="Home">
           <!-- <a href="C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/index.html"> Home </a> -->
-          <a href="/pages/index.html"> Home </a>
+          <a href="../pages/index.html"> Home </a>
         </h2>
         <ul class="nav-menu">
           <li>
             <!-- <a href="C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/index.html">Main</a> -->
-            <a href="/pages/index.html">Main</a>
+            <a href="../pages/index.html">Main</a>
           </li>
 
           <li>
             <!-- <a href="C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/sale.html">Sale</a> -->
-            <a href="/pages/sale.html">Sale</a>
+            <a href="../pages/sale.html">Sale</a>
           </li>
 
           <li>
             <!-- <a href="C:/Users/jin/Documents/GitHub/practice_javascript/QA_assignment3/pages/list.html">List</a> -->
-            <a href="/pages/list.html">List</a>
+            <a href="../pages/list.html">List</a>
           </li>
         </ul>
         <div class="dummy"></div>
       </nav>
     </header>
 
-    <main>
+    <main class="sale-container">
       <div class="container">
         <form action="/scripts/list.js" method="post" class="form">
           <small class="error-message" id="error"
@@ -182,11 +182,10 @@
                 placeholder="Year"
               />
             </div>
-          </div>
-          
-          <button style="z-index: 3;" type="button" class="btn btn-warning" id="btn-summit">Submit</button>
+          </div>          
+          <div type="button" style="z-index: 3;" class="btn btn-warning btn-sale" id="btn-submit">Submit</div>
         </form>
-      </div>
+      </div>      
     </main>
   </body>
 
