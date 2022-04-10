@@ -124,7 +124,7 @@ btn.addEventListener("click", (e) => {
     console.log(result.day2)
     console.log(result.price)
     //test
-    // window.location.href = "../pages/summary.html";
+    window.location.href = "../pages/summary.html";
   }
 });
 

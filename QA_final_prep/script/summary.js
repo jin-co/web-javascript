@@ -9,8 +9,7 @@ const summaryPrice = document.querySelector('.summary-price')
 
 showSummary()
 
-function showSummary() {
-    console.log(tempData)
-    summaryDays.innerHTML = `${tempData.days}`
-    summaryPrice.innerHTML = `${2}`
+function showSummary() {    
+    summaryDays.innerHTML = `${(summaryData.day1 !== null) ? 'day1' : ''} ${(summaryData.day2 !== null) ? 'day2' : ''}`    
+    summaryPrice.innerHTML = `$${summaryData.price}`
 }
