@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'agular_node1'`, () => {
+  it(`should have as title 'p1_postApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('agular_node1');
+    expect(app.title).toEqual('p1_postApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('agular_node1 app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('p1_postApp app is running!');
   });
 });
