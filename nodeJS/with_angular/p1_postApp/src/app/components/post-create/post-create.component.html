@@ -1,44 +1,19 @@
-<textarea name="" id="" cols="30" rows="10" [value]="newPost" #postInput>
+<mat-card>
+  <mat-form-field>
+    <textarea
+      matInput
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      #inputVal
+      [(ngModel)]="enteredValue"
+    ></textarea>
 
-</textarea>
+    <p>{{ inputVal.value }}</p>
 
-<hr>
-
-<p>
-   {{newPost}} 
-</p>
-
-<hr>
-
-<button (click)="onClick(postInput)">Click</button>
-
-
-<!-- two way binding -->
-<textarea name="" id="" cols="30" rows="10" [(ngModel)]="enteredValue" >
-
-</textarea>
-
-<hr>
-
-<p>
-   {{newPost}} 
-</p>
-
-<hr>
-
-<button (click)="onClickTwo()">Click</button>
-
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-   <input name="firs" ngModel required #first="ngModel">
-   <input name="last" ngModel>
-   <button>Submit</button>
- </form>
-
- <p>First name value: {{ first.value }}</p>
- <p>First name valid: {{ first.valid }}</p>
- 
- <p>Form value: {{ f.value | json }}</p>
- <p>Form valid: {{ f.valid }}</p>
-
-
- 
+    <button mat-raised-button color="accent" (click)="onClick(inputVal)">
+      Click
+    </button>
+  </mat-form-field>
+</mat-card>

@@ -15,12 +15,16 @@ export class PostCreateComponent implements OnInit {
   
 
   onClick(input: HTMLTextAreaElement) {
-    this.newPost = input.value
+    console.dir(input)
+    // this.newPost = input.value
   }
 
   onClickTwo() {
     this.newPost = this.enteredValue
   }
 
-
+  onSubmit(f: NgForm) {
+    console.log(f.value);  // { first: '', last: '' }
+    console.log(f.valid);  // false
+  }
 }
