@@ -1,1 +1,9 @@
-<p>post-create works!</p>
+
+<mat-card>    
+    <input matInput type="text" [(ngModel)]="title" >
+    <textarea matInput name="" id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
+    <button (click)="onClick()">Click</button>    
+</mat-card>
+
+<p> {{ newTitle }} {{ newContent }} </p>
+
