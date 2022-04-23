@@ -1,5 +1,9 @@
 <mat-card>
   <mat-form-field>
+    <input matInput type="text" [(ngModel)] = 'title' placeholder="Title">
+  </mat-form-field>
+  
+  <mat-form-field>
     <textarea
       matInput
       name=""
@@ -7,12 +11,12 @@
       cols="30"
       rows="10"
       #inputVal
-      [(ngModel)]="enteredValue"
+      [(ngModel)]="content"
     ></textarea>
 
     <p>{{ inputVal.value }}</p>
 
-    <button mat-raised-button color="accent" (click)="onClick(inputVal)">
+    <button mat-raised-button color="accent" (click)="onClick()">
       Click
     </button>
   </mat-form-field>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {NgForm} from '@angular/forms';
+
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -7,24 +8,24 @@ import {NgForm} from '@angular/forms';
 })
 export class PostCreateComponent implements OnInit {
   newPost:String = ''
-  enteredValue:String = ''
+
+  title:String = ''  
+  content:String = ''
+
+  @Output() postCreated = new EventEmitter()
+
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-  
 
-  onClick(input: HTMLTextAreaElement) {
-    console.dir(input)
-    // this.newPost = input.value
-  }
+  onClick() {
+    const post = {
+      title: this.title,
+      content: this.content
+    }
 
-  onClickTwo() {
-    this.newPost = this.enteredValue
-  }
-
-  onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    this.postCreated.emit(post)      
   }
 }
