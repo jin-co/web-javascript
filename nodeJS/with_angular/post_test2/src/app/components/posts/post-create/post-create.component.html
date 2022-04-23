@@ -1,7 +1,13 @@
 
 <mat-card>    
-    <input matInput type="text" [(ngModel)]="title" >
-    <textarea matInput name="" id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
+    <mat-form-field>
+
+        <input matInput type="text" [(ngModel)]="title" >        
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput name="" id="" cols="30" rows="10" [(ngModel)]="content"></textarea>
+    </mat-form-field>
     <button (click)="onClick()">Click</button>    
 </mat-card>
 
