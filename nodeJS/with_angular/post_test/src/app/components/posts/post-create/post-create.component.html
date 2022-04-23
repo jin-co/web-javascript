@@ -1,0 +1,16 @@
+<mat-card>
+  <input type="text" mat-card-title [(ngModel)]="postTitle" />
+  <textarea
+    #contentInput
+    name=""
+    id=""
+    cols="30"
+    rows="10"
+    [(ngModel)]="postContent"
+  ></textarea>
+
+  <button (click)="onClick2()">Click</button>
+</mat-card>
+
+<p>{{ newPostTitle }}</p>
+<p>{{ newPostContent }}</p>
