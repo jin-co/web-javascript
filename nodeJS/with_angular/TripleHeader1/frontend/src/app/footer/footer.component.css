@@ -1,0 +1,20 @@
+
+footer {
+  min-height: 150px;
+  margin-top: 50px;  
+  flex-direction: column;
+  color: #333;
+  background-color: #ECECEC;
+  text-align: center;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

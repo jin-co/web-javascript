@@ -1,0 +1,104 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Apply proposal (Step 1)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <div class="mt-0">
+        <h2>Proposal list</h2>
+
+        <!-- <h3>Proposal list</h3> -->
+
+        <div *ngFor="let p of projectList" class="form-control mb-2">
+          <div class="card text-dark bg-light mb-2">
+            <div class="card-header">
+              <strong>{{ p.projectName }}</strong> (Project #: {{ p.projectId }})
+              <!-- <a class="btn" (click)="goApplyClientProposalDetails(p.projectId, p.clientId)">Apply</a> -->
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ p.clientName }}</h5>
+              (Proposal status:
+              <strong>{{ p.projectStatusName }})</strong> (Application status:
+              <strong>{{ p.applicationStatusName }})</strong>
+              <p class="card-text">
+                * Description: {{ p.description.substring(0, 150) }}<br />
+                * Business goals: {{ p.businessGoals.substring(0, 150) }}
+              </p>
+            </div>
+          </div>
+
+          <div class="btn-box">
+            <button *ngIf="p.applicationStatus" class="btn">Cancel</button>
+            <button class="btn" (click)="goApplyClientProposalDetails(p.projectId, p.clientId)">
+              Apply
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
+
+<!--
+        <div class="container">
+            <p>Proposal List</p>
+            <div class="form-control">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">Proposal Name</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Light card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+                <div class="btn-box">
+                    <button class="btn">Cancel</button>
+                    <button class="btn" type="submit">Next</button>
+                </div>
+            </div>
+        </div>
+        -->
+
+<!-- Applied Teams -->
+<!--
+        <div class="container">
+            <p>Applied Teams</p>
+            <div class="form-control">
+                <div class="row">
+                    <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-box">
+                    <button class="btn">Cancel</button>
+                    <button class="btn" type="submit">Next</button>
+                </div>
+            </div>
+        </div>
+        -->

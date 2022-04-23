@@ -1,0 +1,96 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Project details</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <div class="form-control">
+        <h2>Project details</h2>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Title</div>
+          <div class="col col-md-9 fw-bold">Content</div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project #</div>
+          <div class="col col-md-9">{{ detailsData[0].projectId }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project name</div>
+          <div class="col col-md-9 fw-bold">{{ detailsData[0].projectName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project short name</div>
+          <div class="col col-md-9">{{ detailsData[0].projectShortName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact name</div>
+          <div class="col col-md-9">{{ detailsData[0].contactName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact email</div>
+          <div class="col col-md-9">{{ detailsData[0].contactEmail }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact phone</div>
+          <div class="col col-md-9">{{ detailsData[0].contactPhone }}</div>
+        </div>
+        <hr />
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client #</div>
+          <div class="col col-md-9">{{ detailsData[0].clientId }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client name</div>
+          <div class="col col-md-9">{{ detailsData[0].clientName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client email</div>
+          <div class="col col-md-9">{{ detailsData[0].email }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-sub-sub mt-5">
+      <div>
+        <h2>Student team list</h2>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Application id</th>
+            <th scope="col">Application title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Team name</th>
+            <!-- <th scope="col">Project name</th> -->
+            <th scope="col">Team id</th>
+            <th scope="col">Application status</th>
+            <th scope="col">Faculty adviser</th>
+            <th scope="col">Assign faculty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let atd of appliedTeamsData">
+            <th scope="row">{{ atd.studentapplicationId }}</th>
+            <td>{{ atd.applicationTitle }}</td>
+            <td>{{ atd.description }}</td>
+            <td>{{ atd.teamName }}</td>
+            <!-- <td>{{ atd.projectName }}</td> -->
+            <td>{{ atd.teamIdGenerated }}</td>
+            <td>
+              {{ atd.applicationStatus == 1 ? "Selected" : "Not Selected" }}
+            </td>
+            <td>{{ atd.firstName }} {{ atd.lastName }}</td>
+            <td class="btn-box">
+              <a [routerLink]="['/coordinator-assign-faculty', atd.studentapplicationId]" class="btn">Assign faculty</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <br />
+  </div>
+</div>

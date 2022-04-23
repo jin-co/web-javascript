@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="container-sub container-right">
+    <h2 class="title">Upload Documents (student)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <!--show errormsg-->
+      <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ errormsg }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ successmsg }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <form [formGroup]="ClientProposalDetailsForm" method="post" enctype="multipart/form-data">
+        <!-- hidden -->
+        <input type="hidden" formControlName="teamId" id="teamId" [ngModel]="teamId" value="{{ teamId }}" />
+        <input type="hidden" formControlName="uploadFileId" id="uploadFileId" [ngModel]="uploadFileId"
+          value="{{ uploadFileId }}" />
+
+        <div class="mt-5">
+          <h2>Student file list</h2>
+        </div>
+        <br />
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">File name</th>
+              <th scope="col">File size</th>
+              <th scope="col">Created</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let uf of uploadFileListData">
+              <th scope="row">{{ uf.uploadFileId }}</th>
+              <td>{{ uf.originalFileName }}</td>
+              <td>{{ uf.fileSize }}</td>
+              <td>{{ uf.created.substring(0, 10) }}</td>
+              <!-- <td><a href="http://localhost:3000/uploads/{{uf.fileName}}" (click)="download({{uf.fileName}})" class="btn btn-sm btn-success">Download</a></td> -->
+              <td class="btn-box">
+                <button type="button" class="btn" (click)="download(uf.uploadFileId, uf.originalFileName)">
+                  Download
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-row mb-5">
+          <div class="form-group col">
+            <input type="file" (change)="upload($event)" class="form-control" formControlName="uploadFile"
+              name="uploadFile" id="uploadFile" placeholder="Choose file" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+  </div>
+</div>

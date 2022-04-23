@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="container-sub container-right">
+    <h2 class="title">Application info (Step 2)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <div class="form-control">
+        <h3>Proposal</h3>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project #</div>
+          <div class="col col-md-9">{{detailsProject[0].projectId}}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project name</div>
+          <div class="col col-md-9">{{detailsProject[0].projectName}}</div>
+        </div>
+
+        <hr>
+
+        <h3>Application info</h3>
+
+        <!--show errormsg-->
+        <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{errormsg}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{successmsg}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- end/ error message -->
+
+        <!-- application form -->
+        <form [formGroup]="applicationForm">
+
+          <!-- hidden -->
+          <input type="hidden" formControlName="projectId" id="projectId" [ngModel]="projectId" value="{{projectId}}">
+          <input type="hidden" formControlName="teamId" id="teamId" [ngModel]="teamId" value="{{teamId}}">
+          <input type="hidden" formControlName="uploadFileId" id="uploadFileId" [ngModel]="uploadFileId"
+            value="{{uploadFileId}}">
+          <!-- /hidden -->
+
+          <div class="form-control mb-5">
+            <div class="mb-5">
+              <label class="form-label" for="applicationTitle">Application title *</label>
+              <input type="text" class="form-control" formControlName="applicationTitle" id="applicationTitle"
+                placeholder="Client name">
+            </div>
+
+            <div class="mb-5">
+              <label class="form-label" for="description">Comments
+                <!--Description-->
+              </label>
+              <textarea class="form-control" formControlName="description" id="description" placeholder="Comments"
+                rows="3"></textarea>
+            </div>
+
+            <div class="mb-5">
+              <label class="form-label" for="contactName">Upload file</label>
+              <input type="file" (change)="upload($event)" class="form-control" formControlName="uploadFile"
+                name="uploadFile" id="uploadFile" placeholder="Choose file">
+            </div>
+
+            <hr class="line">
+
+            <div class="btn-box">
+              <button class="btn" (click)="goApplyClientProposalDetails(projectId)">Back</button>
+              <button class="btn" (click)="goApplyProposalAddSubmit()">Apply</button>
+            </div>
+          </div>
+        </form>
+        <!-- end/ application form -->
+
+      </div>
+    </div>
+    <br />
+  </div>
+</div>

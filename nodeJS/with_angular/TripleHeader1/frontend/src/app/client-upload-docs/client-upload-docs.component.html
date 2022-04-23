@@ -1,0 +1,74 @@
+<div class="container mt-5">
+
+    <div class="container-sub">
+      <h2 class="title">Upload Client Document</h2>
+      <hr class="line">
+
+      <!-- file upload -->
+      <div class="container container-sub-sub">
+        <form>
+          <h4>File Upload</h4>
+          <div class="form-control mb-5">
+            <div class="mb-5">
+                <label class="form-label">Project Name</label>
+                <input type ="text" class = "form-control" formControlName = "">
+                <label class="form-label">Client Number</label>
+                <input type ="text" class = "form-control" formControlName = "">
+                <label class="form-label">Client Name</label>
+                <input type ="text" class = "form-control" formControlName = "">
+
+                <label class="form-label" for="contactName">Upload file</label>
+                <input type="file" (change)="onUpload($event)" class="form-control" formControlName="uploadFile"
+                name="uploadFile" id="uploadFile" placeholder="Choose file">
+            </div>
+            <div class="btn-box">
+                <button class="btn">Cancel</button>
+                <button class="btn">Submit</button>
+            </div>
+        </div>            
+        
+          <!-- <div class="mb-5" *ngIf="getparamid" (click) = "userUpdate()">
+              <button class="btn btn-dark btn-sm">Update</button>
+          </div> -->
+        </form>
+      </div>
+      <!-- end/ team creation -->
+  
+      <!-- team members -->
+      <div class="container container-sub-sub">
+        
+      </div>
+      <!-- end/ team members -->
+  
+      <!-- file list -->
+      <div class="container container-sub-sub table-box">
+        <h4>File List</h4>
+        <table class="table">
+          <thead class="bg-dark" style="color: #FFD700;">
+            <tr>
+              <th scope="col">File Name</th>
+              <th scope="col">Client</th>
+              <th scope="col">Date Uploaded</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="btn-box action-box">
+                        <div class="btn">Delete</div>
+                        <div class="btn">Download</div>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+      </div>        
+    </div>
+  </div>
+  
+  
+  

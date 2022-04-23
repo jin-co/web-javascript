@@ -1,0 +1,130 @@
+<div class="container-fluid mt-0">
+    <div class="main-img-box">
+
+    </div>
+    <div class="container">
+
+        <!-- client -->
+        <div *ngIf="(isLoginClient | async) == true" class="container-sub">
+            <h2 class="title">Client</h2>
+            <hr class="line">
+
+            <div class="row gap-4">
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a routerLink="/add-client-proposal">
+                        <img src="/assets/images/img2.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Add
+                                Proposal</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a href="" routerLink="/client-proposal-list">
+                        <img src="/assets/images/img4.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Proposal List
+                                <!--Select a team-->
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end/ client -->
+
+        <!-- student -->
+        <div class="container-sub">
+            <h2 class="title">Student</h2>
+            <hr class="line">
+
+            <div class="row gap-4">
+                <div *ngIf="(isLoginStudent | async) == false" class="col-2 card bg-dark" style="width: 18rem;">
+                    <a routerLink="/add-student-team">
+                        <img src="/assets/images/img6.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Add Student
+                                Team</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div *ngIf="(isLoginStudent | async) == true" class="col-2 card bg-dark" style="width: 18rem;">
+                    <a routerLink="/student-application-list">
+                        <img src="/assets/images/img7.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Apply
+                                Proposal</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div *ngIf="(isLoginStudent | async) == true" class="col-2 card bg-dark" style="width: 18rem;">
+                    <a href="" routerLink="/student-upload-docs">
+                        <img src="/assets/images/img8.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Upload
+                                Documents</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end/ student -->
+
+        <!-- faculty adviser -->
+        <div *ngIf="(isLoginAdviser | async) == true" class="container-sub">
+            <h2 class="title">Faculty adviser</h2>
+            <hr class="line">
+
+            <div class="row gap-4">
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a routerLink="/adviser-assigned-project-list">
+                        <img src="/assets/images/img6.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Assigned Project</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end/ faculty adviser -->
+
+        <!-- program coordinator -->
+        <div *ngIf="(isLoginCoordinator | async) == true" class="container-sub">
+            <h2 class="title">Program coordinator</h2>
+            <hr class="line">
+
+            <div class="row gap-4">
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a href="" routerLink="/coordinator-project-list">
+                        <img src="/assets/images/img9.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Project List
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a routerLink="/coordinator-team-list">
+                        <img src="/assets/images/img7.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Student Team List</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-2 card bg-dark" style="width: 18rem;">
+                    <a href="" routerLink="/coordinator-schoolterm-list">
+                        <img src="/assets/images/img8.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text">Schoolterm</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end/ program coordinator -->
+    </div>
+</div>

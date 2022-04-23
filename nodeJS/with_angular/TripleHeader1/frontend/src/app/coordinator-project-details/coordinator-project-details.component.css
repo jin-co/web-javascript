@@ -1,0 +1,101 @@
+/* * {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+.container {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: bold;
+  padding-top: 30px;
+  margin-bottom: 0;
+}
+
+.container-sub {
+  /* flex-basis: 50%; */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-sub-sub {
+  max-width: 700px;
+}
+
+.btn-box {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn {
+  flex-basis: 90px;
+  background-color: #323232;
+  color: #ffd700;
+  border: solid 1px #ffd700;
+  position: relative;
+}
+
+.btn:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  background-color: #ffd700;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+  opacity: 0.1;
+}
+
+.table {
+  min-width: 450px;
+  padding-top: 30px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 798px) {
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group > .form-control {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .item-list {
+    overflow-x: scroll;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .btn-box {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn {
+    flex-basis: 38px;
+  }
+
+  .container-sub-sub {
+    overflow-x: scroll;
+  }
+}

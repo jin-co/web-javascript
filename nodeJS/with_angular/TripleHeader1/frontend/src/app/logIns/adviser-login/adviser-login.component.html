@@ -1,0 +1,41 @@
+<div class="container mt-3">
+
+  <div class="container-sub">
+
+    <!-- login-->
+    <div class="container container-sub-sub login-box">
+      <h2 class="title">Adviser Login</h2>
+      <hr class="line">
+
+      <!--show errormsg-->
+      <div *ngIf="errorshow" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" (click)="closeErrorMsg()" aria-label="Close"></button>
+      </div>
+
+      <!-- login-->
+      <div class="container container-sub-sub login-box">
+        <form [formGroup]="adviserLoginForm">
+          <div class="form-control mb-3">
+            <div class="mb-3">
+              <label for="email" class="form-label">Adviser email</label>
+              <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="password"
+                placeholder="Password">
+            </div>
+
+            <hr>
+
+            <div class="btn-box">
+              <button class="btn" (click)="adviserLogin()">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end/ login -->
+  </div>
+</div>

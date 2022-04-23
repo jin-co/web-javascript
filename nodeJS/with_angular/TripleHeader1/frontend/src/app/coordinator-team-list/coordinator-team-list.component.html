@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="container-sub container-right">
+    <h2 class="title">Student team list</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team name</th>
+            <th scope="col">Program</th>
+            <th scope="col">School term</th>
+            <!-- <th scope="col">Details</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listData">
+            <th scope="row">{{item.teamId}}</th>
+            <td>{{item.teamName}}</td>
+            <td>{{item.programCode}}</td>
+            <td>{{item.schoolTermName}}</td>
+            <!-- <td>
+              <a [routerLink]="['/coordinator-team-details', item.teamId]" class="btn btn-sm btn-success">Details</a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Proposal list (client)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Project name</th>
+            <th scope="col">Project short name</th>
+            <th scope="col">School term</th>
+            <th scope="col">Target program</th>
+            <th scope="col">Created</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of listData">
+            <th scope="row">{{ p.projectId }}</th>
+            <td>{{ p.projectName }}</td>
+            <td>{{ p.projectShortName }}</td>
+            <td>{{ p.schoolTermName }}</td>
+            <td>{{ p.programCode }}</td>
+            <td>{{ p.created.substring(0, 10) }}</td>
+            <td class="btn-box">
+              <a [routerLink]="['/client-proposal-details', p.projectId]" class="btn">Details</a>
+              <a [routerLink]="['/add-client-proposal-edit', p.projectId]" class="btn">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+  </div>
+</div>

@@ -1,0 +1,196 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Client proposal details (Step 2)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <div class="form-control">
+        <h2>Proposal details</h2>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Title</div>
+          <div class="col col-md-9 fw-bold">Content</div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project #</div>
+          <div class="col col-md-9">{{ detailsData[0].projectId }}</div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Project name</div>
+          <div class="col col-md-9">{{ detailsData[0].projectName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Description</div>
+          <div class="col col-md-9">{{ detailsData[0].description }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Business goals</div>
+          <div class="col col-md-9">{{ detailsData[0].businessGoals }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Prerequisites</div>
+          <div class="col col-md-9">{{ detailsData[0].prerequisites }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Additional notes</div>
+          <div class="col col-md-9">{{ detailsData[0].additionalNotes }}</div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact name</div>
+          <div class="col col-md-9">{{ detailsData[0].contactName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact email</div>
+          <div class="col col-md-9">{{ detailsData[0].contactEmail }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Contact phone</div>
+          <div class="col col-md-9">{{ detailsData[0].contactPhone }}</div>
+        </div>
+
+        <hr />
+
+        <h2>Client info</h2>
+
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Title</div>
+          <div class="col col-md-9 fw-bold">Content</div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client #</div>
+          <div class="col col-md-9">{{ detailsClient[0].clientId }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client name</div>
+          <div class="col col-md-9">{{ detailsClient[0].clientName }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Client email</div>
+          <div class="col col-md-9">{{ detailsClient[0].email }}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Address</div>
+          <div class="col col-md-9">
+            {{ detailsClient[0].streetAddress }}
+            {{ detailsClient[0].streetAddress2 }}
+            {{ detailsClient[0].city }}
+            {{ detailsClient[0].provinceCode }}
+            {{ detailsClient[0].postalCode }}
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Website</div>
+          <div class="col col-md-9">{{ detailsClient[0].website }}</div>
+        </div>
+
+        <hr />
+
+        <div class="btn-box">
+          <button class="btn" (click)="goApplyClientProposal()">Cancel</button>
+          <button *ngIf="applied" class="btn">Details</button>
+          <button *ngIf="!applied" class="btn" (click)="goApplyProposalAdd(projectId)">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-sub-sub mt-5">
+      <div>
+        <h2>Applied student team list</h2>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Application id</th>
+            <th scope="col">Application title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Team name</th>
+            <th scope="col">Project name</th>
+            <th scope="col">Team id</th>
+            <th scope="col">Application status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let atd of appliedTeamsData">
+            <th scope="row">{{ atd.studentapplicationId }}</th>
+            <td>{{ atd.applicationTitle }}</td>
+            <td>{{ atd.description }}</td>
+            <td>{{ atd.teamName }}</td>
+            <td>{{ atd.projectName }}</td>
+            <td>{{ atd.teamIdGenerated }}</td>
+            <td>
+              {{ atd.applicationStatus == 1 ? "Selected" : "Not Selected" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+  </div>
+</div>
+<!--
+      <div class="container">
+          <p>Proposal List</p>
+          <div class="form-control">
+              <div class="card text-dark bg-light mb-3">
+                  <div class="card-header">Proposal Name</div>
+                  <div class="card-body">
+                      <h5 class="card-title">Light card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                          the card's content.</p>
+                  </div>
+              </div>
+              <div class="btn-box">
+                  <button class="btn">Cancel</button>
+                  <button class="btn" type="submit">Next</button>
+              </div>
+          </div>
+      </div>
+      -->
+
+<!-- Applied Teams -->
+<!--
+    <div class="container">
+      <p>Applied Teams</p>
+      <div class="form-control">
+        <div class="row">
+          <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card text-white bg-dark mb-3 col" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                of the card's content.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-box">
+          <button class="btn">Cancel</button>
+          <button class="btn" type="submit">Next</button>
+        </div>
+      </div>
+    </div>
+    -->

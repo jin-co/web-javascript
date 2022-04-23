@@ -1,0 +1,48 @@
+<div class="container mt-3">
+  <div class="container-sub">
+    <!-- login-->
+    <div class="container container-sub-sub login-box">
+      <h2 class="title">Student login</h2>
+      <hr class="line" />
+      <!--show errormsg-->
+      <div *ngIf="errorshow" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ errormsg }}</strong>
+        <button type="button" class="btn-close" (click)="closeErrorMsg()" aria-label="Close"></button>
+      </div>
+
+      <!-- login-->
+      <div class="container container-sub-sub login-box">
+        <form [formGroup]="studentLoginForm">
+          <div class="form-control mb-3">
+            <div class="mb-3">
+              <label for="studentFirstName" class="form-label">Student first name</label>
+              <input type="text" class="form-control" formControlName="studentFirstName" id="studentFirstName"
+                placeholder="Student First Name" />
+            </div>
+            <div class="mb-3">
+              <label for="studentLastName" class="form-label">Student last name</label>
+              <input type="text" class="form-control" formControlName="studentLastName" id="studentLastName"
+                placeholder="Student Last Name" />
+            </div>
+            <div class="mb-3">
+              <label for="teamName" class="form-label">Team name</label>
+              <input type="text" class="form-control" formControlName="teamName" id="teamName"
+                placeholder="Team Name" />
+            </div>
+
+            <hr />
+
+            <div class="btn-box">
+              <button class="btn" (click)="studentLogin()">Login</button>
+              <button class="btn" routerLink="/add-student-team">
+                Add a team
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- end/ login -->
+    </div>
+    <!-- end/ login -->
+  </div>
+</div>

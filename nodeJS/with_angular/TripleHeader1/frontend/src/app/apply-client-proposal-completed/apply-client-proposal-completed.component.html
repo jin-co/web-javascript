@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="container-sub container-right">
+    <h2 class="title">Application completed (Step 4)</h2>
+    <hr class="line">
+
+    <div class="container">
+
+      <div class="form-control">
+        <h3>Application info</h3>
+        <hr>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Application #</div>
+          <div class="col col-md-9">{{detailsApplication[0].studentApplicationId}}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Application title</div>
+          <div class="col col-md-9">{{detailsApplication[0].applicationTitle}}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col col-md-3 fw-bold">Description</div>
+          <div class="col col-md-9">{{detailsApplication[0].description}}</div>
+        </div>
+
+        <hr class="line">
+
+        <div class="btn-box">
+          <button class="btn" (click)="goStudentApplicationList()">Confirm</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

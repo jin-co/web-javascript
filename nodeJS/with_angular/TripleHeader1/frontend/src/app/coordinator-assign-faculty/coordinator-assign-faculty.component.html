@@ -1,0 +1,77 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Assign faculty</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <div class="form-control">
+        <h2>Assign faculty</h2>
+
+        <!--show errormsg-->
+        <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{errormsg}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{successmsg}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <form [formGroup]="assignFacultyForm" method="post" enctype="multipart/form-data">
+
+          <!-- hidden -->
+          <input type="hidden" formControlName="studentapplicationId" id="studentapplicationId" [ngModel]="projectId"
+            value="{{studentapplicationId}}">
+          <!-- /hidden -->
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Title</div>
+            <div class="col col-md-9 fw-bold">Content</div>
+          </div>
+          <hr>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project #</div>
+            <div class="col col-md-9">{{ detailsData[0].projectId }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project name</div>
+            <div class="col col-md-9 fw-bold">{{ detailsData[0].projectName }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project short name</div>
+            <div class="col col-md-9">{{ detailsData[0].projectShortName }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Contact name</div>
+            <div class="col col-md-9">{{ detailsData[0].contactName }}</div>
+          </div>
+          <hr>
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Faculty adviser</div>
+            <div class="col col-md-9"><select class="form-control" formControlName="adviserId" id="adviserId">
+                <option value="" disabled>Choose faculty adviser</option>
+                <option *ngFor="let adviser of adviserListData" [ngValue]="adviser.adviserId">{{ adviser.firstName }}
+                  {{ adviser.lastName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <br>
+
+          <!-- button -->
+          <div class="btn-box">
+            <button type="reset" class="btn" (click)="onProjectDetails()">
+              Go to details
+            </button>
+            <button class="btn" type="submit" (click)="updateFacultySubmit()">Assign faculty</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

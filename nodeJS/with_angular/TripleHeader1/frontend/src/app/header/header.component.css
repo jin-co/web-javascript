@@ -1,0 +1,139 @@
+header a {
+  color: #ffd700;
+}
+
+a:hover {
+  color: #ccb220 !important;
+}
+
+.navbar-toggler {
+  background-color: #ffd700;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-link a {
+  opacity: 0;
+}
+
+.menus {
+  visibility: collapse;
+  height: 0;
+  align-items: center;
+}
+
+.menus.show-menu {
+  visibility: visible;
+  height: auto;
+}
+
+.menus.show-menu .nav-link a {
+  opacity: 1;
+}
+
+.mat-expansion-indicator::after {
+  color: #fff !important;
+}
+
+.credential li.nav-item a {
+  margin-top: 10px;
+}
+
+.credential li span {
+  margin-top: 10px;
+}
+
+.container-fluid {
+  align-items: flex-start;
+}
+
+.nav-current-user-indicator {
+  position: absolute;
+  top: 60%;
+  right: -70px;
+  border-radius: 50%;
+  width: auto;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.nav-current-user-indicator span {
+  word-wrap: break-word;
+  width: 40px;
+  height: 40px;
+  margin: 0 !important;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.credential {
+  display: flex;
+  position: relative;
+}
+
+.credential li{
+  height: 100%;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+} 
+
+.btn-nav-toggle {
+  background-color: #FFD700 !important;
+  width: 50px;
+}
+
+@media all and (max-width: 1286px) {
+  mat-expansion-panel {
+    width: 100% !important;
+  }
+}
+
+@media all and (max-width: 990px) {
+  .menus {
+    order: 2;
+  }
+
+  .nav-current-user-indicator {
+    top: 28px;    
+  }
+
+  .credential-text {
+    text-align: center;
+  }
+
+  .credential {
+    position: absolute;
+    top: 0;
+    right: 100px;
+  }
+}
+
+@media all and (max-width: 695px) {
+  .menus {
+    flex-wrap: wrap;
+  }
+
+  .menus li {
+    width: 100% !important;
+    flex: 1 0 100% !important;
+  }
+}

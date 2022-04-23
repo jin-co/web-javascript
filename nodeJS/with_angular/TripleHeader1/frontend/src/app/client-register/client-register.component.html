@@ -1,0 +1,98 @@
+<div class="container mt-3">
+
+  <div class="container-sub">
+    <h2 class="title">Register (client)</h2>
+    <hr class="line">
+
+    <div class="container container-sub-sub">
+      <!--show errormsg-->
+      <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <!-- end/ error message -->
+
+      <!-- register form -->
+      <form [formGroup]="clientRegisterForm">
+        <div class="form-control mb-5">
+          <div class="mb-2">
+            <label class="form-label" for="clientName">Client name *</label>
+            <input type="text" class="form-control" formControlName="clientName" id="clientName"
+              placeholder="Client name">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="email">Email *</label>
+            <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="password">Password *</label>
+            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+          </div>
+          <!--        
+          <div class="mb-2">
+            <label class="form-label" for="passwordConfirm">Password confirm *</label>
+            <input type="password" class="form-control" formControlName="passwordConfirm" id="passwordConfirm"
+              placeholder="Password confirm">
+          </div>
+          -->
+          <div class="mb-2">
+            <label class="form-label" for="streetAddress">Street address</label>
+            <input type="text" class="form-control" formControlName="streetAddress" id="streetAddress"
+              placeholder="Street address">
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="streetAddress2">Street address 2</label>
+            <input type="text" class="form-control" formControlName="streetAddress2" id="streetAddress2"
+              placeholder="Street address 2">
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="city">City</label>
+            <input type="text" class="form-control" formControlName="city" id="city" placeholder="City">
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="provinceCode">Province</label>
+            <select class="form-control" formControlName="provinceCode" id="provinceCode">
+              <option value="">--Province--</option>
+              <option value="AB">Alberta</option>
+              <option value="BC">British Columbia</option>
+              <option value="MB">Manitoba</option>
+              <option value="NB">New Brunswick</option>
+              <option value="NL">Newfoundland and Labrador</option>
+              <option value="NT">Northwest Territories</option>
+              <option value="NS">Nova Scotia</option>
+              <option value="NU">Nunavut</option>
+              <option value="ON" selected>Ontario</option>
+              <option value="PE">Prince Edward Island</option>
+              <option value="QC">Quebec</option>
+              <option value="SK">Saskatchewan</option>
+              <option value="YT">Yukon</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="postalCode">Postal code</label>
+            <input type="text" class="form-control" formControlName="postalCode" id="postalCode"
+              placeholder="Postal code">
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="website">Website</label>
+            <input type="text" class="form-control" formControlName="website" id="website" placeholder="Website">
+          </div>
+          <hr class="line">
+          <div class="btn-box">
+            <button class="btn" (click)="clientRegisterSubmit()">Save</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <!-- end/ register form -->
+    </div>
+  </div>
+</div>

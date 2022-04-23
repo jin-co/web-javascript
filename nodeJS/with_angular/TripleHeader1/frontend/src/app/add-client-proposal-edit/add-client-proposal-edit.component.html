@@ -1,0 +1,108 @@
+<div class="container mt-3">
+  <div class="container-sub container-right">
+    <h2 class="title">Edit proposal (client)</h2>
+    <hr class="line">
+
+    <div class="container container-sub-sub">
+      <!--show errormsg-->
+      <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <form [formGroup]="editClientProposalForm" method="post" enctype="multipart/form-data">
+        <!-- Project proposal -->
+        <!-- hidden -->
+        <input type="hidden" formControlName="projectId" id="projectId" [ngModel]="projectId" value="{{projectId}}">
+        <input type="hidden" formControlName="clientId" id="clientId" [ngModel]="clientId" value="{{clientId}}">
+        <!-- /hidden -->
+
+        <h4>Project proposal</h4>
+        <div class="form-control mb-5">
+          <div class="mb-2">
+            <label class="form-label" for="projectName">Project name *</label>
+            <input type="text" class="form-control" formControlName="projectName" id="projectName">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="projectShortName">Project short name *</label>
+            <input type="text" class="form-control" formControlName="projectShortName" id="projectShortName">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="description">Description *</label>
+            <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="businessGoals">Business goals *</label>
+            <textarea class="form-control" formControlName="businessGoals" id="businessGoals" rows="3"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="prerequisites">Prerequisites</label>
+            <textarea class="form-control" formControlName="prerequisites" id="prerequisites" rows="3"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="additionalNotes">Additional notes</label>
+            <textarea class="form-control" formControlName="additionalNotes" id="additionalNotes" rows="3"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="schoolTermId">School term *</label>
+            <select class="form-control" formControlName="schoolTermId" id="schoolTermId">
+              <option value="" disabled>Choose school term</option>
+              <option *ngFor="let schoolTerm of schoolTermListData" [ngValue]="schoolTerm.schoolTermId"
+                [selected]="schoolTerm.isCurrentTerm === 'Y'">{{
+                schoolTerm.schoolTermName }}</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="programCode">Target program *</label>
+            <select class="form-control" formControlName="programCode" id="programCode">
+              <option value="" disabled>Choose target program</option>
+              <option *ngFor="let program of programListData" [ngValue]="program.programCode">{{ program.programCode }}
+                ({{ program.programName }})
+              </option>
+            </select>
+          </div>
+        </div><!-- end/ Project proposal -->
+
+        <!-- Contact -->
+        <h4>Contact</h4>
+        <div class="form-control mb-5">
+          <div class="mb-2">
+            <label class="form-label" for="contactName">Contact name</label>
+            <input type="text" class="form-control" formControlName="contactName" id="contactName">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="contactEmail">Contact email</label>
+            <input type="text" class="form-control" formControlName="contactEmail" id="contactEmail">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="contactPhone">Contact phone</label>
+            <input type="text" class="form-control" formControlName="contactPhone" id="contactPhone">
+          </div>
+        </div>
+        <!-- end/ contact -->
+
+        <!-- button -->
+        <div class="btn-box">
+          <button type="reset" class="btn" (click)="onCancelClick()">
+            Cancel
+          </button>
+          <button class="btn" type="submit" (click)="editClientProposalSubmit()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+</div>

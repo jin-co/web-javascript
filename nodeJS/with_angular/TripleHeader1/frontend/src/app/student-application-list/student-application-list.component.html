@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="container-sub container-right">
+    <h2 class="title">Application list (student)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Application title</th>
+            <th scope="col">Application status</th>
+
+            <th scope="col">Project name</th>
+            <th scope="col">Client</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listData">
+            <th scope="row">{{item.studentApplicationId}}</th>
+            <td>{{item.applicationTitle}}</td>
+            <td>{{item.applicationStatusName}}</td>
+
+            <td>{{item.projectName}}</td>
+            <td>{{item.clientName}}</td>
+            <td><a [routerLink]="['/student-application-details', item.studentApplicationId]"
+                class="btn btn-sm btn-success">Details</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+  </div>
+</div>

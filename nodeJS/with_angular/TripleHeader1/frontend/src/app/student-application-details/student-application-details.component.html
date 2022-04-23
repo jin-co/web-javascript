@@ -1,0 +1,154 @@
+<div class="container mt-5">
+  <div class="container-sub container-right">
+    <h2 class="title">Application details (student)</h2>
+    <hr class="line" />
+
+    <div class="container container-sub-sub">
+      <form [formGroup]="StudentApplicationDetailsForm" method="post" enctype="multipart/form-data">
+
+        <div class="form-control">
+          <h3>Application info</h3>
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Application #</div>
+            <div class="col col-md-9">{{studentApplicationId}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Application title</div>
+            <div class="col col-md-9">{{detailsApplication[0].applicationTitle}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Description</div>
+            <div class="col col-md-9">{{detailsApplication[0].description}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Application status</div>
+            <div class="col col-md-9">{{detailsApplication[0].applicationStatusName}}</div>
+          </div>
+
+          <hr class="line">
+
+          <h3>Proposal details</h3>
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project #</div>
+            <div class="col col-md-9">{{projectId}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project name</div>
+            <div class="col col-md-9">{{detailsProject[0].projectName}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Description</div>
+            <div class="col col-md-9">{{detailsProject[0].description}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Project status</div>
+            <div class="col col-md-9">{{detailsProject[0].projectStatusName}}</div>
+          </div>
+          <!-- <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Business goals</div>
+            <div class="col col-md-9">{{detailsProject[0].businessGoals}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Prerequisites</div>
+            <div class="col col-md-9">{{detailsProject[0].prerequisites}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Additional notes</div>
+            <div class="col col-md-9">{{detailsProject[0].additionalNotes}}</div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Contact name</div>
+            <div class="col col-md-9">{{detailsProject[0].contactName}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Contact email</div>
+            <div class="col col-md-9">{{detailsProject[0].contactEmail}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Contact phone</div>
+            <div class="col col-md-9">{{detailsProject[0].contactPhone}}</div>
+          </div> -->
+
+          <hr>
+
+          <h3>Client Info</h3>
+
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Client #</div>
+            <div class="col col-md-9">{{detailsClient[0].clientId}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Client name</div>
+            <div class="col col-md-9">{{detailsClient[0].clientName}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Client email</div>
+            <div class="col col-md-9">{{detailsClient[0].email}}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Address</div>
+            <div class="col col-md-9">
+              {{detailsClient[0].streetAddress}}
+              {{detailsClient[0].streetAddress2}}
+              {{detailsClient[0].city}}
+              {{detailsClient[0].provinceCode}}
+              {{detailsClient[0].postalCode}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col col-md-3 fw-bold">Website</div>
+            <div class="col col-md-9">{{detailsClient[0].website}}</div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button class="btn" (click)="goStudentApplicaionList()">Application list</button>
+        </div>
+
+
+        <div class="mt-5">
+          <h2>Client proposal file list</h2>
+        </div>
+        <br />
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">File name</th>
+              <th scope="col">File size</th>
+              <th scope="col">Created</th>
+              <th scope="col">Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let uf of uploadFileListData">
+              <th scope="row">{{uf.uploadFileId}}</th>
+              <td>{{uf.originalFileName}}</td>
+              <td>{{uf.fileSize}}</td>
+              <td>{{uf.created.substring(0, 10)}}</td>
+              <!-- <td><a href="http://localhost:3000/uploads/{{uf.fileName}}" (click)="download({{uf.fileName}})" class="btn btn-sm btn-success">Download</a></td> -->
+              <td><button type="button" class="btn btn-sm btn-success"
+                  (click)="download(uf.uploadFileId, uf.originalFileName)">Download</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-row mb-5">
+          <div class="form-group col-md-6">
+            <label for="uploadFile">Upload file</label>
+            <input type="file" (change)="upload($event)" class="form-control" formControlName="uploadFile"
+              name="uploadFile" id="uploadFile" placeholder="Choose file">
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <br />
+  </div>
+</div>
