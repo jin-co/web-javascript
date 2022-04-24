@@ -18,9 +18,10 @@ body {
   width: 120px;
   font-family: 'poppins';
   position: relative;
+  overflow: hidden;
 }
 
-.btn::before {
+/* .btn::before {
   content: '';
   height: 100px;
   width: 100px;
@@ -32,6 +33,19 @@ body {
   left: 0;  
   transform: translate(-50%, -50%) scale(0);
   animation: 2s ripple;
+} */
+
+.ripple-box.ripple {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgb(141, 119, 119);
+  opacity: .3;
+  top: 0;
+  left: 0;  
+  transform: translate(-50%, -50%) scale(0);
+  animation: 2s ripple infinite;
 }
 
 .btn:focus {
