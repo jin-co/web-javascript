@@ -1,4 +1,5 @@
-<mat-card>
+<!-- using two way binding -->
+<!-- <mat-card>
   <mat-form-field>
     <input matInput type="text" [(ngModel)] = 'title' placeholder="Title">
   </mat-form-field>
@@ -20,4 +21,43 @@
       Click
     </button>
   </mat-form-field>
+</mat-card> -->
+
+<!-- using form -->
+<mat-card>
+  <form action="" (submit)="onSubmit(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        ngModel
+        placeholder="Title"
+        name="title"
+        required
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid">Title Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        name="content"
+        id=""
+        cols="30"
+        rows="10"
+        #inputVal="ngModel"
+        ngModel
+        required        
+      ></textarea>
+      <mat-error *ngIf="inputVal.invalid">Content Required</mat-error>
+      <p>{{ inputVal.value }}</p>
+
+      <!-- <button mat-raised-button color="accent" (click)="onClick()">
+        Click
+      </button> -->
+
+      <button mat-raised-button color="accent" type="submit">Click</button>
+    </mat-form-field>
+  </form>
 </mat-card>

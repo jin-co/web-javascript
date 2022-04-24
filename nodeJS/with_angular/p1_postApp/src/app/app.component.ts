@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Post } from './models/post';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {  
   title = 'p1_postApp';
-  post:any = []
-
+  // post:any = []
+  post:Post[] = []
   
-  onPostAdded(post:Event) {    
-    this.post.push(post)}
+  onPostAdded(post:any) {    
+    this.post.push(post)    
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm} from '@angular/forms';
+import { Post } from 'src/app/models/post';
 
 @Component({
   selector: 'app-post-create',
@@ -12,20 +13,33 @@ export class PostCreateComponent implements OnInit {
   title:String = ''  
   content:String = ''
 
-  @Output() postCreated = new EventEmitter()
+  @Output() postCreated = new EventEmitter<Post>()
 
   
   constructor() { }
 
   ngOnInit(): void {
   }
+  // using two way validate
+  // onClick() {
+  //   const post:Post = {
+  //     title: this.title.toString(),
+  //     content: this.content.toString()
+  //   }
 
-  onClick() {
-    const post = {
-      title: this.title,
-      content: this.content
-    }
+  //   this.postCreated.emit(post)      
+  // }
 
-    this.postCreated.emit(post)      
+  // using form
+  onSubmit(postForm:NgForm) {
+    if(postForm.valid) {
+      const post:Post = {
+        title: postForm.value.title,
+        content: postForm.value.content
+      }
+      this.postCreated.emit(post)
+    } else {
+      return
+    } 
   }
 }
