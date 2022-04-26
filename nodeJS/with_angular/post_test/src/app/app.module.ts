@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
 import { FormsModule } from '@angular/forms';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
