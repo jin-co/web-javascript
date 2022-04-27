@@ -1,0 +1,47 @@
+/* styles for table layout */
+.table-container {
+    margin: auto;
+}
+
+/* styles for tables */
+table {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    white-space: pre-wrap;
+    border-collapse: collapse;
+}
+
+#data-result-table-container { /* layout for data table */ 
+    margin-top: .5em;
+}
+
+th {
+    text-align: left;
+    text-transform: capitalize;
+    border-top: 1px dotted green;
+    border-bottom: 1px dotted green;
+    border-right: 1px dotted green;
+}
+
+td {
+    text-align: right;
+    padding: .2em 0;
+    border-top: 1px dotted green;
+    border-bottom: 1px dotted green;
+}
+
+#data-result-table-container th { /* styles for data table headers */
+    border: 1px solid black;
+    text-align: center;
+    padding: .3em;
+}
+
+#data-result-table-container td { /* styles for data table fields */
+    border: 1px solid black;
+    padding: .3em;
+}
+
+em {
+    float: right;
+}

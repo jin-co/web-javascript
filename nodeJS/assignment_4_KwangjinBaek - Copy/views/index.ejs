@@ -1,0 +1,80 @@
+<!-- 
+    this is the main page that has a form to place an order by filling in
+    necessary information 
+-->
+
+<%- include('header') %> 
+ <!--title -->
+ <h1 class="title">my grocery</h1>
+
+ <!--form start -->
+ <fieldset class="container">
+     <form action="/" method="POST">
+         <label class="label" for="name">name</label>
+         <input class="input" type="text" name="name"><br>
+     
+         <label class="label" for="email">email</label>
+         <input class="input" type="email" name="email"><br>
+     
+         <label class="label" for="phone">phone</label>
+         <input class="input" type="text" name="phone" placeholder="000-000-0000"><br>
+     
+         <label class="label" for="address">address</label>
+         <input class="input" type="text" name="address"><br>
+     
+         <label class="label" for="city">city</label>
+         <input class="input" type="text" name="city"><br>
+     
+         <label class="label" for="post-code">post code</label>
+         <input class="input" type="text" name="postCode" placeholder="A#A A#A"><br>
+     
+         <label class="label" for="province">province</label>
+         <select class="input" name="province">
+             <option value="alberta">alberta</option>
+             <option value="british columbia">british columbia</option>
+             <option value="manitoba">manitoba</option>
+             <option value="new brunswick">new brunswick</option>
+             <option value="newfoundland and labrador">newfoundland and labrador</option>
+             <option value="nova scotia">nova scotia</option>
+             <option value="ontario">ontario</option>
+             <option value="prince edward island">prince edward island</option>
+             <option value="quebec">quebec</option>
+             <option value="saskatchewan">saskatchewan</option>
+             <option value="yukon">yukon</option>
+         </select><br>
+     
+         <label class="label" for="carrot">carrot 🥕</label>
+         <input class="input" type="text" name="carrot"><br>
+     
+         <label class="label" for="cheese">cheese 🧀</label>
+         <input class="input" type="text" name="cheese"><br>
+     
+         <label class="label" for="egg">egg 🥚</label>
+         <input class="input" type="text" name="egg"><br>
+     
+         <label class="label" for="deliveryTime">delivery time</label>
+         <select class="input" name="deliveryTime">
+             <option value="1day">1day</option>
+             <option value="2day">2day</option>
+             <option value="3day">3day</option>
+             <option value="4day">4day</option>
+         </select><br>
+         <hr>
+         <input id="submit" type="submit" value="Place Order">
+     </form>
+ </fieldset>
+ <!--form end -->
+
+ <!--error messages -->
+ <div id="error-message-container" class="">
+     <% var count = 0 %> 
+     <% if(typeof errors !== 'undefined') { %>
+         <% for(var error of errors) { %>
+             <p><%= error.msg %></p> 
+         <% } %>
+         <p><%= noProductChosen %> </p>
+     <% } %>      
+ </div>
+
+
+<%- include('footer') %> 

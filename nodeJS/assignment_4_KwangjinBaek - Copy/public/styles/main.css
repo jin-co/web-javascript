@@ -1,0 +1,116 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+/* general styles */
+body {
+    text-align: center;
+    font-size: 100%;
+    background-image: -webkit-linear-gradient(145deg, rgb(199, 204, 130) 50%, white 50%);
+    min-height: 1000px;
+    font-family: 'Righteous', cursive;
+}
+
+/* styles for title */
+.title {
+    margin: 3em auto .5em;
+    font-size: 2rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+/* styles for forms */
+.container {
+    padding: .5em;
+    background-color: rgb(175, 197, 139);
+    margin: auto;
+    width: 45%;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+
+.label { /* labels layout and font */
+    float: left;
+    text-align: left;
+    width: 50%;
+    padding-left: .2em;
+}
+
+.input { /* inputs layout and font */
+    width: 45%;
+    font-size: 1.4rem;
+}
+
+option {
+    text-transform: uppercase;
+}
+
+#submit { /* button layout and font */
+    margin: .3em auto;
+    padding: .2em;
+    font-size: 1.3rem;
+    background-color: rgb(114, 146, 179, .5);
+    color: #fff;
+    box-shadow: 3px 3px 0 0;
+    transition: 500ms ease-in-out;
+}
+
+#submit:hover, #submit:focus { /* hover effect */
+    background-color: rgb(114, 146, 179, 1);
+    outline: 4px dotted rgb(224, 203, 15);
+}
+
+hr { /* line between order button and fields */
+    margin: .2em auto;
+}
+
+#error-message-container { /* styles for error message */
+    margin: auto;
+    padding: .5em;
+    width: 30%;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    text-align: left;
+    height: 250px;
+    background-color: rgb(210, 233, 220, .5);
+    color: rgb(230, 16, 16);
+}
+
+/* styles for footer */
+footer {
+    margin: 2em auto;
+    text-transform: capitalize;
+}
+
+/* styles for get-data container */
+#get-data-container {
+    margin: 4em auto 1em!important;
+    padding: 0 0 .5em;
+}
+
+/* styles for navigation */
+#navigation-container {
+    text-align: left;
+}
+
+#navigation li:first-child {
+    margin-left: 1.5em;
+}
+
+#navigation li {
+    display: inline-block;
+    margin: 2em 1em 0;
+}
+
+#navigation a {
+    text-decoration: none;
+    transition: 500ms;
+    text-transform: capitalize;
+}
+
+#navigation a:hover, #navigation a:focus {
+    color: rgb(7, 75, 16);
+    font-style: italic;
+}
+

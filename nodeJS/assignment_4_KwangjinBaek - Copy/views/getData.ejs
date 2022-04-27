@@ -1,0 +1,41 @@
+<!-- 
+    this page is to search the data by name if given name was found, 
+    it goes to the page that shows the result 
+-->
+
+<%- include('header') %> 
+ <!--table start -->
+ <fieldset class="table-container">
+     <h1 class="title">order lists</h1>
+    <table id="data-result-table-container">
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>deliver address</th>
+            <th>carrot</th>
+            <th>cheese</th>
+            <th>egg</th>
+            <th>shipping charge</th>
+            <th>sub total</th>
+            <th>taxes</th>
+            <th>total</th>
+        </tr>
+        <% foundItems.forEach(foundItem => { %>
+            <tr>
+                <td><%= foundItem.name %></td>
+                <td><%= foundItem.email %></td>
+                <td><%= foundItem.phone %></td>
+                <td><%= foundItem.deliveryAdress %></td>
+                <td>&dollar;<%= foundItem.product1 %></td>
+                <td>&dollar;<%= foundItem.product2 %></td>
+                <td>&dollar;<%= foundItem.product3 %></td>
+                <td>&dollar;<%= foundItem.shipping %></td>
+                <td>&dollar;<%= foundItem.subTotal %></td>
+                <td>%<%= foundItem.taxes %></td>
+                <td>&dollar;<%= foundItem.total %></td>
+            </tr>
+        <% }) %> 
+    </table>   
+</fieldset>
+<%- include('footer') %> 
