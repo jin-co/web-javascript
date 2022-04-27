@@ -8,7 +8,15 @@ img.addEventListener("dragstart", (e) => {
 
 boxes.forEach((b) => {
   b.addEventListener("dragover", (e) => {
+    b.style.borderColor = 'red'
     e.preventDefault();
+  });
+});
+
+boxes.forEach((b) => {
+  b.addEventListener("dragleave", (e) => {
+    console.log('leave')
+    b.style.borderColor = 'black'  
   });
 });
 
