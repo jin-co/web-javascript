@@ -23,6 +23,7 @@ export class PostCreateComponent implements OnInit {
   onClick(form: NgForm) {
     if (form.valid) {
       this.postService.setPost(form.value.title, form.value.content);
+      form.resetForm()
     } else {
       return;
     }
