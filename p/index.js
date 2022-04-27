@@ -1,30 +1,30 @@
-const img = document.querySelector("img");
-const boxes = document.querySelectorAll(".box");
+const btnDecrease = document.querySelector('.btn-decrease')
+const btnIncrease = document.querySelector('.btn-increase')
+const size = document.querySelector('.btn-size')
+const canvas = document.querySelector('.canvas')
 
-img.addEventListener("dragstart", (e) => {
-  e.dataTransfer.setData("image", e.target.id);
-  console.log(e);
-});
+let sizeValue = 5
 
-boxes.forEach((b) => {
-  b.addEventListener("dragover", (e) => {
-    b.style.borderColor = 'red'
-    e.preventDefault();
-  });
-});
+btnIncrease.addEventListener('click', () => {
+  if(sizeValue < 50 )
+  sizeValue += 5
+  size.textContent = sizeValue
+})
 
-boxes.forEach((b) => {
-  b.addEventListener("dragleave", (e) => {
-    console.log('leave')
-    b.style.borderColor = 'black'  
-  });
-});
+btnDecrease.addEventListener('click', () => {
+  if(sizeValue > 5 )
+  sizeValue -= 5
+  size.textContent = sizeValue
+})
 
-boxes.forEach((b) => {
-  b.addEventListener("drop", (e) => {
-    console.log("drop");
-    e.preventDefault();
-    var data = e.dataTransfer.getData("image");
-    e.target.appendChild(document.getElementById(data));
-  });
-});
+canvas.addEventListener('click', (e) => {
+  console.log(e.client.x, e.client.y)
+  draw(e.target.x, e.target.y)
+})
+
+function draw(x, y) {
+  let ctx = canvas.getContext("2d")
+  ctx.moveTo(0, 0)
+  ctx.lineTo(x, y)
+  ctx.stroke()
+}

@@ -1,30 +1,37 @@
-@import url("https://fonts.googleapis.com?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
 * {
   margin: 0;
-  padding: 0;
+  border: 0;
   box-sizing: border-box;
 }
 
 body {
   height: 100vh;
+  margin: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  background-color: aqua;
 }
 
-.box {
-  height: 150px;
-  width: 150px;
+.canvas {
+  height: 500px;
+  width: 500px;
   border: 1px solid #000;
 }
 
-img {
-  transition: 0.4s ease;
+.toolbox {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;  
+  border: 1px solid #000;
 }
 
-img:active {
-  opacity: 0.4;
+button {   
+  height: 50px;
+  width: 50px;
+  background-color: beige !important;  
 }
