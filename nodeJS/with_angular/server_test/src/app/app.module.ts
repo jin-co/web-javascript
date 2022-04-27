@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

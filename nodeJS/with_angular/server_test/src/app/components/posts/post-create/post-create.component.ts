@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-  inputText:String = ''
+  inputTitle:String = ''
   inputContent:String = ''
+  outputTitle:String = ''
+  outputContent:String = ''
 
   constructor() { }
 
@@ -15,7 +17,7 @@ export class PostCreateComponent implements OnInit {
   }
   
   onClick(input:HTMLTextAreaElement) {
-    this.inputText = 'ha'
-    this.inputContent = input.value
+    this.outputTitle = this.inputTitle
+    this.outputContent = this.inputContent
   }
 }
