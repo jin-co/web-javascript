@@ -1,0 +1,55 @@
+<%- include("header") -%>
+<!--title -->
+<h1 id="title">my grocery invoice</h1>
+
+<!--table start -->
+<fieldset id="table-container">
+    <table>
+        <tr>
+            <th>name</th>
+            <td><%= invoiceName %> </td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td><%= invoiceEmail %></td>
+        </tr>
+        <tr>
+            <th>phone</th>
+            <td><%= invoicePhone %></td>
+        </tr>
+        <tr>
+            <th>delivery address</th>
+            <td><%= invoiceAddress %></td>
+        </tr>
+        <tr>
+            <th>carrot <em>(&dollar;10 each)</em></th>
+            <td>&dollar;<%= invoiceProduct1 %></td>
+        </tr>
+        <tr>
+            <th>cheese <em>(&dollar;20 each)</em></th>
+            <td>&dollar;<%= invoiceProduct2 %></td>
+        </tr>
+        <tr>
+            <th>egg <em>(&dollar;30 each)</em></th>
+            <td>&dollar;<%= invoiceProduct3 %></td>
+        </tr>
+        <tr>
+            <th>shipping charges</th>
+            <td>&dollar;<%= invoiceShippingCharge %></td>
+        </tr>
+        <tr>
+            <th>sub total</th>
+            <td>&dollar;<%= invoiceSubTotal %></td>
+        </tr>
+        <tr>
+            <th>taxes</th>
+            <td>%<%= invoiceTaxes %></td>
+        </tr>
+        <tr>
+            <th>total</th>
+            <td>&dollar;<%= invoiceTotal %></td>
+        </tr>
+    </table>
+</fieldset>
+<!--table end -->
+<%- include("footer") -%>
