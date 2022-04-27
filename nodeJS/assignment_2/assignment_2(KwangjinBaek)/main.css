@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* general style (font, color, background) */
+body {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 100%;
+    color: #000;
+    height: 900px;
+    background:linear-gradient(45deg, rgb(211, 185, 185), rgb(164, 164, 204), rgb(187, 216, 187));
+    background-repeat: repeat;
+}
+
+h1 {
+    text-decoration: underline;
+    margin-bottom: .5em;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+}
+
+/* layout for main */
+main {
+    width: 35%;
+    margin: 3em auto;
+    text-align: center;
+}
+
+/* form: form layout */
+#main-container {
+    background:linear-gradient(-45deg, rgb(214, 192, 192), rgb(190, 190, 218), rgb(190, 216, 190));
+    padding: 2em .3em 0;
+    border-radius: 5px;
+    box-shadow: 50px 50px 10px rgba(0, 0, 0, .4);
+    border: 10px solid rgb(206, 185, 68);
+}
+
+label { /* form: labels layout, font */
+    float: left;
+    width: 34%;
+    text-align: left;
+    padding-left: 1em;
+    font-size: 1.2rem;
+    margin: .1em .3em;
+    text-transform: capitalize;
+}
+
+input, select { /* form: input layout */
+    margin: .1em;
+    width: 49%;
+    font-size: 1.2rem;
+}
+
+select {
+    text-transform: capitalize;
+}
+
+/*form:  style for products */
+#products { 
+    padding: .5em 0 .5em 0;
+    margin-bottom: .5em;
+}
+
+#products-title {
+    font-size: 1.3rem;
+    color: rgb(168, 78, 42);
+    padding: 0 1em;
+    font-weight: bold;
+}
+
+/* form: style for error message */
+.error-message {
+    height: 10px;
+    text-align: right;
+    margin-right: 40px;
+    position: relative;
+    visibility: hidden;
+}
+
+small {
+    font-weight: bold;
+    color: rgb(190, 70, 80);
+    position: absolute;
+    right: 0%;
+}
+
+#product-error-message-wrapper {
+    position:sticky;
+}
+
+.error-icon {
+    position: absolute;
+    right: 0%;
+    top: -240%;
+    color: seagreen;
+}
+
+.fa-thumbs-up {
+    color: rgb(128, 196, 128);
+}
+
+.fa-thumbs-down {
+    color: rgb(196, 128, 134);
+}
+
+#submit-button { /* form: submit button layout*/
+    margin-top: 1em;
+    text-align: center;
+}
+
+/* error message controls */
+.visible {
+    visibility:visible;
+}
+
+.valid {
+    border: 2px dotted rgb(128, 196, 128);
+}
+
+.invalid {
+    border: 2px dotted rgb(252, 6, 26);
+}
+
+/* styles for footer */
+footer {
+    margin: .5em 0;
+    text-align: center;
+}
+

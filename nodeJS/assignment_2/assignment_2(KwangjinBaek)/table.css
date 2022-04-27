@@ -1,0 +1,69 @@
+/* general layout for the table */
+.hide { /* hide the invoice when it renders */
+    display: none;
+}
+
+#invoice {
+    height: 900px;
+}
+table {
+    width: 100%;
+    border: 1px solid  hotpink;
+    border-radius: 5px;
+    box-shadow: -50px 50px 10px rgba(0, 0, 0, .4);
+    color: #000;
+    font-size: 1.2rem;
+    background:linear-gradient(-45deg, rgb(211, 185, 185), rgb(164, 164, 204), rgb(187, 216, 187));
+    font-weight: bold;
+}
+
+/* styles for thead, tbody */
+thead {
+    background-color: rgb(205, 248, 148);
+    text-transform: capitalize;
+}
+
+th { /* general layouot for header column */
+    padding: .4em 0;
+    border-bottom: 1px solid #000;
+    width: 50%;
+    border-right: 1px dotted #000;
+}
+
+td { /* general layouot for data column */
+    padding: .4em .5em;
+    border-bottom: 1px solid #000;
+    border-left: 1px dotted #000;
+}
+
+tbody th { 
+    text-align: left;
+    padding-left: .5em;
+}
+
+tbody td { 
+    text-align: right;
+}
+
+#result-delivery-address {
+    text-align: left;
+    white-space: pre-wrap;
+    text-transform: capitalize;
+}
+
+.unit-price {
+    font-size: .9rem;
+}
+
+/* styles for tfoot */
+tfoot tr:first-child {
+    background-color: rgb(43, 146, 146);
+}
+
+tfoot tr:nth-child(2) {
+    background-color: mediumorchid;
+}
+
+tfoot tr:last-child {
+    background-color: peru;
+}

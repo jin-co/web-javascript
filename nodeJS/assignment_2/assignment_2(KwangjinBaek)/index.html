@@ -1,0 +1,242 @@
+<!--
+    Kwangjin Baek
+    Kbaek7943@conestogac.on.ca
+    created: 2/25/2021
+    description: this application is a form for snack store that allows users to input user information and desired products and validates if there is an field that does not match criteria. If there is no error, the invoice for the order will be presented.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment2</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="table.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="index.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    </head>
+    
+    <!-- body start -->
+    <body>
+        <main>
+            <!-- form container start -->
+            <div id="main-form">
+                <h1>snacks & fruits</h1>
+                <!-- form start --> 
+                <form id="form" action="/" method="GET">
+                    <fieldset id="main-container">
+                        <!-- name field -->
+                        <label for="name"><u>n</u>ame:</label>
+                        <input accesskey="n" type="text" name="name" id="name" autofocus>
+                        <!-- name field error message -->
+                        <div class="error-message">
+                            <small id="error-message-name">name required</small>
+                            <i id="valid-name-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-name-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div><br>
+                        
+                        <!-- email field -->
+                        <label for="email"><u>e</u>mail:</label>
+                        <input accesskey="e" type="text" name="email" id="email">
+                        <!-- email field error message -->
+                        <div class="error-message">
+                            <small id="error-message-email">Invalid Email</small>
+                            <i id="valid-email-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-email-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div>
+                        <br>
+                        
+                        <!-- phone field -->
+                        <label for="phone">ph<u>o</u>ne:</label>
+                        <input accesskey="o" type="text" name="phone" id="phone" placeholder="###-###-####">
+                        <!-- phone field error messages -->
+                        <div class="error-message">
+                            <small id="error-message-phone">Invalid Phone Number</small>
+                            <i id="valid-phone-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-phone-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div>
+                        <br>
+                        
+                        <!-- addres field -->
+                        <label for="address"><u>a</u>ddress:</label>
+                        <input accesskey="a" type="text" name="address" id="address">
+                        <!-- addres field error messages -->
+                        <div class="error-message">
+                            <small id="error-message-address">address required</small>
+                            <i id="valid-address-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-address-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div>
+                        <br>
+                        
+                        <!-- city field -->
+                        <label for="city"><u>c</u>ity:</label>
+                        <input accesskey="c" type="text" name="city" id="city">
+                        <div class="error-message">
+                        <!-- city field error messages -->
+                            <small id="error-message-city">city required</small>
+                            <i id="valid-city-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-city-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div>
+                        <br>
+                        
+                        <!-- post code field -->
+                        <label for="post-code">pos<u>t</u> code:</label>
+                        <input accesskey="t" type="text" name="post-code" id="post-code" placeholder="_#_ _#_">
+                        <!-- post code field error messages -->
+                        <div class="error-message">
+                            <small id="error-message-post-code">please enter a valid code</small>
+                            <i id="valid-post-code-icon" class="error-icon far fa-thumbs-up"></i>
+                            <i id="invalid-post-code-icon" class="error-icon far fa-thumbs-down"></i>
+                        </div>
+                        <br>
+                        
+                        <!-- products field -->
+                        <fieldset id="product">
+                            <legend id="products-title">Products</legend>
+                            <label for="product1">doughnuts <u>1</u>:</label>
+                            <input type="text" name="product1" id="product1" accesskey="1" placeholder="Quantity"><br>
+                            
+                            <label for="product2">ice creams <u>2</u>:</label>
+                            <input type="text" name="product2" id="product2" accesskey="2" placeholder="Quantity"><br>
+                            
+                            <label for="product3">grapes <u>3</u>:</label>
+                            <input type="text" name="product3" id="product3" accesskey="3" placeholder="Quantity"><br>
+                            <!-- products field error messages -->
+                            <div class="error-message" id="product-error-message-wrapper">
+                                <small id="error-message-product">must choose more than one item</small>
+                                <i id="valid-product-icon" class="error-icon far fa-thumbs-up"></i>
+                                <i id="invalid-product-icon" class="error-icon far fa-thumbs-down"></i>
+                            </div><br>
+                        </fieldset>
+                        
+                        <!-- province field -->
+                        <label for="province">prov<u>i</u>nce:</label>
+                        <select accesskey="i" name="province" id="province" accesskey="v">
+                            <option value="alberta">alberta</option>
+                            <option value="british columbia">british columbia</option>
+                            <option value="manitoba">manitoba</option>
+                            <option value="new brunswick">new brunswick</option>
+                            <option value="newfoundland and labrador">newfoundland and labrador</option>
+                            <option value="nova scotia">nova scotia</option>
+                            <option value="ontario">ontario</option>
+                            <option value="prince edward island">prince edward island</option>
+                            <option value="quebec">quebec</option>
+                            <option value="saskatchewan">saskatchewan</option>
+                            <option value="yukon">yukon</option>
+                        </select><br>
+
+                        <!-- delivery field -->                        
+                        <label for="delivery">delivery ti<u>m</u>e:</label>
+                        <select name="delivery" id="delivery" accesskey="m">
+                            <option value="1day">1day</option>
+                            <option value="2day">2day</option>
+                            <option value="3day">3day</option>
+                            <option value="4day">4day</option>
+                        </select>
+                        <div class="error-message">
+                            <small id="error-message-Delivery"></small>
+                        </div><br>
+                        
+                        <!-- submit button -->  
+                        <input type="submit" id="submit-button" value="Place Order">
+                    </fieldset>
+                </form>
+                <!-- form end -->
+            </div  id="main-form">
+            <!-- form container start -->
+
+            <!-- invoice container start -->
+            <div id="invoice" class="hide">
+                <table >
+                    <h1>my shop's invoice</h1>
+                    <thead>
+                        <tr>
+                            <th>description</th>
+                            <td>selection</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>name</th>
+                            <td id="result-name"></td>
+                        </tr>
+                        <tr>
+                            <th>email</th>
+                            <td id="result-email"></td>
+                        </tr>
+                        <tr>
+                            <th>phone</th>
+                            <td id="result-phone"></td>
+                        </tr>
+                        <tr>
+                            <th>delivery address</th>
+                            <td id="result-delivery-address"></td>
+                        </tr>
+                        <tr>
+                            <th>product1
+                                <span class="unit-price">
+                                    &#127849;<br>(unit price: &#36;<span id="unit-price1">10.00</span>) &#42; (qty: 
+                                    <span id="quantity1"></span>)
+                                </span>
+                            </th>
+                            <td>&#36;<span id="result-product1"></span></td>
+                        </tr>
+                        <tr>
+                            <th>product2
+                                <span class="unit-price">
+                                    &#127848;<br>(unit price: &#36;<span id="unit-price2">20.00</span>) &#42; (qty: 
+                                    <span id="quantity2"></span>)
+                                </span>
+                            </th>
+                            <td>&#36;<span id="result-product2"></span></td>
+                        </tr>
+                        <tr>
+                            <th>product3
+                                <span class="unit-price">
+                                    &#127815;<br>(unit price: &#36;<span id="unit-price3">30.00</span>) &#42; (qty: 
+                                    <span id="quantity3"></span>)
+                                </span>
+                            </th>
+                            <td>&#36;<span id="result-product3"></span></td>
+                        </tr>
+                        <tr>
+                            <th>shipping charges</th>
+                            <td>
+                                &#36;<span id="result-shipping-charges"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>sub total</th>
+                            <td>&#36;<span id="result-sub-total"></span></td>
+                        </tr>
+                        <tr>
+                            <th>taxes
+                                &#127806;(<span id="provincial-tax"></span>&#37;)
+                            </th>
+                            <td>&#36;<span id="result-taxes"></span></td>
+                        </tr>
+                        <tr>
+                            <th>total</th>
+                            <td>&#36;<span id="result-total"></span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- form container end -->
+        </main>
+        <footer>&copy;2021 Kwangjin Baek</footer>
+    </body>
+</html>
+
+<!-- 
+    Free vector icons designed BY FREEPIK. (n.d.). Retrieved February 25, 2021, from https://www.flaticon.com/authors/freepik
+-->
