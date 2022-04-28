@@ -1,7 +1,7 @@
 const http = require('http')
 
-const server = http.createServer((req, res) => {
-    res.end('haha')
-})
+const app = require('./backend/app')
+
+const server = http.createServer(app)
 
 server.listen(process.env.PORT || 3000)
