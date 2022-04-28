@@ -1,0 +1,84 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+/* body styles */
+body {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 100%;
+}
+
+/* styles for title */
+h1 {
+    font-size: 3rem;
+    margin-top: 1.5em;
+    text-transform: uppercase;
+}
+
+/* styles for main container */
+.container {
+    width: 80%;
+    margin: 3em auto;
+    font-size: 1.5rem;
+}
+
+/* styles for index page */
+#index-article { 
+    text-align: left;
+}
+
+img {
+    margin-top: .5em;
+    width: 100%;
+}
+
+/* styles for FAQ page */
+#table {
+    width: 50%;
+    white-space: pre-wrap;
+}
+
+tr {
+    padding: .5em 0;
+}
+
+td {
+    padding-left: 1em;
+    text-align: left;
+}
+
+/* styles for navigation link */
+ul {
+    text-align: right;
+}
+
+li {
+    display: inline-block;
+    margin: .3em 2em 0 0;
+    font-size: 1.1rem;
+}
+
+/* styles for footer */
+#link {
+    margin: .5em auto;
+}
+
+hr {
+    text-align: center;
+    border-style: inset;
+    width: 75%;
+    margin: .5em auto;
+}
+
+/* styles for link */
+a {
+    transition: 500ms;
+}
+
+a:hover, a:focus {
+    font-weight: bold;
+    color: rgb(11, 73, 9);
+    background-color: rgba(158, 113, 160, 0.4);
+}
