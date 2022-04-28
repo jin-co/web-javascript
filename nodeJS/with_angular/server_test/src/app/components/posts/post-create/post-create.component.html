@@ -1,6 +1,18 @@
-<input type="text" #title [(ngModel)]="inputTitle">
-<textarea name="" id="" cols="30" rows="10" [(ngModel)]="inputContent"></textarea>
-<button (click)="onClick()">Click</button>
+<mat-card>
+  <mat-form-field>
+    <input matInput type="text" #title [(ngModel)]="inputTitle" required />
+  </mat-form-field>
 
-<p> {{ outputTitle }} </p>
-<p> {{ outputContent }} </p>
+  <mat-form-field>
+    <textarea
+      matInput
+      required
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      [(ngModel)]="inputContent"
+    ></textarea>
+  </mat-form-field>
+  <button (click)="onClick()">Click</button>
+</mat-card>
