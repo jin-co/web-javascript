@@ -1,0 +1,22 @@
+{
+  "name": "inclass_7_kwangjinbaek",
+  "version": "1.0.0",
+  "description": "inclass 7",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kwangjin Baek",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validation": "^3.0.8",
+    "express-validator": "^6.10.0"
+  },
+  "devDependencies": {}
+}
