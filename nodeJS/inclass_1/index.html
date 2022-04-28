@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculater</title>
+    
+    <!-- Styles for layout -->
+    <style>
+        * {
+            font-family: sans-serif;
+            text-transform: capitalize;
+        }
+        
+        input { 
+            width: 65%;
+            height: 100%;
+            font-size: 2vw;
+            text-transform: uppercase;
+            transition: 500ms ease-out;
+        }
+
+        input:hover, input:focus {
+            font-weight: bold;
+            background: repeating-linear-gradient(
+                90deg, rgb(15, 15, 15), 
+                white, white, white, white,
+                rgb(15, 15, 15));
+        }
+
+        #instruction {
+            width: 44%;
+            margin: .5em auto;
+            text-align: left;
+            line-height: 32px;
+            font-size: 67%;
+        }
+
+        h1 {
+            padding: 0 .5em;
+        }
+
+        h2 {
+            margin-top: 2em;
+            font-size: 80%;
+        }
+
+    </style>
+
+    <script>
+        // Adds the input numbers and shows the sum
+        function add(number1, number2) {
+            var number1 = prompt("Please Enter the First Number");
+            var number2 = prompt("Please Enter the Second Number");
+            var sum = parseInt(number1) + parseInt(number2);
+            showResult(number1, number2, sum, ' + ');
+        }
+        
+        // Devides the input numbers and shows the remainder
+        function getModulus(number1, number2) {
+            var number1 = prompt("Please Enter the First Number");
+            var number2 = prompt("Please Enter the Second Number");
+            var remainder = parseInt(number1) % parseInt(number2);
+            showResult(number1, number2, remainder, ' % ');
+        }
+
+        // Displays the result
+        function showResult(number1, number2, result, operator){
+            alert(number1 + operator + number2 + ' = ' + result)
+        }
+    </script>
+</head>
+
+<body>
+    <div style="text-align: center; font-size: 2vw; margin: 3em;">
+        <fieldset style="width: 40%; margin: auto;">
+            <legend>
+                <h1>calculator</h1>
+            </legend>
+            <p>
+                <input id="addition" type="button" value="addition (+)" onclick="add()">
+            </p>
+            <p>
+                <input id="modulus" type="button" value="modulus (%)" onclick="getModulus()">
+            </p>
+        </fieldset>
+        <h2>please click one of the buttons, and enter two numbers. it will return the result of:</h2>
+        <ul id="instruction">
+            <li>click &ldquo;addition&rdquo; button to get the <b>sum</b> of two numbers</li>
+            <li>click &ldquo;modulus&rdquo; button to get the <b>remainder</b> of two numbers</li>
+        </ul>
+    </div>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+</body>
+</html>
