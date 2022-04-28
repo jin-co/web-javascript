@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclass2</title>
+    <script>
+        var input;
+        // gets option number and asks the input value
+        function option(option) {
+            switch (option)
+            {
+                case 1:
+                input = prompt("Enter Meters");
+                conversion(1, input);
+                    break;
+                case 2:
+                input = prompt("Enter Feet");
+                conversion(2, input);
+                    break;
+                case 3:
+                input = prompt("Enter Celcius");
+                conversion(3, input);
+                    break;
+                case 4:
+                input = prompt("Enter Fahrenheit");
+                conversion(4, input);
+                    break;
+            }
+        }
+
+        // converts the input value to the other unit and displays
+        function conversion(type, input) {
+            if (type == 1)
+            {
+                alert((input * 3.28).toFixed(2) + " feet");
+            }
+            else if (type == 2)
+            {
+                alert((input / 3.28).toFixed(2) + " meters");
+            }
+            else if (type == 3)
+            {
+                alert((input * (9/5) + 32).toFixed(2) + " F");
+            }
+            else 
+            {
+                alert(((input - 32) * (5/9)).toFixed(2) + " C");
+            }
+        }
+    </script>
+
+</head>
+<body style="font-family:sans-serif">
+    <div style="margin: 3em auto; text-align: center;">
+        <h2>This application is a unit converter for length and temperature</h2>
+        <p style="font-size: 120%;">Choose one of the button and enter a number to convert</p><br>
+        
+        <div>
+            <h2>Length Converter</h2>
+            <input style="font-size: 150%; padding: .4em;" id="celcius" type="button" 
+            value="Meters to Feet" onclick="option(1)"><br>
+            <input style="font-size: 150%; padding: .4em;" id="fahrenheit" type="button" 
+            value="Feet to Meters" onclick="option(2)"><br>
+        </div>
+        <div>
+            <h2>Temperature Converter</h2>
+            <input style="font-size: 150%; padding: .4em;" id="meters" type="button" 
+            value="Celcius to Fahrenheit" onclick="option(3)"><br>
+            <input style="font-size: 150%; padding: .4em;" id="feet" type="button" 
+            value="Fahrenheit to Celcius" onclick="option(4)"><br>
+        </div>
+    </div>
+
+</body>
+</html>
