@@ -8,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class PostCreateComponent implements OnInit {
   inputTitle:String = ''
   inputContent:String = ''
+
+  outputTitle:String = ''
+  outputContent:String = ''
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClick(title:HTMLInputElement) {
-    this.inputTitle = title.value
-    this.inputContent = 'i'
+  onClick() {
+    this.outputTitle = this.inputTitle
+    this.outputContent = this.inputContent
   }
 
 }
