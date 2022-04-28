@@ -1,0 +1,21 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "PROG1800 - Final Base",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Name - Student Number",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "ejs": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "express-messages": "*",
+    "connect-flash": "*",
+    "mongoose": "*"
+  }
+}

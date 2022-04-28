@@ -1,0 +1,37 @@
+<%- include('header') %> 
+<!-- title -->
+<h1 class="title">record</h1>
+
+<fieldset class="container" id="data-container">
+    <table class="table">
+        
+        <thead>
+            <tr>
+                <th scope="row">name</th>
+                <th scope="row">phone</th>
+                <th scope="row">chicken</th>
+                <th scope="row">fries</th>
+                <th scope="row">soda</th>
+                <th scope="row">sub total</th>
+                <th scope="row">tax</th>
+                <th scope="row">total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% foundRecords.forEach(record => { %>
+                <tr>
+                    <td><%= record.name %> </td>
+                    <td><%= record.phone %> </td>
+                    <td><%= record.chicken %> </td>
+                    <td><%= record.fries %> </td>
+                    <td><%= record.soda %> </td>
+                    <td><%= record.subTotal %> </td>
+                    <td><%= record.tax %> </td>
+                    <td><%= record.total %> </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</fieldset>
+<%- include('footer') %> 

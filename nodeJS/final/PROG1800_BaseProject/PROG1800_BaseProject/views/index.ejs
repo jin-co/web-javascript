@@ -1,0 +1,36 @@
+<%- include('header') %> 
+
+<!-- title -->
+<h1 class="title">shop</h1>
+
+<fieldset class="container">
+    <form id="form" action="/" method="POST">
+
+        <!-- input fields -->
+        <label class="form-label" for="name">name</label>
+        <input class="form-control" type="text" name="name"><br>
+
+        <label class="form-label" for="phone">phone</label>
+        <input class="form-control" type="text" name="phone"><br>
+        
+        <label class="form-label" for="chicken">chicken sandwich</label>
+        <input class="form-control" type="text" name="chicken"><br>
+        
+        <label class="form-label" for="fries">french fries</label>
+        <input class="form-control" type="text" name="fries"><br>
+        
+        <label class="form-label" for="soda">soda</label>
+        <input class="form-control" type="text" name="soda"><br>
+        
+        <!-- submit button -->
+        <div class="d-grid">
+            <input class="btn btn-outline-dark btn-lg block" type="submit" value="order">
+        </div>
+    </form>
+    <div id="error-message">
+        <% for( let i = 0; i < errors.length; i++ ) { %>
+            <p><%= errors[i].msg %> </p>
+        <% } %> 
+    </div>
+</fieldset>
+<%- include('footer') %> 

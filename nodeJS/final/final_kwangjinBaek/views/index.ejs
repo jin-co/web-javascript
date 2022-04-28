@@ -1,0 +1,46 @@
+<%- include('header') %> 
+
+<!-- title -->
+<h1 class="title">shop</h1>
+
+<fieldset class="container">
+    <form id="form" action="/" method="POST" enctype="multipart/form-data">
+
+        <!-- input fields -->
+        <label class="form-label" for="name">name</label>
+        <input class="form-control" type="text" name="field1"><br>
+
+        <label class="form-label" for="email">field2</label>
+        <input class="form-control" type="text" name="field2"><br>
+        
+        <label class="form-label" for="email">field3</label>
+        <input class="form-control" type="text" name="field3"><br>
+        
+        <label class="form-label" for="email">field4</label>
+        <input class="form-control" type="text" name="field4"><br>
+        
+        <label class="form-label" for="email">field5</label>
+        <input class="form-control" type="text" name="field5"><br>
+        
+        <label class="form-label" for="email">field6</label>
+        <input class="form-control" type="text" name="field6"><br>
+        
+        <label class="form-label" for="email">field7</label>
+        <input class="form-control" type="text" name="field7"><br>
+
+        <!-- image upload -->
+        <label class="form-label" for="upload">file upload</label>
+        <input class="form-control" type="file" name="upload"><br>
+        
+        <!-- submit button -->
+        <div class="d-grid">
+            <input class="btn btn-outline-dark btn-lg block" type="submit" value="order">
+        </div>
+    </form>
+    <div id="error-message">
+        <% for( let i = 0; i < errors.length; i++ ) { %>
+            <p><%= errors[i].msg %> </p>
+        <% } %> 
+    </div>
+</fieldset>
+<%- include('footer') %> 

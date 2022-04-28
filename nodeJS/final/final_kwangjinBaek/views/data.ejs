@@ -1,0 +1,48 @@
+<%- include('header') %> 
+
+<!-- title -->
+<h1 class="title">record</h1>
+
+<fieldset class="container" id="data-container">
+    <table class="table">
+        
+        <thead>
+            <tr>
+                <th scope="row">name</th>
+                <th scope="row">email</th>
+                <th scope="row">email</th>
+                <th scope="row">email</th>
+                <th scope="row">email</th>
+                <th scope="row">email</th>
+                <th scope="row">email</th>
+
+                <!-- upload -->
+                <th scope="row">file</th>
+                
+                <!-- delete -->
+                <th scope="row">delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% foundRecords.forEach(record => { %>
+                <tr>
+                    <td><%= record.name %> </td>
+                    <td><%= record.email %> </td>
+                    <td><%= record.phone %> </td>
+                    <td><%= record.address %> </td>
+                    <td><%= record.product %> </td>
+                    <td><%= record.subTotal %> </td>
+                    <td><%= record.total %> </td>
+
+                    <!-- upload -->
+                    <td><img src="images/<%= record.image %> " alt="" style="width: 200px;"></td>
+
+                    <!-- delete -->
+                    <td><a href="delete/<%= record._id %>">delete</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</fieldset>
+<%- include('footer') %> 

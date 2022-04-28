@@ -1,0 +1,43 @@
+<%- include("header") -%>
+<!--title -->
+<h1 id="title">my grocery invoice</h1>
+
+<!--table start -->
+<fieldset id="invoice" class="container">
+    <table>
+        <tr>
+            <th>name</th>
+            <td><%= invoiceName %> </td>
+        </tr>
+        <tr>
+            <th>phone</th>
+            <td><%= invoicePhone %></td>
+        </tr>
+        <tr>
+            <th>chicken <em>(&dollar;5.99 each)</em></th>
+            <td>&dollar;<%= invoiceChicken %></td>
+        </tr>
+        <tr>
+            <th>fries <em>(&dollar;1.99 each)</em></th>
+            <td>&dollar;<%= invoiceFries %></td>
+        </tr>
+        <tr>
+            <th>soda <em>(&dollar;1.49 each)</em></th>
+            <td>&dollar;<%= invoiceSoda %></td>
+        </tr>
+        <tr>
+            <th>sub total</th>
+            <td>&dollar;<%= invoiceSubTotal %></td>
+        </tr>
+        <tr>
+            <th>taxes</th>
+            <td>%<%= invoiceTax %></td>
+        </tr>
+        <tr>
+            <th>total</th>
+            <td>&dollar;<%= invoiceTotal %></td>
+        </tr>
+    </table>
+</fieldset>
+<!--table end -->
+<%- include("footer") -%>
