@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-
+  inputTitle:String = ''
+  inputContent:String = ''
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick() {
+    this.inputTitle = 'h'
+    this.inputContent = 'i'
   }
 
 }
