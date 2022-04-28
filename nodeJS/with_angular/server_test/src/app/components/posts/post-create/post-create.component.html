@@ -1,6 +1,6 @@
-<input type="text">
+<input type="text" #title>
 <textarea name="" id="" cols="30" rows="10"></textarea>
-<button (click)="onClick()">Click</button>
+<button (click)="onClick(title)">Click</button>
 
 <p> {{ inputTitle }} </p>
 <p> {{ inputContent }} </p>

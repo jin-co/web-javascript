@@ -13,8 +13,8 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick() {
-    this.inputTitle = 'h'
+  onClick(title:HTMLInputElement) {
+    this.inputTitle = title.value
     this.inputContent = 'i'
   }
 
