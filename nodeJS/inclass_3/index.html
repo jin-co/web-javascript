@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+    // show the message of countdown from 10 to blast off 
+        function countDown() {
+            var timeDisplay = document.getElementById("count");
+            for(i = 10; i > 0;)
+            {
+                timeDisplay.innerHTML += i + "... ";
+                i--;
+            }
+            timeDisplay.innerHTML += " BLASTOFF!";
+        }
+    </script>
+</head>
+<body>
+    <div style="margin: 15em auto; text-align: center;">
+        <p><img src="rocket.jpg" alt="" width="150"></p>
+        <button id="start-button" onclick="countDown()">Launch!!</button>
+        <p id="count"></p>
+        <p>If you click the button the rocket will fly in 10 seconds</p>
+    </div>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+</body>
+</html>
+
+<!--
+    Rocket ship. illustration of a rocket ship space vehicle blasting off into the s , 
+    #spon, #illustration, #rocket, #Rocket, #S...: Rocket SHIP, Planet Drawing, rocket. 
+    (2021, January 23). Retrieved February 02, 2021, 
+    from https://www.pinterest.com/pin/642185228098699775/
+-->
