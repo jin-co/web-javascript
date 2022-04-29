@@ -30,7 +30,12 @@ body {
   border: 1px solid #000;
 }
 
-button {   
+.tool-control {
+  display: flex;
+  gap: 2px;
+}
+
+button, input {   
   height: 50px;
   width: 50px;
   background-color: beige !important;  
