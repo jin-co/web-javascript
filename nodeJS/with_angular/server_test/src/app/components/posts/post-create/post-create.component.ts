@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/service/post.service';
 
@@ -15,7 +16,11 @@ export class PostCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick() {
-    this.postService.setPosts(this.inputTitle, this.inputContent);
+  onClick(form: NgForm) {
+    if (form.valid) {
+      this.postService.setPosts(form.value.title, form.value.content);
+    } else {
+      return;
+    }
   }
 }
