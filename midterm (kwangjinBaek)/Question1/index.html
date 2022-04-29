@@ -1,0 +1,108 @@
+<!--
+    written by: Kwangjin Baek / #8707943 / 2021.3.3.
+    midterm: this application is a form that allows user enter information.
+    when a user click submit the application first validate the input values
+    first and if no errors are found, shows a summarized result form 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Midterm</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/result.css">
+        <script src="index.js" defer></script>
+    </head>
+
+    <!-- body start -->
+    <body>
+        <!-- header -->
+        <header>
+            <h1>Adam's phone store</h1>
+        </header>
+        
+        <!-- main start -->
+        <main id="main" class="">
+            <fieldset id="form-container">
+                <form action="/">
+                    <!-- error message -->
+                    <div id="error-message-container">
+                        <p id="error-message"></p>
+                    </div>
+
+                    <!-- name field -->
+                    <label class="label" for="name">angent name</label>
+                    <input type="text" id="name" class="input"><br>
+
+                    <!-- number field -->
+                    <label class="label" for="number">agent number</label>
+                    <input type="text" id="number" class="input" placeholder="XX999999"><br>
+
+                    <!-- city field -->
+                    <label class="label" for="city">agent city</label>
+                    <input type="text" id="city" class="input"><br>
+
+                    <!-- total cost of phones sold field -->
+                    <label class="label" for="phone-sold">total cost of phones sold</label>
+                    <input type="text" id="phone-sold" class="input"><br>
+
+                    <!-- total cost of accessories sold -->
+                    <label class="label" for="accessories-sold">total cost of accessories sold</label>
+                    <input type="text" id="accessories-sold" class="input"><br>
+
+                    <!-- commission field -->
+                    <label class="label" for="commission">commission received till date</label>
+                    <input type="text" id="commission" class="input"><br>
+                
+                    <!-- submit button -->
+                    <input type="submit" value="calculate" class="input" id="submit-button"><br>
+                </form>
+            </fieldset>
+        </main>
+        <!-- main end -->
+
+        <!-- result -->
+        <table id="result" class="hide">
+            <tr>
+                <th>agent name</th>
+                <td class="result-message" id="result-name"></td>
+            </tr>
+            
+            <tr>
+                <th>agent number</th>
+                <td class="result-message" id="result-number"></td>
+            </tr>
+            
+            <tr>
+                <th>agent city</th>
+                <td class="result-message" id="result-city"></td>
+            </tr>
+            
+            <tr>
+                <th>total sale</th>
+                <td class="result-message" >&#36;<span id="result-sale"></span></td>
+            </tr>
+            
+            <tr>
+                <th>total commission</th>
+                <td class="result-message" >&#36;<span id="result-commission"></span></td>
+            </tr>
+            
+            <tr>
+                <th>commission received</th>
+                <td class="result-message">&#36;<span id ="result-commission-received"></span></td>
+            </tr>
+        
+            <tr>
+                <th>commission pending</th>
+                <td class="result-message">&#36;<span id ="result-commission-peding"></span></td>
+            </tr>
+            
+        </table>
+        <footer>&copy;2021 Kwangjin</footer>   
+    </body>
+    <!-- body end -->
+</html>

@@ -1,0 +1,25 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+body {
+    text-align: center;
+    padding: 3em;
+    background-color: rgb(29, 27, 27);
+    font-size: 100%;
+}
+
+button {
+    font-size: 200%;
+}
+
+#result-container {
+    height: 200px;
+    background-color: #fff;
+}
+
+p {
+    margin-top: 1em;
+    font-size: 2rem;
+}
