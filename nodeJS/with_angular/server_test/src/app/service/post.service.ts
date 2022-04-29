@@ -25,6 +25,12 @@ export class PostService {
       title: title,
       content: content,
     };
+
+    this.http.post<{message:String}>(`${this.baseURL}posts`, post).subscribe((data) => {
+      console.log(data.message)
+      this.posts.push(post)
+      this.postUpdated.next(this.posts)
+    })
     this.posts.push(post);
   }
 
