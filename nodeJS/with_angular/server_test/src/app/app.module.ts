@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatExpansionModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
