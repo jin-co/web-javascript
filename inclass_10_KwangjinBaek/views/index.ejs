@@ -1,0 +1,32 @@
+<!--
+    index page with an article and picture
+-->
+<%- include('header') -%> 
+<h1>index</h1>
+<article class="container" id="index-article">
+    <h2>Saved data</h2>
+    
+    <fieldset style="margin-top: .5em; text-align: center;" >
+        <table style="width: 100%;">
+            <tr style="text-align: left;">
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Action</th>
+                <th>Image</th>
+            </tr>
+            <% if(typeof contacts !== 'undefined') { %>
+                <% for(var contact of contacts) { %>
+                    <tr>
+                        <td><%= contact.fullName %></td>
+                        <td><%= contact.email %></td>
+                        <td><a href="delete/<%= contact._id %> ">Delete</a></td>
+                        <td><img src="images/<%= contact.imageName %> " alt="" style="width: 200px;"></td>
+                    </tr>
+                <% }
+            } %> 
+        </table>
+    </fieldset>
+
+    <img src="/images/Landscape-Color.jpg" alt="autumn">
+</article>
+<%- include('footer') -%> 

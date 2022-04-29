@@ -1,0 +1,19 @@
+<%- include("header") -%> 
+
+<form style="margin: 3em auto;" action="/contactform" method="POST" enctype="multipart/form-data">
+    <label for="name">name</label>
+    <input type="text" name="name"><br>
+    <label for="email">email</label>
+    <input type="text" name="email"><br>
+    <label for="image"></label>
+    <input type="file" name="image"><br>
+    
+    <input type="submit" value="Send">
+</form>
+
+<% if(typeof errors !== 'undefined') { %>
+    <% for(var error of errors) { %>
+        <h3><%= error.msg %></h3> 
+    <% }
+} %> 
+<%- include("footer") -%> 

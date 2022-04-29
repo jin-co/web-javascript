@@ -1,0 +1,25 @@
+{
+  "name": "inclass_10_kwangjinbaek",
+  "version": "1.0.0",
+  "description": "inclass 10",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kwangjin Baek",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-fileupload": "^1.2.1",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validation": "^3.0.8",
+    "express-validator": "^6.10.0",
+    "fs-extra": "^9.1.0",
+    "mongoose": "^5.12.3"
+  },
+  "devDependencies": {}
+}
