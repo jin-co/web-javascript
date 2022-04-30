@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Post } from './post';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
@@ -8,7 +9,14 @@ export class PostService {
   constructor(private http: HttpClient) {}
   baseURL: String = 'http://localhost:3000/';
   postUpdated = new Subject();
-  setPosts() {}
+  setPosts(title:String, content:String) {
+    const post: Post = {
+      id: '1',
+      title: title,
+      content: content,
+    };
+    this.posts.push(post)
+  }
 
   getPosts() {
     this.http

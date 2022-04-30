@@ -7,16 +7,14 @@ import { PostService } from 'src/post.service';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit {
-  @Input() posts: any = [];
+  posts: any = [];
 
   constructor(public postService: PostService) {}
 
-  ngOnInit(): void {
-    
-
-    // this.postService.getPosts();
-    // this.postService.updateListener().subscribe((posts: any) => {
-    //   this.posts = posts;
-    // });
+  ngOnInit(): void {  
+    this.postService.getPosts();
+    this.postService.updateListener().subscribe((posts: any) => {
+      this.posts = posts;
+    });
   }
 }
