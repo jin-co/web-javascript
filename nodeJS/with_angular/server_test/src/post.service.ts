@@ -4,19 +4,22 @@ import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-    posts = []
+  posts:any = [];
   constructor(private http: HttpClient) {}
-  baseURL: String = 'http://localhost:3000/';    
+  baseURL: String = 'http://localhost:3000/';
   postUpdated = new Subject();
   setPosts() {}
 
   getPosts() {
-    this.http.get<{message:string, posts:any}>(`${this.baseURL}posts`).subscribe((data) => {
-        this.posts = data.posts
-    })
+    this.http
+      .get<{ message: string; posts: any[] }>(`${this.baseURL}posts`)
+      .subscribe((data) => {
+        this.posts = data.posts;
+        this.postUpdated.next(this.posts)
+      });
   }
 
   updateListener() {
-      return this.postUpdated.asObservable()
+    return this.postUpdated.asObservable();
   }
 }

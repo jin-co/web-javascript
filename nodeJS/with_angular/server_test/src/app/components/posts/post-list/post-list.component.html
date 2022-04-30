@@ -1,16 +1,14 @@
 <mat-accordion *ngIf="posts.length > 0">
-    <mat-expansion-panel *ngFor="let i of posts">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{ i.title }}
-            </mat-panel-title>
+  <mat-expansion-panel *ngFor="let i of posts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ i.title }}
+      </mat-panel-title>
 
-            <mat-panel-description>
-                Click to open
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>
-            {{ i.content }}
-        </p>
-    </mat-expansion-panel>
+      <mat-panel-description> Click to open </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      {{ i.content }}
+    </p>
+  </mat-expansion-panel>
 </mat-accordion>
