@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'server_test';
+  posts:any = []
+
+  addPost(e:any) {
+    console.log(e)
+    this.posts.push(e)
+  }
 }
