@@ -16,6 +16,12 @@ export class PostService {
       content: content,
     };
     this.posts.push(post)
+    this.http.post(`${this.baseURL}posts`, post).subscribe((data) => {
+      this.posts.push(post)
+      this.postUpdated.next(this.posts)
+    })
+
+
   }
 
   getPosts() {
