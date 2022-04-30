@@ -13,7 +13,7 @@ export class PostService {
   getPosts() {
     this.http
       .get<{ message: string; posts: any[] }>(`${this.baseURL}posts`)
-      .subscribe((data) => {
+      .subscribe((data) => { 
         this.posts = data.posts;
         this.postUpdated.next(this.posts)
       });
