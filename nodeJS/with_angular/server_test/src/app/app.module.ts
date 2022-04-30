@@ -13,9 +13,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PostCreateComponent } from './components/posts/post-create/post-create.component';
+import { PostListComponent } from './components/posts/post-list/post-list.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PostCreateComponent, PostListComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
