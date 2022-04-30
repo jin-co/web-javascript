@@ -1,42 +1,45 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 * {
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 body {
-  height: 100vh;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background-color: #f5f5f5;
+    font-family: 'muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
 }
 
-.canvas {
-  height: 500px;
-  width: 500px;
-  border: 1px solid #000;
+canvas {
+    border: 2px solid steelblue;
 }
 
 .toolbox {
-  width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;  
-  border: 1px solid #000;
+    background-color: steelblue;
+    border: 1px solid slateblue;
+    display: flex;
+    width: 804px;
+    padding: 1rem;
 }
 
-.tool-control {
-  display: flex;
-  gap: 2px;
+.toolbox > * {
+    background-color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    margin: .25rem;
+    padding: .25rem;
+    font-size: 2rem;
 }
 
-button, input {   
-  height: 50px;
-  width: 50px;
-  background-color: beige !important;  
+.toolbox > *:last-child {
+    margin-left: auto;
 }
