@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ export class PostCreateComponent implements OnInit {
   outputTitle = ''
   outputContent = ''
 
-
+  @Output() postCreated = new EventEmitter()
   constructor() { }
 
   ngOnInit(): void {
@@ -20,8 +20,11 @@ export class PostCreateComponent implements OnInit {
   
   onClick(form:NgForm) {
     if(form.valid) {
-      this.outputTitle = form.value.title
-      this.outputContent = form.value.content
+      const post = {
+        title: form.value.title,
+        content: form.value.content
+      }            
+      this.postCreated.emit(post)
     } else {
       return
     }
