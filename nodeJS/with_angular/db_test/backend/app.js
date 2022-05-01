@@ -23,15 +23,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.post("/posts", jsonParser, (req, res, next) => {    
+  posts.push(req.body);
+
+  res.status(201).json(posts);
+});
+
 app.get("/posts", (req, res, next) => {
   res.json(posts);
 });
 
-app.post("/posts", jsonParser, (req, res, next) => {
-  console.log(req.body);
-  posts.push(req.body);
-  //   this.posts.push(post);
-
-  res.status(202).json({ message: "added" });
-});
 module.exports = app;

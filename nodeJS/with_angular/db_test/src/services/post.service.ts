@@ -5,33 +5,34 @@ import { Post } from 'src/models/post';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-    private posts:Post[] = []
-    private postUpdated = new Subject<Post[]>()
-    private baseURL = 'http://localhost:3000/'
+  private posts: Post[] = [];
+  private postUpdated = new Subject<Post[]>();
+  private baseURL = 'http://localhost:3000/';
 
-    constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    getPost() {
-        this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
-            this.posts = data
-            this.postUpdated.next(this.posts)
-        })
-        return this.posts
-    }
+  getPost() {
+    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
+      this.posts = data;
+      this.postUpdated.next(this.posts);
+    });
+  }
 
-    setPost(title:string, content:string) {
-        const post:Post = {
-            id: '',
-            title: title,
-            content: content
-        }
-        this.http.post<{message:string}>(`${this.baseURL}posts`, post).subscribe((data) => {
-            this.posts.push(post)
-            this.postUpdated.next(this.posts)
-        })
-    }
+  setPost(title: string, content: string) {
+    const post: Post = {
+      id: '1',
+      title: title,
+      content: content,
+    };
+    this.http
+      .post<Post[]>(`${this.baseURL}posts`, post)
+      .subscribe((data) => {   
+          this.posts = data          
+        this.postUpdated.next(this.posts);
+      });
+  }
 
-    updateListener() {
-        return this.postUpdated.asObservable()
-    }
+  updatedListenser() {
+    return this.postUpdated.asObservable();
+  }
 }
