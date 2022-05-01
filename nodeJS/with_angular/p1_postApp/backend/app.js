@@ -1,8 +1,18 @@
 const express = require("express");
-
-
+const Post = require("./models/post");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const app = express();
 
+var jsonParser = bodyParser.json()
+app.use(bodyParser.urlencoded({extended:false}))
+
+dbURL =
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
+mongoose
+  .connect(dbURL)
+  .then(() => console.log("connected"))
+  .catch(() => console.log("connection fail"));
 
 // app.use((req, res, next) => {
 //     next()
@@ -26,13 +36,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/posts', (req, res, next) => {
-    const post = req
-    console.log(post)
-    res.status(201).json({
-        message: 'post added'
-    })
-})
+app.post("/posts", jsonParser, (req, res, next) => {
+  console.log('request', req.body.title, req.body.connect, req.body)
+  // const post = req
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content,
+  });
+  console.log('post', post);
+  // post.save() //insert to DB
+
+  res.status(201).json({
+    message: "post added",
+  });
+});
 
 app.get("/posts", (req, res, next) => {
   const posts = [
