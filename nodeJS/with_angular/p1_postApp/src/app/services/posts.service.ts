@@ -15,8 +15,14 @@ export class PostService {
   getPost() {
     this.http
       .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)
-      .pipe(map(postData) => {
-        return postData.posts
+      .pipe(map(data) => {
+        return data.posts.map(post => {
+          return {
+            title: post.title,
+            content: post.content,
+            id:post._id
+          }
+        })
       })
       .subscribe((postData) => {
         this.posts = postData.posts;
