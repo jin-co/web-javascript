@@ -21,7 +21,7 @@
         id=""
         cols="30"
         rows="10"
-        [(ngModel)]="inputContent"
+        ngModel
       ></textarea>
       <mat-error *ngIf="content.invalid">Content Required</mat-error>
     </mat-form-field>
@@ -29,6 +29,3 @@
     <button type="submit" color="accent" mat-raised-button>Click</button>
   </form>
 </mat-card>
-
-<p>{{ outputTitle }}</p>
-<p>{{ outputContent }}</p>
