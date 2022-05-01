@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 
+// create application/json parser
 var jsonParser = bodyParser.json()
-app.use(bodyParser.urlencoded({extended:false}))
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
@@ -52,17 +54,27 @@ app.post("/posts", jsonParser, (req, res, next) => {
 });
 
 app.get("/posts", (req, res, next) => {
-  const posts = [
-    {
-      id: 1,
-      title: "hi",
-      content: "me",
-    },
-  ];
-  res.status(200).json({
-    message: "post",
-    posts: posts,
-  });
+  // Post.find((err, result) => {})
+  Post.find().then(docs => {
+    console.log(docs)
+    res.status(200).json({
+      message: "post",
+      posts: docs,
+    });
+  }).catch()
+
+
+  // const posts = [
+  //   {
+  //     id: 1,
+  //     title: "hi",
+  //     content: "me",
+  //   },
+  // ];
+  // res.status(200).json({
+  //   message: "post",
+  //   posts: posts,
+  // });
 });
 
 module.exports = app;
