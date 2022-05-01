@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Post } from 'src/post';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +7,4 @@ import { Post } from 'src/post';
 })
 export class AppComponent {
   title = 'server_test';
-  posts:Post[] = []
-
-  addPost() {    
-  }
 }
