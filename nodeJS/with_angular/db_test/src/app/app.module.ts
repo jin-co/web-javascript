@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatToolbarModule,
     MatButtonModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-post-create',
@@ -17,8 +18,12 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  onClick() {
-    this.outputTitle = this.inputTitle
-    this.outputContent = this.inputContent
+  onClick(form:NgForm) {
+    if(form.valid) {
+      this.outputTitle = form.value.title
+      this.outputContent = form.value.content
+    } else {
+      return
+    }
   }
 }
