@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aquamarine;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    border: 2px solid #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.box::before {
+    content: '';    
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0%;    
+    background-color: #fff;
+    animation: spin 2s infinite;
+    transform: rotate(45deg) translate(-50%, -50%);
+}
+
+.box::after {
+    content: '';    
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0%;    
+    background-color: #f00;
+    animation: spinRed 2s infinite;
+    transform: rotate(225deg) translate(-50%, -50%);    
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(135deg) translate(-50%, -50%);
+    }
+    
+    25% {
+        transform: rotate(225deg) translate(-50%, -50%);
+    }
+    
+    50% {
+        transform: rotate(315deg) translate(-50%, -50%);
+    }
+    
+    75% {
+        transform: rotate(45deg) translate(-50%, -50%);
+    }
+}
+
+@keyframes spinRed {
+    0% {
+        transform: rotate(315deg) translate(-50%, -50%);
+    }
+    
+    25% {
+        transform: rotate(45deg) translate(-50%, -50%);
+    }
+    
+    50% {
+        transform: rotate(135deg) translate(-50%, -50%);
+    }
+    
+    75% {
+        transform: rotate(225deg) translate(-50%, -50%);
+    }
+}
