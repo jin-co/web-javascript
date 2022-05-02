@@ -77,4 +77,10 @@ app.get("/posts", (req, res, next) => {
   // });
 });
 
+app.delete("/posts/:id", (req, res, next) => {
+  Post.deleteOne({_id: req.params.id}).then(result => {
+    res.status(200).json('deleted')
+  })
+})
+
 module.exports = app;

@@ -14,16 +14,16 @@ export class PostService {
 
   getPost() {
     this.http
-      .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)
-      .pipe(map(data) => {
-        return data.posts.map(post => {
-          return {
-            title: post.title,
-            content: post.content,
-            id:post._id
-          }
-        })
-      })
+      .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
+      // .pipe(map(data) => {
+      //   return data.posts.map(post => {
+      //     return {
+      //       title: post.title,
+      //       content: post.content,
+      //       id:post._id
+      //     }
+      //   })
+      // })
       .subscribe((postData) => {
         this.posts = postData.posts;
         this.postUpdated.next([...this.posts]);
@@ -49,7 +49,7 @@ export class PostService {
       id: '',
       title: title,
       content: content,
-    };    
+    };
     this.http
       .post<{ message: string }>(`${this.baseUrl}posts`, post)
       .subscribe((data) => {
@@ -59,13 +59,21 @@ export class PostService {
       });
   }
 
-//   setPost(title: string, content: string) {
-//     const post: Post = {
-//       id: '',
-//       title: title,
-//       content: content,
-//     };
-//     this.posts.push(post);
-//     this.postUpdated.next([...this.posts]);    
-//   }
+  //   setPost(title: string, content: string) {
+  //     const post: Post = {
+  //       id: '',
+  //       title: title,
+  //       content: content,
+  //     };
+  //     this.posts.push(post);
+  //     this.postUpdated.next([...this.posts]);
+  //   }
+
+  deletePost(id: string) {
+    this.http.delete(`${this.baseUrl}posts/${id}`).subscribe(() => {
+      const postUpdated = this.posts.filter(p => p.id !== id)
+      this.posts = postUpdated
+      this.postUpdated.next(this.posts)
+    })
+  }
 }

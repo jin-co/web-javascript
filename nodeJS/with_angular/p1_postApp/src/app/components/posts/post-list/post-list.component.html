@@ -10,7 +10,7 @@
 
         <mat-action-row>
             <button mat-stroked-button color="primary">Edit</button>
-            <button mat-stroked-button color="warning">Delete</button>
+            <button mat-stroked-button color="warning" (click)="onDelete(i.id)">Delete</button>
         </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>
