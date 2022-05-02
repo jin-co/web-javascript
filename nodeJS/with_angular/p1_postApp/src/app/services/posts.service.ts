@@ -14,19 +14,20 @@ export class PostService {
 
   getPost() {
     this.http
-      .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
-      // .pipe(map(data) => {
-      //   return data.posts.map(post => {
+      .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)
+      // .pipe((map((data) => {
+      //   return data.posts.map((p: { title: any; content: any; _id: any; }) => {
       //     return {
-      //       title: post.title,
-      //       content: post.content,
-      //       id:post._id
+      //       title: p.title,
+      //       content: p.content,
+      //       id: p._id
       //     }
       //   })
-      // })
+      // })))
       .subscribe((postData) => {
         this.posts = postData.posts;
         this.postUpdated.next([...this.posts]);
+        console.log('returned', postData)
       });
     // this.http
     //   .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
@@ -46,14 +47,15 @@ export class PostService {
 
   setPost(title: string, content: string) {
     const post: Post = {
-      id: '',
+      _id: '',
       title: title,
       content: content,
     };
     this.http
-      .post<{ message: string }>(`${this.baseUrl}posts`, post)
+      .post<{ message: string, postId: string }>(`${this.baseUrl}posts`, post)
       .subscribe((data) => {
         console.log(data.message);
+        post._id = data.postId
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
       });
@@ -71,7 +73,7 @@ export class PostService {
 
   deletePost(id: string) {
     this.http.delete(`${this.baseUrl}posts/${id}`).subscribe(() => {
-      const postUpdated = this.posts.filter(p => p.id !== id)
+      const postUpdated = this.posts.filter(p => p._id !== id)
       this.posts = postUpdated
       this.postUpdated.next(this.posts)
     })

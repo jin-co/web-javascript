@@ -47,10 +47,16 @@ app.post("/posts", jsonParser, (req, res, next) => {
   });
   console.log('post', post);
   // post.save() //insert to DB
+  post.save().then(result => {
+    res.status(201).json({
+      message: "post added",
+      postId: result._id
+    });
+  })
 
-  res.status(201).json({
-    message: "post added",
-  });
+  // res.status(201).json({
+  //   message: "post added",
+  // });
 });
 
 app.get("/posts", (req, res, next) => {
