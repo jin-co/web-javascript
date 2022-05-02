@@ -40,42 +40,51 @@ body {
     position: absolute;
     top: 0%;    
     background-color: #f00;
-    animation: spinRed 2s infinite;
+    animation: spinRed 2s linear infinite .2s;
     transform: rotate(225deg) translate(-50%, -50%);    
 }
 
+
 @keyframes spin {
-    0% {
+    0%, 1% {
         transform: rotate(135deg) translate(-50%, -50%);
     }
     
-    25% {
+    25%, 26% {
         transform: rotate(225deg) translate(-50%, -50%);
     }
     
-    50% {
+    50%, 51% {
         transform: rotate(315deg) translate(-50%, -50%);
     }
     
-    75% {
-        transform: rotate(45deg) translate(-50%, -50%);
-    }
+    75%, 76% {
+        transform: rotate(405deg) translate(-50%, -50%);
+    }        
+    
+    100% {
+        transform: rotate(495deg) translate(-50%, -50%);
+    }        
 }
 
 @keyframes spinRed {
-    0% {
+    0%, 10% {
         transform: rotate(315deg) translate(-50%, -50%);
     }
     
-    25% {
-        transform: rotate(45deg) translate(-50%, -50%);
+    25%, 26% {
+        transform: rotate(405deg) translate(-50%, -50%);
     }
     
-    50% {
-        transform: rotate(135deg) translate(-50%, -50%);
+    50%, 51% {
+        transform: rotate(495deg) translate(-50%, -50%);
     }
     
-    75% {
-        transform: rotate(225deg) translate(-50%, -50%);
+    75%, 76% {
+        transform: rotate(585deg) translate(-50%, -50%);
+    }
+    
+    100% {
+        transform: rotate(675deg) translate(-50%, -50%);
     }
 }
