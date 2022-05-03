@@ -80,12 +80,13 @@ export class PostService {
   }
 
   updatePost(id: string, title: string, content: string) {
-    const post:Post = {
+    const post: Post = {
       _id: id,
       title: title,
-      content: content
-    }
-    
+      content: content,
+    };
+
+    this.http.put(`${this.baseUrl}posts`, post).subscribe((response) => {});
   }
 
   getAPost(id: string | null): any {
