@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class PostCreateComponent implements OnInit {
   inputTitle = ''
   inputContent = ''
+  outputTitle = ''
+  outputContent = ''
 
   constructor() { }
 
@@ -15,7 +17,7 @@ export class PostCreateComponent implements OnInit {
   }
   
   onSubmit() {
-    this.inputTitle = 'hw'
-    this.inputContent = 'h'
+    this.outputTitle = this.inputTitle
+    this.outputContent = this.inputContent
   }
 }
