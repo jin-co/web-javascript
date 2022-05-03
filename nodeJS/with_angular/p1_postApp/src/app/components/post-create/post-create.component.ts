@@ -29,7 +29,10 @@ export class PostCreateComponent implements OnInit {
         //additional param defined in the 'app-routing-module.ts'
         this.mode = 'edit';
         this.id = paramMap.get('id');
-        this.post = this.postService.getAPost(this.id);
+        // this.post = this.postService.getAPost(this.id);
+        this.postService.getAPost(this.id).subscribe(data => {
+          this.post = {_id:data._id, title:data.title, content:data.content}
+        });
       } else {
         this.mode = 'create';
         this.id = '';

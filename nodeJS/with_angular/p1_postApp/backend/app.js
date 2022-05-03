@@ -97,6 +97,21 @@ app.put("/posts/:id", (req, res, next) => {
   })
   Post.updateOne({_id: req.params.id}, post).then(result => {
     res.status(200).json('updated')
+    const updatedPost = [...this.posts]
+    const oldPostIndex = updatedPost.findIndex(p => p._id === post._id)
+    updatedPost[oldPostIndex] = post
+    this.posts = updatedPost
+    this.updatedPost.next([...this.posts])
+  })
+})
+
+app.get("/posts/:id", (req, res, next) => {
+  Post.findById(req.params.id).then(p => {
+    if(p) {
+      res.status(200).json(p)
+    } else {
+      res.status(404).json("post not found")
+    }
   })
 })
 

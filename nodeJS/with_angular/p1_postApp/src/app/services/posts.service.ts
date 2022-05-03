@@ -89,7 +89,11 @@ export class PostService {
     this.http.put(`${this.baseUrl}posts`, post).subscribe((response) => {});
   }
 
-  getAPost(id: string | null): any {
-    return { ...this.posts.find((p) => p._id === id) };
+  // getAPost(id: string | null): any {
+  //   return { ...this.posts.find((p) => p._id === id) };
+  // }
+  
+  getAPost(id: string | null) {
+    return this.http.get<{_id:string, title:string, content:string}>(`${this.baseUrl}posts/${id}`)
   }
 }
