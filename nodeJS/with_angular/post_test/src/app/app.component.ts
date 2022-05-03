@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'post_test';
-
-  posts:any = []
-
-  addPost(e:any) {
-    this.posts.push(e)
-  }
+  title = 'post_test'; 
 }
