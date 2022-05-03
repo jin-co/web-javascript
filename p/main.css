@@ -19,72 +19,75 @@ body {
     width: 100px;
     border: 2px solid #000;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .box::before {
     content: '';    
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     position: absolute;
     top: 0%;    
-    background-color: #fff;
+
     animation: spin 2s infinite;
-    transform: rotate(45deg) translate(-50%, -50%);
+    transform: rotate(0deg);        
+    border: 50px solid transparent;
+    border-bottom-color: #fff;
 }
 
 .box::after {
     content: '';    
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     position: absolute;
-    top: 0%;    
-    background-color: #f00;
+    top: 0%;        
     animation: spinRed 2s linear infinite .2s;
-    transform: rotate(225deg) translate(-50%, -50%);    
+    transform: rotate(180deg);    
+    border: 50px solid transparent;
+    border-bottom-color: #f00;
 }
 
 
 @keyframes spin {
     0%, 1% {
-        transform: rotate(135deg) translate(-50%, -50%);
+        transform: rotate(0deg) ;
     }
     
     25%, 26% {
-        transform: rotate(225deg) translate(-50%, -50%);
+        transform: rotate(90deg) ;
     }
     
     50%, 51% {
-        transform: rotate(315deg) translate(-50%, -50%);
+        transform: rotate(180deg) ;
     }
     
     75%, 76% {
-        transform: rotate(405deg) translate(-50%, -50%);
+        transform: rotate(270deg) ;
     }        
     
     100% {
-        transform: rotate(495deg) translate(-50%, -50%);
+        transform: rotate(360deg) ;
     }        
 }
 
 @keyframes spinRed {
     0%, 10% {
-        transform: rotate(315deg) translate(-50%, -50%);
+        transform: rotate(180deg) ;
     }
     
     25%, 26% {
-        transform: rotate(405deg) translate(-50%, -50%);
+        transform: rotate(270deg) ;
     }
     
     50%, 51% {
-        transform: rotate(495deg) translate(-50%, -50%);
+        transform: rotate(360deg) ;
     }
     
     75%, 76% {
-        transform: rotate(585deg) translate(-50%, -50%);
+        transform: rotate(450deg) ;
     }
     
     100% {
-        transform: rotate(675deg) translate(-50%, -50%);
+        transform: rotate(540deg) ;
     }
 }
