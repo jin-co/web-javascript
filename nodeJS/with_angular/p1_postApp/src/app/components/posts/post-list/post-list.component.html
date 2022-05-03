@@ -9,7 +9,8 @@
         </p>
 
         <mat-action-row>
-            <button mat-stroked-button color="primary">Edit</button>
+            <!-- <button mat-stroked-button color="primary">Edit</button> -->
+            <a mat-stroked-button [routerLink]="['/edit', i._id]" color="primary">Edit</a>
             <button mat-stroked-button color="warning" (click)="onDelete(i._id)">Delete</button>
         </mat-action-row>
     </mat-expansion-panel>

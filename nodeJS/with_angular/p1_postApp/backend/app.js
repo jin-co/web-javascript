@@ -89,4 +89,8 @@ app.delete("/posts/:id", (req, res, next) => {
   })
 })
 
+app.put("/posts/:id", (req, res, next) => {
+  
+})
+
 module.exports = app;

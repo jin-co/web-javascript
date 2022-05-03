@@ -27,7 +27,7 @@ export class PostService {
       .subscribe((postData) => {
         this.posts = postData.posts;
         this.postUpdated.next([...this.posts]);
-        console.log('returned', postData)
+        console.log('returned', postData);
       });
     // this.http
     //   .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
@@ -52,10 +52,10 @@ export class PostService {
       content: content,
     };
     this.http
-      .post<{ message: string, postId: string }>(`${this.baseUrl}posts`, post)
+      .post<{ message: string; postId: string }>(`${this.baseUrl}posts`, post)
       .subscribe((data) => {
         console.log(data.message);
-        post._id = data.postId
+        post._id = data.postId;
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
       });
@@ -73,9 +73,22 @@ export class PostService {
 
   deletePost(id: string) {
     this.http.delete(`${this.baseUrl}posts/${id}`).subscribe(() => {
-      const postUpdated = this.posts.filter(p => p._id !== id)
-      this.posts = postUpdated
-      this.postUpdated.next(this.posts)
-    })
+      const postUpdated = this.posts.filter((p) => p._id !== id);
+      this.posts = postUpdated;
+      this.postUpdated.next(this.posts);
+    });
+  }
+
+  updatePost(id: string, title: string, content: string) {
+    const post:Post = {
+      _id: id,
+      title: title,
+      content: content
+    }
+    
+  }
+
+  getAPost(id: string | null): any {
+    return { ...this.posts.find((p) => p._id === id) };
   }
 }

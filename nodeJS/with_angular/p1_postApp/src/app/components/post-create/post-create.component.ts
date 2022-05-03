@@ -17,6 +17,7 @@ export class PostCreateComponent implements OnInit {
 
   private mode = 'create'
   private id!:string | null
+  post!:Post
 
   @Output() postCreated = new EventEmitter<Post>();
 
@@ -28,6 +29,7 @@ export class PostCreateComponent implements OnInit {
       {
         this.mode = 'edit'
         this.id = paramMap.get('id')
+        this.post = this.postService.getAPost(this.id)
       } else {
         this.mode = 'create'
         this.id = ''
