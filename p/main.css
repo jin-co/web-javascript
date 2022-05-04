@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapi.com/css?family=Poppins&display=swap');
 
 * {
     margin: 0;
@@ -7,86 +7,14 @@
 }
 
 body {
-    background-color: aquamarine;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.box {
-    height: 100px;
-    width: 100px;    
-    position: relative;
-    /* overflow: hidden; */
-}
-
-.box::before {
-    content: '';    
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 0%;    
-
-    animation: spin 2s infinite;
-    transform: rotate(0deg);        
-    border: 50px solid transparent;
-    border-bottom-color: #fff;
-}
-
-.box::after {
-    content: '';    
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 0%;        
-    animation: spinRed 2s linear infinite .2s;
-    transform: rotate(180deg);    
-    border: 50px solid transparent;
-    border-bottom-color: #f00;
-}
-
-
-@keyframes spin {
-    0%, 1% {
-        transform: rotate(0deg) ;
-    }
-    
-    25%, 26% {
-        transform: rotate(90deg) ;
-    }
-    
-    50%, 51% {
-        transform: rotate(180deg) ;
-    }
-    
-    75%, 76% {
-        transform: rotate(270deg) ;
-    }        
-    
-    100% {
-        transform: rotate(360deg) ;
-    }        
-}
-
-@keyframes spinRed {
-    0%, 10% {
-        transform: rotate(180deg) ;
-    }
-    
-    25%, 26% {
-        transform: rotate(270deg) ;
-    }
-    
-    50%, 51% {
-        transform: rotate(360deg) ;
-    }
-    
-    75%, 76% {
-        transform: rotate(450deg) ;
-    }
-    
-    100% {
-        transform: rotate(540deg) ;
-    }
+.canvas {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #000;
 }
