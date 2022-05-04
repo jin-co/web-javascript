@@ -30,14 +30,16 @@ body {
 }
 
 .content-box {
+    height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     font-size: .9rem;
 }
 
 .bio-box {
-    display: flex;
+    display: flex;    
 }
 
 .bio-picture {
@@ -46,4 +48,5 @@ body {
     margin-right: 10px;
     object-fit: cover;
     object-position: center;
+    border-radius: 50%;
 }
