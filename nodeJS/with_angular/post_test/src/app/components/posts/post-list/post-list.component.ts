@@ -11,7 +11,9 @@ import { PostService } from 'src/services/post.service';
 export class PostListComponent implements OnInit, OnDestroy {
   posts:Post[] = []
   private postSubscription!: Subscription
-  constructor(public postService:PostService) { }
+  constructor(public postService:PostService) { 
+    
+  }
 
   ngOnInit(): void {
     this.postService.getPosts()
@@ -23,7 +25,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.postSubscription.unsubscribe()
+      // this.postSubscription.unsubscribe()
   }
   
   deletePost(id:string) {
