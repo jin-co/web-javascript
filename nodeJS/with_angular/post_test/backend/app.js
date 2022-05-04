@@ -8,8 +8,8 @@ const postSchema = mongoose.Schema({
   content: String,
 });
 
-const dbURL =
-  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/posts?retryWrites=true&w=majority";
+var dbURL =
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
   .connect(dbURL)
   .then(() => console.log("connected to db"))
@@ -33,20 +33,24 @@ app.use((req, res, next) => {
 app.get("/posts", (req, res, next) => {
   Post.find((err, result) => {
     if (!err) {
-      console.log(result);
       res.json(result);
     }
   });
+  //   Post.find().then((docs) => {
+  //       console.log(docs)
+  //     res.status(200).json(docs);
+  //   });
 });
 
 app.post("/posts", jsonParser, (req, res, next) => {
-    console.log(req.body)
+  console.log(req.body);
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
   });
   post.save().then((result) => {
-    
+    console.log(result);
+    res.status(201).json("added");
   });
 });
 

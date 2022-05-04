@@ -23,12 +23,11 @@ export class PostService {
       _id: '',
       title: title,
       content: content,
-    };    
+    };
 
-    this.http.post(`${this.baseURL}/posts`, post).subscribe((data) => {
-        this.updatedPost.next([...this.posts])
+    this.http.post<string>(`${this.baseURL}posts`, post).subscribe((data) => {
+        console.log(data)
     })
-
   }
 
   updateListener() {
