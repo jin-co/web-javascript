@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapi.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 * {
     margin: 0;
@@ -14,7 +14,6 @@ body {
 }
 
 .canvas {
-    height: 400px;
-    width: 400px;
+    
     border: 1px solid #000;
 }
