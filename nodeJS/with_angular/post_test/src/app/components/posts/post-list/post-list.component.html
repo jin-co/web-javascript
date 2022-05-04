@@ -11,5 +11,7 @@
         <p>
             {{ i.content }}
         </p>
+        <button mat-button>Edit</button>
+        <button mat-button (click)="deletePost(i._id)">Delete</button>
     </mat-expansion-panel>
 </mat-accordion>

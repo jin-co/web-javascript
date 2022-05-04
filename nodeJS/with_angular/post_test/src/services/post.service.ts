@@ -26,8 +26,17 @@ export class PostService {
     };
 
     this.http.post<string>(`${this.baseURL}posts`, post).subscribe((data) => {
+        this.posts.push(post)
+        this.updatedPost.next(this.posts)
         console.log(data)
     })
+  }
+
+  deletePost(id:string) {
+      this.http.delete(`${this.baseURL}posts/${id}`).subscribe(() => {
+        const posts = this.posts.filter(p => p._id !== id)
+        this.updatedPost.next(posts)
+      })
   }
 
   updateListener() {
