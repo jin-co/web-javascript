@@ -86,6 +86,7 @@ export class PostService {
       content: content,
     };
     console.log('post created front', post)
+    console.log(`${this.baseUrl}posts/${id}`)
     this.http.put(`${this.baseUrl}posts/${id}`, post).subscribe((response) => {});
   }
 
@@ -94,6 +95,7 @@ export class PostService {
   // }
   
   getAPost(id: string | null) {
+    console.log(`${this.baseUrl}posts/${id}`)
     return this.http.get<{_id:string, title:string, content:string}>(`${this.baseUrl}posts/${id}`)
   }
 }
