@@ -43,6 +43,16 @@ export class PostService {
     return {...this.posts.find(p => p._id = id)}
   }
 
+  updatePost(id:string, title:string, content:string) {
+    const post: Post = {
+      _id: id,
+      title: title,
+      content: content
+    }
+
+    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe(result => console.log("updatedd"))
+  }
+
   updateListener() {
     return this.updatedPost.asObservable();
   }

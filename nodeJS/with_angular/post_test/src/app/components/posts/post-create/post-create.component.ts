@@ -15,8 +15,8 @@ export class PostCreateComponent implements OnInit {
     public activatedRoute: ActivatedRoute
   ) {}
   private mode = 'create';
-  private postId!: string | null;
-  post!: Post;
+  private postId: any = '';
+  post!: any;
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {

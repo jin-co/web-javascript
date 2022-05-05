@@ -60,4 +60,14 @@ app.delete("/posts/:id", (req, res, next) => {
     })
 })
 
+app.put("/posts/:id", (req, res, next) => {
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content
+  })
+  Post.updateOne({_id: req.body._id}, post).then(result => {
+    res.status(200).json("updated")
+  })
+})
+
 module.exports = app;

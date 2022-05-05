@@ -11,7 +11,7 @@
         <p>
             {{ i.content }}
         </p>
-        <button mat-button>Edit</button>
-        <button mat-button (click)="deletePost(i._id)">Delete</button>
+        <a mat-button [routerLink]="['/edit', i._id]">Edit</a>
+        <button mat-button (click)="deletePost(i._id)">Delete</button>        
     </mat-expansion-panel>
 </mat-accordion>
