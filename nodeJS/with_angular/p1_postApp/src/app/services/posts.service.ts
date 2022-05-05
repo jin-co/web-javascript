@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from '../models/post';
@@ -10,7 +11,7 @@ export class PostService {
   private postUpdated = new Subject<Post[]>();
   private baseUrl = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getPost() {
     this.http
@@ -58,6 +59,7 @@ export class PostService {
         post._id = data.postId;
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
+        this.router.navigate(["/"])
       });
   }
 
@@ -87,7 +89,14 @@ export class PostService {
     };
     console.log('post created front', post)
     console.log(`${this.baseUrl}posts/${id}`)
-    this.http.put(`${this.baseUrl}posts/${id}`, post).subscribe((response) => {});
+    this.http.put(`${this.baseUrl}posts/${id}`, post).subscribe((response) => {
+      const updatedPost = [...this.posts];
+      const oldPostIndex = updatedPost.findIndex(p => p._id === post._id);
+      updatedPost[oldPostIndex] = post;
+      this.posts = updatedPost;
+      this.postUpdated.next([...this.posts]);
+      this.router.navigate(["/"])
+    });
   }
 
   // getAPost(id: string | null): any {

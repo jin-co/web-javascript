@@ -49,12 +49,7 @@ router.put("/:id", jsonParser, (req, res, next) => {
   });
 
   Post.updateOne({ _id: req.params.id }, post).then((result) => {
-    res.status(200).json("updated");
-    const updatedPost = [...this.posts];
-    const oldPostIndex = updatedPost.findIndex((p) => p._id === post._id);
-    updatedPost[oldPostIndex] = post;
-    this.posts = updatedPost;
-    this.updatedPost.next([...this.posts]);
+    res.status(200).json("updated");   
   });
 });
 

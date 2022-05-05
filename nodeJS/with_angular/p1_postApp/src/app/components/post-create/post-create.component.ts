@@ -15,6 +15,10 @@ export class PostCreateComponent implements OnInit {
   title: String = '';
   content: String = '';
 
+  /***spinner */
+  isLoading = false;
+  /***spinner */
+
   private mode = 'create';
   private id!: string;
   post!: Post;
@@ -29,11 +33,17 @@ export class PostCreateComponent implements OnInit {
         //additional param defined in the 'app-routing-module.ts'
         this.mode = 'edit';
         let paramId = paramMap.get('id');
-        if(paramId !== null) {
-          this.id = paramId
+        if (paramId !== null) {
+          this.id = paramId;
         }
+        /***spinner */
+        this.isLoading = true;
+        /***spinner */
         // this.post = this.postService.getAPost(this.id);
         this.postService.getAPost(this.id).subscribe((data) => {
+          /***spinner */
+          this.isLoading = false;
+          /***spinner */
           this.post = {
             _id: data._id,
             title: data.title,
@@ -64,6 +74,10 @@ export class PostCreateComponent implements OnInit {
       //   content: postForm.value.content
       // }
       // this.postCreated.emit(post)
+
+      /***spinner */
+      this.isLoading = true;
+      /***spinner */
 
       // using service
       if (this.mode === 'create') {
