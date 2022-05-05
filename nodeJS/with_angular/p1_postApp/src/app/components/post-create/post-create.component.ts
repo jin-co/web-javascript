@@ -16,7 +16,7 @@ export class PostCreateComponent implements OnInit {
   content: String = '';
 
   private mode = 'create';
-  private id!: string | null;
+  private id!: string;
   post!: Post;
 
   @Output() postCreated = new EventEmitter<Post>();
@@ -28,10 +28,17 @@ export class PostCreateComponent implements OnInit {
       if (paramMap.has('id')) {
         //additional param defined in the 'app-routing-module.ts'
         this.mode = 'edit';
-        this.id = paramMap.get('id');
+        let paramId = paramMap.get('id');
+        if(paramId !== null) {
+          this.id = paramId
+        }
         // this.post = this.postService.getAPost(this.id);
-        this.postService.getAPost(this.id).subscribe(data => {
-          this.post = {_id:data._id, title:data.title, content:data.content}
+        this.postService.getAPost(this.id).subscribe((data) => {
+          this.post = {
+            _id: data._id,
+            title: data.title,
+            content: data.content,
+          };
         });
       } else {
         this.mode = 'create';
@@ -62,8 +69,9 @@ export class PostCreateComponent implements OnInit {
       if (this.mode === 'create') {
         this.postService.setPost(postForm.value.title, postForm.value.content);
       } else {
+        console.log('edit');
         this.postService.updatePost(
-          postForm.value.id,
+          this.id,
           postForm.value.title,
           postForm.value.content
         );

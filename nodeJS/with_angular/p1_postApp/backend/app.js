@@ -90,19 +90,21 @@ app.delete("/posts/:id", (req, res, next) => {
 })
 
 app.put("/posts/:id", (req, res, next) => {
-  const post = new Post({
-    _id: req.body._id,
-    title: req.body.title,
-    content: req.body.content
-  })
-  Post.updateOne({_id: req.params.id}, post).then(result => {
-    res.status(200).json('updated')
-    const updatedPost = [...this.posts]
-    const oldPostIndex = updatedPost.findIndex(p => p._id === post._id)
-    updatedPost[oldPostIndex] = post
-    this.posts = updatedPost
-    this.updatedPost.next([...this.posts])
-  })
+  console.log('back post id', req.body._id)
+  // const post = new Post({
+  //   _id: req.body._id,
+  //   title: req.body.title,
+  //   content: req.body.content
+  // })
+  // console.log('post created', post)
+  // Post.updateOne({_id: req.params.id}, post).then(result => {
+  //   res.status(200).json('updated')
+  //   const updatedPost = [...this.posts]
+  //   const oldPostIndex = updatedPost.findIndex(p => p._id === post._id)
+  //   updatedPost[oldPostIndex] = post
+  //   this.posts = updatedPost
+  //   this.updatedPost.next([...this.posts])
+  // })
 })
 
 app.get("/posts/:id", (req, res, next) => {
