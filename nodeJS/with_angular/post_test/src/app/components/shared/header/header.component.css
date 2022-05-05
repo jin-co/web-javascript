@@ -1,0 +1,13 @@
+mat-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
