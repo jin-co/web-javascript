@@ -11,7 +11,7 @@ export class PostService {
     constructor(private http:HttpClient) {}
 
     getPosts() {
-        return [...this.posts]
+        return this.posts
     }    
 
     setPost(title:string, content:string) {
