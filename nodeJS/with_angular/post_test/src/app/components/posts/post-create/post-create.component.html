@@ -1,1 +1,15 @@
-<p>post-create works!</p>
+<mat-card>
+  <mat-form-field>
+    <input matInput type="text" #title/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput name="" id="" cols="30" rows="10"></textarea>
+  </mat-form-field>
+
+  <button matInput (click)="onClick(title)">Click</button>
+</mat-card>
+
+<p> {{ inputTitle }} </p>
+<p> {{ inputContent }} </p>
+<input type="text" [value]="inputTitle">
