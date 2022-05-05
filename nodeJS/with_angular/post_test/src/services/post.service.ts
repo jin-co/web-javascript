@@ -27,4 +27,16 @@ export class PostService {
     updateListener() {
         return this.postUpdated.asObservable()
     }
+
+    deletePost(id:string) {
+
+    }
+
+    updatePost(id:string) {
+
+    }
+
+    getPost(id:string) {
+
+    }
 }
