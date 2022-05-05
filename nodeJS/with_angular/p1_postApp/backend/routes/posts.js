@@ -1,7 +1,16 @@
 const express = require("express");
+const Post = require('../models/post')
+const bodyParser = require("body-parser");
+const app = express();
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const router = express.Router();
 
-router.post("/posts", jsonParser, (req, res, next) => {
+router.post("", jsonParser, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
@@ -14,7 +23,7 @@ router.post("/posts", jsonParser, (req, res, next) => {
   });
 });
 
-router.get("/posts", (req, res, next) => {
+router.get("", (req, res, next) => {
   Post.find()
     .then((docs) => {
       console.log(docs);
@@ -26,13 +35,13 @@ router.get("/posts", (req, res, next) => {
     .catch();
 });
 
-router.delete("/posts/:id", (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json("deleted");
   });
 });
 
-router.put("/posts/:id", jsonParser, (req, res, next) => {
+router.put("/:id", jsonParser, (req, res, next) => {
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
@@ -49,7 +58,7 @@ router.put("/posts/:id", jsonParser, (req, res, next) => {
   });
 });
 
-router.get("/posts/:id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   Post.findById(req.params.id).then((p) => {
     if (p) {
       res.status(200).json(p);
@@ -58,3 +67,5 @@ router.get("/posts/:id", (req, res, next) => {
     }
   });
 });
+
+module.exports = router

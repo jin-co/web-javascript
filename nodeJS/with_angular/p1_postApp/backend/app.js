@@ -1,13 +1,17 @@
 const express = require("express");
-const Post = require("./models/post");
+
+//posts
+// const Post = require("./models/post"); // moved to post route
+const postRoute = require('./routes/posts')
+
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const app = express();
 
-// create application/json parser
-var jsonParser = bodyParser.json()
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+// // create application/json parser
+// var jsonParser = bodyParser.json()
+// // create application/x-www-form-urlencoded parser
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
@@ -115,5 +119,8 @@ app.use((req, res, next) => {
 //     }
 //   })
 // })
+
+app.use("/posts", postRoute)
+
 
 module.exports = app;
