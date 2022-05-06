@@ -10,6 +10,6 @@
       {{ i.content }}
     </p>
     <button mat-button color="warning" (click)="onDeleteClick(i._id)">Delete</button>
-    <button mat-button>Edit</button>
+    <button (click)="onUpdateClicked(i)"mat-button>Edit</button>
   </mat-expansion-panel>
 </mat-accordion>

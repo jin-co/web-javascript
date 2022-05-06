@@ -19,31 +19,37 @@ export class PostService {
   }
 
   setPost(title: string, content: string) {
-      console.log('service add clicked')
     const post: Post = {
       _id: '',
       title: title,
       content: content,
     };
-    this.http.post<string>(`${this.baseURL}posts`, post).subscribe((data) => {
-      this.posts.push(post);
+    this.http.post<Post>(`${this.baseURL}posts`, post).subscribe((data) => {
+      this.posts.push(data);
       this.postUpdated.next([...this.posts]);
     });
   }
 
   deletePost(id: string) {
-      console.log('delete service', id)
-      this.http.delete(`${this.baseURL}posts/${id}`).subscribe((data) => {
-          this.posts.filter(p => p._id !== id)
-          this.postUpdated.next([...this.posts])
-      })
+    console.log('delete service', id);
+    this.http.delete(`${this.baseURL}posts/${id}`).subscribe((data) => {
+      const deletedPost = this.posts.filter((p) => p._id !== id);
+      this.posts = deletedPost;
+      this.postUpdated.next([...this.posts]);
+    });
   }
 
-  updatePost(id: string) {}
+  updatePost(id: string, title: string, content: string) {
+    const post = {
+      _id: id,
+      title: title,
+      content: content,
+    };
+    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {});
+  }
 
   getPost(id: string) {}
 
-  
   updateListener() {
     return this.postUpdated.asObservable();
   }

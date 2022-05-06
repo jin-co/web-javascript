@@ -22,4 +22,12 @@ export class PostListComponent implements OnInit {
     console.log('delete clicked')
     this.postService.deletePost(id)
   }
+
+  onUpdateClicked(i:Post) {
+    this.postService.updatePost(
+      i._id,
+      i.title,
+      i.content
+    )
+  }
 }
