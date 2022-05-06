@@ -12,7 +12,7 @@ router.get("", (req, res, next) => {
   });
 });
 
-router.get("/id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   Post.findOne({ _id: req.params.id }).then((result) => {
     res.json(result);
   });
@@ -36,19 +36,14 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", jsonParser, (req, res, next) => {
+router.put("/:id", jsonParser, (req, res, next) => {  
   console.log("back put", req.body);
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   });
-  Post.updateOne(
-    {
-      _id: req.params.id,
-    },
-    post
-  ).then((result) => {
+  Post.updateOne({ _id: req.params.id }, post).then((result) => {
     res.status(200).json("update");
   });
 });

@@ -20,20 +20,32 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((pm:ParamMap) => {
       if(pm.has('id')) {
-        this.mode = 'eidt'
+        this.mode = 'edit'
         let paramId = pm.get('id')
         if(paramId !== null) {
-          this.id = paramId
+          this.id = paramId          
         }
+        // this.post = this.postService.getPost(this.id)
+        this.postService.getPost(this.id).subscribe((data) => {
+          this.post = {
+            _id: data._id,
+            title: data.title,
+            content: data.content
+          }
+        })
+        console.log('this is getting param id', this.id, this.mode)
       } else {
         this.mode = 'create'
+        this.id = ''
+        console.log('this is without param id', this.id, this.mode)
       }
     })
   }
 
   onClick(form: NgForm) {
     if (form.valid) {
-      if(this.mode = 'create') {
+      if(this.mode === 'create') {
+        console.log('this is create post')
         this.postService.setPost(form.value.title, form.value.content);
       } else {
         this.postService.updatePost(this.id, form.value.title, form.value.content);
