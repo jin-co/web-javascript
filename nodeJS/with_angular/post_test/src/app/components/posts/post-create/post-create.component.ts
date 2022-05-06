@@ -9,11 +9,7 @@ import { Post } from 'src/models/post';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css'],
 })
-export class PostCreateComponent implements OnInit {
-  id!:string
-  mode:string = 'create'
-  post!:Post
-
+export class PostCreateComponent implements OnInit {  
   constructor() {}
 
   ngOnInit(): void {
