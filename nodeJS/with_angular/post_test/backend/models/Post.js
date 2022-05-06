@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const postSchema = mongoose.Schema({
-    _id:String,
     title:String,
     content:String
 })

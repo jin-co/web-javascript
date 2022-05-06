@@ -17,4 +17,9 @@ export class PostListComponent implements OnInit {
       this.posts = data
     })
   }
+
+  onDeleteClick(id:string) {
+    console.log('delete clicked')
+    this.postService.deletePost(id)
+  }
 }
