@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Modes } from 'src/enums/modes';
 import { Post } from 'src/models/post';
-import { PostService } from 'src/services/post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -15,7 +14,7 @@ export class PostCreateComponent implements OnInit {
   mode:string = 'create'
   post!:Post
 
-  constructor(public postService: PostService, public route:ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit(): void {
 
