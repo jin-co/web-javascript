@@ -10,6 +10,6 @@
       {{ i.content }}
     </p>
     <button mat-button color="warning" (click)="onDeleteClick(i._id)">Delete</button>
-    <button (click)="onUpdateClicked(i)"mat-button>Edit</button>
+    <a [routerLink]="['/edit', i._id]" mat-button>Edit</a>
   </mat-expansion-panel>
 </mat-accordion>

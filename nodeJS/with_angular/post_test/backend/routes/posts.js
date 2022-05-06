@@ -12,6 +12,12 @@ router.get("", (req, res, next) => {
   });
 });
 
+router.get("/id", (req, res, next) => {
+  Post.findOne({ _id: req.params.id }).then((result) => {
+    res.json(result);
+  });
+});
+
 router.post("", jsonParser, (req, res, next) => {
   const post = new Post({
     title: req.body.title,

@@ -6,6 +6,7 @@ import { Post } from 'src/models/post';
 @Injectable({ providedIn: 'root' })
 export class PostService {
   private posts: Post[] = [];
+  private post!: Post;
   private postUpdated = new Subject<Post[]>();
   private baseURL = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
@@ -48,7 +49,12 @@ export class PostService {
     this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {});
   }
 
-  getPost(id: string) {}
+  getPost(id: string): Post {
+    this.http.get<Post>(`${this.baseURL}posts/${id}`).subscribe((data) => {
+      this.post = data
+    });
+    return this.post
+  }
 
   updateListener() {
     return this.postUpdated.asObservable();
