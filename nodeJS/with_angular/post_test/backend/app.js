@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const mongoose = require("mongoose");
 const dbURL =
@@ -29,8 +32,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send("set up app server");
+app.get("/posts", (req, res, next) => {
+  Post.find().then(result => {
+      res.status(200).json(result)
+  })
 });
 
 module.exports = app;

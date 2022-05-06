@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Modes } from 'src/enums/modes';
 import { Post } from 'src/models/post';
+import { PostService } from 'src/services/post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -10,7 +11,7 @@ import { Post } from 'src/models/post';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent implements OnInit {  
-  constructor() {}
+  constructor(public postService:PostService) {}
 
   ngOnInit(): void {
 
