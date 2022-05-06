@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/models/post';
-import { PostService } from 'src/services/post.service';
 
 
 @Component({
@@ -10,10 +9,10 @@ import { PostService } from 'src/services/post.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
-  constructor(public postService:PostService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.posts = this.postService.getPosts()
+
   }
 
   onDeleteClick(id:string) {
