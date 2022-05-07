@@ -3,7 +3,7 @@ const app = express();
 
 const mongoose = require("mongoose");
 const dbURL =
-  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/posts?retryWrites=true&w=majority";
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 const postSchema = mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
@@ -29,8 +29,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send("set up app server");
+app.get("/posts", (req, res, next) => {
+  Post.find().then(data => {
+    res.status(200).json(data)    
+  })
 });
 
 module.exports = app;
