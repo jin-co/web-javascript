@@ -7,122 +7,12 @@
 }
 
 body {
-  background-color: #ecf0f1;
-  font-family: 'muli';
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
-  overflow: hidden;
-}
-
-.card {
-  height: 400px;
-  width: 350px;
-  border-radius: 5px;
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+  justify-content: center;
+  align-items: center;
 }
 
-.bg-img {
-  width: 100%;
-  height: 200px;
-  flex: 1 0 200px;  
-  object-fit: cover;
-  object-position: center;
-  border-radius: 5px 5px 0 0;  
+.canvas {
+  border: 1px solid #000;
 }
-
-.title {
-  height: 50px;
-  width: 100%;
-}
-
-.text {
-  height: 30px;
-  width: 100%;
-}
-
-.content-box {
-  height: 100%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 0.9rem;
-}
-
-.bio-box {
-  display: flex;
-}
-
-.bio-picture {
-  height: 100%;  
-  width: 55px;
-  flex-basis: 60px;  
-  margin: 0 10px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-}
-
-.bio-text-box {
-  height: 100%;
-  width: 100%;
-}
-
-.name  {
-  height: 20px;
-  width: 100%;
-}
-
-.date {
-  display: block;
-  height: 15px;
-  width: 100%;
-}
-
-.animated-bg {
-  background-image: linear-gradient(
-    to right,
-    #f6f7f8 0%,
-    #edeef1 10%,
-    #f6f7f8 20%,
-    #f6f7f8 100%
-  );
-  background-size: 200%, 100%;
-  animation: effect 1s infinite;
-}
-
-@keyframes effect {
-  from {
-    background-position: 50% 0;
-  }
-
-  to {
-    background-position: -150% 0;
-  }
-}
-
-/* .animated-bg {
-    background-image: linear-gradient(
-        to right,
-        #e47d34 0%,
-        #edeef1 10%,
-        #2a6481 20%,
-        #f40b97 100%
-    );
-    background-size: 200%, auto;
-    animation: effect 1s linear infinite;
-}
-
-@keyframes effect {
-    from {
-        background-position: -10%, 0;
-    }
-
-    to {
-        background-position: 110% 0;
-    }
-} */

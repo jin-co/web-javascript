@@ -1,26 +1,38 @@
-const bgImg = document.querySelector(".bg-img");
-const title = document.querySelector(".title");
-const text = document.querySelector(".text");
-const bioImg = document.querySelector(".bio-picture");
-const name = document.querySelector(".name");
-const date = document.querySelector(".date");
+const canvas = document.querySelector('.canvas')
 
-const Els = [bgImg, title, text, bioImg, name, date];
+const ctx = canvas.getContext("2d")
+let x
+let y
+let clicked = false
 
-setTimeout(() => {
-  bgImg.src = "https://source.unsplash.com/random";
-  title.innerHTML = "Lorem ipsum dolor sit amet";
-  text.innerHTML =
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi,accusamus.";
-  bioImg.src = "https://source.unsplash.com/user";
-  name.innerHTML = "John";
-  date.innerHTML = "Oct. 05. 3000";
 
-  removeBg();
-}, 1000);
+canvas.addEventListener('mousedown', (e) => {
+  clicked = true
 
-function removeBg() {
-    Els.forEach(el => {
-        el.classList.remove('animated-bg')
-    });
+  x = e.offsetX
+  y = e.offsetY
+})
+
+canvas.addEventListener('mouseup', (e) => {
+  clicked = false
+})
+
+canvas.addEventListener('mousemove', (e) => {
+  if(clicked) {
+    console.log('clicked and move')
+    const x2 = e.offsetX
+    const y2 = e.offsetY
+
+    drawLine(x, y, x2, y2)
+
+    x = x2
+    y = y2
+  }
+})
+
+function drawLine(x1, y1, x2, y2) {
+  ctx.beginPath()
+  ctx.moveTo(x1, y1)
+  ctx.lineTo(x2, y2)
+  ctx.stroke()
 }
