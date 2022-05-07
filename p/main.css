@@ -1,0 +1,25 @@
+img {
+  height: 400px;
+  width: 400px;
+}
+
+.ani {
+  background-image: linear-gradient(
+    to right,
+    #000 10%,
+    #fff 20%,
+    red 90%,
+    blue 100%
+  );
+  background-size: 200%, 100%;
+  animation: effect 1s infinite;
+}
+
+@keyframes effect {
+  from {
+    background-position: 50%;
+  }
+  to {
+    background-position: -150%;
+  }
+}
