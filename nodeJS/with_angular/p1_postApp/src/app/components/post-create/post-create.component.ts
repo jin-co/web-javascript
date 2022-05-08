@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/posts.service';
+import { mimeTypeValidator } from './mime-type.validator';
 
 @Component({
   selector: 'app-post-create',
@@ -36,7 +37,7 @@ export class PostCreateComponent implements OnInit {
       content: new FormControl(null, {
         validators: [Validators.required],
       }),
-      image: new FormControl(null, {}),
+      image: new FormControl(null, { asyncValidators: [mimeTypeValidator] }),
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -142,7 +143,7 @@ export class PostCreateComponent implements OnInit {
   }
 
   rForm!: FormGroup;
-  imagePreview!:string
+  imagePreview!: string;
   get title() {
     return this.rForm.get('title');
   }
@@ -177,15 +178,15 @@ export class PostCreateComponent implements OnInit {
   }
 
   onImagePick(e: Event) {
-    const file = (e.target as HTMLInputElement).files?.[0]
+    const file = (e.target as HTMLInputElement).files?.[0];
     this.rForm.patchValue({ image: file });
     this.rForm.get('image')?.updateValueAndValidity();
 
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result as string
-      console.log('file picker', file, this.imagePreview)
-    }
-    reader.readAsDataURL(file as Blob)    
+      this.imagePreview = reader.result as string;
+      console.log('file picker', file, this.imagePreview);
+    };
+    reader.readAsDataURL(file as Blob);
   }
 }

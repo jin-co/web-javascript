@@ -135,7 +135,8 @@
         <input type="file" #filePicker (change)="onImagePick($event)">
         <button type="button" mat-stroked-button (click)="filePicker.click()">Pick Image</button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && rForm.get('image')?.valid">
         <img [src]="imagePreview" [alt]="rForm.value.title">
       </div>
       <!-- /image load -->
