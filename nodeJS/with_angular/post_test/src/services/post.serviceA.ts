@@ -13,8 +13,8 @@ export class PostService {
     constructor(private http:HttpClient) {}
 
     getPosts() {
-        this.http.get<Post>(`${this.baseURL}posts`).subscribe(result => {
-            this.posts.push(result)
+        this.http.get<Post[]>(`${this.baseURL}posts`).subscribe(result => {
+            this.posts = result
             this.postUpdated.next([...this.posts])
         })
     }
@@ -38,7 +38,13 @@ export class PostService {
     }
 
     updatePost(id:string, title:string, content:string) {}
-    deletePost(id:string) {}
+
+    deletePost(id:string) {
+        this.http.delete(`${this.baseURL}posts/${id}`).subscribe(result => {
+            this.posts.filter(p => p._id !== id)
+            this.postUpdated.next([...this.posts])
+        })
+    }
 
     updateListener() {
         return this.postUpdated.asObservable()
