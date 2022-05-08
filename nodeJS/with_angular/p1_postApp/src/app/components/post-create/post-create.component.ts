@@ -12,8 +12,8 @@ import { PostService } from 'src/app/services/posts.service';
 export class PostCreateComponent implements OnInit {
   newPost: String = '';
 
-  title: String = '';
-  content: String = '';
+  // title: String = '';
+  // content: String = '';
 
   /***spinner */
   isLoading = false;
@@ -141,6 +141,8 @@ export class PostCreateComponent implements OnInit {
   }
 
   rForm!: FormGroup;
+  get title() {return this.rForm.get('title')}
+  get content() {return this.rForm.get('content')}
   onSubmitReactive() {
     if (this.rForm.valid) {
       /***spinner */

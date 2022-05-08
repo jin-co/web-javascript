@@ -102,64 +102,33 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form
+    [formGroup]="rForm"
     action=""
-    (submit)="onSubmit(postForm)"
-    #postForm="ngForm"
+    (submit)="onSubmitReactive()"
     *ngIf="!isLoading"
   >
     <mat-form-field>
-      <!-- <input
-        matInput
-        type="text"
-        ngModel
-        placeholder="Title"
-        name="title"
-        placeholder="title"
-        required
-        #title="ngModel"
-      /> -->
       <input
+        formControlName="title"
         matInput
         type="text"
-        [ngModel]="post?.title"
-        placeholder="Title"
-        name="title"
+        placeholder="Title"        
         placeholder="title"
-        required
-        #title="ngModel"
       />
-      <mat-error *ngIf="title.invalid">Title Required</mat-error>
+      <mat-error *ngIf="title?.invalid">Title Required</mat-error>
+      <mat-error *ngIf="rForm.get('title')?.invalid">Title Required</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-      <!-- <textarea
-        matInput
-        name="content"
-        placeholder="content"
-        id=""
-        cols="30"
-        rows="10"
-        #inputVal="ngModel"
-        ngModel
-        required        
-      ></textarea> -->
+    <mat-form-field>      
       <textarea
-        matInput
-        name="content"
+      [formControlName]="'content'"
+        matInput        
         placeholder="content"
         id=""
         cols="30"
         rows="10"
-        #inputVal="ngModel"
-        [ngModel]="post?.content"
-        required
       ></textarea>
-      <mat-error *ngIf="inputVal.invalid">Content Required</mat-error>
-      <p>{{ inputVal.value }}</p>
-
-      <!-- <button mat-raised-button color="accent" (click)="onClick()">
-        Click
-      </button> -->
+      <mat-error *ngIf="content?.invalid">Content Required</mat-error>      
 
       <!-- image load -->
       <div>
