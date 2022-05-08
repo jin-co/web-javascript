@@ -31,8 +31,8 @@ export class PostService {
             title: title,
             content: content
         }
-        this.http.post(`${this.baseURL}posts`, post).subscribe((data) => {
-            this.posts.push(post)
+        this.http.post<Post>(`${this.baseURL}posts`, post).subscribe((data) => {
+            this.posts.push(data)
             this.postUpdated.next([...this.posts])
         })
     }
@@ -40,9 +40,10 @@ export class PostService {
     updatePost(id:string, title:string, content:string) {}
 
     deletePost(id:string) {
-        this.http.delete(`${this.baseURL}posts/${id}`).subscribe(result => {
-            this.posts.filter(p => p._id !== id)
-            this.postUpdated.next([...this.posts])
+        this.http.delete<Post>(`${this.baseURL}posts/${id}`).subscribe(result => {
+            const deletedPost = this.posts.filter(p => p._id !== id)
+            this.posts = deletedPost
+            this.postUpdated.next(this.posts)
         })
     }
 
