@@ -38,7 +38,11 @@ app.get("/posts", (req, res, next) => {
   });
 });
 
-app.get("/posts/:id", jsonParser, (req, res, next) => {});
+app.get("/posts/:id", jsonParser, (req, res, next) => {
+  Post.findOne({_id: req.params.id}).then(result => {
+    res.status(200).json(result)
+  })
+});
 
 app.post("/posts", jsonParser, (req, res, next) => {
   const post = new Post ({
@@ -57,7 +61,16 @@ app.delete("/posts/:id", (req, res, next) => {
   })
 });
 
-app.put("/posts/:id", jsonParser, (req, res, next) => {});
+app.put("/posts/:id", jsonParser, (req, res, next) => {
+  const post = new Post({
+    _id: req.body._id,
+    title: req.body.title,
+    content:req.body.connect
+  })
+  Post.put({_id:req.params.id}, post).then(result => {
+    res.status(200).json(result)
+  })
+});
 
 
 module.exports = app;

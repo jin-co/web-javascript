@@ -13,6 +13,7 @@ import { PostService } from 'src/services/post.serviceA';
 export class PostCreateComponent implements OnInit {
   id!: string;
   mode: string = 'create';
+  post!:Post
 
   constructor(
     public postService: PostService,
@@ -23,6 +24,20 @@ export class PostCreateComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((pm: ParamMap) => {
       if (pm.has('id')) {
         this.mode = 'edit';
+        let postId = pm.get('id')
+        console.log('***param id', postId)
+        if (postId !== null) {
+          this.id = postId
+          console.log('***this id', this.id)
+          this.postService.getPost(this.id).subscribe((data) => {
+            this.post = {
+              _id: data._id,
+              title: data.title,
+              content: data.content
+            }
+          })
+          console.log('***post', this.post)
+        }
       } else {
         this.mode = 'create';
       }
@@ -31,7 +46,11 @@ export class PostCreateComponent implements OnInit {
 
   onClick(form: NgForm) {
     if (form.valid) {
-      this.postService.setPosts(form.value.title, form.value.content);
+      if(this.mode === 'create') {
+        this.postService.setPosts(form.value.title, form.value.content);
+      } else {
+        this.postService.updatePost(this.id, form.value.title, form.value.content);
+      }
     } else {
       return;
     }
