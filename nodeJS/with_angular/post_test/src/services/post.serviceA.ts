@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { Post } from "src/models/post";
 
@@ -10,7 +11,7 @@ export class PostService {
     postUpdated = new Subject<Post[]>()
     private baseURL = 'http://localhost:3000/'
 
-    constructor(private http:HttpClient) {}
+    constructor(private http:HttpClient, private router:Router) {}
 
     getPosts() {
         this.http.get<Post[]>(`${this.baseURL}posts`).subscribe(result => {
@@ -34,6 +35,7 @@ export class PostService {
         this.http.post<Post>(`${this.baseURL}posts`, post).subscribe((data) => {
             this.posts.push(data)
             this.postUpdated.next([...this.posts])
+            this.router.navigate(['/'])
         })
     }
 
@@ -44,6 +46,7 @@ export class PostService {
             const deletedPost = this.posts.filter(p => p._id !== id)
             this.posts = deletedPost
             this.postUpdated.next(this.posts)
+            this.router.navigate(['/'])
         })
     }
 

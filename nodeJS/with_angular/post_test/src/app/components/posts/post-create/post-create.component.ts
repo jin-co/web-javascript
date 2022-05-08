@@ -10,18 +10,30 @@ import { PostService } from 'src/services/post.serviceA';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css'],
 })
-export class PostCreateComponent implements OnInit {  
-  constructor(public postService:PostService) {}
+export class PostCreateComponent implements OnInit {
+  id!: string;
+  mode: string = 'create';
+
+  constructor(
+    public postService: PostService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-
+    this.activatedRoute.paramMap.subscribe((pm: ParamMap) => {
+      if (pm.has('id')) {
+        this.mode = 'edit';
+      } else {
+        this.mode = 'create';
+      }
+    });
   }
 
   onClick(form: NgForm) {
-    if(form.valid) {
-      this.postService.setPosts(form.value.title, form.value.content)
+    if (form.valid) {
+      this.postService.setPosts(form.value.title, form.value.content);
     } else {
-      return
+      return;
     }
   }
 }
