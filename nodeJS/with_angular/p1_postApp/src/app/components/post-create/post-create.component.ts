@@ -142,6 +142,7 @@ export class PostCreateComponent implements OnInit {
   }
 
   rForm!: FormGroup;
+  imagePreview!:string
   get title() {
     return this.rForm.get('title');
   }
@@ -176,9 +177,15 @@ export class PostCreateComponent implements OnInit {
   }
 
   onImagePick(e: Event) {
-    const file = (e.target as HTMLInputElement).files;
+    const file = (e.target as HTMLInputElement).files?.[0]
     this.rForm.patchValue({ image: file });
     this.rForm.get('image')?.updateValueAndValidity();
-    console.log('file picker', file)
+
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.imagePreview = reader.result as string
+      console.log('file picker', file, this.imagePreview)
+    }
+    reader.readAsDataURL(file as Blob)    
   }
 }

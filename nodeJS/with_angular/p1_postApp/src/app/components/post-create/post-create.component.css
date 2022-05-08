@@ -13,3 +13,11 @@ mat-spinner {
 input[type= "file"] {
     visibility: hidden;
 }
+
+.image-preview {
+    height: 5rem;    
+}
+
+.image-preview img {
+    max-height: 100%;
+}
