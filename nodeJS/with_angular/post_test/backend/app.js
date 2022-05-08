@@ -41,7 +41,14 @@ app.get("/posts", (req, res, next) => {
 app.get("/posts/:id", jsonParser, (req, res, next) => {});
 
 app.post("/posts", jsonParser, (req, res, next) => {
-  
+  const post = new Post ({
+    title: req.body.title,
+    content: req.body.content
+  })
+
+  post.save().then(result => {
+    res.status(200).json(result)
+  })
 });
 
 app.delete("/posts/:id", jsonParser, (req, res, next) => {});
