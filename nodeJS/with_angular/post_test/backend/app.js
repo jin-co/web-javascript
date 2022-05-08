@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const jsonParser = bodyParser.json();
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 const mongoose = require("mongoose");
 const dbURL =
@@ -30,9 +33,20 @@ app.use((req, res, next) => {
 });
 
 app.get("/posts", (req, res, next) => {
-  Post.find().then(data => {
-    res.status(200).json(data)    
-  })
+  Post.find().then((data) => {
+    res.status(200).json(data);
+  });
 });
+
+app.get("/posts/:id", jsonParser, (req, res, next) => {});
+
+app.post("/posts", jsonParser, (req, res, next) => {
+  
+});
+
+app.delete("/posts/:id", jsonParser, (req, res, next) => {});
+
+app.put("/posts/:id", jsonParser, (req, res, next) => {});
+
 
 module.exports = app;
