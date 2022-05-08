@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/posts.service';
@@ -28,9 +28,18 @@ export class PostCreateComponent implements OnInit {
   constructor(public postService: PostService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // reactive validation
+    this.rForm = new FormGroup({
+      title: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(3)]
+      }),
+      content: new FormControl(null, {
+        validators: [Validators.required]
+      })
+    });
+
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('id')) {
-        //additional param defined in the 'app-routing-module.ts'
+      if (paramMap.has('id')) {        
         this.mode = 'edit';
         let paramId = paramMap.get('id');
         if (paramId !== null) {
@@ -38,8 +47,7 @@ export class PostCreateComponent implements OnInit {
         }
         /***spinner */
         this.isLoading = true;
-        /***spinner */
-        // this.post = this.postService.getAPost(this.id);
+        /***spinner */        
         this.postService.getAPost(this.id).subscribe((data) => {
           /***spinner */
           this.isLoading = false;
@@ -49,12 +57,47 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
+
+          // initializing the form
+          this.rForm.setValue({
+            'title': this.post.title,
+            'content': this.post.content
+          }) 
         });
       } else {
         this.mode = 'create';
         this.id = '';
       }
     });
+    // reactive validation
+
+    // this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    //   if (paramMap.has('id')) {
+    //     //additional param defined in the 'app-routing-module.ts'
+    //     this.mode = 'edit';
+    //     let paramId = paramMap.get('id');
+    //     if (paramId !== null) {
+    //       this.id = paramId;
+    //     }
+    //     /***spinner */
+    //     this.isLoading = true;
+    //     /***spinner */
+    //     // this.post = this.postService.getAPost(this.id);
+    //     this.postService.getAPost(this.id).subscribe((data) => {
+    //       /***spinner */
+    //       this.isLoading = false;
+    //       /***spinner */
+    //       this.post = {
+    //         _id: data._id,
+    //         title: data.title,
+    //         content: data.content,
+    //       };
+    //     });
+    //   } else {
+    //     this.mode = 'create';
+    //     this.id = '';
+    //   }
+    // });
   }
   // using two way validate
   // onClick() {
@@ -95,5 +138,31 @@ export class PostCreateComponent implements OnInit {
     } else {
       return;
     }
+  }
+
+  rForm!: FormGroup;
+  onSubmitReactive() {
+    if (this.rForm.valid) {
+      /***spinner */
+      this.isLoading = true;
+      /***spinner */
+
+      // using service
+      if (this.mode === 'create') {
+        this.postService.setPost(this.rForm.value.title, this.rForm.value.content);
+      } else {
+        console.log('edit');
+        this.postService.updatePost(
+          this.id,
+          this.rForm.value.title,
+          this.rForm.value.content
+        );
+      }
+
+      this.rForm.reset();
+    } else {
+      return;
+    }
+
   }
 }

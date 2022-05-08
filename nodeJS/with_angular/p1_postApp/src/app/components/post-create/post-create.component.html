@@ -24,9 +24,89 @@
 </mat-card> -->
 
 <!-- using form -->
+
+<!-- <mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form
+    action=""
+    (submit)="onSubmit(postForm)"
+    #postForm="ngForm"
+    *ngIf="!isLoading"
+  >
+    <mat-form-field> -->
+      <!-- <input
+        matInput
+        type="text"
+        ngModel
+        placeholder="Title"
+        name="title"
+        placeholder="title"
+        required
+        #title="ngModel"
+      /> -->
+      <!-- <input
+        matInput
+        type="text"
+        [ngModel]="post?.title"
+        placeholder="Title"
+        name="title"
+        placeholder="title"
+        required
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid">Title Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field> -->
+      <!-- <textarea
+        matInput
+        name="content"
+        placeholder="content"
+        id=""
+        cols="30"
+        rows="10"
+        #inputVal="ngModel"
+        ngModel
+        required        
+      ></textarea> -->
+      <!-- <textarea
+        matInput
+        name="content"
+        placeholder="content"
+        id=""
+        cols="30"
+        rows="10"
+        #inputVal="ngModel"
+        [ngModel]="post?.content"
+        required
+      ></textarea>
+      <mat-error *ngIf="inputVal.invalid">Content Required</mat-error>
+      <p>{{ inputVal.value }}</p> -->
+
+      <!-- <button mat-raised-button color="accent" (click)="onClick()">
+        Click
+      </button> -->
+
+      <!-- image load -->
+      <!-- <div>
+        <input type="file" #filePicker>
+        <button type="button" mat-stroked-button (click)="filePicker.click">Pick Image</button>
+      </div> -->
+      <!-- /image load -->
+
+      <!-- <button mat-raised-button color="accent" type="submit">Click</button>
+    </mat-form-field>
+  </form>
+</mat-card> -->
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form action="" (submit)="onSubmit(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+  <form
+    action=""
+    (submit)="onSubmit(postForm)"
+    #postForm="ngForm"
+    *ngIf="!isLoading"
+  >
     <mat-form-field>
       <!-- <input
         matInput
@@ -72,7 +152,7 @@
         rows="10"
         #inputVal="ngModel"
         [ngModel]="post?.content"
-        required        
+        required
       ></textarea>
       <mat-error *ngIf="inputVal.invalid">Content Required</mat-error>
       <p>{{ inputVal.value }}</p>
@@ -80,6 +160,13 @@
       <!-- <button mat-raised-button color="accent" (click)="onClick()">
         Click
       </button> -->
+
+      <!-- image load -->
+      <div>
+        <input type="file" #filePicker>
+        <button type="button" mat-stroked-button (click)="filePicker.click">Pick Image</button>
+      </div>
+      <!-- /image load -->
 
       <button mat-raised-button color="accent" type="submit">Click</button>
     </mat-form-field>
