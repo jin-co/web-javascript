@@ -44,7 +44,9 @@ export class PostService {
       content: content,
     };
 
-    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((result) => {});
+    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((result) => {        
+        this.router.navigate(['/']);
+    });
   }
 
   deletePost(id: string) {

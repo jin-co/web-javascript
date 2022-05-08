@@ -67,7 +67,7 @@ app.put("/posts/:id", jsonParser, (req, res, next) => {
     title: req.body.title,
     content:req.body.connect
   })
-  Post.put({_id:req.params.id}, post).then(result => {
+  Post.updateOne({_id:req.params.id}, post).then(result => {
     res.status(200).json(result)
   })
 });
