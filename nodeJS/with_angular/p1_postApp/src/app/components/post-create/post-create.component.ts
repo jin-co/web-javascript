@@ -31,15 +31,16 @@ export class PostCreateComponent implements OnInit {
     // reactive validation
     this.rForm = new FormGroup({
       title: new FormControl(null, {
-        validators: [Validators.required, Validators.minLength(3)]
+        validators: [Validators.required, Validators.minLength(3)],
       }),
       content: new FormControl(null, {
-        validators: [Validators.required]
-      })
+        validators: [Validators.required],
+      }),
+      image: new FormControl(null, {}),
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('id')) {        
+      if (paramMap.has('id')) {
         this.mode = 'edit';
         let paramId = paramMap.get('id');
         if (paramId !== null) {
@@ -47,7 +48,7 @@ export class PostCreateComponent implements OnInit {
         }
         /***spinner */
         this.isLoading = true;
-        /***spinner */        
+        /***spinner */
         this.postService.getAPost(this.id).subscribe((data) => {
           /***spinner */
           this.isLoading = false;
@@ -60,9 +61,9 @@ export class PostCreateComponent implements OnInit {
 
           // initializing the form
           this.rForm.setValue({
-            'title': this.post.title,
-            'content': this.post.content
-          }) 
+            title: this.post.title,
+            content: this.post.content,
+          });
         });
       } else {
         this.mode = 'create';
@@ -141,8 +142,12 @@ export class PostCreateComponent implements OnInit {
   }
 
   rForm!: FormGroup;
-  get title() {return this.rForm.get('title')}
-  get content() {return this.rForm.get('content')}
+  get title() {
+    return this.rForm.get('title');
+  }
+  get content() {
+    return this.rForm.get('content');
+  }
   onSubmitReactive() {
     if (this.rForm.valid) {
       /***spinner */
@@ -151,7 +156,10 @@ export class PostCreateComponent implements OnInit {
 
       // using service
       if (this.mode === 'create') {
-        this.postService.setPost(this.rForm.value.title, this.rForm.value.content);
+        this.postService.setPost(
+          this.rForm.value.title,
+          this.rForm.value.content
+        );
       } else {
         console.log('edit');
         this.postService.updatePost(
@@ -165,6 +173,12 @@ export class PostCreateComponent implements OnInit {
     } else {
       return;
     }
+  }
 
+  onImagePick(e: Event) {
+    const file = (e.target as HTMLInputElement).files;
+    this.rForm.patchValue({ image: file });
+    this.rForm.get('image')?.updateValueAndValidity();
+    console.log('file picker', file)
   }
 }

@@ -132,8 +132,8 @@
 
       <!-- image load -->
       <div>
-        <input type="file" #filePicker>
-        <button type="button" mat-stroked-button (click)="filePicker.click">Pick Image</button>
+        <input type="file" #filePicker (change)="onImagePick($event)">
+        <button type="button" mat-stroked-button (click)="filePicker.click()">Pick Image</button>
       </div>
       <!-- /image load -->
 
