@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
 });
-const Post = mongoose.model("Post", postSchema);
+const Post = require('../backend/models/post')
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/posts?retryWrites=true&w=majority";
 mongoose
