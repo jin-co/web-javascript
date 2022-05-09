@@ -28,7 +28,14 @@ body {
   color: var(--font-white);
   padding: 0 200px;
   position: fixed;
-  z-index: 3;
+  z-index: 6;
+  transition: .4s ease-in;
+}
+
+header.light .nav {
+  height: 100px;
+  background-color: var(--bg-white);
+  color: var(--font-black);
 }
 
 .nav-item-box {
@@ -42,6 +49,11 @@ body {
 .nav-item-box li a {
   text-decoration: none;
   color: var(--font-white);
+}
+
+header.light .nav-item-box li a {
+  text-decoration: none;
+  color: var(--font-black);
 }
 
 
