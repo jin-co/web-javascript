@@ -1,16 +1,15 @@
 <mat-card>
     <mat-form-field>
-        <input matInput type="text">
+        <input [(ngModel)]="inputTitle" matInput type="text" #title>
     </mat-form-field>
 
     <mat-form-field>
-        <textarea matInput name="" id="" cols="30" rows="10"></textarea>
+        <textarea [(ngModel)]="inputContent" matInput name="" id="" cols="30" rows="10"></textarea>
     </mat-form-field>
 
     <button (click)="onClick()" mat-stroked-button>Click</button>
 </mat-card>
 
 
-<p> {{ inputTitle }} </p>
-<p> {{ inputContent }} </p>
-<input type="text">
+<p> {{ outputTitle }} </p>
+<p> {{ outputContent }} </p>
