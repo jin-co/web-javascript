@@ -13,11 +13,12 @@ router.get("", (req, res, next) => {
  })
  
  router.get("/:id", (req, res, next) => {
- 
+    Post.findOne({_id:req.params.id}).then(data => {
+        res.status(200).json(data)
+    })
  })
  
  router.post("", jsonParser, (req, res, next) => {
-     console.log(req.body)
     const post = new Post({
         title: req.body.title,
         content: req.body.content
@@ -28,7 +29,9 @@ router.get("", (req, res, next) => {
  })
  
  router.delete("/:id", (req, res, next) => {
- 
+    Post.deleteOne({_id: req.params.id}).then((data) => {
+        res.status(200).json("deleted")
+    })
  })
  
  router.put("/:id", (req, res, next) => {

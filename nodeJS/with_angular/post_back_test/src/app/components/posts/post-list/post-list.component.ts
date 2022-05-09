@@ -17,4 +17,9 @@ export class PostListComponent implements OnInit {
       this.posts = data
     })
   }
+
+  onDelete(id:string) {
+    console.log('front coming id', id)
+    this.postService.deletePost(id)
+  }
 }

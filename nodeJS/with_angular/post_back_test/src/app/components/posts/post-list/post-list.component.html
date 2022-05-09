@@ -11,5 +11,8 @@
     <p>
       {{ i.content }}
     </p>
+
+    <a [routerLink]="['create', i._id]">Edit</a>
+    <button (click)="onDelete(i._id)">Delete</button>
   </mat-expansion-panel>
 </mat-accordion>
