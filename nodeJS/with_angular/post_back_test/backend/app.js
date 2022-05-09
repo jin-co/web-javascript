@@ -30,4 +30,25 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   res.send("hvhvhvh");
 });
+
+app.get("/posts", (req, res, next) => {
+    
+})
+
+app.get("/posts/:id", (req, res, next) => {
+
+})
+
+app.post("/posts", (req, res, next) => {
+
+})
+
+app.delete("/posts/:id", (req, res, next) => {
+
+})
+
+app.put("/posts/:id", (req, res, next) => {
+
+})
+
 module.exports = app;
