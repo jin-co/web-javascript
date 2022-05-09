@@ -24,8 +24,16 @@ export class PostService {
 
     }
 
-    setPost() {
-
+    setPost(title:string, content:string) {
+        const post = {
+            _id: '',
+            title: title,
+            content: content
+        }
+        this.http.post(`${this.baseURL}posts`, post).subscribe(data => {
+            this.posts.push(post)
+            this.postUpdated.next([...this.posts])
+        })
     }
 
     deletePost() {

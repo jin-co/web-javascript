@@ -1,11 +1,8 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const postSchema = mongoose.Schema({
-//   title: { type: String, required: true },
-//   content: { type: String, required: true },
-// });
-const Post = require('../backend/models/post')
+const postRouter = require("./routes/post");
+
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
@@ -27,26 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/posts", (req, res, next) => {
-   Post.find().then(data => {
-       res.status(200).json(data)
-   }) 
-})
-
-app.get("/posts/:id", (req, res, next) => {
-
-})
-
-app.post("/posts", (req, res, next) => {
-
-})
-
-app.delete("/posts/:id", (req, res, next) => {
-
-})
-
-app.put("/posts/:id", (req, res, next) => {
-
-})
+app.use("/posts", postRouter)
 
 module.exports = app;
