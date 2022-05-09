@@ -1,15 +1,36 @@
 <mat-card>
+  <form action="" (submit)="onClick(postForm)" #postForm="ngForm">
     <mat-form-field>
-        <input [(ngModel)]="inputTitle" matInput type="text" #title>
+      <input
+        [(ngModel)]="inputTitle"
+        matInput
+        type="text"
+        #title="ngModel"
+        required
+        name="title"
+      />
+
+      <mat-error *ngIf="title.invalid">Name Required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-        <textarea [(ngModel)]="inputContent" matInput name="" id="" cols="30" rows="10"></textarea>
+      <textarea
+        [(ngModel)]="inputContent"
+        matInput
+        name="content"
+        id=""
+        cols="30"
+        rows="10"
+        #content="ngModel"
+        required
+      ></textarea>
+
+      <mat-error *ngIf="content.invalid">Content Required</mat-error>
     </mat-form-field>
 
-    <button (click)="onClick()" mat-stroked-button>Click</button>
+    <button type="submit" mat-stroked-button>Click</button>
+  </form>
 </mat-card>
 
-
-<p> {{ outputTitle }} </p>
-<p> {{ outputContent }} </p>
+<p>{{ outputTitle }}</p>
+<p>{{ outputContent }}</p>
