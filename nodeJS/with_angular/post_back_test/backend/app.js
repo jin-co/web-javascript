@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const postSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-});
+// const postSchema = mongoose.Schema({
+//   title: { type: String, required: true },
+//   content: { type: String, required: true },
+// });
 const Post = require('../backend/models/post')
 const dbURL =
-  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/posts?retryWrites=true&w=majority";
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
   .connect(dbURL)
   .then(() => console.log("connected"))
@@ -27,12 +27,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send("hvhvhvh");
-});
-
 app.get("/posts", (req, res, next) => {
-    
+   Post.find().then(data => {
+       res.status(200).json(data)
+   }) 
 })
 
 app.get("/posts/:id", (req, res, next) => {
