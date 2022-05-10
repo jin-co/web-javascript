@@ -22,7 +22,8 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {   
     this.form = new FormGroup({
       title: new FormControl(null, {validators: [Validators.required]}),
-      content: new FormControl(null, {validators: [Validators.required]})
+      content: new FormControl(null, {validators: [Validators.required]}),
+      image: new FormControl(null)
     })
     
 
@@ -40,7 +41,12 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
-        });
+
+          this.form.setValue({
+            'title': this.post.title,
+            'content': this.post.content
+          })
+        });      
         
       } else {
         this.mode = 'create';
@@ -73,4 +79,25 @@ export class PostCreateComponent implements OnInit {
     }
   }
 
+  imgPreview!:string
+  onImageUpload(e:Event) {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    this.form.patchValue({image: file})
+    this.form.get('image')?.updateValueAndValidity()
+
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.imgPreview = reader.result as string      
+    }
+    reader.readAsDataURL(file as Blob)
+
+    const file1 = (e.target as HTMLInputElement).files?.[0]
+    this.form.patchValue({image: file})
+    this.form.get('image')?.updateValueAndValidity()
+    const reader1 = new FileReader()
+    reader1.onload = () => {
+      this.imgPreview = reader1.result as string
+    }
+    reader1.readAsDataURL(file as Blob)
+  }
 }
