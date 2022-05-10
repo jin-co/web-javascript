@@ -28,11 +28,6 @@
     <mat-error *ngIf="content.invalid">Content Required</mat-error>
   </mat-form-field>
 
-  <div>
-    <button mat-stroked-button type="button" (click)="fileUpload.click()">File Add</button>
-    <input #fileUpload type="file" (change)="onFileAdd($event)">
-  </div>
-
   <button type="submit" mat-stroked-button>Click</button>
 </form>
 </mat-card>
