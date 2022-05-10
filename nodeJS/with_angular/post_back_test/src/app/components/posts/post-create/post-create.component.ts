@@ -43,6 +43,7 @@ export class PostCreateComponent implements OnInit {
       if(this.mode === 'create') {
         this.postService.setPost(form.value.title, form.value.content)
       } else {
+        console.log('front update', this.id)
         this.postService.updatePost(this.id, form.value.title, form.value.content)
       }
       form.resetForm()

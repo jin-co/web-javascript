@@ -18,12 +18,11 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, FETCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, DELETE, PUT, OPTIONS"
   );
-
   next();
 });
 
-app.use("/posts", postRouter)
+app.use("/posts", postRouter);
 
 module.exports = app;
