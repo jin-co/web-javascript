@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;    
+}
+
+.box {
+  height: 100%;
+  width: 100%;  
+  display: flex;
+}
+
+.box-left {
+  height: 100%;
+  width: 40%;  
+}
+
+.box-left div {
+  background-color: red;
+  height: 100%;  
+  
+}
+
+.box-right {
+  height: 100%;
+  width: 100%;  
+}
+
+.box-right div {
+  background-color: black;
+  height: 100%;    
+}
