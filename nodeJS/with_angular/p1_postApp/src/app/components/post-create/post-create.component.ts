@@ -111,37 +111,38 @@ export class PostCreateComponent implements OnInit {
   //   this.postCreated.emit(post)
   // }
 
-  // using form
-  onSubmit(postForm: NgForm) {
-    if (postForm.valid) {
-      // const post:Post = {
-      //   title: postForm.value.title,
-      //   content: postForm.value.content
-      // }
-      // this.postCreated.emit(post)
+  // **using form
+  // onSubmit(postForm: NgForm) {
+  //   if (postForm.valid) {
+  //     // const post:Post = {
+  //     //   title: postForm.value.title,
+  //     //   content: postForm.value.content
+  //     // }
+  //     // this.postCreated.emit(post)
 
-      /***spinner */
-      this.isLoading = true;
-      /***spinner */
+  //     /***spinner */
+  //     this.isLoading = true;
+  //     /***spinner */
 
-      // using service
-      if (this.mode === 'create') {
-        this.postService.setPost(postForm.value.title, postForm.value.content);
-      } else {
-        console.log('edit');
-        this.postService.updatePost(
-          this.id,
-          postForm.value.title,
-          postForm.value.content
-        );
-      }
+  //     // using service
+  //     if (this.mode === 'create') {
+  //       this.postService.setPost(postForm.value.title, postForm.value.content);
+  //     } else {
+  //       console.log('edit');
+  //       this.postService.updatePost(
+  //         this.id,
+  //         postForm.value.title,
+  //         postForm.value.content
+  //       );
+  //     }
 
-      postForm.resetForm();
-    } else {
-      return;
-    }
-  }
+  //     postForm.resetForm();
+  //   } else {
+  //     return;
+  //   }
+  // }
 
+  // **using reactive form
   rForm!: FormGroup;
   imagePreview!: string;
   get title() {
@@ -160,7 +161,8 @@ export class PostCreateComponent implements OnInit {
       if (this.mode === 'create') {
         this.postService.setPost(
           this.rForm.value.title,
-          this.rForm.value.content
+          this.rForm.value.content,
+          this.rForm.value.image
         );
       } else {
         console.log('edit');
