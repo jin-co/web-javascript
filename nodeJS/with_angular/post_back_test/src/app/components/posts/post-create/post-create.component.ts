@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post.service';
+import { mimeTypeValidator } from './mime-type.validator';
 
 @Component({
   selector: 'app-post-create',
@@ -19,13 +20,12 @@ export class PostCreateComponent implements OnInit {
     private activeRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.form = new FormGroup({
-      title: new FormControl(null, {validators: [Validators.required]}),
-      content: new FormControl(null, {validators: [Validators.required]}),
-      image: new FormControl(null)
-    })
-    
+      title: new FormControl(null, { validators: [Validators.required] }),
+      content: new FormControl(null, { validators: [Validators.required] }),
+      image: new FormControl(null, { asyncValidators: mimeTypeValidator }),
+    });
 
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
       if (pm.has('id')) {
@@ -43,11 +43,10 @@ export class PostCreateComponent implements OnInit {
           };
 
           this.form.setValue({
-            'title': this.post.title,
-            'content': this.post.content
-          })
-        });      
-        
+            title: this.post.title,
+            content: this.post.content,
+          });
+        });
       } else {
         this.mode = 'create';
       }
@@ -66,29 +65,36 @@ export class PostCreateComponent implements OnInit {
   //   }
   // }
 
-  form!:FormGroup
-    onClick() {
-    if(this.form.valid) {
-      if(this.mode === 'create') {
-        this.postService.setPost(this.form.value.title, this.form.value.content)
+  form!: FormGroup;
+  onClick() {
+    if (this.form.valid) {
+      if (this.mode === 'create') {
+        this.postService.setPost(
+          this.form.value.title,
+          this.form.value.content
+        );
       } else {
-        console.log('front update', this.id)
-        this.postService.updatePost(this.id, this.form.value.title, this.form.value.content)
+        console.log('front update', this.id);
+        this.postService.updatePost(
+          this.id,
+          this.form.value.title,
+          this.form.value.content
+        );
       }
-      this.form.reset()
+      this.form.reset();
     }
   }
 
-  imgPreview!:string
-  onImageUpload(e:Event) {
-    const file = (e.target as HTMLInputElement).files?.[0]
-    this.form.patchValue({image: file})
-    this.form.get('image')?.updateValueAndValidity()
+  imgPreview!: string;
+  onImageUpload(e: Event) {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image')?.updateValueAndValidity();
 
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = () => {
-      this.imgPreview = reader.result as string      
-    }
-    reader.readAsDataURL(file as Blob)
+      this.imgPreview = reader.result as string;
+    };
+    reader.readAsDataURL(file as Blob);
   }
 }

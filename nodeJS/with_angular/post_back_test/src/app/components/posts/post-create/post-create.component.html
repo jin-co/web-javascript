@@ -25,7 +25,7 @@
   </mat-form-field>
 
   <div>
-    <img [src]="imgPreview" alt="">
+    <img [src]="imgPreview" alt="" *ngIf="imgPreview && form.get('image')?.valid">
     <input type="file" (change)="onImageUpload($event)" #imgUpload>
     <button type="button" mat-button (click)="imgUpload.click()">Add Image</button>
   </div>
