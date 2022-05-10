@@ -19,7 +19,13 @@ export class PostCreateComponent implements OnInit {
     private activeRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {    
+  ngOnInit(): void {   
+    this.form = new FormGroup({
+      title: new FormControl(null, {validators: [Validators.required]}),
+      content: new FormControl(null, {validators: [Validators.required]})
+    })
+    
+
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
       if (pm.has('id')) {
         this.mode = 'edit';
@@ -54,15 +60,16 @@ export class PostCreateComponent implements OnInit {
   //   }
   // }
 
-    onClick(form: NgForm) {
-    if(form.valid) {
+  form!:FormGroup
+    onClick() {
+    if(this.form.valid) {
       if(this.mode === 'create') {
-        this.postService.setPost(form.value.title, form.value.content)
+        this.postService.setPost(this.form.value.title, this.form.value.content)
       } else {
         console.log('front update', this.id)
-        this.postService.updatePost(this.id, form.value.title, form.value.content)
+        this.postService.updatePost(this.id, this.form.value.title, this.form.value.content)
       }
-      form.resetForm()
+      this.form.reset()
     }
   }
 
