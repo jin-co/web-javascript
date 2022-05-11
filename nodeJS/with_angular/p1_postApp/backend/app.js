@@ -28,6 +28,10 @@ mongoose
 //     res.send("heih")
 // })
 
+const path = require('path') //ensure the path structure on different OS has the same path
+app.use("/images", express.static(path.join("backend/images"))) // this allows access to static files folder
+
+
 // dealing with CORS error
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

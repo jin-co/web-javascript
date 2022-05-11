@@ -69,13 +69,27 @@ export class PostService {
     //     this.router.navigate(["/"])
     //   });
 
+    // this.http
+    //   .post<{ message: string; postId: string }>(`${this.baseUrl}posts`, post)
+    //   .subscribe((data) => {
+    //     const post: Post = {
+    //       _id: data.postId,
+    //       title: title,
+    //       content: content,
+    //     };
+    //     this.posts.push(post);
+    //     this.postUpdated.next([...this.posts]);
+    //     this.router.navigate(['/']);
+    //   });
+
     this.http
-      .post<{ message: string; postId: string }>(`${this.baseUrl}posts`, post)
+      .post<{ message: string; post: Post }>(`${this.baseUrl}posts`, post)
       .subscribe((data) => {
         const post: Post = {
-          _id: data.postId,
+          _id: data.post._id,
           title: title,
           content: content,
+          imagePath: data.post.imagePath
         };
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
@@ -102,10 +116,17 @@ export class PostService {
   }
 
   updatePost(id: string, title: string, content: string) {
+    // const post: Post = {
+    //   _id: id,
+    //   title: title,
+    //   content: content,
+    // };
+
     const post: Post = {
       _id: id,
       title: title,
       content: content,
+      imagePath: ''
     };
     console.log('post created front', post);
     console.log(`${this.baseUrl}posts/${id}`);

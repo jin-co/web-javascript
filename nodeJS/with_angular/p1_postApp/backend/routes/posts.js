@@ -34,14 +34,25 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const router = express.Router();
 
 router.post("", jsonParser, multer({storage: storage}).single("image"), (req, res, next) => {
+  const url = req.protocol + '://' + req.get("host")
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    imagePath: url + "/images/" + req.file.filename
   });
   post.save().then((result) => {
     res.status(201).json({
       message: "post added",
-      postId: result._id,
+      // postId: result._id,      
+      post: {
+        // _id: result._id,
+        // title: result.title,
+        // content: result.console,
+        // imagePath: result.imagePath
+
+        ...result,
+        _id: result._id
+      }
     });
   });
 });

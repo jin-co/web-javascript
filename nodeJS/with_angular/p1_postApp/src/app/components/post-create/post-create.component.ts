@@ -37,7 +37,8 @@ export class PostCreateComponent implements OnInit {
       content: new FormControl(null, {
         validators: [Validators.required],
       }),
-      image: new FormControl(null, { asyncValidators: [mimeTypeValidator] }),
+      // image: new FormControl(null, { asyncValidators: [mimeTypeValidator] }),
+      image: new FormControl(null),
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -54,10 +55,17 @@ export class PostCreateComponent implements OnInit {
           /***spinner */
           this.isLoading = false;
           /***spinner */
+          // this.post = {
+          //   _id: data._id,
+          //   title: data.title,
+          //   content: data.content,
+          // };
+          
           this.post = {
             _id: data._id,
             title: data.title,
             content: data.content,
+            imagePath: ''
           };
 
           // initializing the form
