@@ -1,5 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NgForm,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post.service';
@@ -24,7 +30,6 @@ export class PostCreateComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, { validators: [Validators.required] }),
       content: new FormControl(null, { validators: [Validators.required] }),
-      image: new FormControl(null, { asyncValidators: mimeTypeValidator }),
     });
 
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
@@ -41,11 +46,6 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
-
-          this.form.setValue({
-            title: this.post.title,
-            content: this.post.content,
-          });
         });
       } else {
         this.mode = 'create';
@@ -65,5 +65,22 @@ export class PostCreateComponent implements OnInit {
   //   }
   // }
 
-
+  form!: FormGroup;
+  onClick() {
+    if (this.form.valid) {
+      if (this.mode === 'create') {
+        this.postService.setPost(
+          this.form.value.title,
+          this.form.value.content
+        );
+      } else {
+        this.postService.updatePost(
+          this.id,
+          this.form.value.title,
+          this.form.value.content
+        );
+      }
+      this.form.reset()
+    }
+  }
 }
