@@ -7,28 +7,6 @@ const jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 //file upload
-const multer = require('multer');
-const { fileURLToPath } = require("url");
-const MIME_TYPE_MAP = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/jpg": "jpg",
-}
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype]
-    let error = new Error("Invalid")
-    if(isValid) {
-      error = null
-    }
-    cb(error, "backend/images")
-  },
-  filename: (req, file, cd) => {
-    const name = file.originalname.toLowerCase().split(" ").join("-")
-    const ext = MIME_TYPE_MAP[file.mimetype]
-    cb(null, name + "-" + Date.new() + "." + ext)
-  }
-})
 
 
 router.get("", (req, res, next) => {
@@ -60,16 +38,16 @@ router.delete("/:id", (req, res, next) => {
 });
 
 router.put("/:id", jsonParser, (req, res, next) => {
-    console.log(req.body)
+  console.log(req.body);
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   });
 
-  Post.updateOne({ _id: req.params.id }, post).then(data => {
-      res.status(200).json(data)
-  })
+  Post.updateOne({ _id: req.params.id }, post).then((data) => {
+    res.status(200).json(data);
+  });
 });
 
 module.exports = router;

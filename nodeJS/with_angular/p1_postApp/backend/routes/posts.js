@@ -3,7 +3,7 @@ const Post = require("../models/post");
 const bodyParser = require("body-parser");
 const app = express();
 
-//file upload
+//**file upload
 const multer = require("multer");
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -25,6 +25,7 @@ const storage = multer.diskStorage({
     cb(null, name + "-" + Date.now() + "." + ext);
   },
 });
+//**file upload
 
 // create application/json parser
 var jsonParser = bodyParser.json();
