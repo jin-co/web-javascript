@@ -143,6 +143,7 @@ export class PostService {
     let postData: FormData | Post;
     if (typeof image === 'object') {
       postData = new FormData();
+      postData.append("_id", id)
       postData.append('title', title);
       postData.append('content', content);
       postData.append('image', image, title);
@@ -164,7 +165,7 @@ export class PostService {
           _id: id,
           title: title,
           content: content,
-          imagePath: response.imagePath,
+          imagePath: "",
         };
 
         updatedPost[oldPostIndex] = post;
@@ -178,9 +179,16 @@ export class PostService {
   //   return { ...this.posts.find((p) => p._id === id) };
   // }
 
+  // getAPost(id: string | null) {
+  //   console.log(`${this.baseUrl}posts/${id}`);
+  //   return this.http.get<{ _id: string; title: string; content: string }>(
+  //     `${this.baseUrl}posts/${id}`
+  //   );
+  // }
+
   getAPost(id: string | null) {
     console.log(`${this.baseUrl}posts/${id}`);
-    return this.http.get<{ _id: string; title: string; content: string }>(
+    return this.http.get<{ _id: string; title: string; content: string, imagePath:string }>(
       `${this.baseUrl}posts/${id}`
     );
   }

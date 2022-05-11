@@ -65,7 +65,7 @@ export class PostCreateComponent implements OnInit {
             _id: data._id,
             title: data.title,
             content: data.content,
-            imagePath: ''
+            imagePath: data.imagePath
           };
 
           // initializing the form
