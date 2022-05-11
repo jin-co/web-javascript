@@ -19,6 +19,7 @@ body {
 .box-left {
   height: 100%;
   width: 40%;  
+  position: relative;
 }
 
 .box-left div {
@@ -30,9 +31,32 @@ body {
 .box-right {
   height: 100%;
   width: 100%;  
+  position: relative;
 }
 
 .box-right div {
   background-color: black;
   height: 100%;    
+}
+
+.cursor {  
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;      
+  transform: translateY(-50%);
+  border: none;  
+}
+
+.cursor-down {
+  right: 1px;  
+  border-radius: 5px 0 0 5px;    
+  transform: translateY(25%);
+}
+
+.cursor-up {
+  left: 1px;
+  border-radius: 0 5px 5px 0;
+  transform: translateY(-75%);
 }
