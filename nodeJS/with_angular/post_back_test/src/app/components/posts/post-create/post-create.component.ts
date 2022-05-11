@@ -30,6 +30,7 @@ export class PostCreateComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, { validators: [Validators.required] }),
       content: new FormControl(null, { validators: [Validators.required] }),
+      image: new FormControl(null),
     });
 
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
@@ -87,5 +88,17 @@ export class PostCreateComponent implements OnInit {
       }
       this.form.reset();
     }
+  }
+
+  imgPreview!:string
+  onImageAdd(e:Event) {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    this.form.patchValue({image: file})
+    this.form.get('ímage')?.updateValueAndValidity()
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.imgPreview = reader.result as string    
+    }
+    reader.readAsDataURL(file as Blob)
   }
 }
