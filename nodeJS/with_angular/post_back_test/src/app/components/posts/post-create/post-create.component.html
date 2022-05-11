@@ -1,39 +1,43 @@
 <mat-card>
-<form action="" (submit)="onClick()" [formGroup]="form">
-  <mat-form-field>
-    <input
-      matInput
-      type="text"
-      name="title"
-      formControlName="title"
-    />
+  <form action="" (submit)="onClick(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        [ngModel]="post?.title"
+        matInput
+        type="text"
+        #title="ngModel"
+        required
+        name="title"
+      />
 
-    <mat-error *ngIf="form.get('title')?.invalid">Name Required</mat-error>
-  </mat-form-field>
+      <mat-error *ngIf="title.invalid">Name Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <textarea
-      matInput
-      name="content"
-      id=""
-      cols="30"
-      rows="10"
-      formControlName="content"
-    ></textarea>
+    <mat-form-field>
+      <textarea
+        [ngModel]="post?.content"
+        matInput
+        name="content"
+        id=""
+        cols="30"
+        rows="10"
+        #content="ngModel"
+        required
+      ></textarea>
 
-    <mat-error *ngIf="form.get('content')?.invalid">Content Required</mat-error>
-  </mat-form-field>
+      <mat-error *ngIf="content.invalid">Content Required</mat-error>
+    </mat-form-field>
 
-  <div>
-    <img [src]="imgPreview" alt="" *ngIf="imgPreview && form.get('image')?.valid">
-    <input type="file" (change)="onImageUpload($event)" #imgUpload>
-    <button type="button" mat-button (click)="imgUpload.click()">Add Image</button>
-  </div>
+    <div>
+      <button mat-stroked-button type="button" (click)="fileUpload.click()">
+        File Add
+      </button>
+      <input #fileUpload type="file" (change)="onFileAdd($event)" />
+    </div>
 
-  <button type="submit" mat-stroked-button>Click</button>
-</form>
+    <button type="submit" mat-stroked-button>Click</button>
+  </form>
 </mat-card>
-
 
 <!-- <form action="" (submit)="onClick(postForm)" #postForm="ngForm">
   <mat-form-field>

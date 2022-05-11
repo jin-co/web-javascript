@@ -65,36 +65,5 @@ export class PostCreateComponent implements OnInit {
   //   }
   // }
 
-  form!: FormGroup;
-  onClick() {
-    if (this.form.valid) {
-      if (this.mode === 'create') {
-        this.postService.setPost(
-          this.form.value.title,
-          this.form.value.content
-        );
-      } else {
-        console.log('front update', this.id);
-        this.postService.updatePost(
-          this.id,
-          this.form.value.title,
-          this.form.value.content
-        );
-      }
-      this.form.reset();
-    }
-  }
 
-  imgPreview!: string;
-  onImageUpload(e: Event) {
-    const file = (e.target as HTMLInputElement).files?.[0];
-    this.form.patchValue({ image: file });
-    this.form.get('image')?.updateValueAndValidity();
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imgPreview = reader.result as string;
-    };
-    reader.readAsDataURL(file as Blob);
-  }
 }
