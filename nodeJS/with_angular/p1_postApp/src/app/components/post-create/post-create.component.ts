@@ -72,6 +72,7 @@ export class PostCreateComponent implements OnInit {
           this.rForm.setValue({
             title: this.post.title,
             content: this.post.content,
+            image: this.post.imagePath
           });
         });
       } else {
@@ -177,7 +178,8 @@ export class PostCreateComponent implements OnInit {
         this.postService.updatePost(
           this.id,
           this.rForm.value.title,
-          this.rForm.value.content
+          this.rForm.value.content,
+          this.rForm.value.imagePath
         );
       }
 

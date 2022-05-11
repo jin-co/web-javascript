@@ -89,7 +89,7 @@ export class PostService {
           _id: data.post._id,
           title: title,
           content: content,
-          imagePath: data.post.imagePath
+          imagePath: data.post.imagePath,
         };
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
@@ -115,29 +115,63 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {
-    // const post: Post = {
-    //   _id: id,
-    //   title: title,
-    //   content: content,
-    // };
+  // updatePost(id: string, title: string, content: string) {
+  //   // const post: Post = {
+  //   //   _id: id,
+  //   //   title: title,
+  //   //   content: content,
+  //   // };
 
-    const post: Post = {
-      _id: id,
-      title: title,
-      content: content,
-      imagePath: ''
-    };
-    console.log('post created front', post);
-    console.log(`${this.baseUrl}posts/${id}`);
-    this.http.put(`${this.baseUrl}posts/${id}`, post).subscribe((response) => {
-      const updatedPost = [...this.posts];
-      const oldPostIndex = updatedPost.findIndex((p) => p._id === post._id);
-      updatedPost[oldPostIndex] = post;
-      this.posts = updatedPost;
-      this.postUpdated.next([...this.posts]);
-      this.router.navigate(['/']);
-    });
+  //   const post: Post = {
+  //     _id: id,
+  //     title: title,
+  //     content: content,
+  //   };
+  //   console.log('post created front', post);
+  //   console.log(`${this.baseUrl}posts/${id}`);
+  //   this.http.put(`${this.baseUrl}posts/${id}`, post).subscribe((response) => {
+  //     const updatedPost = [...this.posts];
+  //     const oldPostIndex = updatedPost.findIndex((p) => p._id === post._id);
+  //     updatedPost[oldPostIndex] = post;
+  //     this.posts = updatedPost;
+  //     this.postUpdated.next([...this.posts]);
+  //     this.router.navigate(['/']);
+  //   });
+  // }
+
+  updatePost(id: string, title: string, content: string, image: File | string) {
+    let postData: FormData | Post;
+    if (typeof image === 'object') {
+      postData = new FormData();
+      postData.append('title', title);
+      postData.append('content', content);
+      postData.append('image', image, title);
+    } else {
+      postData = {
+        _id: id,
+        title: title,
+        content: content,
+        imagePath: image,
+      };
+    }
+    this.http
+      .put(`${this.baseUrl}posts/${id}`, postData)
+      .subscribe((response) => {
+        const updatedPost = [...this.posts];
+        const oldPostIndex = updatedPost.findIndex((p) => p._id === p._id);
+
+        const post: Post = {
+          _id: id,
+          title: title,
+          content: content,
+          imagePath: response.imagePath,
+        };
+
+        updatedPost[oldPostIndex] = post;
+        this.posts = updatedPost;
+        this.postUpdated.next([...this.posts]);
+        this.router.navigate(['/']);
+      });
   }
 
   // getAPost(id: string | null): any {
