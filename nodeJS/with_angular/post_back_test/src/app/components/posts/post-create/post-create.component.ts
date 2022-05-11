@@ -46,6 +46,11 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
+
+          this.form.setValue({
+            title: this.post.title,
+            content: this.post.content,
+          });
         });
       } else {
         this.mode = 'create';
@@ -80,7 +85,7 @@ export class PostCreateComponent implements OnInit {
           this.form.value.content
         );
       }
-      this.form.reset()
+      this.form.reset();
     }
   }
 }
