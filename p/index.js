@@ -5,6 +5,7 @@ const rightPanelEls = document.querySelectorAll(".box-right div");
 btnUp.addEventListener("click", () => {
   console.log("up");
 });
+let idx = 100
 
 btnDown.addEventListener("click", () => {
   console.log("down");
@@ -14,7 +15,8 @@ btnDown.addEventListener("click", () => {
 function moveDown() {
   console.log(leftPanelEls);
   for (let i = 0; i < leftPanelEls.length; i++) {    
-    leftPanelEls[i].style.transform = `translateY(-${100}%)`;
+    leftPanelEls[i].style.transform = `translateY(-${idx}%)`;
     rightPanelEls[i].style.transform = "translateY(100%)";
   }
+  idx += 100
 }
