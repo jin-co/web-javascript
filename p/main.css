@@ -8,6 +8,7 @@
 
 body {
   height: 100vh;    
+  /* overflow: hidden; */
 }
 
 .box {
@@ -19,7 +20,7 @@ body {
 .box-left {
   height: 100%;
   width: 40%;  
-  position: relative;
+  position: relative;  
 }
 
 .box-left div {
@@ -31,7 +32,7 @@ body {
 .box-right {
   height: 100%;
   width: 100%;  
-  position: relative;
+  position: relative;  
 }
 
 .box-right div {
@@ -59,4 +60,39 @@ body {
   left: 1px;
   border-radius: 0 5px 5px 0;
   transform: translateY(-75%);
+}
+
+/* test */
+.left-one {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.left-two {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.left-three {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.left-four {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+
+.right-one {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.right-two {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.right-three {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
+}
+.right-four {
+  /* transform: translateY(-100%); */
+  transition: .4s ease;
 }
