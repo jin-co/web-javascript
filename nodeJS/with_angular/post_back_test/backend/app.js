@@ -10,6 +10,9 @@ mongoose
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
 
+const path = require("path");
+app.use("/images", express.static(path.join("backend/images")));
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
