@@ -47,6 +47,12 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
+
+          this.form.setValue({
+            title: this.post.title,
+            content: this.post.content,
+            image: ''
+          });
         });
       } else {
         this.mode = 'create';
@@ -99,6 +105,6 @@ export class PostCreateComponent implements OnInit {
       this.imgPreview = reader.result as string;
     };
 
-    reader.readAsDataURL(file as Blob)
+    reader.readAsDataURL(file as Blob);
   }
 }
