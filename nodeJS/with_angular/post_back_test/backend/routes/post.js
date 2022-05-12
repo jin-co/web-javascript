@@ -14,21 +14,21 @@ const MIME_TYPE_MAP = {
   "image/jpg": "jpg",
 };
 
-multer.diskStorage({
+const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype]
-    const error = new Error("invalid")
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    const error = new Error("invalid");
     if (isValid) {
-      error = null
+      error = null;
     }
-    cb(error, "backend/images")
+    cb(error, "backend/images");
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-')
-    const ext = MIME_TYPE_MAP[file.mimetype]
-    cb(null, name + '-' + Date.now() + '.' + ext)
-  }
-})
+    const name = file.originalname.toLowerCase().split(" ").join("-");
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name + "-" + Date.now() + "." + ext);
+  },
+});
 
 //**/file upload
 
@@ -44,15 +44,20 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.post("", jsonParser, (req, res, next) => {
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
-  });
-  post.save().then((data) => {
-    res.status(201).json(data);
-  });
-});
+router.post(
+  "",
+  jsonParser,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    const post = new Post({
+      title: req.body.title,
+      content: req.body.content,
+    });
+    post.save().then((data) => {
+      res.status(201).json(data);
+    });
+  }
+);
 
 router.delete("/:id", (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((data) => {
