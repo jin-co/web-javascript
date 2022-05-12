@@ -54,6 +54,7 @@ router.get("/:id", (req, res, next) => {
 // });
 
 router.post("", jsonParser, multer({storage: storage}).single("image"), (req, res, next) => {  
+  console.log('back call received')
   const url = req.protocol + '://' + req.get('host')
   const post = new Post({
     title: req.body.title,
@@ -61,6 +62,7 @@ router.post("", jsonParser, multer({storage: storage}).single("image"), (req, re
     imagePath: url + '/images/' + req.file.filename
   });
   post.save().then((data) => {
+    console.log(data)
     res.status(201).json(data);
   });
 });
