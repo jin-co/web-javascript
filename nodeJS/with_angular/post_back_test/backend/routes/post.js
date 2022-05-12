@@ -7,6 +7,17 @@ const jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 //**file upload
+const multer = require('multer')
+const MIME_TYPE_MAP = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg"
+}
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(MIME_TYPE_MAP[file.mimetype], "backend/images")
+  }
+})
 
 
 //**/file upload
