@@ -15,9 +15,9 @@ const MIME_TYPE_MAP = {
 }
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const isValie = MIME_TYPE_MAP[file.mimetype]
+    const isValid = MIME_TYPE_MAP[file.mimetype]
     let error = new Error("invalid")
-    if(isValie) {
+    if(isValid) {
       error = null
     }
     cb(error, "backend/images")
