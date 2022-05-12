@@ -45,8 +45,7 @@ export class PostCreateComponent implements OnInit {
           this.post = {
             _id: data._id,
             title: data.title,
-            content: data.content,
-            imagePath: ''
+            content: data.content
           };
 
           this.form.setValue({
@@ -79,8 +78,7 @@ export class PostCreateComponent implements OnInit {
       if (this.mode === 'create') {
         this.postService.setPost(
           this.form.value.title,
-          this.form.value.content,
-          this.form.value.image
+          this.form.value.content          
         );
       } else {
         console.log('front update', this.id);
