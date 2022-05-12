@@ -27,7 +27,11 @@ export class PostCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+    this.form = new FormGroup({
+      title: new FormControl(null, {validators:[Validators.required]}),
+      content: new FormControl(null, {validators:[Validators.required]}),
+      image: new FormControl(null)
+    })
 
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
       if (pm.has('id')) {
@@ -43,8 +47,6 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
           };
-
-
         });
       } else {
         this.mode = 'create';
@@ -64,5 +66,23 @@ export class PostCreateComponent implements OnInit {
   //   }
   // }
 
-
+  form!: FormGroup;
+  onClick() {
+    if (this.form.valid) {
+      if (this.mode === 'create') {
+        this.postService.setPost(
+          this.form.value.title,
+          this.form.value.content
+        );
+      } else {
+        console.log('front update', this.id);
+        this.postService.updatePost(
+          this.id,
+          this.form.value.title,
+          this.form.value.content
+        );
+      }
+      this.form.reset();
+    }
+  }
 }
