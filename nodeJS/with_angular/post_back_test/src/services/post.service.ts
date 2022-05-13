@@ -69,7 +69,33 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {
+  // updatePost(id: string, title: string, content: string) {
+  //   const post = {
+  //     _id: id,
+  //     title: title,
+  //     content: content,
+  //   };
+
+  //   this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {
+  //     this.route.navigate(['/']);
+  //   });
+  // }
+
+  updatePost(id: string, title: string, content: string, image: File | string) {
+    let postData: Post | FormData
+    if(typeof(image) === 'object') {
+      postData = new FormData()
+      postData.append('title', title)
+      postData.append('content', content)
+      postData.append('image', image, title)
+    } else {
+      postData = {
+        _id: id,
+        title: title,
+        content: content,
+        imagePath: image
+      }
+    }
     const post = {
       _id: id,
       title: title,
