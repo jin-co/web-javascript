@@ -7,27 +7,7 @@ const jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 //**file upload
-const multer = require("multer");
-const MIME_TYPE_MAP = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/jpg": "jpg",
-};
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype];
-    let error = new Error("Invalid mime type");
-    if (isValid) {
-      error = null;
-    }
-    cb(error, "backend/images"); // path here is relative to the server file
-  },
-  filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(" ").join("-");
-    const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name + "-" + Date.now() + "." + ext);
-  },
-});
+
 //**/file upload
 
 router.get("", (req, res, next) => {
@@ -52,34 +32,19 @@ router.get("/:id", (req, res, next) => {
 //   });
 // });
 
-router.post(
-  "",
-  jsonParser,
-  multer({ storage: storage }).single("image"),
-  (req, res, next) => {
-    const url = req.protocol + "://" + req.get("host");
-    const post = new Post({
-      title: req.body.title,
-      content: req.body.content,
-      imagePath: url + "/images/" + req.file.filename,
-    });
-    post.save().then((result) => {
-      res.status(201).json({
-        message: "post added",
-        // postId: result._id,
-        post: {
-          // _id: result._id,
-          // title: result.title,
-          // content: result.console,
-          // imagePath: result.imagePath
-
-          ...result,
-          _id: result._id,
-        },
-      });
-    });
-  }
-);
+router.post("", jsonParser, (req, res, next) => {  
+  console.log('back call received')
+  const url = req.protocol + '://' + req.get('host')
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content,
+    imagePath: url + '/images/' + req.file.filename
+  });
+  post.save().then((data) => {
+    console.log(data)
+    res.status(201).json(data);
+  });
+});
 
 router.delete("/:id", (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((data) => {
