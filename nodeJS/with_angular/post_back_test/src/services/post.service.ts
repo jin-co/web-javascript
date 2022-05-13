@@ -21,9 +21,12 @@ export class PostService {
   }
 
   getPost(id: string) {
-    return this.http.get<{ _id: string; title: string; content: string }>(
-      `${this.baseURL}posts/${id}`
-    );
+    return this.http.get<{
+      _id: string;
+      title: string;
+      content: string;
+      imagePath: string;
+    }>(`${this.baseURL}posts/${id}`);
   }
 
   // setPost(title: string, content: string) {
@@ -40,13 +43,18 @@ export class PostService {
   // }
 
   //** json cannot include file -> use FormData */
-  setPost(title: string, content: string) {
-    const post = {
-      _id: '',
-      title: title,
-      content: content,
-    };
-    this.http.post(`${this.baseURL}posts`, post).subscribe((data) => {
+  setPost(title: string, content: string, image: File) {
+    const postData = new FormData();
+    postData.append('title', title);
+    postData.append('content', content);
+    postData.append('image', image, title);
+    this.http.post<Post>(`${this.baseURL}posts`, postData).subscribe((data) => {
+      const post = {
+        _id: '',
+        title: title,
+        content: content,
+        imagePath: '',
+      };
       this.posts.push(post);
       this.postUpdated.next([...this.posts]);
       this.route.navigate(['/']);

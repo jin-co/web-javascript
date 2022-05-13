@@ -10,8 +10,9 @@ mongoose
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
 
-//path  
-
+//path
+const path = require("path");
+app.use("/images", express.static(path.join("backend/images")));
 //path
 
 app.use((req, res, next) => {
