@@ -15,24 +15,26 @@ btnDown.addEventListener("click", () => {
 
 function moveDown() {
   console.log(leftPanelEls);
-  for (let i = 0; i < leftPanelEls.length; i++) {    
-    leftPanelEls[i].style.transform = `translateY(-${idx}%)`;
-    rightPanelEls[i].style.transform = `translateY(${-(300 - idx)}%)`;
-  }
+  console.log(idx)
   idx += 100
   if(idx >= 400) {
     idx = 0
   }
+  for (let i = 0; i < leftPanelEls.length; i++) {    
+    leftPanelEls[i].style.transform = `translateY(-${idx}%)`;
+    rightPanelEls[i].style.transform = `translateY(${-(300 - idx)}%)`;
+  }  
 }
 
 function moveUp() {
-  console.log(leftPanelEls);
+  console.log(idx)
+  if(idx < 100) {
+    idx = 400
+  }
+  idx -= 100
   for (let i = 0; i < leftPanelEls.length; i++) {    
     leftPanelEls[i].style.transform = `translateY(-${idx}%)`;
     rightPanelEls[i].style.transform = `translateY(${-(300 - idx)}%)`;
   }
-  idx -= 100
-  if(idx < 0) {
-    idx = 400
-  }
+
 }
