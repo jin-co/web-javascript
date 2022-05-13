@@ -85,6 +85,7 @@ export class PostService {
     let postData: Post | FormData
     if(typeof(image) === 'object') {
       postData = new FormData()
+      postData.append('_id', id)
       postData.append('title', title)
       postData.append('content', content)
       postData.append('image', image, title)
@@ -96,13 +97,8 @@ export class PostService {
         imagePath: image
       }
     }
-    const post = {
-      _id: id,
-      title: title,
-      content: content,
-    };
 
-    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {
+    this.http.put(`${this.baseURL}posts/${id}`, postData).subscribe((data) => {
       this.route.navigate(['/']);
     });
   }
