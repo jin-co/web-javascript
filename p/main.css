@@ -81,18 +81,18 @@ body {
 }
 
 .right-one {
-  /* transform: translateY(-100%); */
+  transform: translateY(-300%);
   transition: .4s ease;
 }
 .right-two {
-  /* transform: translateY(-100%); */
+  transform: translateY(-300%);
   transition: .4s ease;
 }
 .right-three {
-  /* transform: translateY(-100%); */
+  transform: translateY(-300%);
   transition: .4s ease;
 }
 .right-four {
-  /* transform: translateY(-100%); */
+  transform: translateY(-300%);
   transition: .4s ease;
 }
