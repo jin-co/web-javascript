@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post.service';
 
@@ -9,14 +9,21 @@ import { PostService } from 'src/services/post.service';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent implements OnInit {
+  form!:FormGroup
   constructor(public postService: PostService) {}
 
-  ngOnInit(): void {}
-
-  onClick(form: NgForm) {
-    if (form.valid) {
-      this.postService.setPost(form.value.title, form.value.content);
-      form.resetForm();
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      title: new FormControl(null, {validators:[Validators.required]}),
+      content: new FormControl(null, {validators:[Validators.required, Validators.minLength(3)]}),
+      image: new FormControl(null)
+    })
+  }
+  
+  onClick() {
+    if (this.form.valid) {
+      this.postService.setPost(this.form.value.title, this.form.value.content);
+      this.form.reset();
     }
   }
 }
