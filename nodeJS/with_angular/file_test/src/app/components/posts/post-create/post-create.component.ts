@@ -1,4 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Post } from 'src/models/post';
+import { PostService } from 'src/services/post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -9,18 +11,13 @@ export class PostCreateComponent implements OnInit {
   inputTitle:string = ''
   inputContent:string = ''
   outputTitle:string = ''
-  outputContent:string = ''
-  @Output() createdPost = new EventEmitter()
-  constructor() { }
+  outputContent:string = ''  
+  constructor(public postService:PostService) { }
 
   ngOnInit(): void {
   }
   
-  onClick() {
-    const post = {
-      title: this.inputTitle,
-      content: this.inputContent
-    }
-    this.createdPost.emit(post)     
+  onClick() {    
+    this.postService.setPost(this.inputTitle, this.inputContent)
   }
 }
