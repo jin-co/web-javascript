@@ -8,30 +8,62 @@ import { Post } from 'src/models/post';
 export class PostService {
   posts: Post[] = [];
   postUpdated = new Subject<Post[]>();
+  baseURL: string = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient, route: Router) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   getPosts() {
-    return [...this.posts];
+    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
+      this.posts = data;
+      this.postUpdated.next(this.posts);
+    });
   }
 
-  getPost(id: string) {}
+  getPost(id: string) {
+    return this.http.get<{
+      _id: string;
+      title: string;
+      content: string;
+      image: string;
+    }>(`${this.baseURL}posts/${id}`);
+  }
 
   setPost(title: string, content: string) {
-    const post:Post = {
-        _id: '',
-        title: title,
-        content: content
-    }
-    this.posts.push(post)
-    this.postUpdated.next([...this.posts])
+    const post: Post = {
+      _id: '',
+      title: title,
+      content: content,
+      imagePath: ''
+    };
+    this.http.post<Post>(`${this.baseURL}posts`, post).subscribe((data) => {
+      this.posts.push(data);
+      this.postUpdated.next([...this.posts]);
+      // this.route.navigate(['/'])
+    });
   }
 
-  updatePost(id: string, title: string, content: string) {}
+  updatePost(id: string, title: string, content: string) {
+      const post:Post = {
+          _id: id,
+          title: title,
+          content: content,
+          imagePath: ''
+      }
+      this.http.put(`${this.baseURL}posts/${id}`, post).subscribe(data => {
+          this.route.navigate(['/'])
+      })
+  }
 
-  deletePost(id: string) {}
+  deletePost(id: string) {
+    this.http.delete<Post>(`${this.baseURL}posts/${id}`).subscribe((data) => {
+      const deletedPost = this.posts.filter((p) => p._id !== id);
+      console.log(data, 'id', id);
+      this.posts = deletedPost;
+      this.postUpdated.next([...this.posts]);
+    });
+  }
 
   updateListener() {
-      return this.postUpdated.asObservable()
+    return this.postUpdated.asObservable();
   }
 }
