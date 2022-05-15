@@ -1,7 +1,6 @@
 const http = require('http')
 const port = process.env.PROT | 3000
-const server = http.createServer((req, res) => {
-    res.end('h')
-})
+const app = require('./backend/app')
+const server = http.createServer(app)
 
 server.listen(port)
