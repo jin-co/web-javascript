@@ -33,30 +33,50 @@ export class PostListComponent implements OnInit, OnDestroy {
     /***spinner */
 
     // this.posts = this.postService.getPost();
-    this.postService.getPost();
-    this.postService.postUpdatedListener().subscribe((posts: Post[]) => {
-      /***spinner */
-      this.isLoading = false;
-      /***spinner */
+    this.postService.getPost(this.postPerPage, this.currentPage);
+    // this.postService.postUpdatedListener().subscribe((posts: Post[]) => {
+    //   /***spinner */
+    //   this.isLoading = false;
+    //   /***spinner */
 
-      this.posts = posts;
-    });
+    //   this.posts = posts;
+    // });
+
+    this.postService
+      .postUpdatedListener()
+      .subscribe((posts: { post: Post[]; postCount: number }) => {
+        /***spinner */
+        this.isLoading = false;
+        /***spinner */
+
+        this.posts = posts.post;
+        this.totalPage = posts.postCount
+      });
   }
 
   ngOnDestroy(): void {
     // this.postSubscription.unsubscribe()
   }
 
+  // onDelete(id: string) {
+  //   this.postService.deletePost(id)
+  // }
+
   onDelete(id: string) {
-    this.postService.deletePost(id);
+    this.postService.deletePost(id).subscribe(() => {
+      this.postService.getPost(this.postPerPage, this.currentPage);
+    });
   }
 
   //paginator
-  totalPage = 10
-  postPerPage = 2
-  pageSizeOptions = [1, 2, 3]
-
-  onPageChange(e:PageEvent) {
-
+  // totalPage = 10;
+  totalPage = 0;
+  postPerPage = 2;
+  pageSizeOptions = [1, 2, 3];
+  currentPage = 1;
+  onPageChange(e: PageEvent) {
+    this.currentPage = e.pageIndex + 1;
+    this.postPerPage = e.pageSize;
+    this.postService.getPost(this.postPerPage, this.currentPage);
   }
 }
