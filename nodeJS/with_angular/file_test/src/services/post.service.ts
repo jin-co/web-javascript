@@ -16,6 +16,7 @@ export class PostService {
     this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
       this.posts = data;
       this.postUpdated.next(this.posts);
+      this.route.navigate(['/'])
     });
   }
 
@@ -38,7 +39,7 @@ export class PostService {
     this.http.post<Post>(`${this.baseURL}posts`, post).subscribe((data) => {
       this.posts.push(data);
       this.postUpdated.next([...this.posts]);
-      // this.route.navigate(['/'])
+      this.route.navigate(['/'])
     });
   }
 
@@ -49,7 +50,7 @@ export class PostService {
           content: content,
           imagePath: ''
       }
-      this.http.put(`${this.baseURL}posts/${id}`, post).subscribe(data => {
+      this.http.put(`${this.baseURL}posts/${id}`, post).subscribe(data => {          
           this.route.navigate(['/'])
       })
   }
