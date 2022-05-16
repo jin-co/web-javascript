@@ -38,7 +38,7 @@ router.post(
     const post = new Post({
       title: req.body.title,
       content: req.body.content,
-      imagePath: url + "/images/" + req.file.filename
+      imagePath: url + "/images/" + req.file.filename,
     });
     post.save().then((data) => {
       res.status(200).json(data);
@@ -60,17 +60,26 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", (req, res, next) => {
-  const post = new Post({
-    _id: req.body._id,
-    title: req.body.title,
-    content: req.body.content,
-    imagePath: req.body.imagePath,
-  });
-  Post.updateOne({ _id: req.params.id }, post).then((data) => {
-    console.log(data);
-    res.status(200).json(data);
-  });
-});
+router.put(
+  "/:id",
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    let imagePath = req.body.imagePath;
+    if (req.file) {
+      const url = req.protocol + "://" + req.get("host");
+      imagePath = url + "/images/" + req.file.filename;
+    }
+    const post = new Post({
+      _id: req.body._id,
+      title: req.body.title,
+      content: req.body.content,
+      imagePath: imagePath,
+    });
+    Post.updateOne({ _id: req.params.id }, post).then((data) => {
+      console.log(data);
+      res.status(200).json(data);
+    });
+  }
+);
 
 module.exports = router;

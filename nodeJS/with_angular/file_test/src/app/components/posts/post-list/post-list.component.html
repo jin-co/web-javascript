@@ -5,10 +5,13 @@
         {{ i.title }}
       </mat-panel-title>
       <mat-panel-description> Click to open </mat-panel-description>
-    </mat-expansion-panel-header>
+    </mat-expansion-panel-header>    
     <p>
       {{ i.content }}
     </p>
+
+    <img height="100px" [src]="i.imagePath" alt="">
+
     <button mat-button (click)="onDelete(i._id)">Delete</button>
     <a [routerLink]="['/edit',i._id]" mat-button>Edit</a>
   </mat-expansion-panel>

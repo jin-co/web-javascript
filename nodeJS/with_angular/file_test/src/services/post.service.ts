@@ -16,7 +16,7 @@ export class PostService {
     this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
       this.posts = data;
       this.postUpdated.next(this.posts);
-      this.route.navigate(['/'])
+      this.route.navigate(['/']);
     });
   }
 
@@ -30,10 +30,10 @@ export class PostService {
   }
 
   setPost(title: string, content: string, image: File) {
-    const postData = new FormData()
-    postData.append("title", title)
-    postData.append("content", content)
-    postData.append("image", image, title)
+    const postData = new FormData();
+    postData.append('title', title);
+    postData.append('content', content);
+    postData.append('image', image, title);
     // const post: Post = {
     //   _id: '',
     //   title: title,
@@ -43,20 +43,31 @@ export class PostService {
     this.http.post<Post>(`${this.baseURL}posts`, postData).subscribe((data) => {
       this.posts.push(data);
       this.postUpdated.next([...this.posts]);
-      this.route.navigate(['/'])
+      this.route.navigate(['/']);
     });
   }
 
-  updatePost(id: string, title: string, content: string) {
-      const post:Post = {
-          _id: id,
-          title: title,
-          content: content,
-          imagePath: ''
-      }
-      this.http.put(`${this.baseURL}posts/${id}`, post).subscribe(data => {          
-          this.route.navigate(['/'])
-      })
+  updatePost(id: string, title: string, content: string, image: File | string) {
+    let post
+    console.log(typeof(image))    
+    if (typeof image === 'object') {
+      post = new FormData()
+      post.append("_id", id)
+      post.append("title", title)
+      post.append("content", content)
+      post.append("image", image, title)      
+    } else {      
+      post = {
+        _id: id,
+        title: title,
+        content: content,
+        imagePath: '',
+      };
+    }
+
+    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {
+      this.route.navigate(['/']);
+    });
   }
 
   deletePost(id: string) {
