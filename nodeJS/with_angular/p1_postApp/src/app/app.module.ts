@@ -8,22 +8,23 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // angular materials
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { HttpClientModule } from '@angular/common/http'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +38,10 @@ import { HttpClientModule } from '@angular/common/http'
     MatExpansionModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -13,32 +13,44 @@ export class PostService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPost() {
+  // getPost() {
+  //   this.http
+  //     .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)
+  //     // .pipe((map((data) => {
+  //     //   return data.posts.map((p: { title: any; content: any; _id: any; }) => {
+  //     //     return {
+  //     //       title: p.title,
+  //     //       content: p.content,
+  //     //       id: p._id
+  //     //     }
+  //     //   })
+  //     // })))
+  //     .subscribe((postData) => {
+  //       this.posts = postData.posts;
+  //       this.postUpdated.next([...this.posts]);
+  //       console.log('returned', postData);
+  //     });
+  //   // this.http
+  //   //   .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
+  //   //   .subscribe((postData) => {
+  //   //     this.posts = postData.posts;
+  //   //     this.postUpdated.next([...this.posts]);
+  //   //   });
+  //   // creating copy and return
+  //   // return [...this.posts]
+
+  //   return this.posts;
+  // }
+
+  getPost(postPerPage:number, currentPage:number) {
+    const queryParams = `?pagesize=${postPerPage}&${currentPage}`
     this.http
-      .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)
-      // .pipe((map((data) => {
-      //   return data.posts.map((p: { title: any; content: any; _id: any; }) => {
-      //     return {
-      //       title: p.title,
-      //       content: p.content,
-      //       id: p._id
-      //     }
-      //   })
-      // })))
+      .get<{ message: string; posts: any }>(`${this.baseUrl}posts`)      
       .subscribe((postData) => {
         this.posts = postData.posts;
         this.postUpdated.next([...this.posts]);
         console.log('returned', postData);
       });
-    // this.http
-    //   .get<{ message: string; posts: Post[] }>(`${this.baseUrl}posts`)
-    //   .subscribe((postData) => {
-    //     this.posts = postData.posts;
-    //     this.postUpdated.next([...this.posts]);
-    //   });
-    // creating copy and return
-    // return [...this.posts]
-
     return this.posts;
   }
 

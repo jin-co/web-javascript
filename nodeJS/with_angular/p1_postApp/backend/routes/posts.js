@@ -64,7 +64,14 @@ router.post(
 );
 
 router.get("", (req, res, next) => {
-  Post.find()
+  console.log(req.query);
+  const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.pageSize;
+  const postQuery = Post.find();
+  if (pageSize && currentPage) {
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
+  }
+  postQuery
     .then((docs) => {
       console.log(docs);
       res.status(200).json({
@@ -73,6 +80,15 @@ router.get("", (req, res, next) => {
       });
     })
     .catch();
+  // Post.find()
+  //   .then((docs) => {
+  //     console.log(docs);
+  //     res.status(200).json({
+  //       message: "post",
+  //       posts: docs,
+  //     });
+  //   })
+  //   .catch();
 });
 
 router.delete("/:id", (req, res, next) => {

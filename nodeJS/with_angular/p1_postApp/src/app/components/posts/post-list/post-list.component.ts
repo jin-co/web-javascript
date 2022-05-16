@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/posts.service';
@@ -48,5 +49,14 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   onDelete(id: string) {
     this.postService.deletePost(id);
+  }
+
+  //paginator
+  totalPage = 10
+  postPerPage = 2
+  pageSizeOptions = [1, 2, 3]
+
+  onPageChange(e:PageEvent) {
+
   }
 }
