@@ -30,10 +30,6 @@ export class PostListComponent implements OnInit {
   }
 
   // totalPage = 10
-  totalPage = 10;
-  pageSizeOption = [1, 2, 3];
-  pageSize = 10;
 
-  onPageChange(e: PageEvent) {}
   //** paginator */
 }
