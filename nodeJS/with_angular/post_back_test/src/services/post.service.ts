@@ -11,24 +11,18 @@ export class PostService {
   // postUpdated = new Subject<Post[]>();
 
   //** paginator */
-  postUpdated = new Subject<{ posts: Post[]; maxPage: number }>();
+  postUpdated = new Subject<Post[]>();
   //** paginator */
   baseURL: string = 'http://localhost:3000/';
 
   constructor(private route: Router, private http: HttpClient) {}
 
   //** paginator */
-  getPosts(pageSize: number, currentPage: number) {
-    const query = `?pageSize=${pageSize}&currentPage=${currentPage}`
-    this.http
-      .get<{ posts: Post[]; maxPage: number }>(`${this.baseURL}posts${query}`)
-      .subscribe((data) => {
-        this.posts = data.posts;
-        this.postUpdated.next({
-          posts: [...this.posts],
-          maxPage: data.maxPage,
-        });
-      });
+  getPosts() {
+    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
+      this.posts = data;
+      this.postUpdated.next([...this.posts]);
+    });
   }
   //** paginator */
 

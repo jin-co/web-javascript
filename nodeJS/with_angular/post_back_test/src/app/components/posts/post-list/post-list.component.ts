@@ -13,12 +13,11 @@ export class PostListComponent implements OnInit {
   constructor(public postService: PostService) {}
 
   ngOnInit(): void {
-    this.postService.getPosts(this.pageSize, this.currentPage);
+    this.postService.getPosts();
     this.postService
       .updateListener()
-      .subscribe((data: { posts: Post[]; maxPage: number }) => {
-        this.posts = data.posts;
-        this.pageSize;
+      .subscribe((data) => {
+        this.posts = data.        
       });
   }
 
@@ -34,14 +33,6 @@ export class PostListComponent implements OnInit {
 
   // totalPage = 10
 
-  pageSize = 10;
-  pageSizeOption = [1, 2, 3];
-  totalPage = 10;
-  currentPage = 0;
-  onPageChange(e: PageEvent) {
-    this.pageSize = e.pageSize;
-    this.currentPage = e.pageIndex + 1;
-    this.postService.getPosts(this.pageSize, this.currentPage)    
-  }
+  
   //** paginator */
 }
