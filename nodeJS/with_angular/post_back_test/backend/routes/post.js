@@ -15,19 +15,19 @@ const MIME_TYPE_MAP = {
 };
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype]
-    let error = new Error('invalid')
-    if(isValid) {
-      error = null
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error("invalid");
+    if (isValid) {
+      error = null;
     }
-    cb(error, "backend/images")
+    cb(error, "backend/images");
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-')
-    const ext = MIME_TYPE_MAP[file.mimetype]
-    cb(null, name)
-  }
-})
+    const name = file.originalname.toLowerCase().split(" ").join("-");
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name);
+  },
+});
 //**/file upload
 
 router.get("", (req, res, next) => {
@@ -52,17 +52,22 @@ router.get("/:id", (req, res, next) => {
 //   });
 // });
 
-router.post("", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
-  const url = req.protocol + "://" + req.get('host')
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
-    imagePath: url + "/images/" + req.file.filename
-  });
-  post.save().then((data) => {
-    res.status(201).json(data);
-  });
-});
+router.post(
+  "",
+  jsonParser,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    const url = req.protocol + "://" + req.get("host");
+    const post = new Post({
+      title: req.body.title,
+      content: req.body.content,
+      imagePath: url + "/images/" + req.file.filename,
+    });
+    post.save().then((data) => {
+      res.status(201).json(data);
+    });
+  }
+);
 
 router.delete("/:id", (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((data) => {
@@ -83,23 +88,28 @@ router.delete("/:id", (req, res, next) => {
 //   });
 // });
 
-router.put("/:id", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {  
-  console.log(req.body);
-  let imagePath = req.body.imagePath
-  if(req.file){
-    const url = req.protocol + "://" + req.get('host')
-    imagePath = url + "/images/" + req.file.filename
-  }
-  const post = new Post({
-    _id: req.body._id,
-    title: req.body.title,
-    content: req.body.content,
-    imagePath: imagePath
-  });
+router.put(
+  "/:id",
+  jsonParser,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    console.log(req.body);
+    let imagePath = req.body.imagePath;
+    if (req.file) {
+      const url = req.protocol + "://" + req.get("host");
+      imagePath = url + "/images/" + req.file.filename;
+    }
+    const post = new Post({
+      _id: req.body._id,
+      title: req.body.title,
+      content: req.body.content,
+      imagePath: imagePath,
+    });
 
-  Post.updateOne({ _id: req.params.id }, post).then((data) => {
-    res.status(200).json(data);
-  });
-});
+    Post.updateOne({ _id: req.params.id }, post).then((data) => {
+      res.status(200).json(data);
+    });
+  }
+);
 
 module.exports = router;
