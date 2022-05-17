@@ -44,29 +44,7 @@ router.get("/:id", (req, res, next) => {
 
 //** paginator */
 router.get("", (req, res, next) => {
-  console.log(req.query);
-  const pageSize = +req.query.pagesize;
-  const page = +req.query.page;
-  const postQuery = Post.find();
-  let fetchedPosts
-  if (pageSize && page) {
-    postQuery.skip(pageSize * (page - 1)).limit(pageSize);
-  }
-  postQuery
-    .then((data) => {
-      fetchedPosts = data
-      return Post.count();
-    })
-    .then((count) => {
-      res.status(200).json({
-        maxPost: count,
-        posts: fetchedPosts
-      })
-    });
-});
-
-router.get("/:id", (req, res, next) => {
-  Post.findOne({ _id: req.params.id }).then((data) => {
+  Post.find().then((data) => {
     res.status(200).json(data);
   });
 });
