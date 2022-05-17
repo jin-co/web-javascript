@@ -44,7 +44,7 @@ router.get("/:id", (req, res, next) => {
 
 //** paginator */
 router.get("", (req, res, next) => {
-  console.log.apply(req.query);
+  console.log(req.query);
   const pageSize = +req.query.pagesize;
   const page = +req.query.page;
   const postQuery = Post.find();
@@ -54,7 +54,7 @@ router.get("", (req, res, next) => {
   }
   postQuery
     .then((data) => {
-      fetchedPosts = docx
+      fetchedPosts = data
       return Post.count();
     })
     .then((count) => {
