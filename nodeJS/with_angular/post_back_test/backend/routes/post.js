@@ -52,10 +52,12 @@ router.get("/:id", (req, res, next) => {
 //   });
 // });
 
-router.post("", jsonParser, multer({storage: storage}), (req, res, next) => {
+router.post("", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
+  const url = req.protocol + "://" + req.get('host')
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    imagePath: url + "/images/" + req.file.filename
   });
   post.save().then((data) => {
     res.status(201).json(data);
