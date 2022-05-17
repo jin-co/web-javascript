@@ -11,7 +11,7 @@ export class PostService {
   // postUpdated = new Subject<Post[]>();
 
   //** paginator */
-  postUpdated = new Subject<Post[]>();
+  postUpdated = new Subject<{ posts: Post[]; maxPage: number }>();
   //** paginator */
   baseURL: string = 'http://localhost:3000/';
 
@@ -19,9 +19,9 @@ export class PostService {
 
   //** paginator */
   getPosts() {
-    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
-      this.posts = data;
-      this.postUpdated.next([...this.posts]);
+    this.http.get<{posts: Post[], maxPage: number}>(`${this.baseURL}posts`).subscribe((data) => {
+      this.posts = data.posts;
+      this.postUpdated.next({posts: [...this.posts], maxPage: data.maxPage});
     });
   }
   //** paginator */
@@ -81,7 +81,11 @@ export class PostService {
 
   //** paginator */
   deletePost(id: string) {
-    return this.http.delete(`${this.baseURL}posts/${id}`);
+    this.http.delete(`${this.baseURL}posts/${id}`).subscribe((result) => {
+      const postDeleted = this.posts.filter((p) => p._id !== id);
+      this.posts = postDeleted;
+      this.postUpdated.next([...this.posts]);
+    });
   }
   //** paginator */
 
