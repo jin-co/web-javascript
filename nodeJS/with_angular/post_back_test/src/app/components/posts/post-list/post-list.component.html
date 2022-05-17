@@ -13,7 +13,7 @@
     </p>
 
     <!-- image -->
-    <img height="100px" [src]="i.imagePath" alt="">
+    <img height="100px" [src]="i.imagePath" alt="" />
     <!-- image -->
 
     <a [routerLink]="['create', i._id]">Edit</a>
@@ -22,8 +22,10 @@
 </mat-accordion>
 
 <!-- paginator -->
-
+<mat-paginator
+  [length]="totalPage"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOption"
+  (page)="onPageChange($event)"
+></mat-paginator>
 <!-- paginator -->
-
-
-
