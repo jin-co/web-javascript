@@ -18,11 +18,17 @@ export class PostService {
   constructor(private route: Router, private http: HttpClient) {}
 
   //** paginator */
-  getPosts() {
-    this.http.get<{posts: Post[], maxPage: number}>(`${this.baseURL}posts`).subscribe((data) => {
-      this.posts = data.posts;
-      this.postUpdated.next({posts: [...this.posts], maxPage: data.maxPage});
-    });
+  getPosts(pageSize: number, currentPage: number) {
+    const query = `?pageSize=${pageSize}&currentPage=${currentPage}`
+    this.http
+      .get<{ posts: Post[]; maxPage: number }>(`${this.baseURL}posts${query}`)
+      .subscribe((data) => {
+        this.posts = data.posts;
+        this.postUpdated.next({
+          posts: [...this.posts],
+          maxPage: data.maxPage,
+        });
+      });
   }
   //** paginator */
 
@@ -81,11 +87,7 @@ export class PostService {
 
   //** paginator */
   deletePost(id: string) {
-    this.http.delete(`${this.baseURL}posts/${id}`).subscribe((result) => {
-      const postDeleted = this.posts.filter((p) => p._id !== id);
-      this.posts = postDeleted;
-      this.postUpdated.next([...this.posts]);
-    });
+    return this.http.delete(`${this.baseURL}posts/${id}`);
   }
   //** paginator */
 
