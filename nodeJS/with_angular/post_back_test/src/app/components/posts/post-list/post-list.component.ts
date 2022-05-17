@@ -40,7 +40,7 @@ export class PostListComponent implements OnInit {
   currentPage = 0;
   onPageChange(e: PageEvent) {
     this.pageSize = e.pageSize;
-    this.currentPage = e.pageIndex - 1;
+    this.currentPage = e.pageIndex + 1;
     this.postService.getPosts(this.pageSize, this.currentPage)    
   }
   //** paginator */
