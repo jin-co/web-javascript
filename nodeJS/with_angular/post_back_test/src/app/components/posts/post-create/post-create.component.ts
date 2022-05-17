@@ -97,6 +97,13 @@ export class PostCreateComponent implements OnInit {
 
   imgPreview!: string;
   onAddImage(e: Event) {
-
+    const file = (e.target as HTMLInputElement).files?.[0]
+    this.form.patchValue({image: file})
+    this.form.get('image')?.updateValueAndValidity()
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.imgPreview = reader.result as string
+    }
+    reader.readAsDataURL(file as Blob)
   }
 }
