@@ -43,18 +43,13 @@ export class PostService {
   // }
 
   //** json cannot include file -> use FormData */
-  setPost(title: string, content: string, image: File) {
-    const postData = new FormData();
-    postData.append('title', title);
-    postData.append('content', content);
-    postData.append('image', image, title);
-    this.http.post<Post>(`${this.baseURL}posts`, postData).subscribe((data) => {
-      const post = {
-        _id: '',
-        title: title,
-        content: content,
-        imagePath: '',
-      };
+  setPost(title: string, content: string) {
+    const post = {
+      _id: '',
+      title: title,
+      content: content,
+    };
+    this.http.post(`${this.baseURL}posts`, post).subscribe((data) => {
       this.posts.push(post);
       this.postUpdated.next([...this.posts]);
       this.route.navigate(['/']);
@@ -81,24 +76,14 @@ export class PostService {
   //   });
   // }
 
-  updatePost(id: string, title: string, content: string, image: File | string) {
-    let postData: Post | FormData
-    if(typeof(image) === 'object') {
-      postData = new FormData()
-      postData.append('_id', id)
-      postData.append('title', title)
-      postData.append('content', content)
-      postData.append('image', image, title)
-    } else {
-      postData = {
-        _id: id,
-        title: title,
-        content: content,
-        imagePath: image
-      }
-    }
+  updatePost(id: string, title: string, content: string) {
+    const post = {
+      _id: id,
+      title: title,
+      content: content,
+    };
 
-    this.http.put(`${this.baseURL}posts/${id}`, postData).subscribe((data) => {
+    this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {
       this.route.navigate(['/']);
     });
   }

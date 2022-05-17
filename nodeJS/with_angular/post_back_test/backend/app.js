@@ -11,8 +11,7 @@ mongoose
   .catch(() => console.log("failed"));
 
 //path
-const path = require("path");
-app.use("/images", express.static(path.join("backend/images")));
+
 //path
 
 app.use((req, res, next) => {
