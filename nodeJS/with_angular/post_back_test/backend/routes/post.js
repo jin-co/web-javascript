@@ -30,10 +30,39 @@ const storage = multer.diskStorage({
 });
 //**/file upload
 
-router.get("", (req, res, next) => {
-  Post.find().then((data) => {
+// router.get("", (req, res, next) => {
+//   Post.find().then((data) => {
+//     res.status(200).json(data);
+//   });
+// });
+
+router.get("/:id", (req, res, next) => {
+  Post.findOne({ _id: req.params.id }).then((data) => {
     res.status(200).json(data);
   });
+});
+
+//** paginator */
+router.get("", (req, res, next) => {
+  console.log.apply(req.query);
+  const pageSize = +req.query.pagesize;
+  const page = +req.query.page;
+  const postQuery = Post.find();
+  let fetchedPosts
+  if (pageSize && page) {
+    postQuery.skip(pageSize * (page - 1)).limit(pageSize);
+  }
+  postQuery
+    .then((data) => {
+      fetchedPosts = docx
+      return Post.count();
+    })
+    .then((count) => {
+      res.status(200).json({
+        maxPost: count,
+        posts: fetchedPosts
+      })
+    });
 });
 
 router.get("/:id", (req, res, next) => {
@@ -41,6 +70,7 @@ router.get("/:id", (req, res, next) => {
     res.status(200).json(data);
   });
 });
+//** paginator */
 
 // router.post("", jsonParser, (req, res, next) => {
 //   const post = new Post({

@@ -105,5 +105,5 @@ export class PostCreateComponent implements OnInit {
       this.imgPreview = reader.result as string
     }
     reader.readAsDataURL(file as Blob)
-  }
+  }  
 }

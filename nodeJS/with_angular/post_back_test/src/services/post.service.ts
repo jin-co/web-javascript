@@ -8,17 +8,31 @@ import { Post } from 'src/models/post';
 export class PostService {
   posts: Post[] = [];
   post!: Post;
-  postUpdated = new Subject<Post[]>();
+  // postUpdated = new Subject<Post[]>();
+
+  //** paginator */  
+  postUpdated = new Subject<{postCount: number,posts:Post[]}>();
+  //** paginator */  
   baseURL: string = 'http://localhost:3000/';
 
   constructor(private route: Router, private http: HttpClient) {}
 
-  getPosts() {
-    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
-      this.posts = data;
-      this.postUpdated.next([...this.posts]);
+  //** paginator */  
+  getPosts(pageSize: number, current: number) {
+    const queryParams = `?pagesize=${pageSize}&page=${current}`
+    this.http.get<{maxPost: number, posts:Post[]}>(`${this.baseURL}posts${queryParams}`).subscribe((data) => {
+      this.posts = data.posts;
+      this.postUpdated.next({postCount: data.maxPost, posts: [...this.posts]});
     });
   }
+  //** paginator */
+
+  // getPosts() {
+  //   this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
+  //     this.posts = data;
+  //     this.postUpdated.next([...this.posts]);
+  //   });
+  // }
 
   getPost(id: string) {
     return this.http.get<{
@@ -51,18 +65,26 @@ export class PostService {
 
     this.http.post<Post>(`${this.baseURL}posts`, postData).subscribe((data) => {
       this.posts.push(data);
-      this.postUpdated.next([...this.posts]);
+      //** paginator */  
+      // this.postUpdated.next([...this.posts]);
+      //** paginator */  
       this.route.navigate(['/']);
     });
   }
 
+  // deletePost(id: string) {
+  //   this.http.delete(`${this.baseURL}posts/${id}`).subscribe((result) => {
+  //     const postDeleted = this.posts.filter((p) => p._id !== id);
+  //     this.posts = postDeleted;
+  //     this.postUpdated.next([...this.posts]);
+  //   });
+  // }
+
+  //** paginator */  
   deletePost(id: string) {
-    this.http.delete(`${this.baseURL}posts/${id}`).subscribe((result) => {
-      const postDeleted = this.posts.filter((p) => p._id !== id);
-      this.posts = postDeleted;
-      this.postUpdated.next([...this.posts]);
-    });
+    return this.http.delete(`${this.baseURL}posts/${id}`)
   }
+  //** paginator */  
 
   // updatePost(id: string, title: string, content: string) {
   //   const post = {
