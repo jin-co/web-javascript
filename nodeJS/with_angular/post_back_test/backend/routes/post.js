@@ -44,6 +44,13 @@ router.get("/:id", (req, res, next) => {
 
 //** paginator */
 router.get("", (req, res, next) => {
+  console.log(req.query)
+  const pageSize = +req.query.pageSize
+  const currentPage = +req.query.currentPage
+  const postQuery = Post.find()
+  if(pageSize && currentPage) {
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
+  }
   Post.find().then((data) => {
     res.status(200).json(data);
   });
