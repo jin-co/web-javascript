@@ -29,6 +29,7 @@ export class PostListComponent implements OnInit {
   //** paginator */
   onDelete(id: string) {    
     this.postService.deletePost(id);
+    this.postService.getPosts(this.pageSize, this.currentPage)
   }
 
   // totalPage = 10
