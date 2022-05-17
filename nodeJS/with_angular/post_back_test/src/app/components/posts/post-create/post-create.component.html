@@ -30,6 +30,8 @@
     <input type="file" #addImage (change)="onAddImage($event)">
   </div>
 
+  <img [src]="post.imagePath" alt="">
+
   <button type="submit" mat-stroked-button>Click</button>
 </form>
 </mat-card>
