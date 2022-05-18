@@ -3,6 +3,11 @@ a {
     text-decoration: none;    
 }
 
+ul {
+    width: 100%;
+    display: flex;
+}
+
 li {
     list-style: none;
 }
