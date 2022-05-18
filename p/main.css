@@ -3,6 +3,7 @@
 :root {
   --border-radius-card: 5px;
   --bg-prime: rebeccapurple;
+  --bg-second: #1c1c80;
   --box-shadow: 1px 5px 8px 0 rgba(255, 255, 255, .9);
 }
 
@@ -17,7 +18,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(28, 28, 128);
+  background-color: var(--bg-second);
+  color: #fff;
 }
 
 main {
@@ -29,14 +31,15 @@ main {
 
 .card {
   height: 300px;
-  width: 100%;
+  width: 100%;  
   margin-top: 20px;
+  padding: 40px;  
   display: flex;
   flex-direction: row;
+  gap: 30px;
   border-radius: var(--border-radius-card);
   background-color: var(--bg-prime);
   box-shadow: var(--box-shadow);
-  padding: 10px;  
 }
 
 .card.hide {
@@ -45,16 +48,20 @@ main {
 
 .img-box {
   height: 100%;
-  width: 100px;
+  width: 140px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: center;  
 }
 
 img {  
-  border-radius: 50%;
-  
-  width: 50px;
+  height: 130px;
+  width: 130px;
+  margin-top: 15px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;  
+  border: 10px solid var(--bg-second);
 }
 
 .search {
@@ -66,9 +73,28 @@ img {
   border-radius: var(--border-radius-card);
   box-shadow: var(--box-shadow);
   background-color: var(--bg-prime);
+  color: #fff;
+  font-size: 1.2rem;
 }
 
 .search:focus {
   outline: none;
+}
+
+.following-box {
+  display: flex;
+  align-items: center;
+}
+
+.following-box p {
+  flex: 1 0 33%;
+  height: 100%;
+}
+
+.tag {
+  padding: 2px 4px;
+  font-size: .7rem;
+  border-radius: 2px;
+  background-color: var(--bg-second);
 }
 
