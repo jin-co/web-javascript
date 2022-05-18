@@ -45,14 +45,12 @@ export class PostCreateComponent implements OnInit {
           this.post = {
             _id: data._id,
             title: data.title,
-            content: data.content,   
-            imagePath: data.imagePath
+            content: data.content              
           };
 
           this.form.setValue({
             title: this.post.title,
-            content: this.post.content,
-            image: this.post.imagePath
+            content: this.post.content,            
           });
         });
       } else {
@@ -79,22 +77,21 @@ export class PostCreateComponent implements OnInit {
       if (this.mode === 'create') {
         this.postService.setPost(
           this.form.value.title,
-          this.form.value.content,
-          this.form.value.image
+          this.form.value.content          
         );
       } else {
         console.log('front update', this.id);
         this.postService.updatePost(
           this.id,
           this.form.value.title,
-          this.form.value.content,
-          this.form.value.image
+          this.form.value.content          
         );
       }
       this.form.reset();
     }
   }
 
+  //** image */
   imgPreview!: string;
   onAddImage(e: Event) {
     const file = (e.target as HTMLInputElement).files?.[0]
@@ -106,4 +103,5 @@ export class PostCreateComponent implements OnInit {
     }
     reader.readAsDataURL(file as Blob)
   }  
+  //** image */
 }

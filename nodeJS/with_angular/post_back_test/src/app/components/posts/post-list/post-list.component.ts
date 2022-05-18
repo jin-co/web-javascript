@@ -13,12 +13,11 @@ export class PostListComponent implements OnInit {
   constructor(public postService: PostService) {}
 
   ngOnInit(): void {
-    this.postService.getPosts(this.pageSize, this.currentPage)
+    this.postService.getPosts()
     this.postService
       .updateListener()
-      .subscribe((data: {posts: Post[], maxPost: number}) => {
-        this.posts = data.posts
-        this.totalPage = data.maxPost
+      .subscribe((data) => {
+        this.posts = data        
       });
   }
 
@@ -29,19 +28,10 @@ export class PostListComponent implements OnInit {
   //** paginator */
   onDelete(id: string) {    
     this.postService.deletePost(id);
-    this.postService.getPosts(this.pageSize, this.currentPage)
+    this.postService.getPosts()
   }
 
   // totalPage = 10
-  totalPage = 0
-  pageSize = 4
-  pageSizeOption = [1,2,3]
-  currentPage = 1  
-
-  onPageChange(e: PageEvent) {
-    this.pageSize = e.pageSize
-    this.currentPage = e.pageIndex + 1
-    this.postService.getPosts(this.pageSize, this.currentPage)
-  }
+  
   //** paginator */
 }
