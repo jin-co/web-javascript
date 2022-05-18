@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt"); // encrypts the user info
 const User = require("../models/user");
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 
 router.post("/signup", (req, res, next) => {
   bcrypt

@@ -12,7 +12,7 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(`${this.baseURL}singup`, user).subscribe(data => {
+    this.http.post(`${this.baseURL}signup`, user).subscribe(data => {
 
     })
   }
