@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const postRouter = require("./routes/post");
+const userRouter = require("./routes/user");
 
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
@@ -11,7 +12,8 @@ mongoose
   .catch(() => console.log("failed"));
 
 //** image upload path
-const path = require('path')
+const path = require('path');
+const bodyParser = require("body-parser");
 app.use("/images", express.static(path.join("backend/images")))
 //** image upload path
 
@@ -28,6 +30,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(bodyParser.json())
 app.use("/posts", postRouter);
+app.use("/user", userRouter);
 
 module.exports = app;
