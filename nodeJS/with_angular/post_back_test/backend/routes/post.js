@@ -62,10 +62,12 @@ router.get("", (req, res, next) => {
 // });
 
 //** imag upload */
-router.post("", jsonParser, (req, res, next) => {
+router.post("", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
+  const url = req.protocol + "://" + req.get('host')
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    imagePath: url + "/images/" + req.file.filename
   });
   post.save().then((data) => {
     res.status(201).json(data);
@@ -93,12 +95,18 @@ router.delete("/:id", (req, res, next) => {
 // });
 
 //** imag upload */
-router.put("/:id", jsonParser, (req, res, next) => {
+router.put("/:id", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
   console.log(req.body);
+  let imagePath = req.body.imagePath
+  if(req.file) {
+    const url = req.protocol + "://" + req.get('host')
+    imagePath = url + "/images/" + req.file.filename
+  }
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
+    imagePath: imagePath
   });
 
   Post.updateOne({ _id: req.params.id }, post).then((data) => {
