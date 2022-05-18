@@ -11,7 +11,7 @@ export class PostService {
   // postUpdated = new Subject<Post[]>();
 
   //** paginator */
-  postUpdated = new Subject<Post[]>();
+  postUpdated = new Subject<{ posts: Post[]; maxPage: number }>();
   //** paginator */
   baseURL: string = 'http://localhost:3000/';
 
@@ -24,19 +24,25 @@ export class PostService {
   //   });
   // }
   //** paginator */
-  getPosts() {
-    this.http.get<Post[]>(`${this.baseURL}posts`).subscribe((data) => {
-      this.posts = data;
-      this.postUpdated.next([...this.posts]);
-    });
+  getPosts(pageSize: number, currentPage: number) {
+    const query = `?pageSize=${pageSize}&currentPage=${currentPage}`;
+    this.http
+      .get<{ posts: Post[]; maxPage: number }>(`${this.baseURL}posts${query}`)
+      .subscribe((data) => {
+        this.posts = data.posts;
+        this.postUpdated.next({
+          posts: [...this.posts],
+          maxPage: data.maxPage,
+        });
+      });
   }
-  //** paginator */  
+  //** paginator */
 
   // getPost(id: string) {
   //   return this.http.get<{
   //     _id: string;
   //     title: string;
-  //     content: string;      
+  //     content: string;
   //   }>(`${this.baseURL}posts/${id}`);
   // }
   //** image upload */
@@ -44,11 +50,11 @@ export class PostService {
     return this.http.get<{
       _id: string;
       title: string;
-      content: string;    
-      imagePath: string  
+      content: string;
+      imagePath: string;
     }>(`${this.baseURL}posts/${id}`);
   }
-//** image upload */
+  //** image upload */
 
   // setPost(title: string, content: string) {
   //   const post = {
@@ -65,19 +71,11 @@ export class PostService {
 
   //** image upload json cannot include file -> use FormData */
   setPost(title: string, content: string, image: File) {
-    const postData = new FormData()
-    postData.append("title", title)
-    postData.append("content", content)
-    postData.append("image", image, title)    
-    this.http.post(`${this.baseURL}posts`, postData).subscribe((data) => {
-      const post = {
-        _id: '',
-        title: title,
-        content: content,
-        imagePath: ''
-      };
-      this.posts.push(post);
-      this.postUpdated.next([...this.posts]);
+    const postData = new FormData();
+    postData.append('title', title);
+    postData.append('content', content);
+    postData.append('image', image, title);
+    this.http.post(`${this.baseURL}posts`, postData).subscribe((data) => {      
       this.route.navigate(['/']);
     });
   }
@@ -93,11 +91,7 @@ export class PostService {
 
   //** paginator */
   deletePost(id: string) {
-    this.http.delete(`${this.baseURL}posts/${id}`).subscribe((result) => {
-      const postDeleted = this.posts.filter((p) => p._id !== id);
-      this.posts = postDeleted;
-      this.postUpdated.next([...this.posts]);
-    });
+    this.http.delete(`${this.baseURL}posts/${id}`);
   }
   //** paginator */
 
@@ -115,20 +109,20 @@ export class PostService {
 
   //** image upload */
   updatePost(id: string, title: string, content: string, image: File | string) {
-    let post
-    if(typeof(image) === 'object') {
-      post = new FormData()
-      post.append("_id", id)
-      post.append("title", title)
-      post.append("content", content)
-      post.append("image", image, title)
+    let post;
+    if (typeof image === 'object') {
+      post = new FormData();
+      post.append('_id', id);
+      post.append('title', title);
+      post.append('content', content);
+      post.append('image', image, title);
     } else {
       post = {
         _id: id,
         title: title,
         content: content,
       };
-    }     
+    }
 
     this.http.put(`${this.baseURL}posts/${id}`, post).subscribe((data) => {
       this.route.navigate(['/']);
