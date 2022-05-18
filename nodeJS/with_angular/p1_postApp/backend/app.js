@@ -123,8 +123,12 @@ app.use((req, res, next) => {
 //     }
 //   })
 // })
-
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 app.use("/posts", postRoute)
+
+const userRoute = require('./routes/users')
+app.use("/user", userRoute)
 
 
 module.exports = app;
