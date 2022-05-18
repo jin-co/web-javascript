@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
+:root {
+  --border-radius-card: 5px;
+  --bg-prime: rebeccapurple;
+  --box-shadow: 1px 5px 8px 0 rgba(255, 255, 255, .9);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,28 +17,58 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: antiquewhite;
+  background-color: rgb(28, 28, 128);
+}
+
+main {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  position: relative;  
 }
 
 .card {
+  height: 300px;
+  width: 100%;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  position: relative;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: var(--border-radius-card);
+  background-color: var(--bg-prime);
+  box-shadow: var(--box-shadow);
+  padding: 10px;  
+}
+
+.card.hide {
+  display: none;
+}
+
+.img-box {
+  height: 100%;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {  
-  height: 100%;
+  border-radius: 50%;
+  
   width: 50px;
 }
 
-input {
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;  
+.search {
+  height: 40px;
+  width: 90%;  
+  padding: 0 10px;    
+  margin: auto;  
   border: none;
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--box-shadow);
+  background-color: var(--bg-prime);
+}
+
+.search:focus {
+  outline: none;
 }
 
