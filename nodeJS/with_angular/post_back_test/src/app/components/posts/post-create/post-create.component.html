@@ -26,9 +26,9 @@
 
   <!-- image -->
     <div>
-      <img [src]="imgPreview" [alt]="form.value.image">
-      <input type="file" (change)="onImageAdd($event)">
-      <button mat-raised-button>Add Image</button>
+      <img height="100px" *ngIf="imgPreview" [src]="imgPreview" [alt]="form.value.image">
+      <input type="file" #fileUpload (change)="onImageAdd($event)">
+      <button type="button" (click)="fileUpload.click()" mat-raised-button>Add Image</button>
     </div>
   <!-- image -->
 

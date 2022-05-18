@@ -30,7 +30,9 @@ export class PostCreateComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, { validators: [Validators.required] }),
       content: new FormControl(null, { validators: [Validators.required] }),
-      
+      //**image
+      image: new FormControl(null),
+      //**image
     });
 
     this.activeRoute.paramMap.subscribe((pm: ParamMap) => {
@@ -45,12 +47,12 @@ export class PostCreateComponent implements OnInit {
           this.post = {
             _id: data._id,
             title: data.title,
-            content: data.content              
+            content: data.content,
           };
 
           this.form.setValue({
             title: this.post.title,
-            content: this.post.content,            
+            content: this.post.content,
           });
         });
       } else {
@@ -77,14 +79,14 @@ export class PostCreateComponent implements OnInit {
       if (this.mode === 'create') {
         this.postService.setPost(
           this.form.value.title,
-          this.form.value.content          
+          this.form.value.content
         );
       } else {
         console.log('front update', this.id);
         this.postService.updatePost(
           this.id,
           this.form.value.title,
-          this.form.value.content          
+          this.form.value.content
         );
       }
       this.form.reset();
@@ -92,9 +94,16 @@ export class PostCreateComponent implements OnInit {
   }
 
   //** image */
-  imgPreview!:string
+  imgPreview!: string;
   onImageAdd(e: Event) {
-    
+    const file = (e.target as HTMLInputElement).files?.[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image')?.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imgPreview = reader.result as string;
+    };
+    reader.readAsDataURL(file as Blob);
   }
   //** image */
 }
