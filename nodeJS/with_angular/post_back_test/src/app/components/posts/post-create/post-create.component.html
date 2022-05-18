@@ -30,6 +30,7 @@
       <input type="file" #fileUpload (change)="onImageAdd($event)">
       <button type="button" (click)="fileUpload.click()" mat-raised-button>Add Image</button>
     </div>
+    <img height="100px" [src]="post.imagePath" alt="">
   <!-- image -->
 
   <button type="submit" mat-stroked-button>Click</button>
