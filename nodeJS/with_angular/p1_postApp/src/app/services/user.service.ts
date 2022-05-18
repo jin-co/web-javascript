@@ -15,5 +15,5 @@ export class UserService {
     this.http.post(`${this.baseURL}signup`, user).subscribe(data => {
 
     })
-  }
+  }  
 }
