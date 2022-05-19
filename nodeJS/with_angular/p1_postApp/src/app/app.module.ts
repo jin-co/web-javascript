@@ -17,9 +17,10 @@ import { PostListComponent } from './components/posts/post-list/post-list.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/singup/singup.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { SignupComponent } from './auth/singup/singup.component';
     ReactiveFormsModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

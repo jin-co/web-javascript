@@ -2,6 +2,10 @@ const express = require("express");
 const Post = require("../models/post");
 const bodyParser = require("body-parser");
 const app = express();
+//**auth check */
+const checkAuth = require("../middleware/check-auth");
+//middleware runs in order so put the auth part right after the path and before all the other functions
+//**auth check */
 
 //**file upload
 const multer = require("multer");
@@ -36,6 +40,7 @@ const router = express.Router();
 
 router.post(
   "",
+  checkAuth,
   jsonParser,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
@@ -69,18 +74,19 @@ router.get("", (req, res, next) => {
   const currentPage = +req.query.page;
   const postQuery = Post.find();
   if (pageSize && currentPage) {
-    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
-  let fetchedPost
+  let fetchedPost;
   postQuery
-    .then((docs) => {      
-      fetchedPost = docs
-      return Post.count()      
-    }).then(count => {
+    .then((docs) => {
+      fetchedPost = docs;
+      return Post.count();
+    })
+    .then((count) => {
       res.status(200).json({
         message: "post",
         posts: fetchedPost,
-        postCount: count
+        postCount: count,
       });
     })
     .catch();
@@ -95,7 +101,7 @@ router.get("", (req, res, next) => {
   //   .catch();
 });
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json("deleted");
   });
@@ -103,6 +109,7 @@ router.delete("/:id", (req, res, next) => {
 
 router.put(
   "/:id",
+  checkAuth,
   jsonParser,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
