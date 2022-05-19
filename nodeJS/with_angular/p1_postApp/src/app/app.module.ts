@@ -29,7 +29,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HeaderComponent,
     PostListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,11 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HttpClientModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
