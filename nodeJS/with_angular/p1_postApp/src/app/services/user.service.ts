@@ -7,7 +7,7 @@ import { User } from '../models/user';
 export class UserService {
   baseURL: string = 'http://localhost:3000/user/';
   token!: string;
-  authStatusListener = new Subject<boolean>()
+  private authStatusListener = new Subject<boolean>()
 
   constructor(private http: HttpClient) {}
 
@@ -27,10 +27,15 @@ export class UserService {
     this.http.post<string>(`${this.baseURL}login`, user).subscribe((token) => {
       this.token = token;
       console.log(this.token)
+      this.authStatusListener.next(true)
     });
   }
 
   getToken() {
     return this.token;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable()
   }
 }
