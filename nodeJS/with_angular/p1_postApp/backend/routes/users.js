@@ -24,24 +24,30 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.post("/login", (req, res, next) => {
-  User.find({ email: req.body.email })
+router.post("/login", (req, res, next) => {  
+  let fetchedUser;
+  User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
         return res.status(401).json("User not found");
       }
+      fetchedUser = user;            
+      console.log('front ps',req.body.password)
+      console.log('back ps',user.password)
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then((result) => {
+    .then((result) => {      
+      console.log('result', result)
       if (!result) {
         return res.status(401).json("Password mismatch");
       }
       const token = jwt.sign(
-        { email: user.email, userId: user._id },
+        { email: fetchedUser.email, userId: fetchedUser._id },
         "secret_code",
         { expiresIn: "1h" }
         // token is stored in the front so set the expire as short as possible
       );
+      res.status(200).json(token)
     })
     .catch((err) => {
       return res.status(401).json({ error: err });

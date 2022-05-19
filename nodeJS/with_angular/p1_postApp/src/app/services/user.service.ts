@@ -15,5 +15,15 @@ export class UserService {
     this.http.post(`${this.baseURL}signup`, user).subscribe(data => {
 
     })
-  }  
+  }
+  
+  login(email:string, password:string) {    
+    const user:User = {
+      email: email,
+      password: password,
+    };
+    this.http.post(`${this.baseURL}login`, user).subscribe(data => {
+      console.log('logged in', data)
+    })
+  }
 }
