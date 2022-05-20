@@ -32,6 +32,7 @@ export class UserService {
       console.log(this.token)
       this.isAuthenticated = true
       this.authStatusListener.next(true)
+      this.router.navigate(['/'])
     });
   }
 
@@ -48,7 +49,10 @@ export class UserService {
   }
 
   logout() {
+    console.log('clicked clicked')
     this.token = ''
     this.isAuthenticated = false
+    this.authStatusListener.next(false)
+    this.router.navigate(['/'])
   }
 }
