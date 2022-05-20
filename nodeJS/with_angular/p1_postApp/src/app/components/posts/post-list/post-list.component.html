@@ -11,7 +11,7 @@
 
     <img height="100px" [src]="i.imagePath" [alt]="i.title" />
 
-    <mat-action-row>
+    <mat-action-row *ngIf="isAuthenticated">
       <!-- <button mat-stroked-button color="primary">Edit</button> -->
       <a mat-stroked-button [routerLink]="['/edit', i._id]" color="primary"
         >Edit</a
