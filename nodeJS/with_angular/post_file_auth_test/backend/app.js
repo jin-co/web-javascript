@@ -2,6 +2,7 @@ const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
 const postRouter = require('./routers/post')
+const path = require('path')
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -23,6 +24,7 @@ mongoose.connect(dbURL).then(() => console.log('connected')).catch(() => console
 
 app.use(express.json())
 app.use(urlencoded({extended: false}))
+app.use("/images", express.static(path.join("backend/images")))
 
 app.use("/posts", postRouter)
 
