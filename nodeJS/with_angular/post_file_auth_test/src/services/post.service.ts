@@ -35,7 +35,9 @@ export class PostService {
   }
   deletePost(id: string) {
       this.http.delete(`${this.baseURL}${id}`).subscribe(result => {
-          
+          const deletedPost = this.posts.filter(p => p._id !== id)
+          this.posts = deletedPost
+          this.postUpdated.next([...this.posts])
       })
   }
   updatePost(id: string, title: string, content: string) {}
