@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
-:root {
-  --border-radius-card: 5px;
-  --bg-prime: rebeccapurple;
-  --bg-second: #1c1c80;
-  --box-shadow: 1px 5px 8px 0 rgba(255, 255, 255, .9);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -15,86 +8,37 @@
 
 body {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-second);
-  color: #fff;
-}
-
-main {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  position: relative;  
-}
-
-.card {
-  height: 300px;
-  width: 100%;  
-  margin-top: 20px;
-  padding: 40px;  
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  border-radius: var(--border-radius-card);
-  background-color: var(--bg-prime);
-  box-shadow: var(--box-shadow);
-}
-
-.card.hide {
-  display: none;
+  text-align: center;
+  padding-top: 40px;
 }
 
 .img-box {
-  height: 100%;
-  width: 140px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;  
+
 }
 
-img {  
-  height: 130px;
-  width: 130px;
-  margin-top: 15px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;  
-  border: 10px solid var(--bg-second);
+.img {
+  height: 400px; 
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .3); 
+  background: url('https://source.unsplash.com/random') center center/cover;
+  position: relative;
 }
 
-.search {
-  height: 40px;
-  width: 90%;  
-  padding: 0 10px;    
-  margin: auto;  
-  border: none;
-  border-radius: var(--border-radius-card);
-  box-shadow: var(--box-shadow);
-  background-color: var(--bg-prime);
-  color: #fff;
-  font-size: 1.2rem;
+.heart-effect {
+  position: absolute;
+  top: 68px;
+  animation: grow 1s forwards;
 }
 
-.search:focus {
-  outline: none;
+@keyframes grow {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
 }
-
-.following-box {
-  display: flex;
-  align-items: center;
-}
-
-.following-box p {
-  flex: 1 0 33%;
-  height: 100%;
-}
-
-.tag {
-  padding: 2px 4px;
-  font-size: .7rem;
-  border-radius: 2px;
-  background-color: var(--bg-second);
-}
-
