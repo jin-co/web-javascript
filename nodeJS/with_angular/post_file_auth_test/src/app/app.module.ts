@@ -18,6 +18,8 @@ import { PostListComponent } from './components/posts/post-list/post-list.compon
 import { HeaderComponent } from './components/shared/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PostCreateComponent,
     PostListComponent,
     HeaderComponent,
+    LoginComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
