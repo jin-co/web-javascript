@@ -1,6 +1,7 @@
 const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
+const postRouter = require('./routers/post')
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,19 +19,11 @@ app.use((req, res, next) => {
 const mongoose = require('mongoose')
 const dbURL = 'mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority'
 mongoose.connect(dbURL).then(() => console.log('connected')).catch(() => console.log('failed'))
-const postSchema = mongoose.Schema({
-  title: {type:String, require:true},
-  content: {type:String, require:true}
-})
-const Post = mongoose.model("Post", postSchema)
+
 
 app.use(express.json())
 app.use(urlencoded({extended: false}))
 
-app.get("/posts", (req, res, next) => {
-  Post.find().then(result => {
-    res.status(200).json(result)
-  })
-})
+app.use("/posts", postRouter)
 
 module.exports = app;
