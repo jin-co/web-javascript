@@ -24,20 +24,20 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.post("/login", (req, res, next) => {  
-  let fetchedUser;  
+router.post("/login", (req, res, next) => {
+  let fetchedUser;
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
         return res.status(401).json("User not found");
       }
-      fetchedUser = user;            
-      console.log('front ps',req.body.password)
-      console.log('back ps',user.password)
+      fetchedUser = user;
+      console.log("front ps", req.body.password);
+      console.log("back ps", user.password);
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then((result) => {      
-      console.log('result', result)
+    .then((result) => {
+      console.log("result", result);
       if (!result) {
         return res.status(401).json("Password mismatch");
       }
@@ -47,7 +47,7 @@ router.post("/login", (req, res, next) => {
         { expiresIn: "1h" }
         // token is stored in the front so set the expire as short as possible
       );
-      res.status(200).json(token)
+      res.status(200).json({ token: token, expiresIn: 3600 });
     })
     .catch((err) => {
       return res.status(401).json({ error: err });

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private userService:UserService) { }  
 
   ngOnInit(): void {
+    this.isAuthenticated = this.userService.getIsAuth() //need this because the app component which called first will set the login true while the header component won't
     this.authListenerSubs = this.userService.getAuthStatusListener().subscribe(result => {
       this.isAuthenticated = result
     })
