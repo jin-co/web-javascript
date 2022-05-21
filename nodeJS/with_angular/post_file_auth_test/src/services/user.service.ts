@@ -13,7 +13,7 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(`${this.baseURL}`, user).subscribe((result) => {
+    this.http.post(`${this.baseURL}login`, user).subscribe((result) => {
         console.log(result)
         this.router.navigate(['/'])
     });
