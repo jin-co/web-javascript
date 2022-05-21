@@ -8,7 +8,8 @@ import { PostService } from 'src/services/post.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  posts:Post[] = []
+  posts:Post[] = []  
+
   constructor(private postService:PostService) { }
 
   ngOnInit(): void {
@@ -22,4 +23,6 @@ export class PostListComponent implements OnInit {
   onDelete(id: string) {
     this.postService.deletePost(id)
   }
+
+  
 }
