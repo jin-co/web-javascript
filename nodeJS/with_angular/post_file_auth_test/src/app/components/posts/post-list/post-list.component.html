@@ -10,6 +10,7 @@
       {{ i.content }}
     </p>
 
+    <img height="100px" [src]="i?.imagePath" alt="">
     <button mat-raised-button (click)="onDelete(i._id)">Delete</button>
     <a [routerLink]="['edit', i._id]" mat-raised-button>Edit</a>
   </mat-expansion-panel>
