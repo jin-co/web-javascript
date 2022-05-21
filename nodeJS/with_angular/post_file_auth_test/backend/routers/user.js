@@ -25,7 +25,27 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  
+  let fetchedUser;
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        return res.status(401).json("user not found");
+      }
+      fetchedUser = user;
+      return bcrypt.compare(req.body.password, use.password);
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(401).json("password wrong");
+      }
+      const token = jwt.sign(
+        { email: fetchedUser.email, userId: fetchedUser._id },
+        "secret",
+        { expiresIn: "1h" }
+      );
+    })
+    .res.status(200)
+    .json({ token: token, expiresIn: 3600 });
 });
 
 module.exports = router;
