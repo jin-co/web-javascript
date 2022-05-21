@@ -25,31 +25,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  let fetchedUser;
-  User.findOne({ email: req.body.emali })
-    .then((user) => {
-      if (!user) {
-        return res.status(401).json("user not found");
-      }
-      fetchedUser = user;
-      return bcrypt.compare(req.body.password, user.password);
-    })
-    .then((result) => {
-      if (!result) {
-        return res.status(401).json("wrong password");
-      }
-      const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret",
-        { expiresIn: "1h" }
-      );
-    });
-  res
-    .status(200)
-    .json({ toekn: token, expiresIn: 3600 })
-    .catch((err) => {
-      res.status(401).json(err);
-    });
+  
 });
 
 module.exports = router;
