@@ -14,6 +14,7 @@ export class UserService {
       password: password,
     };
     this.http.post(`${this.baseURL}`, user).subscribe((result) => {
+        console.log(result)
         this.router.navigate(['/'])
     });
   }
