@@ -1,11 +1,31 @@
 <mat-card>
+  <form action="" #form="ngForm" (submit)="onSignin(form)">
     <mat-form-field>
-        <input matInput type="email">
-    </mat-form-field>
-    
-    <mat-form-field>
-        <input matInput type="password">
+      <input
+        matInput
+        type="email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      />
+      <mat-error *ngIf="email.invalid">Required</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button>Click</button>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        password
+      />
+      <mat-error *ngIf="password.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit">Click</button>
+  </form>
 </mat-card>
