@@ -6,7 +6,7 @@ const multer = require("multer");
 // file upload
 const MIME_TYPE_MAP = {
   "image/png": "png",
-  "image/jpg": "jpg",
+  "image/jpeg": "jpg",
   "image/jpg": "jpg",
 };
 
@@ -20,7 +20,8 @@ const storage = multer.diskStorage({
     cb(error, "backend/images");
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.split(" ").join("-");
+      console.log("multer: ", file)
+    const name = file.originalname.toLowerCase().split(" ").join("-");
     const ext = MIME_TYPE_MAP[file.mimetype];
     cb(null, name + "-" + Date.now() + "." + ext);
   },
@@ -37,11 +38,12 @@ router.post(
   "",
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
+    console.log("image add post", req.file);
     const url = req.protocol + "://" + req.get("host");
     const post = new Post({
       title: req.body.title,
       content: req.body.content,
-      imagePath: url + "/images/" + req.file.filename
+      imagePath: url + "/images/" + req.file.filename,
     });
     post.save().then((result) => {
       res.status(201).json(result);

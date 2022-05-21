@@ -31,6 +31,7 @@ export class PostService {
   }
 
   addPost(title: string, content: string, image: File) {
+    console.log('image service: ', image);
     const postData = new FormData();
     postData.append('title', title);
     postData.append('content', content);
@@ -61,7 +62,7 @@ export class PostService {
       _id: id,
       title: title,
       content: content,
-      imagePath: ''
+      imagePath: '',
     };
 
     this.http.put(`${this.baseURL}${id}`, post).subscribe((result) => {
