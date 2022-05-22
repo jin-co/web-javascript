@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 const multer = require("multer");
-
+const authCheck = require('../middlewares/auth-check')
 
 // file upload
 const MIME_TYPE_MAP = {
