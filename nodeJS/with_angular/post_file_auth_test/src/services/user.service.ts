@@ -25,14 +25,7 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    const user: User = {
-      email: email,
-      password: password,
-    };
-    this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((data) => {
-        this.token = data.token
-        
-    });
+
   }
 
   getToken() {
