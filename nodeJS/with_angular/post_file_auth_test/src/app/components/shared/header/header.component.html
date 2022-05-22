@@ -1,16 +1,16 @@
 <mat-toolbar color="primary">
     <a routerLink="/">Header</a>
     <ul>
-        <li>
+        <li *ngIf="isAuthenticated">
             <a routerLink="/create">Add post</a>
         </li>
-        <li>
+        <li *ngIf="!isAuthenticated">
             <a routerLink="/login">Login</a>
         </li>
-        <li>
+        <li *ngIf="!isAuthenticated">
             <a routerLink="/signup">Signup</a>
         </li>
-        <li>
+        <li *ngIf="isAuthenticated">
             <button mat-button routerLink="">Logout</button>
         </li>
     </ul>
