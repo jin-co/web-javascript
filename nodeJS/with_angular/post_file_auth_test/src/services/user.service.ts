@@ -24,14 +24,14 @@ export class UserService {
     });
   }
 
-  signup(email: string, password: string) {
+  login(email: string, password: string) {
     const user: User = {
       email: email,
       password: password,
     };
-    this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((result) => {
-        this.token = result.token
-        
+    this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((data) => {
+        this.token = data.token
+        console.log(data)
     });
   }
 }

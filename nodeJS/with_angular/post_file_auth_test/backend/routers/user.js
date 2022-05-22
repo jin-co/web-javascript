@@ -36,7 +36,7 @@ router.post("/login", (req, res, next) => {
         res.status(401).json("wrong password");
       }
 
-      const token = jwt(
+      const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
         "secret",
         { expiresIn: "1h" }
