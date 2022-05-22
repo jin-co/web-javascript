@@ -6,11 +6,11 @@ module.exports = (req, res, next) => {
   // console.log('check auth body: ', req.body)
   try {
     const token = req.headers.authorization.split(" ")[1];
-    console.log('check auth backend:', token)
+    console.log("check auth backend:", token);
     jwt.verify(token, "secret_code");
-    next()
-  } catch(error) {
-    console.log('try failed: ', error)
+    next();
+  } catch (error) {
+    console.log("try failed: ", error);
     res.status(400).json("middle auth failed");
   }
 
@@ -19,4 +19,13 @@ module.exports = (req, res, next) => {
   //   req.user = user
   //   next()
   // })
+
+  // const header = req.headers["authorization"];
+  // const token = authorization && authorization.split(" ")[1];
+  // if (!token) return res.sendStatus(401);
+  // jwt.verify(token, "secret", (err, user) => {
+  //   if (err) return res.sendStatus(403);
+  //   req.user = user;
+  //   next();
+  // });
 };
