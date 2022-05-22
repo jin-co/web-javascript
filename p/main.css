@@ -57,3 +57,30 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.img-holder {
+  height: 100px;
+  width: 100px;    
+}
+
+.effect {    
+  background-image: linear-gradient(
+    to right,
+    #0fff00 0%,
+    #22aaa0 12%,
+    #fcccf0 60%,
+    #0eee0f 100%
+  );
+  background-size: 200% 100%;
+  animation: move 2s ease infinite;
+}
+
+@keyframes move {
+  from {
+    background-position: -10% 0;
+  }
+
+  to {
+    background-position: 120% 0;
+  }
+}
