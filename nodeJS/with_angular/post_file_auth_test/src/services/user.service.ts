@@ -9,7 +9,8 @@ export class UserService {
   private baseURL = 'http://localhost:3000/user/';
 
   //
-  private token!:string
+  private token!:string  
+  private isLogged:boolean = false
   private authUpdated = new Subject<boolean>()
   //
 
@@ -33,7 +34,9 @@ export class UserService {
     }
     this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe(data => {
       this.token = data.token
+      this.isLogged = true
       this.authUpdated.next(true)
+      this.router.navigate(['/'])
     })
   }
   
@@ -45,4 +48,14 @@ export class UserService {
     return this.authUpdated.asObservable()
   }
 
+  getIsLogged() {
+    return this.isLogged
+  }
+
+  logout() {
+    this.isLogged = false
+    this.token = ''
+    this.authUpdated.next(false)
+    this.router.navigate(['/'])
+  }
 }
