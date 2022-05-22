@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https:fonts.googleapis.com/css?family=Poppins&display=swap');
 
 * {
   margin: 0;
@@ -7,38 +7,9 @@
 }
 
 body {
-  height: 100vh;
-  text-align: center;
-  padding-top: 40px;
-}
-
-.img-box {
 
 }
 
-.img {
-  height: 400px; 
-  width: 300px;
-  margin: 0 auto;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .3); 
-  background: url('https://source.unsplash.com/random') center center/cover;
-  position: relative;
-}
-
-.heart-effect {
-  position: absolute;
-  top: 68px;
-  animation: grow 1s forwards;
-}
-
-@keyframes grow {
-  from {
-    transform: scale(0);
-    opacity: 1;
-  }
-  
-  to {
-    transform: scale(3);
-    opacity: 0;
-  }
+.canvas {
+  border: 1px solid #000;
 }

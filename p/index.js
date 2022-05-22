@@ -1,15 +1,31 @@
-const img = document.querySelector('.img')
-const count = document.querySelector('.count')
+const canvas = document.querySelector('.canvas')
+const ctx = canvas.getContext("2d")
 
-let idx = 0
-img.addEventListener('dblclick', (e) => {
-  console.log(e.offsetX, e.offsetY)
-  idx++
-  count.textContent = idx
-  const heartEl = document.createElement('i')  
-  heartEl.className = 'heart-effect'
-  heartEl.textContent = '❤️'
-  heartEl.style.top = `${e.offsetY}px`
-  heartEl.style.left = `${e.offsetX}px`
-  img.appendChild(heartEl)
+let x
+let y
+let clicked = false
+
+
+canvas.addEventListener('mousedown', (e) => {
+  clicked = true
+  x = e.offsetX
+  y = e.offsetY
+})
+
+canvas.addEventListener('mouseup', (e) => {
+  clicked = false
+})
+
+canvas.addEventListener('mousemove', (e) => {
+  if(clicked) {
+    const x2 = e.offsetX
+    const y2 = e.offsetY
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x2, y2)
+    ctx.stroke()
+
+    x = x2
+    y = y2
+  }
 })
