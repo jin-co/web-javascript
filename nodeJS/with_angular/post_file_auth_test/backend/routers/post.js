@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 const multer = require("multer");
+const authCheck = require("../middlewares/check-auth");
 
 // file upload
 const MIME_TYPE_MAP = {
@@ -36,6 +37,7 @@ router.get("", (req, res, next) => {
 
 router.post(
   "",
+  authCheck,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     console.log("image add post", req.file);
@@ -51,7 +53,7 @@ router.post(
   }
 );
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", authCheck, (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json("deleted");
   });
@@ -67,9 +69,10 @@ router.get("/:id", (req, res, next) => {
 
 router.put(
   "/:id",
+  authCheck,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
-    let imagePath = req.body.imagePath
+    let imagePath = req.body.imagePath;
     if (req.file) {
       const url = req.protocol + "://" + req.get("host");
       imagePath = url + "/images/" + req.file.filename;
@@ -78,7 +81,7 @@ router.put(
       _id: req.body._id,
       title: req.body.title,
       content: req.body.content,
-      imagePath: imagePath
+      imagePath: imagePath,
     });
     Post.updateOne({ _id: req.params.id }, post).then((result) => {
       res.status(200).json(result);

@@ -5,8 +5,8 @@ module.exports = (req, res, next) => {
       const token = req.headers.authorization.split(' ')[1]
       jwt.verify(token, "secret")
       next()
-  } catch {
-    res.status(403).json("middleware error")
+  } catch(err) {
+    res.status(403).json("middleware error: ", err)
   }
   // const header = req.headers['authorization']
   // const token = authorization && authorization.split(' ')[1]

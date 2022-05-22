@@ -8,7 +8,7 @@ export class UserService {
   private baseURL = 'http://localhost:3000/user/';
 
   //
-  token!:string
+  private token!:string
   //
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -31,7 +31,11 @@ export class UserService {
     };
     this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((data) => {
         this.token = data.token
-        console.log(data)
+        
     });
+  }
+
+  getToken() {
+    return this.token
   }
 }
