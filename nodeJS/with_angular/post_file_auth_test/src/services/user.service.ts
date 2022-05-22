@@ -36,6 +36,13 @@ export class UserService {
       this.token = data.token
       this.isLogged = true
       this.authUpdated.next(true)
+      setTimeout(() => {
+        this.logout()
+      }, data.exp * 1000)
+
+      const now = new Date()
+      const expDate = new Date(now.getTime() + data.exp * 1000)
+      this.saveData(data.token, expDate)
       this.router.navigate(['/'])
     })
   }
@@ -58,4 +65,16 @@ export class UserService {
     this.authUpdated.next(false)
     this.router.navigate(['/'])
   }
+
+  private saveData(token:string, exp:Date) {
+    localStorage.setItem("token", token)
+    localStorage.setItem("date", exp.toISOString())
+  }
+
+  private clearData() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("date")
+  }
+
+  
 }
