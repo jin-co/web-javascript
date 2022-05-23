@@ -49,6 +49,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
+      auth: req.userData.userId,
     });
     post.save().then((result) => {
       res.status(201).json({
@@ -102,9 +103,15 @@ router.get("", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id }).then((result) => {
-    res.status(200).json("deleted");
-  });
+  Post.deleteOne({ _id: req.params.id, auth: req.userData.userId }).then(
+    (result) => {
+      if (result.nModified > 0) {
+        res.status(200).json("deleted");
+      } else {
+        res.status(401).json("not the user");
+      }
+    }
+  );
 });
 
 router.put(
@@ -125,8 +132,15 @@ router.put(
       imagePath: imagePath,
     });
 
-    Post.updateOne({ _id: req.params.id }, post).then((result) => {
-      res.status(200).json("updated");
+    Post.updateOne(
+      { _id: req.params.id, auth: req.userData.userId },
+      post
+    ).then((result) => {
+      if (result.nModified > 0) {
+        res.status(200).json("updated");
+      } else {
+        res.status(401).json("not the user");
+      }
     });
   }
 );
