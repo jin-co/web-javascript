@@ -36,7 +36,7 @@ router.post(
   "",
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
-    console.log("image add post", req.file);
+    console.log(req.authorization)    
     const url = req.protocol + "://" + req.get("host");
     const post = new Post({
       title: req.body.title,

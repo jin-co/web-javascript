@@ -36,6 +36,7 @@ export class UserService {
         this.isLogged = true
         this.userUpdate.next(true)
         console.log(data);
+        this.router.navigate(['/'])
       });
   }
 
@@ -43,6 +44,7 @@ export class UserService {
       this.isLogged = false
       this.token = ''
       this.userUpdate.next(false)
+      this.router.navigate(['/'])
   }
 
   getIsLogged() {
