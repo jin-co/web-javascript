@@ -105,7 +105,7 @@ router.get("", (req, res, next) => {
 router.delete("/:id", checkAuth, (req, res, next) => {
   Post.deleteOne({ _id: req.params.id, auth: req.userData.userId }).then(
     (result) => {
-      if (result.nModified > 0) {
+      if (result.n > 0) {
         res.status(200).json("deleted");
       } else {
         res.status(401).json("not the user");
@@ -130,6 +130,7 @@ router.put(
       title: req.body.title,
       content: req.body.content,
       imagePath: imagePath,
+      auth: req.userData.userId
     });
 
     Post.updateOne(

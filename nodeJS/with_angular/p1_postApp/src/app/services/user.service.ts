@@ -10,6 +10,7 @@ export class UserService {
   token!: string;
   isAuthenticated: boolean = false;
   tokenTimer: any;
+  userId!: string;
 
   private authStatusListener = new Subject<boolean>();
 
@@ -29,7 +30,10 @@ export class UserService {
       password: password,
     };
     this.http
-      .post<{ token: string; expiresIn: number }>(`${this.baseURL}login`, user)
+      .post<{ token: string; expiresIn: number; userId: string }>(
+        `${this.baseURL}login`,
+        user
+      )
       .subscribe((data) => {
         this.token = data.token;
         console.log(this.token);
@@ -39,12 +43,13 @@ export class UserService {
         //   this.logout();
         // }, expiresInDuration * 1000);
         this.setAuthTimer(expiresInDuration);
-
+        this.userId = data.userId;
+        console.log(this.userId)
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
         const now = new Date();
         const expDate = new Date(now.getTime() + expiresInDuration * 1000);
-        this.saveAuthData(this.token, expDate);
+        this.saveAuthData(this.token, expDate, this.userId);
         this.router.navigate(['/']);
       });
   }
@@ -65,20 +70,23 @@ export class UserService {
     console.log('clicked clicked');
     this.token = '';
     this.isAuthenticated = false;
+    this.userId = '';
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.authStatusListener.next(false);
     this.router.navigate(['/']);
   }
 
-  private saveAuthData(token: string, expDate: Date) {
+  private saveAuthData(token: string, expDate: Date, userId: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('expDate', expDate.toISOString());
+    localStorage.setItem('userId', userId);
   }
 
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expDate');
+    localStorage.removeItem('userId');
   }
 
   autoAuth() {
@@ -87,16 +95,15 @@ export class UserService {
       return;
     }
     const now = new Date();
-    const flag = authInfo?.expDate;
-    const flag2 = authInfo?.token;
-    if (typeof flag !== 'undefined') {
+    if (typeof authInfo !== 'undefined' ) {
       // const isInFuture = flag > now
-      const expIn = flag.getTime() - now.getTime();
+      const expIn = authInfo.expDate.getTime() - now.getTime();
       if (expIn > 0) {
-        if (typeof flag2 !== 'undefined') {
-          this.token = flag2;
-        }
+        this.token = authInfo.token;
         this.isAuthenticated = true;
+        if(authInfo.userId !== null) {
+          this.userId = authInfo.userId
+        }
         this.setAuthTimer(expIn / 1000);
         this.authStatusListener.next(true);
       }
@@ -106,12 +113,14 @@ export class UserService {
   private getAuthData() {
     const token = localStorage.getItem('token');
     const expDate = localStorage.getItem('expDate');
+    const userId = localStorage.getItem('userId');
     if (!token || !expDate) {
       return;
     }
     return {
       token: token,
       expDate: new Date(expDate),
+      userId: userId,
     };
   }
 
@@ -120,5 +129,9 @@ export class UserService {
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, duration * 1000);
+  }
+
+  getUserId() {
+    return this.userId;
   }
 }

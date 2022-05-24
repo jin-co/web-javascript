@@ -55,6 +55,7 @@ export class PostService {
           postCount: postData.postCount,
         });
         console.log('returned', postData);
+        console.log('returned', this.posts);
       });
     return this.posts;
   }
@@ -175,6 +176,7 @@ export class PostService {
         title: title,
         content: content,
         imagePath: image,
+        auth: ''
       };
     }
     this.http
@@ -215,6 +217,7 @@ export class PostService {
       title: string;
       content: string;
       imagePath: string;
+      author: string
     }>(`${this.baseUrl}posts/${id}`);
   }
 }
