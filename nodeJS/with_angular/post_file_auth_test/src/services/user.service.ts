@@ -1,11 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { User } from 'src/models/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  baseURL: string = 'http://localhost:3000/user/';
+  private baseURL: string = 'http://localhost:3000/user/';
+  private isLogged: boolean = false;
+  private token!: string;
+  private userUpdate = new Subject<boolean>()
+
   constructor(private router: Router, private http: HttpClient) {}
 
   addUser(email: string, password: string) {
@@ -24,10 +29,27 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(`${this.baseURL}login`, user).subscribe((data) => {
-      console.log(data);
-    });
+    this.http
+      .post<{ token: string; exp: number }>(`${this.baseURL}login`, user)
+      .subscribe((data) => {
+        this.token = data.token;
+        this.isLogged = true
+        this.userUpdate.next(true)
+        console.log(data);
+      });
   }
 
-  logout() {}
+  logout() {
+      this.isLogged = false
+      this.token = ''
+      this.userUpdate.next(false)
+  }
+
+  getIsLogged() {
+      return this.isLogged
+  }
+
+  userUpdateListener() {
+      return this.userUpdate.asObservable()
+  }
 }

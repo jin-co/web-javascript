@@ -8,10 +8,15 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isLogged:boolean = false
+  
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.userUpdateListener().subscribe(result => {
+
+    })
+  }
 
   onLogin(form: NgForm) {
     if (form.valid) {
