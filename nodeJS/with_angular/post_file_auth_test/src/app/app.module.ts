@@ -20,7 +20,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
-import { AuthGuard } from './components/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,7 @@ import { AuthGuard } from './components/auth/auth.guard';
     MatToolbarModule,
     MatPaginatorModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthGuard, multi: true }],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

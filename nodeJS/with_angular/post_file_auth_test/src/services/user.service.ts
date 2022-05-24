@@ -52,4 +52,8 @@ export class UserService {
   userUpdateListener() {
       return this.userUpdate.asObservable()
   }
+
+  getToken():string {
+      return this.token
+  }
 }
