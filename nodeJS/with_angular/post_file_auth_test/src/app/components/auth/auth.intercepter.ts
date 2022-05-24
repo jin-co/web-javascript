@@ -17,10 +17,11 @@ export class AuthIntercepter implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const alteredReq = req.clone({
       headers: req.headers.set(
-        'authorization',
+        'Authorization',
         'Bearer ' + this.userService.getToken()
       ),
     });
+    console.log('intercepter: ', this.userService.getToken())
     return next.handle(alteredReq);
   }
 }
