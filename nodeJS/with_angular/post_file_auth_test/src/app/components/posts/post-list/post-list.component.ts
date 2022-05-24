@@ -2,7 +2,6 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post.service';
-import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -14,7 +13,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   isAuthenticated:boolean = false
   private authSubs!: Subscription
 
-  constructor(private postService:PostService, private userService:UserService) { }
+  constructor(private postService:PostService) { }
   
   ngOnInit(): void {
     this.posts = this.postService.getPosts()
@@ -24,12 +23,8 @@ export class PostListComponent implements OnInit, OnDestroy {
       this.posts = post
     })
 
-    this.isAuthenticated = this.userService.getIsLogged()
 
-    this.authSubs = this.userService.authUpdatedListener().subscribe(result => {
-      console.log("list logged? ", result)
-      this.isAuthenticated = result
-    })
+    
   }
   
   ngOnDestroy(): void {

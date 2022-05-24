@@ -20,7 +20,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
-import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatPaginatorModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    
   ],
   bootstrap: [AppComponent],
 })
