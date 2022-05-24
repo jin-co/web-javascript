@@ -2,6 +2,7 @@ const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
 const postRouter = require('./routers/post')
+const userRouter = require('./routers/user')
 
 const path = require('path')
 
@@ -28,6 +29,7 @@ app.use(urlencoded({extended: false}))
 app.use("/images", express.static(path.join("backend/images")))
 
 app.use("/posts", postRouter)
+app.use("/user", userRouter)
 
 
 module.exports = app;
