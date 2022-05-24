@@ -10,7 +10,7 @@ speedEl.addEventListener("change", (e) => {
 
 writeText();
 function writeText() {
-    textEl.innerText = text.slice(0, idx);
+    textEl.textContent = text.slice(0, idx);
 
     idx++;
     console.log(idx)
