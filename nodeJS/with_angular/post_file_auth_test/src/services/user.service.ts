@@ -9,7 +9,7 @@ export class UserService {
   constructor(private router: Router, private http: HttpClient) {}
 
   addUser(email: string, password: string) {
-      console.log('user service add user: ', email)
+    console.log('user service add user: ', email);
     const user: User = {
       email: email,
       password: password,
@@ -24,6 +24,9 @@ export class UserService {
       email: email,
       password: password,
     };
+    this.http.post(`${this.baseURL}login`, user).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   logout() {}
