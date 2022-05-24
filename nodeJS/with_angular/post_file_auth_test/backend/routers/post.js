@@ -4,7 +4,26 @@ const Post = require("../models/post");
 const multer = require("multer");
 
 // file upload
-const multer  
+const MIME_TYPE_MAP = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg",
+};
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error("invalid");
+    if (error) {
+      error = null;
+    }
+    cb(error, "backend/images");
+  },
+  filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase().split(' ').join('-')
+    const ext = MIME_TYPE_MAP[file.mimetype]
+    cb(null, name + '-' + Date.now() + '.' + ext)
+  },
+});
 // file upload
 
 router.get("", (req, res, next) => {
@@ -30,7 +49,7 @@ router.post(
   }
 );
 
-router.delete("/:id",  (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json("deleted");
   });
