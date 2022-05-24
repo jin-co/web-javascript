@@ -44,6 +44,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
+      author: ''
     });
     post.save().then((result) => {
       res.status(201).json(result);
