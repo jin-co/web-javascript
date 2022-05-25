@@ -100,7 +100,7 @@ router.post(
 );
 //** imag upload */
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   console.log('back delete: ', req.params.id)
   Post.deleteOne({ _id: req.params.id }).then((data) => {
     res.status(200).json("deleted");

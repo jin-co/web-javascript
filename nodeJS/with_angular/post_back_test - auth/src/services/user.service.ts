@@ -8,6 +8,8 @@ import { User } from 'src/models/user';
 export class UserService {
   private baseURL: string = 'http://localhost:3000/user/';
   private token!: string;
+  private isLogged: boolean = false;
+
   userUpdated = new Subject<boolean>();
 
   constructor(private router: Router, private http: HttpClient) {}
@@ -33,8 +35,15 @@ export class UserService {
         console.log('service user logged in: ', data);
         this.userUpdated.next(true);
         this.token = data.token;
+        this.isLogged = true
         this.router.navigate(['/']);
       });
+  }
+
+  logout() {
+    this.token = '';
+    this.userUpdated.next(false);
+    this.isLogged = false
   }
 
   userUpdatedListener() {
