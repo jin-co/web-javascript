@@ -101,10 +101,16 @@ router.post(
 //** imag upload */
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  console.log('back delete: ', req.params.id)
-  Post.deleteOne({ _id: req.params.id }).then((data) => {
-    res.status(200).json("deleted");
-  });
+  console.log("back delete: ", req.params.id);
+  Post.deleteOne({ _id: req.params.id, author: req.userData.userId }).then(
+    (result) => {
+      if (result.deletedCount == 1) {
+        res.status(200).json("deleted");
+      } else {
+        res.status(401).json("No right");
+      }
+    }
+  );
 });
 
 // router.put("/:id", jsonParser, (req, res, next) => {
@@ -123,10 +129,12 @@ router.delete("/:id", checkAuth, (req, res, next) => {
 //** imag upload */
 router.put(
   "/:id",
+  checkAuth,
   jsonParser,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
-    console.log(req.body);
+    console.log("back update user data: ");
+    console.log(req.userData);
     let imagePath = req.body.imagePath;
     if (req.file) {
       const url = req.protocol + "://" + req.get("host");
@@ -139,8 +147,15 @@ router.put(
       imagePath: imagePath,
     });
 
-    Post.updateOne({ _id: req.params.id }, post).then((data) => {
-      res.status(200).json(data);
+    Post.updateOne(
+      { _id: req.params.id, author: req.userData.userId },
+      post
+    ).then((result) => {
+      if (result.modifiedCount == 1) {
+        res.status(200).json(result);
+      } else {
+        res.status(401).json("No right");
+      }
     });
   }
 );
