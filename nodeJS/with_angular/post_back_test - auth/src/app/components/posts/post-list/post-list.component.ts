@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,13 +11,27 @@ import { PostService } from 'src/services/post.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
-  constructor(public postService: PostService) {}
+  isLogged: boolean = false;
+  userId!: string;
+
+  constructor(
+    public postService: PostService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.postService.getPosts(this.pageSize, this.currentPage);
-    this.postService.updateListener().subscribe((data:{posts: Post[], maxPage: number}) => {
-      this.posts = data.posts;
-      this.totalPage = data.maxPage
+    this.postService
+      .updateListener()
+      .subscribe((data: { posts: Post[]; maxPage: number }) => {
+        this.posts = data.posts;
+        this.totalPage = data.maxPage;
+      });
+
+      this.isLogged = this.userService.getIsLogged()
+    this.userService.userUpdatedListener().subscribe((result) => {
+      this.isLogged = result;
+      this.userId = this.userService.getUserId();
     });
   }
 
@@ -26,10 +41,10 @@ export class PostListComponent implements OnInit {
   // }
   //** paginator */
   onDelete(id: string) {
-    console.log('delete clicked ', id)
-    this.postService.deletePost(id).subscribe(result => {
+    console.log('delete clicked ', id);
+    this.postService.deletePost(id).subscribe((result) => {
       this.postService.getPosts(this.pageSize, this.currentPage);
-    })    
+    });
   }
 
   //** paginator */
@@ -41,7 +56,7 @@ export class PostListComponent implements OnInit {
   onPageChange(e: PageEvent) {
     this.pageSize = e.pageSize;
     this.currentPage = e.pageIndex + 1;
-    this.postService.getPosts(this.pageSize, this.currentPage)
+    this.postService.getPosts(this.pageSize, this.currentPage);
   }
 
   //** paginator */

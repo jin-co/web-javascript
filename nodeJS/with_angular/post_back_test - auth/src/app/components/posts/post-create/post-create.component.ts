@@ -19,7 +19,7 @@ import { mimeTypeValidator } from './mime-type.validator';
 export class PostCreateComponent implements OnInit {
   mode: string = 'create';
   id: string = '';
-  post!: Post;
+  post!: Post;  
 
   constructor(
     public postService: PostService,
@@ -49,6 +49,7 @@ export class PostCreateComponent implements OnInit {
             title: data.title,
             content: data.content,
             imagePath: data.imagePath,
+            author: data.author
           };
 
           this.form.setValue({

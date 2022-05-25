@@ -16,8 +16,10 @@
     <img height="100px" [src]="i.imagePath" alt="">
     <!-- image -->
 
-    <a [routerLink]="['create', i._id]">Edit</a>
-    <button (click)="onDelete(i._id)">Delete</button>
+    <mat-action-row *ngIf="isLogged && i.author === userId">
+      <a [routerLink]="['create', i._id]">Edit</a>
+      <button (click)="onDelete(i._id)">Delete</button>
+    </mat-action-row>    
   </mat-expansion-panel>
 </mat-accordion>
 

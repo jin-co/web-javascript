@@ -52,6 +52,7 @@ export class PostService {
       title: string;
       content: string;
       imagePath: string;
+      author: string;
     }>(`${this.baseURL}posts/${id}`);
   }
   //** image upload */
@@ -75,7 +76,7 @@ export class PostService {
     postData.append('title', title);
     postData.append('content', content);
     postData.append('image', image, title);
-    this.http.post(`${this.baseURL}posts`, postData).subscribe((data) => {      
+    this.http.post(`${this.baseURL}posts`, postData).subscribe((data) => {
       this.route.navigate(['/']);
     });
   }
@@ -91,8 +92,8 @@ export class PostService {
 
   //** paginator */
   deletePost(id: string) {
-    console.log('service: ', id)
-    return this.http.delete(`${this.baseURL}posts/${id}`)
+    console.log('service: ', id);
+    return this.http.delete(`${this.baseURL}posts/${id}`);
   }
   //** paginator */
 
