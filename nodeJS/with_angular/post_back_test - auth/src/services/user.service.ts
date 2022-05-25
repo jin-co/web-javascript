@@ -18,4 +18,15 @@ export class UserService {
       console.log('service user added: ', result);
     });
   }
+
+  login(email: string, password: string) {
+    const user: User = {
+      email: email,
+      password: password,
+    };
+    this.http.post(`${this.baseURL}login`, user).subscribe((data) => {
+      console.log('service user logged in: ', data);
+      this.router.navigate(['/'])
+    });
+  }
 }
