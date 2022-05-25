@@ -14,7 +14,7 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(`${this.baseURL}`, user).subscribe((result) => {
+    this.http.post(`${this.baseURL}signup`, user).subscribe((result) => {
       console.log('service user added: ', result);
     });
   }
