@@ -26,8 +26,10 @@ export class PostListComponent implements OnInit {
   // }
   //** paginator */
   onDelete(id: string) {
-    this.postService.deletePost(id);
-    this.postService.getPosts(this.pageSize, this.currentPage);
+    console.log('delete clicked ', id)
+    this.postService.deletePost(id).subscribe(result => {
+      this.postService.getPosts(this.pageSize, this.currentPage);
+    })    
   }
 
   //** paginator */

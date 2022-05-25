@@ -49,7 +49,6 @@ router.get("/:id", (req, res, next) => {
 
 //** paginator */
 router.get("", (req, res, next) => {
-  console.log(req.query);
   const pageSize = req.query.pageSize;
   const currentPage = req.query.currentPage;
   let fetchedPost;
@@ -102,6 +101,7 @@ router.post(
 //** imag upload */
 
 router.delete("/:id", (req, res, next) => {
+  console.log('back delete: ', req.params.id)
   Post.deleteOne({ _id: req.params.id }).then((data) => {
     res.status(200).json("deleted");
   });

@@ -91,7 +91,8 @@ export class PostService {
 
   //** paginator */
   deletePost(id: string) {
-    this.http.delete(`${this.baseURL}posts/${id}`);
+    console.log('service: ', id)
+    return this.http.delete(`${this.baseURL}posts/${id}`)
   }
   //** paginator */
 
