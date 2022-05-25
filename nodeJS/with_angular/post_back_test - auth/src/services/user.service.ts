@@ -53,4 +53,8 @@ export class UserService {
   getToken() {
     return this.token;
   }
+
+  getIsLogged() {
+    return this.isLogged
+  }
 }

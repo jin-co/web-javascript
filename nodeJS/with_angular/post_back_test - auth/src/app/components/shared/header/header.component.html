@@ -1,7 +1,7 @@
 <mat-toolbar color="accent">
   <a routerLink=""> Header </a>
   <ul>
-      <li >
+      <li *ngIf="isAuthenticated">
           <a routerLink="/create">Add Post</a>
       </li>
       <li *ngIf="!isAuthenticated">
