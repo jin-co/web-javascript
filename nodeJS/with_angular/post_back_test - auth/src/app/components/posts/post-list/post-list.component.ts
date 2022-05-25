@@ -33,7 +33,7 @@ export class PostListComponent implements OnInit {
   //** paginator */
   totalPage = 0;
   pageSize = 1;
-  pageSizeOption = [1, 2, 3];
+  pageSizeOption = [1, 2, 3, 10, 20];
   currentPage = 1;
 
   onPageChange(e: PageEvent) {

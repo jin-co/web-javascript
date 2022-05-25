@@ -6,6 +6,10 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+//**auth */
+const checkAuth = require("../middleware/check-auth");
+//**auth */
+
 //**file upload
 const multer = require("multer");
 const MIME_TYPE_MAP = {
@@ -45,23 +49,25 @@ router.get("/:id", (req, res, next) => {
 
 //** paginator */
 router.get("", (req, res, next) => {
-  console.log(req.query)
-  const pageSize = req.query.pageSize
-  const currentPage = req.query.currentPage
-  let fetchedPost
-  const postQuery = Post.find()
-  if(pageSize && currentPage) {
-    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
+  console.log(req.query);
+  const pageSize = req.query.pageSize;
+  const currentPage = req.query.currentPage;
+  let fetchedPost;
+  const postQuery = Post.find();
+  if (pageSize && currentPage) {
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
-  postQuery.then((data) => {
-    fetchedPost = data
-    return Post.count()
-  }).then((count) => {
-    res.status(200).json({
-      posts: fetchedPost,
-      maxPage: count
+  postQuery
+    .then((data) => {
+      fetchedPost = data;
+      return Post.count();
+    })
+    .then((count) => {
+      res.status(200).json({
+        posts: fetchedPost,
+        maxPage: count,
+      });
     });
-  })
 });
 //** paginator */
 
@@ -76,17 +82,23 @@ router.get("", (req, res, next) => {
 // });
 
 //** imag upload */
-router.post("", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
-  const url = req.protocol + "://" + req.get('host')
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
-    imagePath: url + "/images/" + req.file.filename
-  });
-  post.save().then((data) => {
-    res.status(201).json(data);
-  });
-});
+router.post(
+  "",
+  checkAuth,
+  jsonParser,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    const url = req.protocol + "://" + req.get("host");
+    const post = new Post({
+      title: req.body.title,
+      content: req.body.content,
+      imagePath: url + "/images/" + req.file.filename,
+    });
+    post.save().then((data) => {
+      res.status(201).json(data);
+    });
+  }
+);
 //** imag upload */
 
 router.delete("/:id", (req, res, next) => {
@@ -109,24 +121,29 @@ router.delete("/:id", (req, res, next) => {
 // });
 
 //** imag upload */
-router.put("/:id", jsonParser, multer({storage: storage}).single('image'), (req, res, next) => {
-  console.log(req.body);
-  let imagePath = req.body.imagePath
-  if(req.file) {
-    const url = req.protocol + "://" + req.get('host')
-    imagePath = url + "/images/" + req.file.filename
-  }
-  const post = new Post({
-    _id: req.body._id,
-    title: req.body.title,
-    content: req.body.content,
-    imagePath: imagePath
-  });
+router.put(
+  "/:id",
+  jsonParser,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    console.log(req.body);
+    let imagePath = req.body.imagePath;
+    if (req.file) {
+      const url = req.protocol + "://" + req.get("host");
+      imagePath = url + "/images/" + req.file.filename;
+    }
+    const post = new Post({
+      _id: req.body._id,
+      title: req.body.title,
+      content: req.body.content,
+      imagePath: imagePath,
+    });
 
-  Post.updateOne({ _id: req.params.id }, post).then((data) => {
-    res.status(200).json(data);
-  });
-});
+    Post.updateOne({ _id: req.params.id }, post).then((data) => {
+      res.status(200).json(data);
+    });
+  }
+);
 //** imag upload */
 
 module.exports = router;
