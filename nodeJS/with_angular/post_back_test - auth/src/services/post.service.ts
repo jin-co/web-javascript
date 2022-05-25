@@ -29,6 +29,7 @@ export class PostService {
     this.http
       .get<{ posts: Post[]; maxPage: number }>(`${this.baseURL}posts${query}`)
       .subscribe((data) => {
+        console.log('get posts:', data.posts)
         this.posts = data.posts;
         this.postUpdated.next({
           posts: [...this.posts],

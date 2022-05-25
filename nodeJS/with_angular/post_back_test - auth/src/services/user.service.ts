@@ -40,7 +40,7 @@ export class UserService {
         this.userUpdated.next(true);
         this.token = data.token;
         this.isLogged = true;
-        this.userId = data.userId;
+        this.userId = data.userId;        
         this.router.navigate(['/']);
       });
   }

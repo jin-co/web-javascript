@@ -16,7 +16,7 @@
     <img height="100px" [src]="i.imagePath" alt="">
     <!-- image -->
 
-    <mat-action-row *ngIf="isLogged && i.author === userId">
+    <mat-action-row *ngIf="isLogged && i.author == userId">
       <a [routerLink]="['create', i._id]">Edit</a>
       <button (click)="onDelete(i._id)">Delete</button>
     </mat-action-row>    

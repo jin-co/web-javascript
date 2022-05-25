@@ -29,6 +29,7 @@ export class PostListComponent implements OnInit {
       });
 
       this.isLogged = this.userService.getIsLogged()
+      this.userId = this.userService.getUserId()
     this.userService.userUpdatedListener().subscribe((result) => {
       this.isLogged = result;
       this.userId = this.userService.getUserId();

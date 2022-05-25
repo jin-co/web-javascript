@@ -92,6 +92,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
+      author: req.userData.userId
     });
     post.save().then((data) => {
       res.status(201).json(data);
