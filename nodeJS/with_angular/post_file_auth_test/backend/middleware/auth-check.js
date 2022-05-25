@@ -6,10 +6,10 @@ module.exports = (req, res, next) => {
     console.log('auth check: ')    
     console.log(req.headers)    
     const token = req.headers.authorization.split(' ')[1];
-    jwt.verify(token, "secret")
+    const decodedToken = jwt.verify(token, "secret")
     req.userData = {
-      token: token.email,
-      userId: token.userId
+      token: decodedToken.email,
+      userId: decodedToken.userId
     }
     console.log('auth check token: ')    
     console.log(token)   

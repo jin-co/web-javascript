@@ -9,7 +9,8 @@ export class UserService {
   private baseURL: string = 'http://localhost:3000/user/';
   private isLogged: boolean = false;
   private token!: string;
-  private userUpdate = new Subject<boolean>()
+  private userId!: string;
+  private userUpdate = new Subject<boolean>();
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -30,32 +31,38 @@ export class UserService {
       password: password,
     };
     this.http
-      .post<{ token: string; exp: number }>(`${this.baseURL}login`, user)
+      .post<{ token: string; exp: number, userId:string }>(`${this.baseURL}login`, user)
       .subscribe((data) => {
         this.token = data.token;
-        this.isLogged = true
-        this.userUpdate.next(true)
+        this.isLogged = true;
+        this.userId = data.userId
+        this.userUpdate.next(true);
         console.log(data);
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       });
   }
 
   logout() {
-      this.isLogged = false
-      this.token = ''
-      this.userUpdate.next(false)
-      this.router.navigate(['/'])
+    this.isLogged = false;
+    this.token = '';
+    this.userUpdate.next(false);
+    this.router.navigate(['/']);
+    this.userId = ''
   }
 
   getIsLogged() {
-      return this.isLogged
+    return this.isLogged;
   }
 
   userUpdateListener() {
-      return this.userUpdate.asObservable()
+    return this.userUpdate.asObservable();
   }
 
-  getToken():string {
-      return this.token
+  getToken(): string {
+    return this.token;
+  }
+
+  getUserId() {
+    return this.userId
   }
 }

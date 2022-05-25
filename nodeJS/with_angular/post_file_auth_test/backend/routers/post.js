@@ -44,7 +44,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
-      author: ''
+      author: req.userData.userId
     });
     post.save().then((result) => {
       res.status(201).json(result);
@@ -53,8 +53,13 @@ router.post(
 );
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id }).then((result) => {
-    res.status(200).json("deleted");
+  Post.deleteOne({ _id: req.params.id, author:req.userData.userId }).then((result) => {
+    console.log(result)
+    if(result.deletedCount == 1) {
+      res.status(200).json("deleted");
+    } else {
+      res.status(401).json("no right");
+    }    
   });
 });
 
@@ -82,8 +87,13 @@ router.put(
       content: req.body.content,
       imagePath: imagePath,
     });
-    Post.updateOne({ _id: req.params.id }, post).then((result) => {
-      res.status(200).json(result);
+    Post.updateOne({ _id: req.params.id, author: req.userData.userId }, post).then((result) => {
+      console.log('update result:', result.modifiedCount)        
+      if(result.modifiedCount == 1) {
+        res.status(200).json(result);
+      } else {
+        res.status(401).json("no right");
+      }
     });
   }
 );

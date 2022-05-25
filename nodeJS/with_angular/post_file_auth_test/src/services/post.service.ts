@@ -8,6 +8,7 @@ import { Post } from 'src/models/post';
 export class PostService {
   private posts: Post[] = [];
   private postUpdated = new Subject<Post[]>();
+  private userId!: string;
   private baseURL = 'http://localhost:3000/posts/';
 
   constructor(private http: HttpClient, private route: Router) {}
@@ -27,6 +28,7 @@ export class PostService {
       title: string;
       content: string;
       imagePath: string;
+      author: string
     }>(`${this.baseURL}${id}`);
   }
 
@@ -42,6 +44,7 @@ export class PostService {
         title: title,
         content: content,
         imagePath: result.imagePath,
+        author: result.author,
       };
       this.posts.push(post);
       this.postUpdated.next([...this.posts]);
