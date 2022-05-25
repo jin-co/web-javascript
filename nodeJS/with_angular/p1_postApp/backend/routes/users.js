@@ -17,11 +17,13 @@ router.post("/signup", (req, res, next) => {
       });
       user.save().then((data) => {
         res.status(201).json("Added");
-      });
+      }).catch((err) => {
+        res.status(500).json({ error: err });
+      })
     })
     .catch((err) => {
       res.status(500).json({ error: err });
-    });
+    })
 });
 
 router.post("/login", (req, res, next) => {
