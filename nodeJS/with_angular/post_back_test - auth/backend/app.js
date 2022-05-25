@@ -12,9 +12,7 @@ mongoose
   .catch(() => console.log("failed"));
 
 //** image upload path
-const path = require('path');
-const bodyParser = require("body-parser");
-app.use("/images", express.static(path.join("backend/images")))
+
 //** image upload path
 
 app.use((req, res, next) => {
@@ -32,6 +30,9 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json())
 app.use("/posts", postRouter);
-app.use("/user", userRouter);
+
+//user
+
+//user
 
 module.exports = app;
