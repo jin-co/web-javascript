@@ -18,13 +18,15 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      catchError((err) => {
+      catchError((err: HttpErrorResponse) => {
         let errorMessage = 'Error';
         if (err.error.message) {
+          console.log('error message: ', err.error.message);
           errorMessage = err.error.message;
         }
+        console.log('error message: ', errorMessage);
         this.dialog.open(ErrorComponent, { data: { message: errorMessage } });
-        return throwError(() => new Error());
+        return throwError(() => new Error(errorMessage));
       })
     );
 
