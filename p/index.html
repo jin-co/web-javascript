@@ -36,7 +36,7 @@
     <form class="form">
       <p class="title">Password Generator</p>
       <div class="input-box field">
-        <input type="text" id="input"/>
+        <input readonly type="text" id="input" class="display"/>
         <label for="input">🔗</label>        
       </div>
       <div class="condition-box field">
@@ -45,19 +45,19 @@
       </div>
       <div class="condition-box field">
         <label for="uppercase">Include uppercase</label>
-        <input type="checkbox" id="uppercase" />
+        <input class="chk-upper" type="checkbox" id="uppercase" />
       </div>
       <div class="condition-box field">
         <label for="lowercase">Include lowercase</label>
-        <input type="checkbox" id="lowercase" />
+        <input class="chk-lower" type="checkbox" id="lowercase" />
       </div>
       <div class="condition-box field">
         <label for="number">Include numbers</label>
-        <input type="checkbox" id="number" />
+        <input class="chk-number" type="checkbox" id="number" />
       </div>
       <div class="condition-box field">
         <label for="symbol">Include symbols</label>
-        <input type="checkbox" id="symbol" />
+        <input class="chk-symbol" type="checkbox" id="symbol" />
       </div>
       <button class="btn" type="submit">Generate Password</button>
     </form>
