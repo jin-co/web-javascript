@@ -3,16 +3,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Post } from '../models/post';
 
 // use global variables for the URL
-const GLOBAL_VARIABLE = 'URL'
+const BASE_URL = environment.devURL
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
   private posts: Post[] = [];
   private postUpdated = new Subject<{ post: Post[]; postCount: number }>();
-  private baseUrl = 'http://localhost:3000/';
+  // private baseUrl = 'http://localhost:3000/';  
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -49,7 +50,8 @@ export class PostService {
     const queryParams = `?pagesize=${postPerPage}&page=${currentPage}`;
     this.http
       .get<{ message: string; posts: any; postCount: number }>(
-        `${this.baseUrl}posts${queryParams}`
+        // `${this.baseUrl}posts${queryParams}`
+        `${BASE_URL}posts${queryParams}`
       )
       .subscribe((postData) => {
         this.posts = postData.posts;
@@ -104,7 +106,7 @@ export class PostService {
     //   });
 
     this.http
-      .post<{ message: string; post: Post }>(`${this.baseUrl}posts`, post)
+      .post<{ message: string; post: Post }>(`${BASE_URL}posts`, post)
       .subscribe((data) => {
         // const post: Post = {
         //   _id: data.post._id,
@@ -138,7 +140,7 @@ export class PostService {
   // }
 
   deletePost(id: string) {
-    return this.http.delete(`${this.baseUrl}posts/${id}`);
+    return this.http.delete(`${BASE_URL}posts/${id}`);
   }
 
   // updatePost(id: string, title: string, content: string) {
@@ -183,7 +185,7 @@ export class PostService {
       };
     }
     this.http
-      .put(`${this.baseUrl}posts/${id}`, postData)
+      .put(`${BASE_URL}posts/${id}`, postData)
       .subscribe((response) => {
         // const updatedPost = [...this.posts];
         // const oldPostIndex = updatedPost.findIndex((p) => p._id === p._id);
@@ -214,13 +216,13 @@ export class PostService {
   // }
 
   getAPost(id: string | null) {
-    console.log(`${this.baseUrl}posts/${id}`);
+    console.log(`${BASE_URL}posts/${id}`);
     return this.http.get<{
       _id: string;
       title: string;
       content: string;
       imagePath: string;
       author: string
-    }>(`${this.baseUrl}posts/${id}`);
+    }>(`${BASE_URL}posts/${id}`);
   }
 }

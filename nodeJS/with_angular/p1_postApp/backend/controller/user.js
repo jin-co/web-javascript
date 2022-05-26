@@ -43,7 +43,8 @@ exports.login = (req, res, next) => {
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_code",
+        // process.env.JWT_KEY, // to use this restart server
+        "secret_code",        
         { expiresIn: "1h" }
         // token is stored in the front so set the expire as short as possible
       );
