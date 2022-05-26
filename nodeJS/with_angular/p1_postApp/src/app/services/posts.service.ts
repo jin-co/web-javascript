@@ -5,6 +5,9 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from '../models/post';
 
+// use global variables for the URL
+const GLOBAL_VARIABLE = 'URL'
+
 @Injectable({ providedIn: 'root' })
 export class PostService {
   private posts: Post[] = [];
