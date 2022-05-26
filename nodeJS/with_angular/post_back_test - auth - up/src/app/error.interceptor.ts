@@ -18,14 +18,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      catchError((err: HttpErrorResponse) => {
-        // alert(err.error.message)
-        let errorMessage = 'Error occurred'
-        if(err.error.message) {
-            errorMessage = err.error.message
+      catchError((err) => {
+        let errorMessage = 'Error';
+        if (err.error.message) {
+          errorMessage = err.error.message;
         }
-        this.dialog.open(ErrorComponent, {data: {message: errorMessage}});
-        return throwError(() => new Error(err.error));
+        this.dialog.open(ErrorComponent, { data: { message: errorMessage } });
+        return throwError(() => new Error());
       })
     );
 
@@ -35,5 +34,16 @@ export class ErrorInterceptor implements HttpInterceptor {
     //     return throwError(err);
     //   })
     // );
+
+    // return next.handle(req).pipe(
+    //     catchError((err: HttpErrorResponse) => {
+    //       // alert(err.error.message)
+    //       let errorMessage = 'Error occurred'
+    //       if(err.error.message) {
+    //           errorMessage = err.error.message
+    //       }
+    //       this.dialog.open(ErrorComponent, {data: {message: errorMessage}});
+    //       return throwError(() => new Error(err.error));
+    //     })
   }
 }
