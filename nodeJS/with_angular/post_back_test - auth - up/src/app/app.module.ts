@@ -58,5 +58,6 @@ import { ErrorComponent } from './components/shared/error/error.component';
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
+  // entryComponents: [ErrorComponent]
 })
 export class AppModule {}
