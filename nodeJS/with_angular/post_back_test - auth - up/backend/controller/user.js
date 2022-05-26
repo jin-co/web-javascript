@@ -12,7 +12,7 @@ exports.createUser = (req, res, next) => {
       .save()
       .then((result) => {})
       .catch((err) => {
-        res.status(401).json(err);
+        res.status(401).json({ error: err, message: "Duplicate email" });
       });
   });
 };
