@@ -17,10 +17,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      catchError((err: HttpErrorResponse) => {
-          alert(err)
-        return throwError(err);
-      })
-    );
+        catchError((err:HttpErrorResponse) => {
+            return throwError(err)
+        })
+    )
+
+
+    // return next.handle(req).pipe(
+    //   catchError((err: HttpErrorResponse) => {
+    //       alert(err)
+    //     return throwError(err);
+    //   })
+    // );
   }
 }
