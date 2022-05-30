@@ -10,8 +10,7 @@ export class PostCreateComponent implements OnInit {
   inputContent:string = ''
   outputTitle:string = ''
   outputContent:string = ''
-
-  @Output() postCreated = new EventEmitter()
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -21,7 +20,6 @@ export class PostCreateComponent implements OnInit {
     const post = {
       title: this.inputTitle, 
       content: this.inputContent 
-    }
-    this.postCreated.emit(post)
+    }    
   }
 }
