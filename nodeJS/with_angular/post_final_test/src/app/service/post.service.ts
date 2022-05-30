@@ -13,7 +13,7 @@ export class PostService {
   constructor(private http: HttpClient, router: Router) {}
 
   getPosts() {
-    this.http.get<Post[]>(`${this.baseURL}`).subscribe((result) => {
+    this.http.get<Post[]>(`${this.baseURL}`).subscribe((result) => {        
       this.posts = result;
       this.postUpdated.next([...this.posts]);
     });

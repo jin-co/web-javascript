@@ -1,4 +1,3 @@
-const { urlencoded } = require('body-parser')
 const express = require('express')
 const app = express()
 const postRouter = require('./routers/post')
@@ -17,7 +16,6 @@ app.use((req, res, next) => {
 })
 
 app.use(express.json())
-app.use(urlencoded)
 
 app.use("/posts", postRouter)
 
