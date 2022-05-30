@@ -31,29 +31,36 @@ let mixed = []
 // });
 chkUpper.addEventListener("change", (e) => {
   if(e.target.checked) {
-    mixed.push(upper)
-  }
+    mixed[0] = upper
+  } else {
+    mixed[0] = ''
+  }  
   console.log(mixed)
-
 });
 
 chkLower.addEventListener("change", (e) => {
   if(e.target.checked) {
-    mixed.push(lower)
+    mixed[1] = lower
+  } else {
+    mixed[1] = ''
   }
   console.log(mixed)
 });
 
 chkNumber.addEventListener("change", (e) => {
   if(e.target.checked) {
-    mixed.push(number)
+    mixed[2] = number
+  } else {
+    mixed[2] = ''
   }
   console.log(mixed)
 });
 
 chkSymbol.addEventListener("change", (e) => {
   if(e.target.checked) {
-    mixed.push(symbol)
+    mixed[3] = symbol
+  } else {
+    mixed[3] = ''
   }
   console.log(mixed)
 });
@@ -65,11 +72,23 @@ form.addEventListener("submit", (e) => {
 });
 
 function createPassword() {  
+  const merged = [...mixed[0], ...mixed[1], ...mixed[2], ...mixed[3]]
   generatedPassword = "";
-  for (let i = 0; i < length; i++) {
-    generatedPassword += Math.floor(Math.random() * length);
-    // generatedPassword += upper[Math.floor(Math.random() * upper.length)];
-    console.log(generatedPassword);
-  }
+
+  console.log('merged: ', merged)
+
+  if (merged !== '') {
+    for (let i = 0; i < length; i++) {
+      generatedPassword += merged[Math.floor(Math.random() * merged.length)];
+      // generatedPassword += upper[Math.floor(Math.random() * upper.length)];
+      console.log(generatedPassword);
+    }  
+  } else {
+    for (let i = 0; i < length; i++) {
+      generatedPassword += Math.floor(Math.random() * 10);
+      // generatedPassword += upper[Math.floor(Math.random() * upper.length)];
+      console.log(generatedPassword);
+    }
+  }  
   display.value = generatedPassword;
 }
