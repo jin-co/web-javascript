@@ -24,4 +24,12 @@ router.post("", (req, res, next) => {
   });
 })
 
+router.delete("/:id", (req, res, next) => {
+  Post.deleteOne({_id: req.params.id}).then(result => {
+    res.status(200).json(result)
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+})
+
 module.exports = router;
