@@ -18,7 +18,7 @@ export class PostService {
       this.postUpdated.next([...this.posts]);
     });
   }
-  
+
   getPost(id: string) {
     return this.http.get<{id:string, title:string, content:string}>(`${this.baseURL}${id}`)
   }
@@ -43,7 +43,16 @@ export class PostService {
     })
   }
 
-  updatePost(id: string, title: string, content: string) {}
+  updatePost(id: string, title: string, content: string) {
+    const post:Post = {
+      _id: id,
+      title: title,
+      content: content
+    }
+    this.http.put(`${this.baseURL}${id}`, post).subscribe(result => {
+      
+    })
+  }
 
   postUpdateListener() {
     return this.postUpdated.asObservable();
