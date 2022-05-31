@@ -71,13 +71,19 @@ form.addEventListener("submit", (e) => {
   createPassword();
 });
 
-function createPassword() {  
-  const merged = [...mixed[0], ...mixed[1], ...mixed[2], ...mixed[3]]
+lengthEl.addEventListener('change', (e) => {
+  length = e.target.value
+})
+
+function createPassword() {    
+  var merged = mixed.reduce((r, e) => (r.push(...e), r), [])  
+  // const merged = [...mixed[0], ...mixed[1], ...mixed[2], ...mixed[3]]
   generatedPassword = "";
 
-  console.log('merged: ', merged)
+  console.log('merged: ', merged, typeof(merged))
+  console.log('length: ', length)
 
-  if (merged !== '') {
+  if (merged.length > 0) {
     for (let i = 0; i < length; i++) {
       generatedPassword += merged[Math.floor(Math.random() * merged.length)];
       // generatedPassword += upper[Math.floor(Math.random() * upper.length)];
