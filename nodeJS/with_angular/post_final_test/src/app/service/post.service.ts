@@ -18,7 +18,10 @@ export class PostService {
       this.postUpdated.next([...this.posts]);
     });
   }
-  getPost(id: string) {}
+  
+  getPost(id: string) {
+    return this.http.get<{id:string, title:string, content:string}>(`${this.baseURL}${id}`)
+  }
 
   setPost(title: string, content: string) {
     const post:Post = {

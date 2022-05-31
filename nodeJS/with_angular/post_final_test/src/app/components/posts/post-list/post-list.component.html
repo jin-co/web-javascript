@@ -11,7 +11,7 @@
     </p>
 
     <mat-action-row>
-      <a mat-button>Edit</a>
+      <a [routerLink]="['edit', i._id]" mat-button>Edit</a>
       <button mat-button (click)="onDelete(i._id)">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
