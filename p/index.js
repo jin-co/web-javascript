@@ -3,6 +3,7 @@ const chkLower = document.querySelector(".chk-lower");
 const chkNumber = document.querySelector(".chk-number");
 const chkSymbol = document.querySelector(".chk-symbol");
 const checkBoxesEls = document.querySelectorAll(".field input[type='checkbox']")
+const copy = document.querySelector('.copy')
 
 const lengthEl = document.querySelector("#length");
 const form = document.querySelector(".form");
@@ -73,6 +74,12 @@ form.addEventListener("submit", (e) => {
 
 lengthEl.addEventListener('change', (e) => {
   length = e.target.value
+})
+
+copy.addEventListener('click', () => {
+  display.select()
+  navigator.clipboard.writeText(display.value)
+  alert("Copied")
 })
 
 function createPassword() {    
