@@ -19,7 +19,19 @@ export class PostService {
     });
   }
   getPost(id: string) {}
-  setPost(title: string, content: string) {}
+
+  setPost(title: string, content: string) {
+    const post:Post = {
+      _id: '',
+      title: title,
+      content: content
+    }
+    this.http.post(`${this.baseURL}`, post).subscribe(result => {
+      this.posts.push(post)
+      this.postUpdated.next([...this.posts])
+    })
+  }
+
   deletePost(id: string) {}
   updatePost(id: string, title: string, content: string) {}
 
