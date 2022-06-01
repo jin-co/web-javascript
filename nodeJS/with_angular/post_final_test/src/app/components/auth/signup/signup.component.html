@@ -1,5 +1,5 @@
 <mat-card>
-    <form #form="ngForm">
+    <form #form="ngForm" (submit)="onSubmit(form)">
       <mat-form-field>
         <input
           #email="ngModel"
@@ -23,6 +23,8 @@
         />
         <mat-error *ngIf="password.invalid">Required</mat-error>
       </mat-form-field>
+
+      <button type="submit">Click</button>
     </form>
   </mat-card>
   

@@ -1,27 +1,30 @@
 <mat-card>
-  <form #form="ngForm">
-    <mat-form-field>
-      <input
-        #email="ngModel"
-        ngModel
-        required
-        placeholder="email"
-        matInput
-        type="email"        
-      />
-      <mat-error *ngIf="email.invalid">Required</mat-error>
-    </mat-form-field>
+    <form #form="ngForm" (submit)="onSubmit(form)">
+      <mat-form-field>
+        <input
+          #email="ngModel"
+          ngModel
+          required
+          placeholder="email"
+          matInput
+          type="email"        
+        />
+        <mat-error *ngIf="email.invalid">Required</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input
+          #password="ngModel"
+          ngModel
+          required
+          placeholder="password"
+          matInput
+          type="password"
+        />
+        <mat-error *ngIf="password.invalid">Required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input
-        #password="ngModel"
-        ngModel
-        required
-        placeholder="password"
-        matInput
-        type="password"
-      />
-      <mat-error *ngIf="password.invalid">Required</mat-error>
-    </mat-form-field>
-  </form>
-</mat-card>
+      <button type="submit">Click</button>
+    </form>
+  </mat-card>
+  
