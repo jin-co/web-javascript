@@ -1,1 +1,4 @@
-This Repository is for personal javascript practice purpose.
+
+# Web practice with javascript
+---
+> Javascript daily practice
