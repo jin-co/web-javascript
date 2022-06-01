@@ -13,19 +13,16 @@ import { ErrorComponent } from './components/shared/error/error.component';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(private dialog: MatDialog) {}
-
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      catchError((err: any) => {
-        alert('hh');
-        this.dialog.open(ErrorComponent, {data: {
-            message: err
-        }})
-        return throwError(() => new Error(err));
+      catchError((err:any) => {
+        this.dialog.open(ErrorComponent, {data: {message: err}})
+
+       return throwError(() => new Error(err))
       })
-    );
+    )
   }
 }
