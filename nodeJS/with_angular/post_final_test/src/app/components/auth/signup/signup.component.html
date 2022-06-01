@@ -2,7 +2,8 @@
     <form #form="ngForm" (submit)="onSubmit(form)">
       <mat-form-field>
         <input
-          #email="ngModel"
+          #email="ngModel"          
+          name="email"
           ngModel
           required
           placeholder="email"
@@ -15,6 +16,7 @@
       <mat-form-field>
         <input
           #password="ngModel"
+          name="password"
           ngModel
           required
           placeholder="password"

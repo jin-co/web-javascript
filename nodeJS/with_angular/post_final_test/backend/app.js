@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const postRouter = require('./routers/post')
+const userRouter = require('./routers/user')
 
 const mongoose = require('mongoose')
 
@@ -18,5 +19,6 @@ app.use((req, res, next) => {
 app.use(express.json())
 
 app.use("/posts", postRouter)
+app.use("/user", userRouter)
 
 module.exports = app
