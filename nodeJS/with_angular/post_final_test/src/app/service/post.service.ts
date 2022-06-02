@@ -10,7 +10,7 @@ export class PostService {
   private postUpdated = new Subject<Post[]>();
   private baseURL = 'http://localhost:3000/posts/';
   
-  constructor(private http: HttpClient, router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getPosts() {
     this.http.get<Post[]>(`${this.baseURL}`).subscribe((result) => {        
@@ -32,6 +32,7 @@ export class PostService {
     this.http.post(`${this.baseURL}`, post).subscribe(result => {
       this.posts.push(post)
       this.postUpdated.next([...this.posts])
+      this.router.navigate(['/'])
     })
   }  
 

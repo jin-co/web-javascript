@@ -24,17 +24,22 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("", authCheck, (req, res, next) => {
+  console.log("post create")
+  console.log(req.userData)
   const post = new Post({
     title: req.body.title,
     content: req.body.content,    
     author: req.userData.userId
   });
+  console.log("post save")
+  console.log(post)
   post
     .save()
-    .then((result) => {
+    .then((result) => {      
       res.status(201).json(result);
     })
     .catch((err) => {
+      console.log('save failed')
       res.status(401).json(err);
     });
 });

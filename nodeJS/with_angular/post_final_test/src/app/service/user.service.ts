@@ -30,14 +30,22 @@ export class UserService {
     };
     this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((data) => {
       console.log('logged in: ', data);
+      this.userUpdated.next(true)
       this.token = data.token
       this.router.navigate(['/']);
     });
   }
 
-  logout() {}
+  logout() {
+    this.token = ''
+    this.userUpdated.next(false)
+  }
 
   getToken() {
     return this.token
+  }
+
+  userUpdatedListener() {
+    return this.userUpdated.asObservable()
   }
 }

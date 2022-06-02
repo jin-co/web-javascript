@@ -1,13 +1,12 @@
 const jwt = require("jsonwebtoken");
 
-module.exports = (req, res, next) => {
-  console.log("-------------------------");
-  console.log(req.headers);
+module.exports = (req, res, next) => {  
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const decoded = jwt.verify(token, "secret");
-    console.log(decoded);
-    req.userData = {email: decoded.email, userId: decoded.author}
+    const decoded = jwt.verify(token, "secret");    
+    req.userData = {email: decoded.email, userId: decoded.userId}    
     next();
-  } catch {}
+  } catch {
+    res.status(400).json("middle auth failed");
+  }
 };
