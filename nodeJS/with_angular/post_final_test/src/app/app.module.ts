@@ -22,7 +22,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { ErrorInterceptor } from './error.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,8 +49,7 @@ import { ErrorInterceptor } from './error.interceptor';
     MatToolbarModule,
     MatPaginatorModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  providers: [    
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
