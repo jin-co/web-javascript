@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
-const authGuard = require('../middleware/auth-guard')
+const authCheck = require('../middleware/auth-check')
 
-router.get("", authGuard, (req, res, next) => {
+router.get("", (req, res, next) => {
   Post.find()
     .then((result) => {
       res.status(200).json(result);
@@ -23,10 +23,11 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.post("", authGuard, (req, res, next) => {
+router.post("", authCheck, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
-    content: req.body.content,
+    content: req.body.content,    
+    author: req.userData.userId
   });
   post
     .save()
@@ -38,8 +39,8 @@ router.post("", authGuard, (req, res, next) => {
     });
 });
 
-router.delete("/:id", (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id })
+router.delete("/:id", authCheck, (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id, author: req.userData.userId })
     .then((result) => {
       res.status(200).json(result);
     })
@@ -48,15 +49,19 @@ router.delete("/:id", (req, res, next) => {
     });
 });
 
-router.put("/:id", (req, res, next) => {
+router.put("/:id", authCheck, (req, res, next) => {
+  console.log('============== user dataS =============')
+  console.log(req.userData)
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   });
-  Post.updateOne({ _id: req.params.id }, post).then((result) => {
+  Post.updateOne({ _id: req.params.id, author: req.userData.userId }, post).then((result) => {
     res.status(200).json(result);
-  });
+  }).catch(err => {
+    res.status(401).json(err)
+  })
 });
 
 module.exports = router;
