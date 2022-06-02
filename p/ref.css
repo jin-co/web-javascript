@@ -1,107 +1,112 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-}
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
 
-body {
-    background-color: #ecf0f1;
-    font-family: 'muli', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-}
-
-img {
-    max-width: 100%;
-}
-
-.card {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-    border-radius: 10px;
-    overflow: hidden;
-    width: 350px;
-}
-
-.card-header {
-    height: 200px;
-}
-
-/* this make the paragraph don't go up into the image above */
-.card-header img {
-    object-fit: cover;
+  /* .switch {
+    position: relative;
+    
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
     height: 100%;
     width: 100%;
-}
-
-.card-content {
-    background-color: #fff;
-    padding: 30px;
-}
-
-.card-title {
-    height: 20px;
-    margin: 0;
-}
-
-.card-excerpt {
-    color: #777;
-    margin: 10px 0 20px;
-}
-
-.author {
-    display: flex;
-}
-
-/* to make the image round */
-.profile-img {
+    background-color: #ccc;
+    transition: .4s;
+  }
+  
+  .slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:checked + .slider::before {  
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
     border-radius: 50%;
-    overflow: hidden;
-    height: 40px;
-    width: 40px;
-}
-
-.author-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 10px;
-    width: 100px;
-}
-
-.author-info small {
-    color: #aaa;
-    margin-top: 5px;
-}
-
-.animated-bg {
-    background-image: linear-gradient(
-    to right,
-    #f6f7f8 0%,
-    #edeef1 10%,
-    #f6f7f8 20%,
-    #f6f7f8 100%);
-    background-size: 200% 100%;
-    animation: bgPos 1s linear infinite;
-}
-
-.animated-bg-text {
-    border-radius: 50px;
-    display: inline-block;
-    margin: 0;
-    height: 10px;
-    width: 100%;
-}
-
-@keyframes bgPos {
-    0% {
-        background-position: 50% 0;
-    }
-
-    100% {
-        background-position: -150% 0;
-    }
-}
+  } */
