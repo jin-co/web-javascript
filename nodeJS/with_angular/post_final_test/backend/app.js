@@ -10,7 +10,7 @@ mongoose.connect(dbURL).then(() => {console.log('connected')}).catch(() => conso
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
     res.setHeader("Access-Control-Allow-Methods", "PUT, DELETE, POST, GET, FETCH, OPTIONS")
 
     next()

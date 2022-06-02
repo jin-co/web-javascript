@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
+const authGuard = require('../middleware/auth-guard')
 
-router.get("", (req, res, next) => {
+router.get("", authGuard, (req, res, next) => {
   Post.find()
     .then((result) => {
       res.status(200).json(result);
@@ -22,7 +23,7 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.post("", (req, res, next) => {
+router.post("", authGuard, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
