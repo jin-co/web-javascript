@@ -6,6 +6,8 @@ import { User } from '../models/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+  private token!:string
+
   private userUpdated = new Subject<boolean>();
   baseURL: string = 'http://localhost:3000/user/';
   constructor(private http: HttpClient, private router: Router) {}
@@ -26,11 +28,16 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(`${this.baseURL}login`, user).subscribe((data) => {
+    this.http.post<{token:string, exp:number}>(`${this.baseURL}login`, user).subscribe((data) => {
       console.log('logged in: ', data);
+      this.token = data.token
       this.router.navigate(['/']);
     });
   }
 
   logout() {}
+
+  getToken() {
+    return this.token
+  }
 }
