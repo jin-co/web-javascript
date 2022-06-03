@@ -10,6 +10,7 @@
       {{ i.content }}
     </p>
 
+    <img [src]="i.imagePath" alt="">
     <mat-action-row>
       <a [routerLink]="['edit', i._id]" mat-button>Edit</a>
       <button mat-button (click)="onDelete(i._id)">Delete</button>
