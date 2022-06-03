@@ -7,6 +7,7 @@ import { User } from '../models/user';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private token!:string
+  private isLogged:boolean = false
 
   private userUpdated = new Subject<boolean>();
   baseURL: string = 'http://localhost:3000/user/';
@@ -32,12 +33,14 @@ export class UserService {
       console.log('logged in: ', data);
       this.userUpdated.next(true)
       this.token = data.token
+      this.isLogged = true
       this.router.navigate(['/']);
     });
   }
 
   logout() {
     this.token = ''
+    this.isLogged = false
     this.userUpdated.next(false)
   }
 
@@ -47,5 +50,9 @@ export class UserService {
 
   userUpdatedListener() {
     return this.userUpdated.asObservable()
+  }
+
+  getIsLogged() {
+    return this.isLogged
   }
 }
