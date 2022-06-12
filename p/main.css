@@ -58,3 +58,29 @@ canvas {
     }
 
 }
+
+.holder {
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
+
+.animated {
+    background-image: linear-gradient(
+        to right,
+        orange 10%,
+        red 40%        
+    );
+    background-size: 200%, 100%;
+    animation: ani 1s infinite;
+}
+
+@keyframes ani {
+    from {
+        background-position: -10%, 0;
+    }
+
+    to {
+        background-position: 150%, 0;
+    }
+}
