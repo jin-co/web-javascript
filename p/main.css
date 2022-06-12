@@ -205,3 +205,46 @@ input:checked + .slider::before {
 .switch input:checked + .slider {  
   background-color: aqua;
 }
+
+.toggle {  
+  display: none;  
+}
+
+.label {
+  height: 50px;
+  width: 100px;
+  border-radius: 45px;
+  margin: 10px;
+}
+
+.ball {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: blue;
+  animation: off 1s ease forwards;
+}
+
+.toggle:checked + label .ball {
+  animation: on 1s ease forwards;
+}
+
+@keyframes on {
+  from {
+    transform: translateX(0px);
+  } 
+
+  to {
+    transform: translateX(50px);
+  }
+}
+
+@keyframes off {
+  from {
+    transform: translateX(50px);
+  } 
+  
+  to {
+    transform: translateX(0px);
+  }
+}
