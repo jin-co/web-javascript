@@ -14,8 +14,8 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick() {
-    this.inputTitle = 'he'
+  onClick(title:HTMLTextAreaElement) {
+    this.inputTitle = title.value
     this.inputContent = 'he'
   }
 }
