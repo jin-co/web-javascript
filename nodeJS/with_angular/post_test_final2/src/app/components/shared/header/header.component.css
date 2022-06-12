@@ -1,0 +1,15 @@
+ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+}
