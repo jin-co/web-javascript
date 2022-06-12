@@ -4,10 +4,10 @@
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput name="" id="" cols="30" rows="10"></textarea>
+    <textarea matInput name="" id="" cols="30" rows="10" #title></textarea>
   </mat-form-field>
 
-  <button mat-button (click)="onClick()">Add</button>
+  <button mat-button (click)="onClick(title)">Add</button>
 </mat-card>
 
 <p> {{ inputTitle }} </p>
