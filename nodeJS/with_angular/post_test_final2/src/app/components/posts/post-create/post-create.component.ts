@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post';
 
-
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -12,9 +11,11 @@ import { PostService } from 'src/services/post';
 export class PostCreateComponent implements OnInit {
   inputTitle: string = '';
   inputContent: string = '';
-  form!: FormGroup;  
+  form!: FormGroup;
+  mode: string = 'create';
+  id!:string
 
-  constructor(private postService:PostService) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,12 +25,20 @@ export class PostCreateComponent implements OnInit {
   }
 
   onClick() {
-    if (this.form.valid) {      
-      this.postService.setPost(
-        this.form.value.title,
-        this.form.value.content,
-      )
+    if (this.form.valid) {
+      if (this.mode === 'create') {
+        this.postService.setPost(
+          this.form.value.title,
+          this.form.value.content
+        );
+      } else {
+        this.postService.updatePost(
+          this.id,
+          this.form.value.title,
+          this.form.value.content
+        )
+      }
     }
-    this.form.reset()
+    this.form.reset();
   }
 }

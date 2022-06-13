@@ -32,7 +32,9 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {}
+  updatePost(id: string, title: string, content: string) {
+    
+  }
 
   deletePost(id: string) {
     this.http.delete(this.baseURL + `/${id}`).subscribe(result => {
