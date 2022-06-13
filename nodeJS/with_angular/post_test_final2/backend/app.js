@@ -13,10 +13,16 @@ app.use((req, res, next) => {
   next();
 });
 
+const mongoose = require("mongoose");
+const dbURL =
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
+mongoose
+  .connect(dbURL)
+  .then(() => console.log("connected"))
+  .catch(() => console.log("failed"));
+
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.send('her')
-})
+app.use("/posts", (req, res, next) => {});
 
-module.exports = app
+module.exports = app;
