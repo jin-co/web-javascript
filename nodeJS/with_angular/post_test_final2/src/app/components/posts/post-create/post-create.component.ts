@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from 'src/models/post';
 
 
 @Component({
@@ -10,8 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PostCreateComponent implements OnInit {
   inputTitle: string = '';
   inputContent: string = '';
-  form!: FormGroup;
-  @Output() createdPost = new EventEmitter();
+  form!: FormGroup;  
 
   constructor() {}
 
@@ -23,12 +23,8 @@ export class PostCreateComponent implements OnInit {
   }
 
   onClick() {
-    if (this.form.valid) {
-      const post: any = {
-        title: this.form.value.title,
-        content: this.form.value.content,
-      };
-      this.createdPost.emit(post)
+    if (this.form.valid) {      
+      
     }
   }
 }
