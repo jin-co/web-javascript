@@ -33,9 +33,18 @@
     <script defer src="index.js"></script>
   </head>
   <body>
-    <canvas height="400px" width="400px"></canvas>
-    <div class="kinetic"></div>
-    <div class="holder animated"></div>    
+    <button class="btn bg-info text-light btn-add-note">
+      <i class="fas-fa-plus"></i>
+      Add note
+    </button>
+
+    <div class="note">
+      <div class="control">
+        <button class="edit btn">Edit</button>
+        <button class="delete btn">Delete</button>
+      </div>
+      <textarea class="paper"></textarea>
+    </div>
   </body>
 </html>
 

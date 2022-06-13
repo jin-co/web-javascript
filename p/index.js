@@ -1,31 +1,21 @@
-const canvas = document.querySelector('canvas')
-const ctx = canvas.getContext("2d")
+const btnAddNote = document.querySelector(".btn-add-note");
+const body = document.querySelector("body");
 
-let x
-let y
-let touched = false
+btnAddNote.addEventListener("click", () => {
+  console.log("clicked");
+  addNote();
+});
 
-canvas.addEventListener('mousedown', (e) => {
-    touched = true
-    x = e.offsetX
-    y = e.offsetY
-})
-
-canvas.addEventListener('mouseup', (e) => {
-    touched = false
-})
-
-canvas.addEventListener('mousemove', (e) => {        
-    if(touched) {        
-        const x2 = e.offsetX
-        const y2 = e.offsetY
-
-        ctx.beginPath()
-        ctx.moveTo(x, y)
-        ctx.lineTo(x2, y2)        
-        ctx.stroke()
-
-        x = x2
-        y = y2
-    }
-})
+function addNote() {
+  const newNote = document.createElement("div");
+  newNote.className = "note";
+  newNote.innerHTML = `
+    <div class="control">
+      <button class="edit btn">Edit</button>
+      <button class="delete btn">Delete</button>
+    </div>
+    <textarea class="paper"></textarea>
+  `;
+  body.appendChild(newNote);
+  
+}
