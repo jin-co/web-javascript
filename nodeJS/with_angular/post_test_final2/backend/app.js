@@ -21,8 +21,19 @@ mongoose
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
 
+const postSchema = mongoose.Schema({
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+});
+
+const Post = mongoose.model("Post", postSchema)
+
 app.use(express.json());
 
-app.use("/posts", (req, res, next) => {});
+app.use("/posts", (req, res, next) => {
+  Post.find().then(result => {
+    res.status(200).json(result)
+  })
+});
 
 module.exports = app;
