@@ -23,6 +23,11 @@ mongoose
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
 
+//image
+const path = require('path')
+app.use('/images', express.static(path.join('backend/images')))
+//image
+
 app.use(express.json());
 
 app.use("/posts", postRouter);

@@ -32,16 +32,21 @@ export class PostService {
     );
   }
 
-  setPost(title: string, content: string) {
+  setPost(title: string, content: string, image:File) {
     //test
     console.log('calling post');
-    const post: Post = {
-      _id: '',
-      title: title,
-      content: content,
-      imagePath: ''
-    };
+    const post = new FormData()
+    post.append("title", title)
+    post.append("content", content)
+    post.append("image", image, title)
+    
     this.http.post(this.baseURL, post).subscribe((result) => {
+      const post: Post = {
+        _id: '',
+        title: title,
+        content: content,
+        imagePath: ''
+      };
       this.posts.push(post);
       this.postUpdated.next([...this.posts]);
     });
