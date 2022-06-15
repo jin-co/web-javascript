@@ -21,7 +21,7 @@ function addNote() {
   notes.push(newNote);
   body.appendChild(newNote);
   btnsDelete = document.querySelectorAll(".delete");
-  btnsDelete.forEach((e, idx) => {
+  btnsDelete.forEach((e, idx) => { 
     e.addEventListener("click", e.parentElement.parentElement.remove());
   });
 }
