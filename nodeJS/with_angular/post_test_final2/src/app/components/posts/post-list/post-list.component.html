@@ -10,7 +10,7 @@
         </mat-expansion-panel-header>
         <p> {{ i.content }} </p>
         <mat-action-row>
-            <a routerLink="" mat-button (click)="onEdit()">Edit</a>
+            <a [routerLink]="['edit', i._id]" mat-button (click)="onEdit()">Edit</a>
             <button mat-button (click)="onDelete(i._id)">Delete</button>
         </mat-action-row>
     </mat-expansion-panel>

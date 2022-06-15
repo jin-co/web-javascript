@@ -17,6 +17,7 @@
       <mat-error *ngIf="form.get('content')?.invalid">Required</mat-error>
     </mat-form-field>
 
-    <button mat-button>Add</button>
+    <button *ngIf="mode === 'create; else editModeBtn'">Add</button>
+    <button #editModeBtn mat-button>Edit</button>
   </form>
 </mat-card>
