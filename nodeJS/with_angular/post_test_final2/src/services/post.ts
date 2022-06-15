@@ -20,17 +20,26 @@ export class PostService {
   }
 
   getPost(id: string) {
-    console.log(this.http.get<{id:string, title:string, content:string}>(this.baseURL + `/${id}`).subscribe(result => console.log(result)))
-    return this.http.get<{id:string, title:string, content:string}>(this.baseURL + `/${id}`)
+    console.log(
+      this.http
+        .get<{ id: string; title: string; content: string; imagePath: string }>(
+          this.baseURL + `/${id}`
+        )
+        .subscribe((result) => console.log(result))
+    );
+    return this.http.get<{ id: string; title: string; content: string }>(
+      this.baseURL + `/${id}`
+    );
   }
 
   setPost(title: string, content: string) {
     //test
-    console.log('calling post')
+    console.log('calling post');
     const post: Post = {
       _id: '',
       title: title,
       content: content,
+      imagePath: ''
     };
     this.http.post(this.baseURL, post).subscribe((result) => {
       this.posts.push(post);
@@ -43,9 +52,10 @@ export class PostService {
       _id: id,
       title: title,
       content: content,
+      imagePath: ''
     };
     this.http.put(this.baseURL + `/${id}`, post).subscribe((result) => {
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     });
   }
 

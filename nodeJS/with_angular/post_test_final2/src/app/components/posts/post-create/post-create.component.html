@@ -17,6 +17,12 @@
       <mat-error *ngIf="form.get('content')?.invalid">Required</mat-error>
     </mat-form-field>
 
+    <!-- image -->
+    <img [src]="imgPreview" alt="">
+    <input #fileLoad type="file" (change)="onUpload($event)" style="display: none;">
+    <button mat-flat-button (click)="fileLoad.click()">Add Image</button>
+    <!-- image -->
+
     <button *ngIf="mode === 'create; else editModeBtn'">Add</button>
     <button #editModeBtn mat-button>Edit</button>
   </form>
