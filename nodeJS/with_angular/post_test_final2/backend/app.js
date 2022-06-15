@@ -1,7 +1,12 @@
 const express = require("express");
 const postRouter = require("./routers/post");
-
 const app = express();
+
+//image
+const path = require("path");
+app.use("/images", express.static(path.join("backend/images")));
+//image
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -10,7 +15,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "PUT, DELETE, POST, FETCH, OPTIONS"
+    "PUT, DELETE, POST, PATCH, OPTIONS, GET"
   );
   next();
 });
@@ -22,11 +27,6 @@ mongoose
   .connect(dbURL)
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
-
-//image
-const path = require('path')
-app.use('/images', express.static(path.join('backend/images')))
-//image
 
 app.use(express.json());
 

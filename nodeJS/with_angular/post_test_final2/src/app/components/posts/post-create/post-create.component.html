@@ -20,7 +20,7 @@
     <!-- image -->
     <img [src]="imgPreview" alt="">
     <input #fileLoad type="file" (change)="onUpload($event)" style="display: none;">
-    <button mat-flat-button (click)="fileLoad.click()">Add Image</button>
+    <button mat-flat-button type="button" (click)="fileLoad.click()">Add Image</button>
     <!-- image -->
 
     <button *ngIf="mode === 'create; else editModeBtn'">Add</button>
