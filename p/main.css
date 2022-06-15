@@ -38,12 +38,13 @@ body {
     gap: 10px;
 }
 
-.paper {
+.paper, .marked {
     width: 100%;        
     flex-grow: 1;
     overflow-y: scroll;
     border: none;
     padding: 10px;
+    background-color: #fff;
 }
 
 .paper:focus {

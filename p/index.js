@@ -20,20 +20,24 @@ function addNote() {
   `;
   notes.push(newNote);
   body.appendChild(newNote);
-  btnsDelete = document.querySelectorAll(".delete");
-  btnsDelete.forEach((e, idx) => { 
-    e.addEventListener("click", e.parentElement.parentElement.remove());
-  });
+  btnDelete = newNote.querySelector(".delete");
+  btnEdit = newNote.querySelector(".edit");
+  paper = newNote.querySelector(".paper");
+  btnDelete.addEventListener('click', () => deleteNote(newNote))
+  btnEdit.addEventListener('click', () => editNote(paper))
+  
 }
 
-function deleteNote(idx) {
-  const notesEl = document.querySelectorAll(".note");
-  console.log(notesEl);
-  notesEl[idx].remove();
-  // console.log(idx)
-  // console.log(notes)
-  // delete notes[idx]
-  // notes.splice(idx, 1)
-  // console.log(notes)
-  // btnsDelete[idx].remove()
+function deleteNote(El) {    
+  El.remove();
+}
+
+function editNote(El) {    
+  // El.dataset.readonly = 'readonly'
+  if(El.getAttribute('readonly')) {
+    El.removeAttribute("readonly")
+    return
+  } 
+  El.setAttribute("readonly", 'true')
+  console.log(El)
 }
