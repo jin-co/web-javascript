@@ -7,46 +7,61 @@
 }
 
 body {
-    height: 100vh;
+    background-color: #7bdaf3;
+    font-family: 'Poppins', 'sans-serif';
     display: flex;
-    background-color: aquamarine;
-    padding: 100px 20px 50px;
     flex-wrap: wrap;
-    gap: 15px;
+    padding-top: 3rem;
 }
 
-.btn-add-note {
+.add {
     position: fixed;
-    top: 10px;
-    right: 10px;        
+    top: 1rem;
+    right: 1rem;
+    background-color: #9ec862;
+    color: #fff;
+    padding: 0.5rem 1rem;    
+}
+
+.add:active {
+    transform: scale(.97);
 }
 
 .note {
-    height: 300px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, .2);
-}
-
-.control {
-    width: 100%;
-    display: flex;
-    background-color: antiquewhite;
-    align-items: center;
-    justify-content: end;
-    gap: 10px;
-}
-
-.paper, .marked {
-    width: 100%;        
-    flex-grow: 1;
-    overflow-y: scroll;
-    border: none;
-    padding: 10px;
     background-color: #fff;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, .1);
+    margin: 30px 20px;
+    height: 400px;
+    width: 400px;
+    overflow-y: scroll;
 }
 
-.paper:focus {
+.note .tools {
+    background-color: #9ec862;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+    gap: 5px;
+}
+
+.note .tools button {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.note textarea {
     outline: none;
+    border: none;
+    font-size: 1.2rem;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
 }

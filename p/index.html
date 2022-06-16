@@ -33,18 +33,21 @@
     <script defer src="index.js"></script>
   </head>
   <body>
-    <button class="btn bg-info text-light btn-add-note">
-      <i class="fas-fa-plus"></i>
-      Add note
+    <button class="add btn" id="add">
+      <i class="fas fa-plus"></i> Add note
     </button>
 
     <div class="note">
-      <div class="control">
-        <button class="edit btn">Edit</button>
-        <button class="delete btn">Delete</button>
+      <div class="tools">
+        <button class="edit btn">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="delete btn">
+          <i class="fas fa-trash-alt"></i>
+        </button>
       </div>
-      <textarea class="paper"></textarea>
-      <div class="marked"></div>
+      <div class="main hidden"></div>
+      <textarea></textarea>
     </div>
   </body>
 </html>
