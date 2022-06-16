@@ -1,16 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private logged: boolean = false;
-  private baseURL: string = '';
+  private baseURL: string = 'http://localhost:3000/auth/';
+  private token!:string 
+
   constructor(private http: HttpClient, private router: Router) {}
 
-  addUser(email: string, password: string) {}
+  addUser(email: string, password: string) {
+    const user:User = {
+      email: email,
+      password: password
+    }
+    this.http.post(this.baseURL + 'signup', user).subscribe(result => {
+      console.log("user added - service msg")
+    })
+  }
 
-  login(email: string, password: string) {}
+  login(email: string, password: string) {
+    const user:User = {
+      email: email,
+      password: password
+    }
+    this.http.post(this.baseURL + 'login', user).subscribe(token => {
+
+    }) 
+  }
 
   getLogged() {
     return this.logged

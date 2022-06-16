@@ -1,30 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
-
-//image
-const multer = require("multer");
-const MIME_TYPE_MAP = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/jpg": "jpg",
-};
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype];
-    let error = new Error("invalid");
-    if (isValid) {
-      error = null;
-    }
-    cb(error, "backend/images");
-  },
-  filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(" ").join("-");
-    const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name + "-" + Date.now() + "." + ext);
-  },
-});
-//image
+const middlewareFile = require('../middlewares/file')
 
 router.get("", (req, res, next) => {
   console.log("back get post: ");
@@ -41,7 +18,7 @@ router.get("/:id", (req, res, next) => {
 
 router.post(
   "",
-  multer({ storage: storage }).single("image"),
+  middlewareFile,
   (req, res, next) => {
     console.log(req.file);
     const url = req.protocol + "://" + req.get("host");

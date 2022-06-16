@@ -41,14 +41,7 @@ export class PostService {
     post.append("image", image, title)
     
     this.http.post(this.baseURL, post).subscribe((result) => {
-      const post: Post = {
-        _id: '',
-        title: title,
-        content: content,
-        imagePath: ''
-      };
-      this.posts.push(post);
-      this.postUpdated.next([...this.posts]);
+      this.router.navigate(['/'])
     });
   }
 

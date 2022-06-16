@@ -1,5 +1,6 @@
 const express = require("express");
 const postRouter = require("./routers/post");
+const userRouter = require('./routers/user')
 const app = express();
 
 //image
@@ -31,5 +32,6 @@ mongoose
 app.use(express.json());
 
 app.use("/posts", postRouter);
+app.use("/auth", userRouter);
 
 module.exports = app;
