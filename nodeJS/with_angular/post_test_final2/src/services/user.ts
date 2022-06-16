@@ -26,8 +26,9 @@ export class UserService {
       email: email,
       password: password
     }
-    this.http.post(this.baseURL + 'login', user).subscribe(token => {
-
+    this.http.post<{token:string, exp:number}>(this.baseURL + 'login', user).subscribe(token => {
+      this.token = token.token
+      this.logged = true
     }) 
   }
 

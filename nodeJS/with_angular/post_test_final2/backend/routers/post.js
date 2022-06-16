@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 const middlewareFile = require('../middlewares/file')
+const authCheck = require('../middlewares/auth-check')
 
 router.get("", (req, res, next) => {
   console.log("back get post: ");
@@ -19,6 +20,7 @@ router.get("/:id", (req, res, next) => {
 router.post(
   "",
   middlewareFile,
+  authCheck,
   (req, res, next) => {
     console.log(req.file);
     const url = req.protocol + "://" + req.get("host");
