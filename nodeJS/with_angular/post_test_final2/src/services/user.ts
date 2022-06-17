@@ -29,10 +29,15 @@ export class UserService {
     this.http.post<{token:string, exp:number}>(this.baseURL + 'login', user).subscribe(token => {
       this.token = token.token
       this.logged = true
+      this.router.navigate(['/'])
     }) 
   }
 
   getLogged() {
     return this.logged
+  }
+
+  getToken() {
+    return this.token
   }
 }

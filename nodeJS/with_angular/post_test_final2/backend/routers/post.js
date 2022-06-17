@@ -4,8 +4,7 @@ const Post = require("../models/post");
 const middlewareFile = require('../middlewares/file')
 const authCheck = require('../middlewares/auth-check')
 
-router.get("", (req, res, next) => {
-  console.log("back get post: ");
+router.get("", (req, res, next) => {  
   Post.find().then((result) => {
     res.status(200).json(result);
   });

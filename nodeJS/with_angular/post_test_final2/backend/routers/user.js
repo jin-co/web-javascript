@@ -35,9 +35,7 @@ router.post("/login", (req, res, next) => {
         { email: fetchedUser.email, userId: fetchedUser._id },
         "secret",
         { expiresIn: 3600 }
-      );
-      console.log("loggin in server")
-      console.log(token)
+      );      
       res.status(200).json({ token: token, exp: 3600 });
     });
 });
