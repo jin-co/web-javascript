@@ -2,17 +2,17 @@
   <a routerLink="/">Home</a>
 
   <ul>
-    <li>
+    <li *ngIf="isLogged">
       <a routerLink="/create">Add Post</a>
     </li>
-    <li>
+    <li *ngIf="!isLogged">
       <a routerLink="/login">Login</a>
     </li>
-    <li>
+    <li *ngIf="!isLogged">
       <a routerLink="/signup">Signup</a>
     </li>
-    <li>
-      <a>Logout</a>
+    <li *ngIf="isLogged">
+      <a (click)="onLogout()">Logout</a>
     </li>
   </ul>
 </mat-toolbar>
