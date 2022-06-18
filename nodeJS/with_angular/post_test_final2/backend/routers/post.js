@@ -27,6 +27,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
+      auth: req.userData.userId
     });
     post.save().then((result) => {
       res.status(201).json(result);
@@ -40,13 +41,14 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", (req, res, next) => {
+router.put("/:id", authCheck, (req, res, next) => {
+  console.log(req.userData)
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   });
-  Post.updateOne({ _id: req.params.id }, post).then((result) => {
+  Post.updateOne({ _id: req.params.id, auth: req.userData.userId }, post).then((result) => {
     res.status(200).json(result);
   });
 });

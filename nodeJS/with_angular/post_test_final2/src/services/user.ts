@@ -47,4 +47,10 @@ export class UserService {
   authUpdateListener() {
     return this.authUpdate.asObservable()
   }
+
+  logout() {
+    this.token = ''
+    this.logged = false
+    this.authUpdate.next(false)
+  }
 }

@@ -16,7 +16,7 @@ router.post("/signup", (req, res, next) => {
         res.status(200).json(result);
       })
       .catch((err) => {
-        res.status(401).json(err);
+        res.status(401).json('duplicate user');
       });
   });
 });

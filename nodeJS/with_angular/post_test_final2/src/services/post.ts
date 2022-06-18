@@ -27,21 +27,24 @@ export class PostService {
         )
         .subscribe((result) => console.log(result))
     );
-    return this.http.get<{ id: string; title: string; content: string }>(
-      this.baseURL + `/${id}`
-    );
+    return this.http.get<{
+      id: string;
+      title: string;
+      content: string;
+      imagePath: string;
+    }>(this.baseURL + `/${id}`);
   }
 
-  setPost(title: string, content: string, image:File) {
+  setPost(title: string, content: string, image: File) {
     //test
     console.log('calling post');
-    const post = new FormData()
-    post.append("title", title)
-    post.append("content", content)
-    post.append("image", image, title)
-    
+    const post = new FormData();
+    post.append('title', title);
+    post.append('content', content);
+    post.append('image', image, title);
+
     this.http.post(this.baseURL, post).subscribe((result) => {
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     });
   }
 
@@ -50,7 +53,7 @@ export class PostService {
       _id: id,
       title: title,
       content: content,
-      imagePath: ''
+      imagePath: '',
     };
     this.http.put(this.baseURL + `/${id}`, post).subscribe((result) => {
       this.router.navigate(['/']);
