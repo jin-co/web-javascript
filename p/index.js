@@ -1,55 +1,25 @@
-const body = document.querySelector('body')
-const addBtn = document.querySelector('.add')
-const notes = JSON.parse(localStorage.getItem('notes'))
+const btnAdd = document.querySelector('.add')
 
-if (notes) {
-  notes.forEach((note) => addNewNote(note))
+btnAdd.addEventListener('click', () => addNote())
+
+function addNote() {
+  const newNote = document.createElement('div')
+  newNote.className = 'note'
+  newNote.innerHTML = `
+    <div class="note">
+    <div class="tools">
+      <i class="btn fas fa-edit"></i>
+      <i class="btn fas fa-trash-alt"></i>
+    </div>
+    <textarea></textarea>
+    <div class="main hide"></div>
+  `
+  document.body.appendChild(newNote)
 }
 
-addBtn.addEventListener('click', () => addNewNote())
-
-function addNewNote(text = '') {
-  const note = document.createElement('div')
-  note.className = 'note'
-
-  note.innerHTML = `
-    <div class="tools">
-      <button class="edit btn">
-        <i class="fas fa-edit"></i>
-      </button>
-      <button class="delete btn">
-        <i class="fas fa-trash-alt"></i>
-      </button>
-    </div>
-    <div class="main ${text ? '' : 'hidden'}"></div>
-    <textarea class="${text ? 'hidden' : ''}"></textarea>
-  `
-
-  const editBtn = note.querySelector('.edit')
-  const deleteBtn = note.querySelector('.delete')
-  const main = note.querySelector('.main')
-  const textArea = note.querySelector('textarea')
-
-  body.appendChild(note)
-
-  textArea.value = text
-  main.innerHTML = text
-  deleteBtn.addEventListener('click', () => {
-    note.remove()
-    updateLS()
-  })
-
-  editBtn.addEventListener('click', () => {
-    main.classList.toggle('hidden')
-    textArea.classList.toggle('hidden')
-  })
-
-  textArea.addEventListener('input', (e) => {
-    const notesText = document.querySelectorAll('textarea')
-    const notes = []
-    notesText.forEach((note) => {
-      notes.push(note.value)
-    })
-    localStorage.setItem('notes', JSON.stringify(notes))
-  })
+const notes = JSON.parse(localStorage.getItem('notes'))
+if(notes) {
+  notes.forEach(note => {
+    addNote(note)
+  });
 }

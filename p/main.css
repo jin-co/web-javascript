@@ -7,61 +7,52 @@
 }
 
 body {
-    background-color: #7bdaf3;
-    font-family: 'Poppins', 'sans-serif';
+    background-color: aqua;
     display: flex;
+    padding: 80px 20px;
+    gap: 20px;
     flex-wrap: wrap;
-    padding-top: 3rem;
 }
 
 .add {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background-color: #9ec862;
-    color: #fff;
-    padding: 0.5rem 1rem;    
-}
-
-.add:active {
-    transform: scale(.97);
+    top: 20px;
+    right: 20px;
 }
 
 .note {
-    background-color: #fff;
-    box-shadow: 0 0 10px 4px rgba(0, 0, 0, .1);
-    margin: 30px 20px;
     height: 400px;
     width: 400px;
     overflow-y: scroll;
 }
 
-.note .tools {
-    background-color: #9ec862;
+.tools {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    padding: 0.5rem;
-    gap: 5px;
+    background-color: rgb(83, 129, 13);
+    padding: 10px;    
+    justify-content: end;
+    gap: 10px;
+    font-size: 1.3rem;
 }
 
-.note .tools button {
-    font-size: 1rem;
+.btn {
     color: #fff;
 }
 
-.note textarea {
-    outline: none;
-    border: none;
-    font-size: 1.2rem;
+textarea {
     height: 100%;
     width: 100%;
-    padding: 20px;
 }
 
 .main {
-    padding: 20px;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
 }
 
-.hidden {
+.hide {
     display: none;
 }
+
+
