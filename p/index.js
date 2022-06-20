@@ -2,6 +2,14 @@ const btnAdd = document.querySelector('.add')
 
 btnAdd.addEventListener('click', () => addNote())
 
+const notes = JSON.parse(localStorage.getItem('notes'))
+if(notes) {
+  console.log('stored notes: ', notes)
+  notes.forEach(note => {
+    addNote(note)
+  });
+}
+
 function addNote(text = '') {
   const newNote = document.createElement('div')
   newNote.className = 'note'
@@ -22,6 +30,8 @@ function addNote(text = '') {
   const main = newNote.querySelector('.main')
   const textarea = newNote.querySelector('textarea')
 
+  textarea.value = text
+
   btnEdit.addEventListener('click', () => {
     main.classList.toggle('hide')
     textarea.classList.toggle('hide')
@@ -29,27 +39,18 @@ function addNote(text = '') {
 
   btnDelete.addEventListener('click', () => {
     newNote.remove()
-    UpdateLS()
+    updateLS()
   })
 
   textarea.addEventListener('input', (e) => {
     main.textContent = e.target.value
-    UpdateLS()
+    updateLS()
   })
 }
 
-let noteList = []
-const notes = JSON.parse(localStorage.getItem('notes'))
-if(notes) {
-  notes.forEach(note => {
-    addNote(note)
-  });
-}
-
-function UpdateLS() {
-  const createdNotes = document.querySelectorAll('.main')
-  createdNotes.forEach(note => {
-    noteList.push(note)
-  });
-  localStorage.setItem('notes', JSON.stringify(noteList))
+function updateLS() {
+  const notesText = document.querySelectorAll('textarea')
+  const notes = []
+  notesText.forEach(note => notes.push(note.value))
+  localStorage.setItem('notes', JSON.stringify(notes))
 }
