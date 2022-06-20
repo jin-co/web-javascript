@@ -10,13 +10,19 @@ import { PostCreateComponent } from './components/posts/post-create/post-create.
 import { AngularMaterialModules } from 'src/angular.material.modules';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { ErrorComponent } from './components/shared/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,    
     PostListComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    LoginComponent,
+    SignupComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
