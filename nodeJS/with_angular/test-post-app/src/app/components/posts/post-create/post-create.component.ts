@@ -9,7 +9,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PostCreateComponent implements OnInit {
   form!: FormGroup;
-  @Output() updatedPost = new EventEmitter()
   constructor() {}
 
   ngOnInit(): void {
@@ -25,7 +24,6 @@ export class PostCreateComponent implements OnInit {
         title: this.form.value.title,
         content: this.form.value.content
       }
-      this.updatedPost.emit(post)
     }
     this.form.reset()
   }
