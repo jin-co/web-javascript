@@ -17,8 +17,10 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-app.use((req, res, next) => {
-  res.send('hhh')
+const mongose = require('mongoose')
+
+app.get((req, res, next) => {
+  
 })
 
 module.exports = app;
