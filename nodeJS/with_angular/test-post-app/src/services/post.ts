@@ -13,21 +13,31 @@ export class PostService {
   constructor(private router: Router, private http: HttpClient) {}
 
   getPosts() {
-    this.http.get<Post[]>(this.baseURL).subscribe(posts => {
-      this.posts = posts
-      this.postUpdated.next([...posts])
-    })
+    this.http.get<Post[]>(this.baseURL).subscribe((posts) => {
+      this.posts = posts;
+      this.postUpdated.next([...posts]);
+    });
   }
 
   getPost(id: string) {}
 
-  addPost(title: string, content: string) {}
+  addPost(title: string, content: string) {
+    const post: Post = {
+      title: title,
+      content: content,
+    };
+    this.http.post<Post>(this.baseURL, post) .subscribe(post => {
+      this.posts.push(post)
+      this.postUpdated.next([...this.posts])
+      this.router.navigate(['/'])
+    })
+  }
 
   deletePost(id: string) {}
 
   updatePost(id: string, title: string, content: string) {}
 
   postUpdatedListener() {
-    return this.postUpdated.asObservable()
+    return this.postUpdated.asObservable();
   }
 }

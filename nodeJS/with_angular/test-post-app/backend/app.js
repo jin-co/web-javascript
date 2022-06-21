@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const postRouter = require("./routers/post");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,22 +19,13 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 const mongoose = require("mongoose");
-const postSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-});
-const Post = mongoose.model("Post", postSchema);
-const dbURL = "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
+const dbURL =
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
   .connect(dbURL)
   .then(() => console.log("connected"))
   .catch(() => console.log("failed"));
-app.get("/posts", (req, res, next) => {
-  Post.find().then(posts => {
-    console.log('back get: ')
-    console.log(posts)
-    res.status(200).json(posts)
-  })
-});
+
+app.use("/posts", postRouter);
 
 module.exports = app;

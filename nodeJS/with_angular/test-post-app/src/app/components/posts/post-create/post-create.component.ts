@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { PostService } from 'src/services/post';
 
 @Component({
   selector: 'app-post-create',
@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PostCreateComponent implements OnInit {
   form!: FormGroup;
-  constructor() {}
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -19,12 +19,9 @@ export class PostCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.form.valid) {
-      const post:any = {
-        title: this.form.value.title,
-        content: this.form.value.content
-      }
+    if (this.form.valid) {
+      this.postService.addPost(this.form.value.title, this.form.value.content);
     }
-    this.form.reset()
+    this.form.reset();
   }
 }
