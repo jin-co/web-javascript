@@ -16,12 +16,13 @@ body {
 .go-box {
   text-align: center;
   transition: 0.4s ease;
+  position: absolute;
 }
 
 .go {
   font-size: 2rem;
   font-family: 'Poppins';
-  font-weight: bold;
+  font-weight: bold;  
 }
 
 .go + button {
@@ -40,7 +41,8 @@ body {
   height: 60px;
   width: 200px;
   transition: 0.4s ease;
-  text-align: center;
+  text-align: center;  
+  overflow: hidden;
 }
 
 .counts {
@@ -67,11 +69,12 @@ body {
   font-size: 2rem;
   font-family: 'Poppins';
   text-transform: capitalize;
+  position: absolute;
+  width: 200px;
 }
 
 .hide {
-  transform: scale(0);
-  width: 0;
+  transform: scale(0);  
 }
 
 .spin {
