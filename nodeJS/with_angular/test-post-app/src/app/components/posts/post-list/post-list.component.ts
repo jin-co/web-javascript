@@ -4,17 +4,22 @@ import { PostService } from 'src/services/post';
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit {
-  posts:any = []
-  constructor(private postService:PostService) { }
+  posts: any = [];
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
-    this.postService.getPosts()
-    this.postService.postUpdatedListener().subscribe(posts => {
-      this.posts = posts
-    })
+    this.postService.getPosts();
+    this.postService.postUpdatedListener().subscribe((posts) => {
+      this.posts = posts;
+    });
   }
 
+  onEdit(id: string) {}
+
+  onDelete(id: string) {
+    this.postService.deletePost(id)
+  }
 }

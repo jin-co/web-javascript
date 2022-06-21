@@ -4,10 +4,12 @@
       <mat-panel-title>
         {{ i.title }}
       </mat-panel-title>
-      <mat-panel-description>
-        Click to open
-      </mat-panel-description>
+      <mat-panel-description> Click to open </mat-panel-description>
     </mat-expansion-panel-header>
-    <p> {{ i.content }} </p>
+    <p>{{ i.content }}</p>
+    <mat-action-row>
+      <button mat-raised-button (click)="onEdit(i._id)">Edit</button>
+      <button mat-raised-button (click)="onDelete(i._id)">Delete</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
