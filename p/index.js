@@ -1,62 +1,23 @@
-const notes = JSON.parse(localStorage.getItem('notes'))
+const playBtn = document.querySelector('.btn-play')
+const goBox = document.querySelector('.go-box')
+const countBox = document.querySelector('.count-box')
+const nums = document.querySelectorAll('.num')
 
-if (notes) {
-  notes.forEach((note) => {
-    addNote(note)
-  })
-}
-
-const addBtn = document.querySelector('.add')
-
-addBtn.addEventListener('click', () => {
-  addNote()
+playBtn.addEventListener('click', () => {
+  goBox.classList.add('hide')
+  countBox.classList.remove('hide')    
+  nums.forEach((num, idx) => {
+    setTimeout(() => {
+      num.classList.add('spin')      
+      if(idx >= nums.length - 1) resetCounter() 
+    }, 1000 * idx);   
+  });
 })
 
-function addNote(text = '') {
-  const newNote = document.createElement('div')
-  newNote.className = 'note'
-  newNote.innerHTML = `
-    <div class="tools">
-      <i class="btn edit fas fa-edit"></i>
-      <i class="btn delete fas fa-trash-alt"></i>
-    </div>
-    <textarea class="${text ? '' : 'hide'}" ></textarea>
-    <div class="main ${text ? 'hide' : ''}"></div>
-  `
-
-  const editBtn = newNote.querySelector('.edit')
-  const deleteBtn = newNote.querySelector('.delete')
-  const main = newNote.querySelector('.main')
-  const textarea = newNote.querySelector('textarea')
-
-  textarea.value = text
-  main.textContent = text
-
-  document.body.appendChild(newNote)
-
-  editBtn.addEventListener('click', () => {
-    main.classList.toggle('hide')
-    textarea.classList.toggle('hide')
-  })
-  
-  deleteBtn.addEventListener('click', () => {
-    newNote.remove()
-    updateLS() 
-  })
-
-  textarea.addEventListener('input', (e) => {
-    main.textContent = e.target.value
-    updateLS() 
-  })
-}
-
-function updateLS() {
-  const noteList = []
-  const createdNotes = document.querySelectorAll('textarea')
-  createdNotes.forEach(note => {
-    noteList.push(note.value)
+function resetCounter() {
+  goBox.classList.remove('hide')
+  countBox.classList.add('hide')   
+  nums.forEach(num => {
+    num.classList.remove('spin')
   });
-
-  localStorage.setItem('notes', JSON.stringify(noteList))
 }
-
