@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Post } from 'src/models/post';
 import { PostService } from 'src/services/post';
 
 @Component({
@@ -9,12 +11,26 @@ import { PostService } from 'src/services/post';
 })
 export class PostCreateComponent implements OnInit {
   form!: FormGroup;
-  constructor(private postService: PostService) {}
+  mode: string = 'create';
+  id!: string;
+  post!: Post;
+
+  constructor(
+    private postService: PostService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl(null, { validators: [Validators.required] }),
       content: new FormControl(null, { validators: [Validators.required] }),
+    });
+
+    this.activatedRoute.paramMap.subscribe((pm: ParamMap) => {
+      if (pm.has('id')) {
+        console.log(pm.get('id'))
+      } else {
+      }
     });
   }
 

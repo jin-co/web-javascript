@@ -15,9 +15,7 @@ export class PostListComponent implements OnInit {
     this.postService.postUpdatedListener().subscribe((posts) => {
       this.posts = posts;
     });
-  }
-
-  onEdit(id: string) {}
+  }  
 
   onDelete(id: string) {
     this.postService.deletePost(id)
