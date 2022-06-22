@@ -1,1 +1,15 @@
-<p>login works!</p>
+<mat-card>
+  <form action="" #form="ngForm" (submit)="onSubmit(form)">
+    <mat-form-field>
+      <input type="email" matInput name="email" #email="ngModel" ngModel="" required />
+      <mat-error *ngIf="email.invalid">email required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="password" matInput name="password" #password="ngModel" ngModel="" required />
+      <mat-error *ngIf="password.invalid">password required</mat-error>
+    </mat-form-field>
+
+    <button mat-button>Click</button>
+  </form>
+</mat-card>
