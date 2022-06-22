@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const postRouter = require("./routers/post");
+const authRouter = require("./routers/auth");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -27,5 +28,6 @@ mongoose
   .catch(() => console.log("failed"));
 
 app.use("/posts", postRouter);
+app.use("/auth", authRouter);
 
 module.exports = app;

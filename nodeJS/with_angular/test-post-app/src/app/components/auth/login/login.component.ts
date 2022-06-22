@@ -5,19 +5,17 @@ import { UserService } from 'src/services/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(private userService: UserService) {}
 
-  constructor(private userService: UserService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  onSubmit(form:NgForm) {
-    if(form.valid) {
-      console.log(form.value)
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.userService.login(form.value.email, form.value.password);
     }
-    form.resetForm()
+    form.resetForm();
   }
 }
