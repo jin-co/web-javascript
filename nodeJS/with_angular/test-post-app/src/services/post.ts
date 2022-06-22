@@ -20,7 +20,7 @@ export class PostService {
   }
 
   getPost(id: string) {
-    return this.http.get<{title:string, content:string}>(this.baseURL + id)
+    return this.http.get<{ title: string; content: string }>(this.baseURL + id);
   }
 
   addPost(title: string, content: string) {
@@ -45,7 +45,16 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {}
+  updatePost(id: string, title: string, content: string) {
+    const post: Post = {
+      _id: id,
+      title: title,
+      content: content,
+    };
+    this.http.put(this.baseURL + id, post).subscribe((result) => {
+      this.router.navigate(['/']);
+    });
+  }
 
   postUpdatedListener() {
     return this.postUpdated.asObservable();
