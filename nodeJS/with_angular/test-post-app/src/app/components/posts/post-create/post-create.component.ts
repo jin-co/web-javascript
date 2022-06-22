@@ -28,15 +28,43 @@ export class PostCreateComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((pm: ParamMap) => {
       if (pm.has('id')) {
-        console.log(pm.get('id'))
+        this.mode = 'edit';
+        const postId = pm.get('id');
+        if (postId !== null) {
+          this.id = postId;
+        }
+        this.postService.getPost(this.id).subscribe((post) => {
+          this.post = {
+            _id: this.id,
+            title: post.title,
+            content: post.content,
+          };
+
+          this.form.setValue({
+            title: this.post.title,
+            content: this.post.content,
+          });
+        });
       } else {
+        this.mode = 'create';
       }
     });
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.postService.addPost(this.form.value.title, this.form.value.content);
+      if (this.mode === 'create') {
+        this.postService.addPost(
+          this.form.value.title,
+          this.form.value.content
+        );
+      } else {
+        this.postService.updatePost(
+          this.id,
+          this.form.value.title,
+          this.form.value.content
+        )
+      }
     }
     this.form.reset();
   }

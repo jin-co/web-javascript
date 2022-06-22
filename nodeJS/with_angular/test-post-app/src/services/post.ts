@@ -19,7 +19,9 @@ export class PostService {
     });
   }
 
-  getPost(id: string) {}
+  getPost(id: string) {
+    return this.http.get<{title:string, content:string}>(this.baseURL + id)
+  }
 
   addPost(title: string, content: string) {
     const post: Post = {
