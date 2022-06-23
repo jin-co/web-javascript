@@ -35,6 +35,7 @@ export class UserService {
         this.token = data.token;
         this.loggedIn = true;
         this.authUpdate.next(true);
+        console.log('logged in: ', data)
       });
   }
 
