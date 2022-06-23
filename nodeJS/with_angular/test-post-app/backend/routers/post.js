@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
+const authCheck = require('../middlewares/check-auth')
 
 router.get("", (req, res, next) => {
   Post.find().then((posts) => {
@@ -14,7 +15,7 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.post("", (req, res, next) => {
+router.post("", authCheck, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
