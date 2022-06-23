@@ -7,6 +7,7 @@ const authCheck = (req, res, next) => {
       token: token.email,
       userId: token.userId
     }
+    next()
     console.log('auth check: ', token)
   } catch (error) {
     res.status(400).json(error)
