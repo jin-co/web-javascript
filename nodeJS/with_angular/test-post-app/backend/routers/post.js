@@ -12,13 +12,12 @@ router.get("", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-  Post.findById(req.params.id).then((post) => {
+  Post.findById(req.params.id).then((post) => {    
     res.status(200).json(post);
   });
 });
 
-router.post("", authCheck, fileCheck, (req, res, next) => {
-  console.log("post: ");
+router.post("", authCheck, fileCheck, (req, res, next) => {  
   const url = req.protocol + "://" + req.get("host");
   const post = new Post({
     title: req.body.title,
@@ -37,8 +36,7 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", authCheck, (req, res, next) => {
-  console.log("userData");
+router.put("/:id", authCheck, fileCheck, (req, res, next) => {  
   let imagePath = req.body.imagePath;
   const url = req.protocol + "://" + req.get("host");
   if (file) {
@@ -53,7 +51,7 @@ router.put("/:id", authCheck, (req, res, next) => {
   });
 
   Post.updateOne({ _id: req.params.id, auth: req.userData.userId }, post).then(
-    (result) => {
+    (result) => {      
       res.status(200).json(result);
     }
   );
