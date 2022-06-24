@@ -23,12 +23,12 @@ export class PostService {
     return this.http.get<{ title: string; content: string }>(this.baseURL + id);
   }
 
-  addPost(title: string, content: string) {
-    const post: Post = {
-      _id: '',
-      title: title,
-      content: content,
-    };
+  addPost(title: string, content: string, image:File) {    
+    const post = new FormData()
+    post.append("title", title)
+    post.append("content", content)
+    post.append("image", image, title)    
+    console.log('image post servie test: ')
     this.http.post<Post>(this.baseURL, post).subscribe((post) => {
       this.posts.push(post);
       this.postUpdated.next([...this.posts]);

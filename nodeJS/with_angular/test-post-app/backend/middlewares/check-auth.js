@@ -10,8 +10,7 @@ const authCheck = (req, res, next) => {
       userId: decoded.userId
     }
 
-    next()
-    console.log('auth check: ', token)
+    next()    
   } catch (error) {
     res.status(400).json(error)
   }
