@@ -12,8 +12,10 @@ export class PostService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  getPosts() {
+  getPosts() {    
     this.http.get<Post[]>(this.baseURL).subscribe((posts) => {
+      console.log('image test service: ')
+      console.log(posts)
       this.posts = posts;
       this.postUpdated.next([...posts]);
     });

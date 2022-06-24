@@ -40,7 +40,7 @@ router.put("/:id", authCheck, fileCheck, (req, res, next) => {
   let imagePath = req.body.imagePath;
   const url = req.protocol + "://" + req.get("host");
   if (file) {
-    imagePath = url + req.file.filename;
+    imagePath = url + "/images/" + req.file.filename;
   }
   const post = new Post({
     _id: req.body._id,
