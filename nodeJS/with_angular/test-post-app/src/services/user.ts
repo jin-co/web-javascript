@@ -36,6 +36,7 @@ export class UserService {
         this.loggedIn = true;
         this.authUpdate.next(true);
         console.log('logged in: ', data)
+        this.router.navigate(['/'])
       });
   }
 

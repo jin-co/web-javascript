@@ -19,6 +19,11 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+// file
+const path = require("path");
+app.use("/images", express.static(path.join("backend/images")));
+// file
+
 const mongoose = require("mongoose");
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
