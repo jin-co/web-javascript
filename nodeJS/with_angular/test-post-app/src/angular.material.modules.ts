@@ -6,6 +6,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NgModule } from '@angular/core';
     MatProgressBarModule,
     MatPaginatorModule,
     MatCardModule,
+    MatDialogModule,
   ],
 })
 export class AngularMaterialModules {}
