@@ -7,9 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModules } from './angular.material.modules';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { ErrorComponent } from './components/shared/error/error.component';
+import { PostCreateComponent } from './components/posts/post-create/post-create.component';
+import { PostListComponent } from './components/posts/post-list/post-list.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent, ErrorComponent, PostCreateComponent, PostListComponent, LoginComponent, SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
