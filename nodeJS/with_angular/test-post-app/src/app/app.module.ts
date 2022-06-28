@@ -15,7 +15,15 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ErrorComponent, PostCreateComponent, PostListComponent, LoginComponent, SignupComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ErrorComponent,
+    PostCreateComponent,
+    PostListComponent,
+    LoginComponent,
+    SignupComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
