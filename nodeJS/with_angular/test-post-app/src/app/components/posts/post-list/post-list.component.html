@@ -9,7 +9,7 @@
     <p>{{ i.content }}</p>
     <mat-action-row>
       <button>Edit</button>
-      <button>Delete</button>
+      <button (click)="onDelete(i._id)">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
