@@ -7,8 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent implements OnInit {
-  form!: FormGroup;
-  @Output() createdPost = new EventEmitter()
+  form!: FormGroup;  
   constructor() {}
 
   ngOnInit(): void {
@@ -23,8 +22,7 @@ export class PostCreateComponent implements OnInit {
       const post: any = {
         title: this.form.value.title,
         content: this.form.value.content,
-      };
-      this.createdPost.emit(post)
+      };      
     }
     this.form.reset();
   }
