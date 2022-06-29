@@ -1,16 +1,21 @@
 <mat-card>
-  <mat-form-field>
-    <input matInput type="text" placeholder="title" #title>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <textarea matInput placeholder="content" [(ngModel)]="inputContent"></textarea>
-  </mat-form-field>
+  <form (submit)="onSubmit()" [formGroup]="form">
+    <mat-form-field>
+      <input matInput type="text" placeholder="title" formControlName="title" />
+      <mat-error *ngIf="form.get('title')?.invalid">title required</mat-error>
+    </mat-form-field>
 
-  <button mat-button (click)="onClick(title)">Add</button>
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="content"
+        formControlName="content"
+      ></textarea>
+      <mat-error *ngIf="form.get('content')?.invalid"
+        >content required</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-button>Add</button>
+  </form>
 </mat-card>
-
-<p> {{inputTitle}} </p>
-<p> {{inputContent}} </p>
-
-
