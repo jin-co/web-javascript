@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const postRouter = require("./routers/post");
+
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
@@ -22,11 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const Post = require('./models/post')
-app.get("/posts", (req, res, next) => {
-  Post.find().then(posts => {
-    res.status(200).json(posts)
-  })
-});
+app.use("/posts", postRouter);
 
 module.exports = app;

@@ -23,7 +23,14 @@ export class PostService {
 
   addPost(title: string, content: string) {}
 
-  deletePost(id: string) {}
+  deletePost(id: string) {
+    this.http.delete(this.baseURL + id).subscribe(result => {
+      const deletedPost = this.posts.filter(p => p._id !== id)
+      this.posts = deletedPost
+      this.postUpdate.next([...this.posts])
+      this.router.navigate(['/'])
+    })
+  }
 
   updatePost(id: string, title: string, content: string) {}
 
