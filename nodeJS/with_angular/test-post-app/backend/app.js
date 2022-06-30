@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dbURL =
-  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/app-post?retryWrites=true&w=majority";
+  "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
 mongoose
   .connect(dbURL)
   .then(() => console.log("connected"))
@@ -22,8 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send("hh");
+const Post = require('./models/post')
+app.get("/posts", (req, res, next) => {
+  Post.find().then(posts => {
+    res.status(200).json(posts)
+  })
 });
 
 module.exports = app;

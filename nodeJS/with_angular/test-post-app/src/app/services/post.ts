@@ -6,12 +6,18 @@ import { Post } from '../models/post';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
+  private posts:Post[] = []
   private baseURL = 'http://localhost:3000/posts/';
   private postUpdate = new Subject<Post[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPosts() {}
+  getPosts() {    
+    this.http.get<Post[]>(this.baseURL).subscribe(posts => {
+      this.posts = posts
+      this.postUpdate.next([...this.posts])
+    })
+  }
 
   getPost(id: string) {}
 
