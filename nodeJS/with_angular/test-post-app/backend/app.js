@@ -1,12 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const postSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  imagePath: { type: String },
-});
-const Post = mongoose.model("Post", postSchema);
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/app-post?retryWrites=true&w=majority";
 mongoose
