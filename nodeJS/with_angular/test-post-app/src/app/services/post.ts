@@ -51,7 +51,7 @@ export class PostService {
       title: title,
       content: content,
     };
-    this.http.put<Post>(this.baseURL, post).subscribe((result) => {
+    this.http.put<Post>(this.baseURL + id, post).subscribe((result) => {
       this.router.navigate(['/']);
     });
   }
