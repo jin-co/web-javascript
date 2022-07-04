@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express()
 const Post = require('../models/post')
+const authCheck = require('../middlewares/auth-check')
 
-router.get("", (req, res, next) => {
+router.get("", authCheck, (req, res, next) => {
   Post.find().then(posts => {
     res.status(200).json(posts)
   }).catch((err) => {
@@ -18,7 +19,7 @@ router.get("/:id", (req, res, next) => {
   })
 });
 
-router.post("", (req, res, next) => {  
+router.post("", authCheck, (req, res, next) => {  
   const post = new Post({
     title: req.body.title,
     content: req.body.content,

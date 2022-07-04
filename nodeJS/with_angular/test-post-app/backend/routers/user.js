@@ -21,24 +21,17 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-router.post("/login", (req, res, next) => {
-  console.log("login back")
-  console.log(req.body)
+router.post("/login", (req, res, next) => {  
   let fetchedUser;
   User.findOne({ email: req.body.email })
     .then((user) => {      
       if (!user) {
         res.status(400).json("user not found");
-      }
-      console.log('user: ')
-      console.log(user)
-      fetchedUser = user;
-      console.log(bcrypt.compare(req.body.password, user.password))
+      }      
+      fetchedUser = user;      
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then((result) => {
-      console.log('result: ')
-      console.log(result)
+    .then((result) => {      
       if (!result) {
         res.status(400).json("wrong password");
       }
