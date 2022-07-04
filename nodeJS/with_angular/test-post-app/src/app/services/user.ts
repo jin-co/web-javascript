@@ -18,12 +18,25 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(this.baseURL, user).subscribe((result) => {
-      this.router.navigate(['/'])
+    this.http.post(this.baseURL + 'signup', user).subscribe((result) => {
+      this.router.navigate(['/']);
     });
   }
 
-  login(email: string, password: string) {}
+  login(email: string, password: string) {
+    const user: User = {
+      email: email,
+      password: password,
+    };
+    this.http
+      .post<{ token: string; exp: number }>(this.baseURL + 'login', user)
+      .subscribe((data) => {
+        this.isLogged = true;
+        this.token = data.token;
+        this.userUpdate.next(true);
+        this.router.navigate(['/']);
+      });
+  }
 
   logout() {}
 
