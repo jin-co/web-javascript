@@ -12,3 +12,76 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
+label {
+  height: 30px;
+  width: 60px;
+  border-radius: 15px;  
+  animation: goOut 1s ease forwards;
+  position: relative;
+}
+
+label::before {
+  content: '';
+  height: 28px;
+  width: 28px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: azure;
+  border-radius: 50%;  
+  animation: goLeft 1s ease forwards;
+}
+
+input {
+  display: none;
+}
+
+input:checked + label {
+  animation: goIn 1s ease forwards;
+}
+
+input:checked + label::before {
+  animation: goRight 1s ease forwards;
+}
+
+
+@keyframes goIn {
+  from {
+    background-color: whitesmoke;
+  }
+
+  to {
+    background-color: rebeccapurple;
+  }
+}
+
+@keyframes goOut {
+  from {
+    background-color: rebeccapurple;
+  }
+
+  to {
+    background-color: whitesmoke;
+  }
+}
+
+@keyframes goLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes goRight {
+  from {
+    transform: translateX(30px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
