@@ -3,7 +3,7 @@ const router = express()
 const Post = require('../models/post')
 const authCheck = require('../middlewares/auth-check')
 
-router.get("", authCheck, (req, res, next) => {
+router.get("", (req, res, next) => {
   Post.find().then(posts => {
     res.status(200).json(posts)
   }).catch((err) => {
@@ -23,6 +23,7 @@ router.post("", authCheck, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    auth: req.userData.userId
   })
   post.save().then(posts => {
     res.status(200).json(posts)
@@ -31,13 +32,14 @@ router.post("", authCheck, (req, res, next) => {
   })
 });
 
-router.put("/:id", (req, res, next) => {  
+router.put("/:id", authCheck, (req, res, next) => { 
+  console.log(req.userData) 
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   })
-  Post.updateOne({_id: req.params.id}, post).then(posts => {
+  Post.updateOne({_id: req.params.id, auth: req.userData.userId}, post).then(posts => {
     res.status(200).json(posts)
   }).catch((err) => {
     res.status(400).json("Error: delete post")

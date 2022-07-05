@@ -45,7 +45,11 @@ export class UserService {
     return this.token
   }
 
+  getIsLogged() {
+    return this.isLogged
+  }
+
   userUpdateListener() {
     return this.userUpdate.asObservable();
-  }
+  }  
 }
