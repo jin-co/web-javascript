@@ -16,8 +16,8 @@ body {
 label {
   height: 30px;
   width: 60px;
-  border-radius: 15px;  
-  animation: goOut 1s ease forwards;
+  border-radius: 15px;
+  animation: goIn 1s ease forwards;
   position: relative;
 }
 
@@ -29,7 +29,7 @@ label::before {
   top: 1px;
   left: 1px;
   background-color: azure;
-  border-radius: 50%;  
+  border-radius: 50%;
   animation: goLeft 1s ease forwards;
 }
 
@@ -38,13 +38,12 @@ input {
 }
 
 input:checked + label {
-  animation: goIn 1s ease forwards;
+  animation: goOut 1s ease forwards;
 }
 
 input:checked + label::before {
   animation: goRight 1s ease forwards;
 }
-
 
 @keyframes goIn {
   from {
@@ -88,4 +87,39 @@ input:checked + label::before {
 
 canvas {
   border: 1px solid #000;
+}
+
+.kinetic {
+  height: 100px;
+  width: 100px;
+}
+
+.kinetic::before {
+  content: '';
+  position: absolute;
+  border: 50px solid transparent;
+  border-bottom-color: wheat;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0%,
+  10% {
+    transform: rotate(90deg);
+  }
+
+  30%,
+  60% {
+    transform: rotate(180deg);
+  }
+
+  70%,
+  80% {
+    transform: rotate(270deg);
+  }
+
+  90%,
+  100% {
+    transform: rotate(360deg);
+  }
 }
