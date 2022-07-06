@@ -8,15 +8,18 @@ import { Post } from '../models/post';
 export class PostService {
   private posts: Post[] = [];
   private baseURL = 'http://localhost:3000/posts/';
-  private postUpdate = new Subject<Post[]>();
+  private postUpdate = new Subject<{ posts: Post[]; count: number }>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPosts() {
-    this.http.get<Post[]>(this.baseURL).subscribe((posts) => {
-      this.posts = posts;
-      this.postUpdate.next([...this.posts]);
-    });
+  getPosts(pageSize: number, currentPage: number) {
+    const param = `?pageSize=${pageSize}&currentPage=${currentPage}`;
+    this.http
+      .get<{ posts: Post[]; count: number }>(this.baseURL + param)
+      .subscribe((data) => {
+        this.posts = data.posts;
+        this.postUpdate.next({ posts: [...this.posts], count: data.count });
+      });
   }
 
   getPost(id: string) {
@@ -30,17 +33,17 @@ export class PostService {
       content: content,
     };
     this.http.post<Post>(this.baseURL, post).subscribe((result) => {
-      this.posts.push(result);
-      this.postUpdate.next([...this.posts]);
+      // this.posts.push(result);
+      // this.postUpdate.next([...this.posts]);
       this.router.navigate(['/']);
     });
   }
 
   deletePost(id: string) {
     this.http.delete(this.baseURL + id).subscribe((result) => {
-      const deletedPost = this.posts.filter((p) => p._id !== id);
-      this.posts = deletedPost;
-      this.postUpdate.next([...this.posts]);
+      // const deletedPost = this.posts.filter((p) => p._id !== id);
+      // this.posts = deletedPost;
+      // this.postUpdate.next([...this.posts]);
       this.router.navigate(['/']);
     });
   }

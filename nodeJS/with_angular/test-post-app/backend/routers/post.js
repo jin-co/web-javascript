@@ -4,11 +4,32 @@ const Post = require('../models/post')
 const authCheck = require('../middlewares/auth-check')
 
 router.get("", (req, res, next) => {
-  Post.find().then(posts => {
-    res.status(200).json(posts)
-  }).catch((err) => {
-    res.status(400).json("Error: get post")
+  console.log(req.query)
+
+  let fetchedPost
+  const pageSize = req.query.pageSize
+  const currentPage = req.query.currentPage
+
+  const postQuery = Post.find()
+
+  if(pageSize) {
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
+  }
+
+  postQuery.then(post => {
+    fetchedPost = post
+    return Post.count()
+  }).then(count => {
+    console.log(count)
+    res.status(200).json({posts: fetchedPost, count: count})
+  }).catch(err => {
+    res.status(400).json(err)
   })
+  // Post.find().then(posts => {
+  //   res.status(200).json(posts)
+  // }).catch((err) => {
+  //   res.status(400).json("Error: get post")
+  // })
 });
 
 router.get("/:id", (req, res, next) => {
