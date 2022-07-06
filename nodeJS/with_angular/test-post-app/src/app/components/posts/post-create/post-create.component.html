@@ -16,6 +16,15 @@
       >
     </mat-form-field>
 
+    <img [src]="imgPreview" alt="" />
+    <input
+      (change)="onLoadImage($event)"
+      type="file"
+      style="display: none"
+      #loader
+    />
+    <button mat-button (click)="loader.click()">Add Image</button>
+
     <button mat-button>Add</button>
   </form>
 </mat-card>
