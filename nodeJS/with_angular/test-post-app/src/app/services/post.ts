@@ -23,15 +23,16 @@ export class PostService {
   }
 
   getPost(id: string) {
-    return this.http.get<{ title: string; content: string }>(this.baseURL + id);
+    return this.http.get<{ title: string; content: string; imagePath: string }>(
+      this.baseURL + id
+    );
   }
 
-  addPost(title: string, content: string) {
-    const post: Post = {
-      _id: '',
-      title: title,
-      content: content,
-    };
+  addPost(title: string, content: string, image:File) {
+    const post = new FormData()
+    post.append("title", title)
+    post.append("content", content)
+    post.append("image", image, title)    
     this.http.post<Post>(this.baseURL, post).subscribe((result) => {
       // this.posts.push(result);
       // this.postUpdate.next([...this.posts]);
@@ -48,12 +49,22 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {
-    const post: Post = {
-      _id: id,
-      title: title,
-      content: content,
-    };
+  updatePost(id: string, title: string, content: string, image:File | string) {
+    let post
+    if(typeof(image) === 'object') {
+      post = new FormData()
+      post.append("_id", id)
+      post.append("title", title)
+      post.append("content", content)
+      post.append("image", image, title) 
+    } else {
+      post = {
+        _id: id,
+        title: title,
+        content: content,
+        imagePath: image
+      };
+    }    
     this.http.put<Post>(this.baseURL + id, post).subscribe((result) => {
       this.router.navigate(['/']);
     });
