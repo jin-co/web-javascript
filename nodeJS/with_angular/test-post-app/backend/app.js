@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const postRouter = require("./routers/post");
 const userRouter = require("./routers/user");
+const path = require("path");
 
 const dbURL =
   "mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority";
@@ -24,6 +25,8 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use(express.json());
 app.use("/posts", postRouter);

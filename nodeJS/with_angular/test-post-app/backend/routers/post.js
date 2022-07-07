@@ -2,6 +2,7 @@ const express = require('express')
 const router = express()
 const Post = require('../models/post')
 const authCheck = require('../middlewares/auth-check')
+const fileCheck = require('../middlewares/file-check')
 
 router.get("", (req, res, next) => {
   console.log(req.query)
@@ -40,10 +41,12 @@ router.get("/:id", (req, res, next) => {
   })
 });
 
-router.post("", authCheck, (req, res, next) => {  
+router.post("", authCheck, fileCheck, (req, res, next) => {  
+  const url = req.protocol + "://" + req.get('host')
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    imagePath: url + req.file.filename,
     auth: req.userData.userId
   })
   post.save().then(posts => {
@@ -53,7 +56,7 @@ router.post("", authCheck, (req, res, next) => {
   })
 });
 
-router.put("/:id", authCheck, (req, res, next) => { 
+router.put("/:id", authCheck, fileCheck, (req, res, next) => { 
   console.log(req.userData) 
   const post = new Post({
     _id: req.body._id,
