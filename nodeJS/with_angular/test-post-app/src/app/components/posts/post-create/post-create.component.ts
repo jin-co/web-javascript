@@ -40,12 +40,13 @@ export class PostCreateComponent implements OnInit {
             _id: this.id,
             title: post.title,
             content: post.content,
-            imagePath: post.imagePath
+            imagePath: post.imagePath,
           };
 
           this.form.setValue({
             title: this.post.title,
             content: this.post.content,
+            image: this.post.imagePath,
           });
         });
       } else {

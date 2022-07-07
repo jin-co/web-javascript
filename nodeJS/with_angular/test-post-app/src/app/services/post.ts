@@ -17,6 +17,7 @@ export class PostService {
     this.http
       .get<{ posts: Post[]; count: number }>(this.baseURL + param)
       .subscribe((data) => {
+        console.log('service:', data.posts)
         this.posts = data.posts;
         this.postUpdate.next({ posts: [...this.posts], count: data.count });
       });
@@ -41,10 +42,10 @@ export class PostService {
   }
 
   deletePost(id: string) {
-    this.http.delete(this.baseURL + id).subscribe((result) => {
-      // const deletedPost = this.posts.filter((p) => p._id !== id);
-      // this.posts = deletedPost;
-      // this.postUpdate.next([...this.posts]);
+    this.http.delete(this.baseURL + id).subscribe((result) => {      
+      const deletedPost = this.posts.filter((p) => p._id !== id);
+      this.posts = deletedPost;
+      this.postUpdate.next({posts: [...this.posts], count: this.posts.length});
       this.router.navigate(['/']);
     });
   }
