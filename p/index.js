@@ -6,28 +6,29 @@ const replay = document.querySelector('#replay')
 runAnimation()
 
 function runAnimation() {
-  nums.forEach((num, idx) => {
+  nums.forEach(num => {
     num.addEventListener('animationend', (e) => {
       console.log(e)
-      if (e.animationName === 'goIn' ) {
-        num.classList.remove('in')
-        num.classList.add('out')
-      } else if (e.animationName === 'goOut' && num.nextElementSibling) {
+      if(e.animationName === 'goIn' && num.nextElementSibling) {
+        num.classList.remove('in')  
+        console.log(num.nextElementSibling)
         num.nextElementSibling.classList.add('in')
       } else {
         counter.classList.add('hide')
         finalMessage.classList.add('show')
       }
     })
-  })
+  });
 }
 
 function resetDOM() {
   counter.classList.remove('hide')
   finalMessage.classList.remove('show')
-  nums.forEach((num) => {
+
+  nums.forEach(num => {
     num.classList.value = ''
-  })
+  });
+
   nums[0].classList.add('in')
 }
 
