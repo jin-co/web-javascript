@@ -31,25 +31,42 @@ export class UserService {
     this.http
       .post<{ token: string; exp: number }>(this.baseURL + 'login', user)
       .subscribe((data) => {
-        console.log('login result: ', data)
+        console.log('login result: ', data);
         this.isLogged = true;
         this.token = data.token;
         this.userUpdate.next(true);
+
+        const now = new Date()
+        const expDate = new Date(now.getTime() + data.exp * 1000)
+
+        this.saveAuthData(data.token, expDate)
         this.router.navigate(['/']);
       });
   }
 
-  logout() {}
+  logout() {
+    this.clearAuthData()
+  }
+
+  private saveAuthData(token: string, exp: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('exp', exp.toISOString());
+  }
+
+  private clearAuthData() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('exp');
+  }
 
   getToken() {
-    return this.token
+    return this.token;
   }
 
   getIsLogged() {
-    return this.isLogged
+    return this.isLogged;
   }
 
   userUpdateListener() {
     return this.userUpdate.asObservable();
-  }  
+  }
 }
