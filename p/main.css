@@ -18,3 +18,81 @@ h4 {
   text-transform: uppercase;
 }
 
+.counter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.hide {
+  transform: translate(-50%, -50%) scale(0);
+  animation: show .2s ease-out;
+}
+
+.final {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.show {
+  transform: translate(-50%, -50%) scale(1);
+  animation: show .2s ease-out;
+}
+
+.nums {
+  position: relative;
+  height: 50px;
+  width: 250px;
+  font-size: 50px;
+  overflow: hidden;
+}
+
+.nums span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(120deg);  
+  color: #3498db;
+  transform-origin: bottom center;  
+}
+
+.in {
+  animation: goIn .5s ease-in;
+}
+
+@keyframes goIn {
+  0% {
+    transform: translate(-50%, -50%) rotate(120deg);  
+  }
+  
+  30% {
+    transform: translate(-50%, -50%) rotate(-20deg);  
+  }
+  
+  60% {
+    transform: translate(-50%, -50%) rotate(10deg);  
+  }
+  
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);  
+  }
+}
+
+@keyframes goOut {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);  
+  }
+  
+  60% {
+    transform: translate(-50%, -50%) rotate(20deg);  
+  }
+  
+  100% {
+    transform: translate(-50%, -50%) rotate(-120deg);  
+  }
+}
