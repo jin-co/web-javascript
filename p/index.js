@@ -10,8 +10,7 @@ function runAnimation() {
     num.addEventListener('animationend', (e) => {
       console.log(e)
       if(e.animationName === 'goIn' && num.nextElementSibling) {
-        num.classList.remove('in')  
-        console.log(num.nextElementSibling)
+        num.classList.remove('in')
         num.nextElementSibling.classList.add('in')
       } else {
         counter.classList.add('hide')
@@ -24,12 +23,6 @@ function runAnimation() {
 function resetDOM() {
   counter.classList.remove('hide')
   finalMessage.classList.remove('show')
-
-  nums.forEach(num => {
-    num.classList.value = ''
-  });
-
-  nums[0].classList.add('in')
 }
 
 replay.addEventListener('click', () => {
