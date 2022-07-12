@@ -7,9 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { PostCreateComponent } from './components/posts/post-create/post-create.component';
+import { PostListComponent } from './components/posts/post-list/post-list.component';
+import { ErrorComponent } from './components/shared/error/error.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    PostCreateComponent,
+    PostListComponent,
+    ErrorComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
