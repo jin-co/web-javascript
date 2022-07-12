@@ -38,11 +38,11 @@ export class UserService {
         this.token = data.token;
         this.userUpdate.next(true);
 
-        // auto auth
-        this.setAuthTimer(data.exp);
+        // auto auth        
+        this.authTimer(data.exp)
         const now = new Date()
         const expDate = new Date(now.getTime() + data.exp * 1000)
-        this.saveAuthDate(this.token, expDate)
+        this.setAuthData(this.token, expDate)
         // auto auth
         this.router.navigate(['/']);
       });
@@ -54,51 +54,44 @@ export class UserService {
   }
 
   // auto auth
-  private saveAuthDate(token: string, expDate: Date) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('expDate', expDate.toISOString());
-    
-  }
+  setAuthData(token:string, expDate:Date) {
+    localStorage.setItem('token', token)
+    localStorage.setItem('expDate', expDate.toISOString())
+  } 
 
-  private clearAuthDate() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expDate');
-    
-  }
+  clearAuthData(token:string, expDate:Date) {
+    localStorage.removeItem('token')
+    localStorage.removeItem('expDate')
+  } 
 
   getAuthData() {
-    const token = localStorage.getItem('token');
-    const expDate = localStorage.getItem('expDate');    
-    if (!token || !expDate) {
-      return;
-    }
-    return {
-      token: token,
-      expDate: new Date(expDate),      
-    };
-  }
-
-  private setAuthTimer(duration: number) {
-    console.log('timer ', duration);
-    this.tokenTimer = setTimeout(() => {
-      this.logout();
-    }, duration * 1000);
-  }
+    const token = localStorage.getItem('token')
+    const expDate = localStorage.getItem('expDate')
+    if(!token || !expDate) return
+    return {token: token, expDate: new Date(expDate)}
+  } 
 
   autoAuth() {
-    const authInfo = this.getAuthData();
-    const now = new Date();
-    if (typeof authInfo !== 'undefined') {
-      const expIn = authInfo.expDate.getTime() - now.getTime();
-      if (expIn > 0) {
-        this.token = authInfo.token;
-        this.isLogged = true;        
-        this.setAuthTimer(expIn / 1000);
-        this.userUpdate.next(true);
+    const authInfo = this.getAuthData()
+    const now = new Date()
+    if(typeof(authInfo) !== 'undefined') {
+      const expIn = authInfo.expDate.getTime() - now.getTime()
+      if(expIn > 0) {
+        this.token = authInfo.token
+        this.isLogged = true
+        this.authTimer(expIn / 1000)
+        this.userUpdate.next(true)
       }
     }
   }
 
+  authTimer(exp:number) {
+    setTimeout(() => {
+      this.token = ''
+      this.isLogged = false
+      this.userUpdate.next(false) 
+    }, exp * 1000)
+  }
   // auto auth
 
   getToken() {
