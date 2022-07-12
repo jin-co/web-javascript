@@ -1,37 +1,31 @@
-const nums = document.querySelectorAll('.nums span')
-const counter = document.querySelector('.counter')
-const finalMessage = document.querySelector('.final')
-const replay = document.querySelector('#replay')
+const prev = document.querySelector('.btn-prev')
+const next = document.querySelector('.btn-next')
+const imgs = document.querySelectorAll('img')
 
-runAnimation()
-
-function runAnimation() {
-  nums.forEach(num => {
-    num.addEventListener('animationend', (e) => {
-      console.log(e)
-      if(e.animationName === 'goIn' && num.nextElementSibling) {
-        num.classList.remove('in')
-        num.classList.add('out')
-        num.nextElementSibling.classList.add('in')
-      } else {
-        counter.classList.add('hide')
-        finalMessage.classList.add('show')
-      }
-    })
-  });
-}
-
-function resetDOM() {
-  counter.classList.remove('hide')
-  finalMessage.classList.remove('show')
-  nums.forEach(num => {
-    num.classList.remove('in')    
-    num.classList.remove('out')    
-  });
-  nums[0].classList.add('in')
-}
-
-replay.addEventListener('click', () => {
-  resetDOM()
-  runAnimation()
+let index = 1
+prev.addEventListener('click', () => {
+  index--
+  if(index < 1) index = 3    
+  console.log('btn minus', index)
 })
+
+next.addEventListener('click', () => {
+  index++
+  if(index > 3) index = 0  
+  console.log('btn plus', index)
+})
+
+shuffle()
+
+function shuffle() {  
+  console.log('shuffle', index)
+  setInterval(() => {
+    if(index > 3) {
+      index = 0
+    }
+    imgs.forEach((img, idx) => {
+      img.style.transform = `translateX(${index * -100}%)`
+    });
+    index++
+  }, 1000 * index)
+}

@@ -7,92 +7,44 @@
 }
 
 body {
-  font-family: 'poppins';
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-h4 {
-  font-size: 20px;
-  margin: 5px;
-  text-transform: uppercase;
+.box {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.counter {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-}
-
-.hide {
-  transform: translate(-50%, -50%) scale(0);
-  animation: show .2s ease-out;
-}
-
-.final {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%) scale(0);
-}
-
-.show {
-  transform: translate(-50%, -50%) scale(1);
-  animation: show .2s ease-out;
-}
-
-.nums {
-  position: relative;
-  height: 50px;
-  width: 250px;
-  font-size: 50px;
+.img-box {
+  height: 100%;
+  width: 100%;
+  display: flex;
   overflow: hidden;
 }
 
-.nums span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(120deg);  
-  color: #3498db;
-  transform-origin: bottom center;  
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: .4s ease;
 }
 
-.in {
-  animation: goIn .5s ease-in;
+.btn-box {
+  display: flex;  
 }
 
-@keyframes goIn {
-  0% {
-    transform: translate(-50%, -50%) rotate(120deg);  
-  }
-  
-  30% {
-    transform: translate(-50%, -50%) rotate(-20deg);  
-  }
-  
-  60% {
-    transform: translate(-50%, -50%) rotate(10deg);  
-  }
-  
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);  
-  }
+.btn-box .btn {
+  flex-grow: 1;
+  background-color: bisque;
 }
 
-@keyframes goOut {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);  
-  }
-  
-  60% {
-    transform: translate(-50%, -50%) rotate(20deg);  
-  }
-  
-  100% {
-    transform: translate(-50%, -50%) rotate(-120deg);  
-  }
-}
+
+
