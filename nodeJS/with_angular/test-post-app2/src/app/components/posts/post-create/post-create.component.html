@@ -1,13 +1,14 @@
 <mat-card>
   <mat-form-field>
-    <input type="text" matInput>
+    <input type="text" matInput #title>
   </mat-form-field>
   
   <mat-form-field>
-    <textarea matInput></textarea>
+    <textarea matInput [(ngModel)]="inputContent"></textarea>
   </mat-form-field>
 
-  <button (click)="onSubmit()">Add</button>
+  <button (click)="onSubmit(title)">Add</button>
 </mat-card>
 
 <p>{{inputTitle}}</p>
+<p>{{inputContent}}</p>

@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostCreateComponent implements OnInit {
   inputTitle!:string
+  inputContent!:string
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.inputTitle = 'hh'
+  onSubmit(title:HTMLInputElement) {
+    this.inputTitle = this.inputContent
   }
 }
