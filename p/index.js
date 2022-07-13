@@ -1,31 +1,29 @@
 const prev = document.querySelector('.btn-prev')
 const next = document.querySelector('.btn-next')
-const imgs = document.querySelectorAll('img')
+const imgEls = document.querySelectorAll('img')
+const imgs = document.querySelector('.img-box')
 
-let index = 1
+let idx = 0
+
+function changeImage() {
+  if (idx > imgEls.length - 1) {
+    idx = 0
+  } else if (idx < 0) {
+    idx = imgEls.length - 1
+  }
+  console.log('chan', idx)  
+  console.log('img length: ', imgEls.length)  
+  imgs.style.transform = `translateX(${idx * -100}%)`
+}
+
 prev.addEventListener('click', () => {
-  index--
-  if(index < 1) index = 3    
-  console.log('btn minus', index)
+  idx--
+  changeImage()
+  console.log('prev', idx)  
 })
 
 next.addEventListener('click', () => {
-  index++
-  if(index > 3) index = 0  
-  console.log('btn plus', index)
+  idx++
+  changeImage()
+  console.log('next', idx)  
 })
-
-shuffle()
-
-function shuffle() {  
-  console.log('shuffle', index)
-  setInterval(() => {
-    if(index > 3) {
-      index = 0
-    }
-    imgs.forEach((img, idx) => {
-      img.style.transform = `translateX(${index * -100}%)`
-    });
-    index++
-  }, 1000 * index)
-}
