@@ -20,13 +20,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .img-box {
   height: 100%;
   width: 100%;
   display: flex;
-  overflow: hidden;
+  
 }
 
 img {
