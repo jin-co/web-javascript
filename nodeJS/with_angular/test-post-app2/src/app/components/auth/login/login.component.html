@@ -1,1 +1,27 @@
-<p>login works!</p>
+<mat-card>
+  <form #form="ngForm" (submit)="form">
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="email"
+        #email="ngModel"
+        ngModel
+        required
+      />
+      <mat-error email.invalid>email required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="password"
+        #password="ngModel"
+        ngModel
+        required
+      />
+      <mat-error password.invalid>password required</mat-error>
+    </mat-form-field>
+  </form>
+</mat-card>

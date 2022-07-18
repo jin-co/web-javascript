@@ -11,7 +11,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
 import { ErrorComponent } from './components/shared/error/error.component';
-
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { ErrorComponent } from './components/shared/error/error.component';
     HeaderComponent,
     PostCreateComponent,
     PostListComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
