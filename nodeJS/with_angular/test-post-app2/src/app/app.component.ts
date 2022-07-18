@@ -8,10 +8,4 @@ import { Post } from './models/post.model';
 })
 export class AppComponent {
   title = 'test-post-app2';
-
-  posts:Post[] = []
-
-  addPost(e:any) {
-    this.posts.push(e)
-  }
 }

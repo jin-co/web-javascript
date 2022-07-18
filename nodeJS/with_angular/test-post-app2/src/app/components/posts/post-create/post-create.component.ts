@@ -2,14 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/models/post.model';
 
-
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css'],
 })
-export class PostCreateComponent implements OnInit {  
-  @Output() createdPost = new EventEmitter();
+export class PostCreateComponent implements OnInit {
   form!: FormGroup;
   constructor() {}
 
@@ -21,13 +19,12 @@ export class PostCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.form.valid) {
-      const post:Post = {
+    if (this.form.valid) {
+      const post: Post = {
         title: this.form.value.title,
         content: this.form.value.content,
-      }
-      this.createdPost.emit(post)
+      };
     }
-    this.form.reset()
+    this.form.reset();
   }
 }
