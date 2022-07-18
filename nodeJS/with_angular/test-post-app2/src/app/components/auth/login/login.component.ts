@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
+    console.log(form.value)
     if (form.valid) {
     }
     form.resetForm();
