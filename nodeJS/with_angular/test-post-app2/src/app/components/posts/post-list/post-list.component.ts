@@ -17,4 +17,8 @@ export class PostListComponent implements OnInit {
       this.posts = posts;
     });
   }
+
+  onDelete(id?: string) {
+    this.postService.deletePost(id as string);
+  }
 }

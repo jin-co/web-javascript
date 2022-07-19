@@ -7,5 +7,10 @@
       <mat-panel-description> Click to open </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{ i.content }}</p>
+
+    <mat-action-row>
+      <button mat-raised-button>Edit</button>
+      <button mat-raised-button (click)="onDelete(i._id)">Delete</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
