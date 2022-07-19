@@ -39,7 +39,10 @@ export class UserService {
         this.userUpdate.next(true);
 
         // auto auth
-        
+        const now = new Date();
+        const expIn = new Date(now.getTime() + data.exp * 1000);
+        this.authTimer(data.exp);
+        this.setAuth(expIn)        
         // auto auth
         this.router.navigate(['/']);
       });
@@ -51,7 +54,46 @@ export class UserService {
   }
 
   // auto auth
-  
+  authTimer(duration: number) {
+    setTimeout(() => {
+      this.logout();
+    }, duration);
+  }
+
+  autoAuth() {
+    const authInfo = this.getAuth()
+    const now = new Date()
+    if(typeof(authInfo) !== 'undefined') {
+      const expIn = authInfo.expDate.getTime() - now.getTime() 
+      if(expIn > 0) {
+        this.token = authInfo.token
+        this.isLogged = true
+        this.userUpdate.next(true)
+        this.authTimer(expIn / 1000)
+      }
+      
+    }
+  }
+
+  setAuth(expDate: Date) {
+    localStorage.setItem('token', this.token);
+    localStorage.setItem('expDate', expDate.toISOString());
+  }
+
+  getAuth() {
+    const token = localStorage.getItem('token');
+    const expDate = localStorage.getItem('expDate');
+    if(!token || !expDate) return
+    return {
+      token: token,
+      expDate: new Date(expDate)
+    }
+  }
+
+  removeAuth() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expDate');
+  }
   // auto auth
 
   getToken() {
