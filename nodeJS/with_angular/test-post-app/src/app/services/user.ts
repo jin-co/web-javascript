@@ -39,11 +39,7 @@ export class UserService {
         this.userUpdate.next(true);
 
         // auto auth
-        const now = new Date();
-        const expDate = new Date(now.getTime() + data.exp * 1000);
-        this.setAuthData(expDate);
-        this.authTimer(data.exp);
-        this.autoAuth();
+        
         // auto auth
         this.router.navigate(['/']);
       });
@@ -55,46 +51,7 @@ export class UserService {
   }
 
   // auto auth
-  autoAuth() {
-    const authInfo = this.getAuthData();
-    const now = new Date();
-    if (typeof authInfo !== 'undefined') {
-      this.token = authInfo.token;
-      const expIn = authInfo.expDate.getTime();
-      if (expIn > 0) {
-        this.token = authInfo.token;
-        this.isLogged = true;
-        this.authTimer(expIn / 1000);
-        this.userUpdate.next(true);
-      }
-    }
-  }
-
-  setAuthData(expDate: Date) {
-    localStorage.setItem('token', this.token);
-    localStorage.setItem('expDate', expDate.toISOString());
-  }
-
-  getAuthData() {
-    const token = localStorage.getItem('token');
-    const expDate = localStorage.getItem('expDate');
-    if (!token || !expDate) return;
-    return {
-      token: token,
-      expDate: new Date(expDate),
-    };
-  }
-
-  removeAuthData(expDate: Date) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expDate');
-  }
-
-  authTimer(exp: number) {
-    setTimeout(() => {
-      this.logout();
-    }, exp);
-  }
+  
   // auto auth
 
   getToken() {
