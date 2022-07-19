@@ -18,13 +18,40 @@ export class PostService {
     })
   }
 
-  getPost(id: string) {}
+  getPost(id: string) {
+    return this.http.get(this.baseURL + id)
+  }
 
-  addPost(title: string, content: string) {}
+  addPost(title: string, content: string) {
+    const post:Post = {
+      title: title,
+      content: content
+    }
 
-  deletePost(id: string) {}
+    this.http.post(this.baseURL, post).subscribe(result => {
 
-  updatePost(id: string, title: string, content: string) {}
+    })
+  }
+
+  deletePost(id: string) {
+    this.http.delete(this.baseURL + id).subscribe(result => {
+      const deletedPost = this.posts.filter((p) => p._id !== id)
+      this.posts = deletedPost
+      this.postUpdate.next([...this.posts])
+    })
+  }
+
+  updatePost(id: string, title: string, content: string) {
+    const post:Post = {
+      _id: id,
+      title: title,
+      content: content
+    }
+
+    this.http.post(this.baseURL + id, post).subscribe(result => {
+      
+    })
+  }
 
   postUpdateListener() {
     return this.postUpdate.asObservable();
