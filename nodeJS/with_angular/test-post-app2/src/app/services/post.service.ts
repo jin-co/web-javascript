@@ -12,45 +12,45 @@ export class PostService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getPosts() {
-    this.http.get<Post[]>(this.baseURL).subscribe(result => {
-      this.posts = result
-      this.postUpdate.next([...this.posts])
-    })
+    this.http.get<Post[]>(this.baseURL).subscribe((result) => {
+      this.posts = result;
+      this.postUpdate.next([...this.posts]);
+    });
   }
 
   getPost(id: string) {
-    return this.http.get(this.baseURL + id)
+    return this.http.get(this.baseURL + id);
   }
 
   addPost(title: string, content: string) {
-    const post:Post = {
+    const post: Post = {
       title: title,
-      content: content
-    }
+      content: content,
+    };
 
-    this.http.post(this.baseURL, post).subscribe(result => {
-
-    })
+    this.http.post(this.baseURL, post).subscribe((result) => {
+      this.posts.push(post);
+      this.postUpdate.next([...this.posts]);
+      this.router.navigate(['/']);
+    });
   }
 
   deletePost(id: string) {
-    this.http.delete(this.baseURL + id).subscribe(result => {
-      const deletedPost = this.posts.filter((p) => p._id !== id)
-      this.posts = deletedPost
-      this.postUpdate.next([...this.posts])
-    })
+    this.http.delete(this.baseURL + id).subscribe((result) => {
+      const deletedPost = this.posts.filter((p) => p._id !== id);
+      this.posts = deletedPost;
+      this.postUpdate.next([...this.posts]);
+    });
   }
 
   updatePost(id: string, title: string, content: string) {
-    const post:Post = {
+    const post: Post = {
       _id: id,
       title: title,
-      content: content
-    }
+      content: content,
+    };
 
-    this.http.post(this.baseURL + id, post).subscribe(result => {
-      
-    })
+    this.http.post(this.baseURL + id, post).subscribe((result) => {});
   }
 
   postUpdateListener() {
