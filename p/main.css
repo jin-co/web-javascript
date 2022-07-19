@@ -17,35 +17,26 @@ body {
 .box {
   height: 500px;
   width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
 }
 
 .img-box {
   height: 100%;
   width: 100%;
   display: flex;
-  
+  transition: .4s ease;
 }
 
 img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: cover;  
   object-position: center;
-  transition: .4s ease;
 }
 
 .btn-box {
-  display: flex;  
+  display: flex;
 }
 
-.btn-box .btn {
+.btn {
   flex-grow: 1;
-  background-color: bisque;
 }
-
-
-

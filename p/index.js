@@ -1,41 +1,39 @@
-const prev = document.querySelector('.btn-prev')
-const next = document.querySelector('.btn-next')
-const imgEls = document.querySelectorAll('img')
-const imgs = document.querySelector('.img-box')
+const imgBox = document.querySelector('#imgs')
+const imgs = document.querySelectorAll('img')
+const btnPrev = document.querySelector('.btn-prev')
+const btnNext = document.querySelector('.btn-next')
 
-let idx = 0
+let index = 0
 
-let inter = setInterval(() => {
-  idx++
-  changeImage()
-}, 2000);
+let runIt = setInterval(goGo, 500)
 
-function changeImage() {
-  if (idx > imgEls.length - 1) {
-    idx = 0
-  } else if (idx < 0) {
-    idx = imgEls.length - 1
+function goGo() {
+  index++
+  swipe()
+}
+
+function swipe() {  
+  if (index > imgs.length - 1) {
+    index = 0
+  } else if (index < 0) {
+    index = imgs.length - 1
   }
-  console.log('chan', idx)  
-  console.log('img length: ', imgEls.length)  
-  imgs.style.transform = `translateX(${idx * -100}%)`
+  imgBox.style.transform = `translateX(${index * -100}%)`
 }
 
-prev.addEventListener('click', () => {
-  idx--
-  changeImage()
-  resetIn()
-  console.log('prev', idx)  
-})
-
-next.addEventListener('click', () => {
-  idx++
-  changeImage()
-  resetIn()
-  console.log('next', idx)  
-})
-
-function resetIn() {
-  clearInterval(inter)
-  inter = setInterval(changeImage, 2000)
+function reset() {
+  clearInterval(runIt)
+  runIt = setInterval(goGo, 500)
 }
+
+btnPrev.addEventListener('click', () => {
+  index--
+  swipe()
+  reset()  
+})
+
+btnNext.addEventListener('click', () => {
+  index++
+  swipe()
+  reset()  
+})
