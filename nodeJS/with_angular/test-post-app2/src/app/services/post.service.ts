@@ -19,7 +19,7 @@ export class PostService {
   }
 
   getPost(id: string) {
-    return this.http.get(this.baseURL + id);
+    return this.http.get<{title:string, content:string}>(this.baseURL + id);
   }
 
   addPost(title: string, content: string) {
@@ -50,7 +50,9 @@ export class PostService {
       content: content,
     };
 
-    this.http.post(this.baseURL + id, post).subscribe((result) => {});
+    this.http.put(this.baseURL + id, post).subscribe((result) => {
+      this.router.navigate(['/'])
+    });
   }
 
   postUpdateListener() {
