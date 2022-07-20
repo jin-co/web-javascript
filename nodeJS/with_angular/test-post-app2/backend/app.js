@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const postRouter = require('./routers/post')
+const userRouter = require('./routers/user')
 
 const mongoose = require("mongoose");
 const DB_URL = 'mongodb+srv://1234:1234@cluster0.yz15b.mongodb.net/post-app?retryWrites=true&w=majority'
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use("/posts", postRouter)
+app.use("/users", userRouter)
 
 
 module.exports = app;
