@@ -18,7 +18,7 @@ export class UserService {
       email: email,
       password: password,
     };
-    this.http.post(this.baseURL, user).subscribe((result) => {
+    this.http.post(this.baseURL + 'signup', user).subscribe((result) => {
       this.router.navigate(['/']);
     });
   }
@@ -29,15 +29,16 @@ export class UserService {
       password: password,
     };
     this.http
-      .post<{ token: string; exp: number }>(this.baseURL, user)
+      .post<{ token: string; exp: number }>(this.baseURL + 'login', user)
       .subscribe((data) => {
         this.token = data.token;
         this.userUpdate.next(true);
         this.isLogged = true;
+        this.router.navigate(['/'])
       });
   }
 
-  userUpdataListener() {
+  userUpdateListener() {
     return this.userUpdate.asObservable();
   }
 }
