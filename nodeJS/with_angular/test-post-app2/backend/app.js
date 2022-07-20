@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use("/posts", postRouter)
-app.use("/users", userRouter)
+app.use("/user", userRouter)
 
 
 module.exports = app;

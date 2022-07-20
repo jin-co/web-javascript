@@ -12,9 +12,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm) {
-    console.log(form.value)
+  onSubmit(form: NgForm) {    
     if (form.valid) {
+      this.userService.login(form.value.email, form.value.password)
     }
     form.resetForm();
   }

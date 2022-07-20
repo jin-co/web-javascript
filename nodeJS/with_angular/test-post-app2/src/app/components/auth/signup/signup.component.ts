@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
   constructor(private userService: UserService) {}
@@ -13,8 +13,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
-    console.log(form.value)
+    console.log(form.value);
     if (form.valid) {
+      this.userService.addUser(form.value.email, form.value.password);
     }
     form.resetForm();
   }
