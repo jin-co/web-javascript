@@ -4,9 +4,11 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
+@Injectable()
 export class AuthIntercepter implements HttpInterceptor {
   constructor(private userService:UserService) {}
   intercept(
