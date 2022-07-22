@@ -34,11 +34,19 @@ export class UserService {
         this.token = data.token;
         this.userUpdate.next(true);
         this.isLogged = true;
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       });
   }
 
   userUpdateListener() {
     return this.userUpdate.asObservable();
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  getIsLogged() {
+    return this.isLogged;
   }
 }
