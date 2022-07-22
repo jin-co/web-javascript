@@ -19,11 +19,9 @@ canvas {
 
 label {
   height: 30px;
-  width: 60px;
-  border: 1px solid #000;
+  width: 60px;  
   border-radius: 15px;
-  position: relative;
-  overflow: hidden;
+  position: relative;  
 }
 
 input {
@@ -38,6 +36,7 @@ span {
   display: block;  
   transition: .4s ease;
   position: relative;
+  border-radius: 15px;
 }
 
 span::before {
@@ -49,7 +48,8 @@ span::before {
   position: absolute;
   top: 0;
   left: 0;
-  transition: .4s ease;
+  animation: goOut .5s ease forwards;
+
 }
 
 input:checked + span {
@@ -57,6 +57,37 @@ input:checked + span {
 }
 
 input:checked + span::before {
-  left: 30px;
+  animation: goIn .5s ease forwards;
+}
+
+@keyframes goIn {
+  0% {
+    left: 0px;
+    
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    left: 30px;
+    transform: scale(1);
+  }
+}
+
+@keyframes goOut {
+  0% {
+    left: 30px;    
+  }
+
+  50% {
+    transform: scale(.9);
+  }
+
+  100% {
+    left: 0px;
+    transform: scale(1);
+  }
 }
 
