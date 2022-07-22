@@ -1,5 +1,6 @@
 const express = require("express");
 const Post = require("../models/post");
+const authCheck = require('../middlewares/auth.check')
 const router = express.Router();
 
 router.get("", (req, res, next) => {
@@ -14,10 +15,11 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.post("", (req, res, next) => {
+router.post("", authCheck, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    auth: req.userData.userId
   });
   post.save().then((result) => {
     res.status(200).json(result);
@@ -30,14 +32,14 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", (req, res, next) => {
+router.put("/:id", authCheck, (req, res, next) => {
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
   });
 
-  Post.updateOne({ _id: req.params.id }, post).then((result) => {
+  Post.updateOne({ _id: req.params.id, auth: req.userData.userId }, post).then((result) => {
     res.status(200).json(result);
   });
 });

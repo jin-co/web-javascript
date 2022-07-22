@@ -13,7 +13,7 @@ import { PostListComponent } from './components/posts/post-list/post-list.compon
 import { ErrorComponent } from './components/shared/error/error.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { AuthIntercepter } from './components/auth/auth.intercepter';
+import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { AuthIntercepter } from './components/auth/auth.intercepter';
     HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
