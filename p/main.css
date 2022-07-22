@@ -9,9 +9,54 @@
 body {
   height: 100vh;   
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {
-  border: 1px solid #000;
-  margin: auto;
+  border: 1px solid #000;  
 }
+
+label {
+  height: 30px;
+  width: 60px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+input {
+  /* height: 100%;
+  width: 100%; */
+  display: none;
+}
+
+span {
+  height: 100%;
+  width: 100%;  
+  display: block;  
+  transition: .4s ease;
+  position: relative;
+}
+
+span::before {
+  content: '';
+  height: 28px;
+  width: 28px;
+  background-color: aqua;  
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: .4s ease;
+}
+
+input:checked + span {
+  background-color: bisque;
+}
+
+input:checked + span::before {
+  left: 30px;
+}
+
