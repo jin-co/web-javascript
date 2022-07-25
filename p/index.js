@@ -1,31 +1,34 @@
-const canvas = document.querySelector('.canvas')
-const ctv = canvas.getContext('2d')
+const boxes = document.querySelector('.boxes')
+const colors = [
+  "#76BA99",
+  "#0096FF",
+  "#FFF9CA",
+  "#FFDEB4",
+  "#FFB4B4",
+  "#B2A4FF",
+  "#513252",
+  "#7A4069",
+  "#CA4E79",
+]
 
-let isClicked = false
-let x
-let y
+fillBox()
 
-canvas.addEventListener('mouseup', (e) => {
-  isClicked = false  
-})
-
-canvas.addEventListener('mousedown', (e) => {
-  isClicked = true
-  x = e.offsetX
-  y = e.offsetY
-})
-
-canvas.addEventListener('mousemove', (e) => {
-  if(isClicked) {
-    const x2 = e.offsetX
-    const y2 = e.offsetY
-
-    ctv.beginPath()
-    ctv.moveTo(x, y)
-    ctv.lineTo(x2, y2)
-    ctv.stroke()
-
-    x = x2
-    y = y2    
+function fillBox() {
+  for (let i = 0; i < 400; i++) {
+    const newBox = document.createElement('div')
+    newBox.className = 'box'
+    boxes.appendChild(newBox)
+    newBox.addEventListener('mouseenter', addColor(newBox))
+    newBox.addEventListener('mouseleave', removeColor(newBox))
   }
-})
+}
+
+function addColor(newBox) {
+  newBox.style.backgroundColor = `${colors[0]}`
+  console.log('in')
+}
+
+function removeColor(newBox) {
+  newBox.style.backgroundColor = ``
+  console.log('out')
+}
