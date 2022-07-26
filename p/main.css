@@ -6,28 +6,11 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-  display: flex;  
-  background-color: rgb(46, 42, 42);
-}
-
-.boxes {
-  height: 400px;
-  width: 400px;
-  margin: auto;  
-  display: flex;
-  align-items: flex-start;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 4px;
-  overflow: hidden;
-}
-
-.box {
-  height: 20px;
-  width: 20px;
-  background-color: rgb(68, 67, 67);
-  transition: .4s ease;
-  
+body {  
+  background: #eaeda1;
+  background: linear-gradient(
+    to right,
+    #eaeda1 10%,
+    #f3f3f3 50%
+  );  
 }
