@@ -19,14 +19,22 @@ export class PostService {
   }
 
   getPost(id: string) {
-    return this.http.get<{title:string, content:string}>(this.baseURL + id);
+    return this.http.get<{title:string, content:string, imagePath:string}>(this.baseURL + id);
   }
 
-  addPost(title: string, content: string) {
-    const post: Post = {
-      title: title,
-      content: content,
-    };
+  addPost(title: string, content: string, image?:File) {
+    let post:any
+    if(image) {
+      post = new FormData()
+      post.append('title', title)
+      post.append('content', content)
+      post.append('image', image, title)
+    } else {
+      post = {
+        title: title,
+        content: content,            
+      };
+    }    
 
     this.http.post(this.baseURL, post).subscribe((result) => {
       this.posts.push(post);
