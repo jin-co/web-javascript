@@ -29,6 +29,7 @@ function addColor(newBox) {
   idx++
   if (idx > colors.length - 1) idx = 0
   newBox.style.backgroundColor = `${colors[idx]}`
+  newBox.style.boxShadow = `0 0 2px ${colors[idx]}, 0 0 10px ${colors[idx]}`
   console.log('in')
 }
 

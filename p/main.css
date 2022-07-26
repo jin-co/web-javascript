@@ -20,7 +20,7 @@ body {
   align-items: flex-start;
   justify-content: start;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: 4px;
   overflow: hidden;
 }
 
@@ -29,4 +29,5 @@ body {
   width: 20px;
   background-color: rgb(68, 67, 67);
   transition: .4s ease;
+  
 }
