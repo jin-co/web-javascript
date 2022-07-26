@@ -1,15 +1,17 @@
 const boxes = document.querySelector('.boxes')
 const colors = [
-  "#76BA99",
-  "#0096FF",
-  "#FFF9CA",
-  "#FFDEB4",
-  "#FFB4B4",
-  "#B2A4FF",
-  "#513252",
-  "#7A4069",
-  "#CA4E79",
+  '#76BA99',
+  '#0096FF',
+  '#FFF9CA',
+  '#FFDEB4',
+  '#FFB4B4',
+  '#B2A4FF',
+  '#513252',
+  '#7A4069',
+  '#CA4E79',
 ]
+
+let idx = 0
 
 fillBox()
 
@@ -18,17 +20,21 @@ function fillBox() {
     const newBox = document.createElement('div')
     newBox.className = 'box'
     boxes.appendChild(newBox)
-    newBox.addEventListener('mouseenter', addColor(newBox))
-    newBox.addEventListener('mouseleave', removeColor(newBox))
+    newBox.addEventListener('mouseenter', () => addColor(newBox))
+    newBox.addEventListener('mouseleave', () => removeColor(newBox))
   }
 }
 
 function addColor(newBox) {
-  newBox.style.backgroundColor = `${colors[0]}`
+  idx++
+  if (idx > colors.length - 1) idx = 0
+  newBox.style.backgroundColor = `${colors[idx]}`
   console.log('in')
 }
 
 function removeColor(newBox) {
-  newBox.style.backgroundColor = ``
+  setTimeout(() => {
+    newBox.style.backgroundColor = ``
+  }, 200)
   console.log('out')
 }
