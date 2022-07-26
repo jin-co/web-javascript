@@ -12,5 +12,9 @@
       <a [routerLink]="['/edit', i._id]" mat-raised-button>Edit</a>
       <button mat-raised-button (click)="onDelete(i._id)">Delete</button>
     </mat-action-row>
+
+    <mat-card>
+      <img height="100px" [src]="i.imagePath" alt="">
+    </mat-card>
   </mat-expansion-panel>
 </mat-accordion>
