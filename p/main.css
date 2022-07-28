@@ -6,11 +6,67 @@
   box-sizing: border-box;
 }
 
-body {  
+body {    
   background: #eaeda1;
   background: linear-gradient(
     to right,
-    #eaeda1 10%,
-    #f3f3f3 50%
+    #eaeda1 50%,
+    #f3f3f3 100%
   );  
 }
+
+h1 {
+  margin: 20px;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  height: 300px;
+  width: 200px;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .4);
+}
+
+.card img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.text-box {
+  margin-top: 10px;
+  width: 80%;
+  text-align: center;  
+}
+
+.text-box .number {
+  height: 20px;
+  width: 50px;
+  background-color: rgba(0, 0, 0, .2);
+  border-radius: 7px;
+  margin: 0 auto 10px;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-family: 'poppins';
+  font-weight: bold;
+}
+
+.type-box p {
+  margin: 10px 0 0;
+}
+
+
+
