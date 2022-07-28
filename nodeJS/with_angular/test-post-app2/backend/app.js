@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use("images",  express.static(path.join('backend/images')))
+app.use("/images",  express.static(path.join('backend/images')))
 app.use("/posts", postRouter)
 app.use("/user", userRouter)
 

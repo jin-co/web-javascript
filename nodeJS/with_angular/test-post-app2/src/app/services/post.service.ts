@@ -13,7 +13,7 @@ export class PostService {
 
   getPosts() {
     this.http.get<Post[]>(this.baseURL).subscribe((result) => {
-      this.posts = result;
+      this.posts = result;      
       this.postUpdate.next([...this.posts]);
     });
   }
