@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.isLogged = this.userService.getIsLogged()
     this.userService.userUpdateListener().subscribe(result => {
       this.isLogged = result
     })

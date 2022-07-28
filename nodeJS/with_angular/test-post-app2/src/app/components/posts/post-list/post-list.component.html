@@ -18,3 +18,4 @@
     </mat-card>
   </mat-expansion-panel>
 </mat-accordion>
+<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [length]="length" (page)="onPageChange($event)"></mat-paginator>

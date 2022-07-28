@@ -7,14 +7,15 @@ import { Post } from '../models/post.model';
 @Injectable({ providedIn: 'root' })
 export class PostService {
   private posts: Post[] = [];
-  private postUpdate = new Subject<Post[]>();
+  private postUpdate = new Subject<{posts: Post[], count:number}>();
   private baseURL = 'http://localhost:3000/posts/';
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPosts() {
-    this.http.get<Post[]>(this.baseURL).subscribe((result) => {
-      this.posts = result;      
-      this.postUpdate.next([...this.posts]);
+  getPosts(currentPage:number, total:number) {
+    const param = `?size=${total}&current=${currentPage}`
+    this.http.get<{posts:Post[], count:number}>(this.baseURL + param).subscribe((data) => {
+      this.posts = data.posts;      
+      this.postUpdate.next({posts: [...this.posts], count: data.count});
     });
   }
 
@@ -36,18 +37,14 @@ export class PostService {
       };
     }    
 
-    this.http.post(this.baseURL, post).subscribe((result) => {
-      this.posts.push(post);
-      this.postUpdate.next([...this.posts]);
+    this.http.post(this.baseURL, post).subscribe((result) => {      
       this.router.navigate(['/']);
     });
   }
 
   deletePost(id: string) {
     this.http.delete(this.baseURL + id).subscribe((result) => {
-      const deletedPost = this.posts.filter((p) => p._id !== id);
-      this.posts = deletedPost;
-      this.postUpdate.next([...this.posts]);
+      this.router.navigate(['/'])
     });
   }
 

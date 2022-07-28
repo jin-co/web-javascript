@@ -5,9 +5,23 @@ const fileCheck = require("../middlewares/file.check");
 const router = express.Router();
 
 router.get("", (req, res, next) => {
-  Post.find().then((result) => {
-    res.status(200).json(result);
-  });
+  const size = req.query.size
+  const current = req.query.current
+    console.log(size)
+    console.log(current)    
+  const postQuery = Post.find()
+  let fetchedPost
+
+  if(size && current) {
+    postQuery.skip(size * (current - 1)).limit(size)
+  }  
+
+  postQuery.then(posts => {
+    fetchedPost = posts
+    return Post.count()
+  }).then(count => {
+    res.status(200).json({posts: fetchedPost, count:count});
+  })  
 });
 
 router.get("/:id", (req, res, next) => {
@@ -16,11 +30,7 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.post("", authCheck, fileCheck, (req, res, next) => {
-  console.log('back')
-  console.log(fileCheck)
-  console.log(req.file)
-  
+router.post("", authCheck, fileCheck, (req, res, next) => {  
   const url = req.protocol + "://" + req.get("host");
   const post = new Post({
     title: req.body.title,
