@@ -7,8 +7,6 @@ const router = express.Router();
 router.get("", (req, res, next) => {
   const size = req.query.size
   const current = req.query.current
-    console.log(size)
-    console.log(current)    
   const postQuery = Post.find()
   let fetchedPost
 
@@ -49,11 +47,17 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
-router.put("/:id", authCheck, (req, res, next) => {
+router.put("/:id", authCheck, fileCheck, (req, res, next) => {
+  let filePath = req.body.imagePath
+  if(req.file) {
+    const url = req.protocol + "://" + req.get('host')    
+    filePath = url + "/images/" + req.file.filename
+  }
   const post = new Post({
     _id: req.body._id,
     title: req.body.title,
     content: req.body.content,
+    imagePath: filePath
   });
 
   Post.updateOne({ _id: req.params.id, auth: req.userData.userId }, post).then(

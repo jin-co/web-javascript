@@ -48,12 +48,22 @@ export class PostService {
     });
   }
 
-  updatePost(id: string, title: string, content: string) {
-    const post: Post = {
-      _id: id,
-      title: title,
-      content: content,
-    };
+  updatePost(id: string, title: string, content: string, image:File | string) {
+    let post:any
+    if(typeof(image) === 'object') {
+      post = new FormData()
+      post.append('_id', id)
+      post.append('title', title)
+      post.append('content', content)
+      post.append('image', image, title)
+    } else {
+      post = {
+        _id: id,
+        title: title,
+        content: content,     
+        imagePath: image       
+      };
+    }  
 
     this.http.put(this.baseURL + id, post).subscribe((result) => {
       this.router.navigate(['/'])
