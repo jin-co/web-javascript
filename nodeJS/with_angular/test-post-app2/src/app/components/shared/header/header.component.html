@@ -14,7 +14,7 @@
       <a routerLink="/signup">Signup</a>
     </li>
     <li *ngIf="isLogged">
-      <a routerLink="/">Logout</a>
+      <a routerLink="/" (click)="onLogout()">Logout</a>
     </li>
   </ul>
 </mat-toolbar>

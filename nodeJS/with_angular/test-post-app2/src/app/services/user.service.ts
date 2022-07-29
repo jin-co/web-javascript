@@ -54,7 +54,8 @@ export class UserService {
         this.token = authInfo.token;
         this.isLogged = true;
         this.userUpdate.next(true);
-      }
+        this.authTimer(expIn / 1000)
+      } 
     }
   }
 
@@ -81,10 +82,14 @@ export class UserService {
   private authTimer(exp: number) {
     setTimeout(() => {
       this.logout();
-    }, exp);
+    }, exp * 1000);
   }
+
   logout() {
-    throw new Error('Method not implemented.');
+    this.removeAuth();
+    this.token = '';
+    this.isLogged = false;
+    this.userUpdate.next(false);
   }
   //auto auth
 
