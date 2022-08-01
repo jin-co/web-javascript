@@ -1,38 +1,31 @@
+const cardContainer = document.querySelector('.card-container')
+
 const API_URL = 'https://pokeapi.co/api/v2/pokemon/'
 
 const fetchPoke = async () => {
-  const res = await fetch(API_URL)
-  const data = await res.json()  
-  return data
+  for (let i = 1; i < 30; i++) {
+    const res = await fetch(API_URL + `${i}`)
+    const data = await res.json()
+    createCards(data, i)
+  }
 }
 
-async function getPoke() {
-  const res = await fetch(API_URL)
-  const data = await res.json()  
-  // console.log(data)
-  return data
-}
+fetchPoke()
 
-createCards() 
-
-async function createCards() {
-  console.log(fetchPoke().results)
-  console.log(getPoke())
-  // for (let i = 0; i < fetchPoke().results.length; i++) {
-  //   console.log(i)
-
-  // }
+function createCards(data, idx) {
+  console.log(data)
+  const {name, } = data  
   const newCard = document.createElement('div')
   newCard.className = 'card'
   newCard.innerHTML = `
     <img src="https://source.unsplash.com/random" alt="">
     <div class="text-box">
       <div class="number-box">
-        <p class="number">#001</p>
+        <p class="number">#${idx}</p>
       </div>
 
       <div class="name">
-        bu
+        ${name}
       </div>
 
       <div class="type-box">
@@ -40,4 +33,5 @@ async function createCards() {
       </div>
     </div>
   `
+  cardContainer.appendChild(newCard)
 }
